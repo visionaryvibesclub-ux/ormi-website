@@ -942,16 +942,16 @@ const css = `
     #ormi-banner {
       display: none;
       position: fixed;
-      top: 24px;
+      top: 32px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 9999;
-      background: #1A1A2E;
+      background: #F5E6C8;
       border: 1px solid rgba(201,151,58,0.4);
       border-radius: 16px;
-      padding: 24px 32px;
-      box-shadow: 0 8px 48px rgba(0,0,0,0.4);
-      max-width: 480px;
+      padding: 28px 36px;
+      box-shadow: 0 12px 56px rgba(0,0,0,0.5);
+      max-width: 560px;
       width: calc(100% - 48px);
       flex-direction: row;
       align-items: center;
@@ -972,13 +972,13 @@ const css = `
     .banner-text {
       font-family: Georgia, 'Times New Roman', serif;
       font-size: 15px;
-      color: #F5E6C8;
+      color: #1A1A2E;
       line-height: 1.6;
       max-width: 360px;
     }
 
     .banner-dismiss {
-      color: rgba(245,230,200,0.4);
+      color: rgba(26,26,46,0.45);
       font-size: 20px;
       cursor: pointer;
       background: none;
