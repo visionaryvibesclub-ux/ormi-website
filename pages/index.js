@@ -1006,30 +1006,19 @@ const css = `
     .banner-dismiss:hover { color: rgba(26,26,46,0.6); }
     .banner-heading {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 28px;
+      font-size: 24px;
       font-weight: 300;
       color: #1A1A2E;
-      line-height: 1.3;
+      line-height: 1.4;
       margin: 0;
     }
     .banner-body {
       font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 300;
-      color: rgba(26,26,46,0.7);
-      line-height: 1.75;
-      margin: 0;
-    }
-    .banner-closing {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 16px;
-      font-style: italic;
-      color: #C9973A;
+      color: rgba(26,26,46,0.55);
       line-height: 1.6;
       margin: 0;
-      padding-top: 8px;
-      border-top: 1px solid rgba(201,151,58,0.25);
-      width: 100%;
     }
 
     /* ── Scroll reveal ── */
@@ -1078,9 +1067,8 @@ const bodyHTML = `
       </div>
       <button class="banner-dismiss" onclick="dismissBanner()" aria-label="Dismiss">&times;</button>
     </div>
-    <h2 class="banner-heading">You're not too sensitive.<br>You're not imagining it.<br>You're not alone.</h2>
-    <p class="banner-body">You just did something most women never get to do. You asked for the full picture.<br><br>Ormi is built for women who've been dismissed, confused, or told it was just stress. This is the start of something that actually makes sense. And the right information is coming.</p>
-    <p class="banner-closing">Your hormones have been talking. Ormi is how you finally hear them.</p>
+    <p class="banner-heading">You're on the Ormi list. Time to find out what your hormones have been up to.</p>
+    <p class="banner-body">Keep an eye on your inbox.</p>
   </div>
 
   <!-- ── Nav ── -->

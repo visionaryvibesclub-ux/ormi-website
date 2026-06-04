@@ -80,7 +80,7 @@ export default async function handler(req, res) {
                   <tr>
                     <td style="padding-bottom:20px;">
                       <p style="margin:0;font-size:16px;line-height:1.75;color:rgba(245,230,200,0.75);font-weight:300;">
-                        Ormi is built for women who've been dismissed, confused, or told it was just stress. We'll be in touch as soon as we're ready for you.
+                        Ormi is built for women who've been dismissed, confused, or told it was just stress. This is the start of something that actually makes sense. And the right information is coming.
                       </p>
                     </td>
                   </tr>
@@ -121,7 +121,7 @@ export default async function handler(req, res) {
 
 You just did something most women never get to do. You asked for the full picture.
 
-Ormi is built for women who've been dismissed, confused, or told it was just stress. We'll be in touch as soon as we're ready for you.
+Ormi is built for women who've been dismissed, confused, or told it was just stress. This is the start of something that actually makes sense. And the right information is coming.
 
 Your hormones have been talking. Ormi is how you finally hear them.
 
