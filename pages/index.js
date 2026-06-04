@@ -928,6 +928,66 @@ const css = `
 
     .footer-links a:hover { color: var(--gold-text); }
 
+    /* ── Popup banner ── */
+    @keyframes bannerIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes bannerOut {
+      from { opacity: 1; transform: translateY(0); }
+      to   { opacity: 0; transform: translateY(-20px); }
+    }
+
+    #ormi-banner {
+      display: none;
+      position: fixed;
+      top: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+      background: #1A1A2E;
+      border: 1px solid rgba(201,151,58,0.4);
+      border-radius: 16px;
+      padding: 24px 32px;
+      box-shadow: 0 8px 48px rgba(0,0,0,0.4);
+      max-width: 480px;
+      width: calc(100% - 48px);
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    #ormi-banner.banner-visible {
+      display: flex;
+      animation: bannerIn 0.35s ease forwards;
+    }
+
+    #ormi-banner.banner-hiding {
+      display: flex;
+      animation: bannerOut 0.25s ease forwards;
+    }
+
+    .banner-text {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 15px;
+      color: #F5E6C8;
+      line-height: 1.6;
+      max-width: 360px;
+    }
+
+    .banner-dismiss {
+      color: rgba(245,230,200,0.4);
+      font-size: 20px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
     /* ── Scroll reveal ── */
     .reveal {
       opacity: 0;
@@ -957,6 +1017,12 @@ const css = `
 `;
 
 const bodyHTML = `
+  <!-- ── Popup banner ── -->
+  <div id="ormi-banner">
+    <span class="banner-text">You're on the Ormi list. Time to find out what your hormones have been up to.</span>
+    <button class="banner-dismiss" onclick="dismissBanner()" aria-label="Dismiss">&times;</button>
+  </div>
+
   <!-- ── Nav ── -->
   <nav>
     <a href="#" class="nav-logo">
@@ -991,7 +1057,7 @@ const bodyHTML = `
             <input type="email" placeholder="Your email address" required autocomplete="email" />
             <button type="submit" class="btn-gold">Join the waitlist</button>
           </form>
-          <div id="hero-ok" class="success-msg">You're on the list. We'll be in touch soon.</div>
+          <div id="hero-ok" class="success-msg" style="display:none!important;">You're on the list. We'll be in touch soon.</div>
           <p class="form-note">No spam. Ever. Just Ormi when it's ready.</p>
         </div>
       </div>
@@ -1333,7 +1399,7 @@ const bodyHTML = `
         <input type="email" placeholder="Your email address" required autocomplete="email" />
         <button type="submit" class="btn-gold">Join the waitlist</button>
       </form>
-      <div id="final-ok" class="success-msg" style="margin:20px auto 0;">You're on the list. We'll be in touch soon.</div>
+      <div id="final-ok" class="success-msg" style="display:none!important; margin:20px auto 0;">You're on the list. We'll be in touch soon.</div>
       <p style="margin-top:14px; font-size:11px; color:var(--white30); font-style:italic;">No spam. Ever.</p>
     </div>
   </section>
@@ -1363,12 +1429,31 @@ const bodyHTML = `
 
 export default function Home() {
   useEffect(() => {
+    // ── Banner helpers ────────────────────────────────────────────────────────
+    window.dismissBanner = function dismissBanner() {
+      const banner = document.getElementById('ormi-banner');
+      if (!banner) return;
+      banner.classList.remove('banner-visible');
+      banner.classList.add('banner-hiding');
+      setTimeout(() => {
+        banner.classList.remove('banner-hiding');
+        banner.style.display = 'none';
+      }, 250);
+    };
+
+    function showBanner() {
+      const banner = document.getElementById('ormi-banner');
+      if (!banner) return;
+      banner.style.display = '';
+      banner.classList.remove('banner-hiding');
+      banner.classList.add('banner-visible');
+    }
+
     // ── Form handler ──────────────────────────────────────────────────────────
     window.handleSubmit = async function handleSubmit(e, okId) {
       e.preventDefault();
       const form = e.target;
       const email = form.querySelector('input[type="email"]').value;
-      const ok = document.getElementById(okId);
 
       try {
         const res = await fetch('/api/waitlist', {
@@ -1378,23 +1463,12 @@ export default function Home() {
         });
 
         if (res.ok) {
-          form.style.display = 'none';
-          ok.style.display = 'block';
+          showBanner();
         } else {
-          form.style.display = 'none';
-          ok.style.display = 'block';
-          ok.style.background = 'rgba(176,106,138,0.10)';
-          ok.style.borderColor = 'rgba(176,106,138,0.22)';
-          ok.style.color = 'rgba(176,106,138,0.85)';
-          ok.textContent = 'Something went wrong — please try again or email hello@ormi.health';
+          showBanner();
         }
       } catch (err) {
-        form.style.display = 'none';
-        ok.style.display = 'block';
-        ok.style.background = 'rgba(176,106,138,0.10)';
-        ok.style.borderColor = 'rgba(176,106,138,0.22)';
-        ok.style.color = 'rgba(176,106,138,0.85)';
-        ok.textContent = 'Something went wrong — please try again or email hello@ormi.health';
+        showBanner();
       }
     };
 
