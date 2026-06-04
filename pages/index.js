@@ -477,19 +477,21 @@ const css = `
 
     .mental-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 16px;
     }
 
     .mental-card {
-      background: var(--card);
-      border: 1px solid var(--card-border);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
       border-radius: 18px;
       padding: 26px 24px;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s, background 0.2s;
     }
-
-    .mental-card:hover { border-color: rgba(176,106,138,0.22); }
+    .mental-card:hover {
+      border-color: rgba(176,106,138,0.22);
+      background: rgba(255,255,255,0.06);
+    }
 
     .mental-icon {
       width: 36px;
