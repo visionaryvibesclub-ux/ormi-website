@@ -930,62 +930,106 @@ const css = `
 
     /* ── Popup banner ── */
     @keyframes bannerIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translate(-50%, -48%) scale(0.97); }
+      to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
     }
-
     @keyframes bannerOut {
-      from { opacity: 1; transform: translateY(0); }
-      to   { opacity: 0; transform: translateY(-20px); }
+      from { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+      to   { opacity: 0; transform: translate(-50%, -48%) scale(0.97); }
     }
-
+    #ormi-banner-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(14,14,24,0.75);
+      z-index: 9998;
+      backdrop-filter: blur(4px);
+    }
+    #ormi-banner-overlay.visible {
+      display: block;
+    }
     #ormi-banner {
       display: none;
       position: fixed;
-      top: 32px;
+      top: 50%;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translate(-50%, -50%);
       z-index: 9999;
       background: #F5E6C8;
-      border: 1px solid rgba(201,151,58,0.4);
-      border-radius: 16px;
-      padding: 28px 36px;
-      box-shadow: 0 12px 56px rgba(0,0,0,0.5);
-      max-width: 560px;
+      border-radius: 20px;
+      padding: 48px 48px 40px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+      max-width: 520px;
       width: calc(100% - 48px);
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
     }
-
     #ormi-banner.banner-visible {
       display: flex;
       animation: bannerIn 0.35s ease forwards;
     }
-
     #ormi-banner.banner-hiding {
       display: flex;
       animation: bannerOut 0.25s ease forwards;
     }
-
-    .banner-text {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: 15px;
-      color: #1A1A2E;
-      line-height: 1.6;
-      max-width: 360px;
+    .banner-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      width: 100%;
     }
-
+    .banner-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .banner-wordmark {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 13px;
+      font-weight: 300;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #1A1A2E;
+      opacity: 0.5;
+    }
     .banner-dismiss {
-      color: rgba(26,26,46,0.45);
-      font-size: 20px;
+      color: rgba(26,26,46,0.35);
+      font-size: 22px;
       cursor: pointer;
       background: none;
       border: none;
       padding: 0;
-      flex-shrink: 0;
       line-height: 1;
+      flex-shrink: 0;
+    }
+    .banner-dismiss:hover { color: rgba(26,26,46,0.6); }
+    .banner-heading {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 28px;
+      font-weight: 300;
+      color: #1A1A2E;
+      line-height: 1.3;
+      margin: 0;
+    }
+    .banner-body {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(26,26,46,0.7);
+      line-height: 1.75;
+      margin: 0;
+    }
+    .banner-closing {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 16px;
+      font-style: italic;
+      color: #C9973A;
+      line-height: 1.6;
+      margin: 0;
+      padding-top: 8px;
+      border-top: 1px solid rgba(201,151,58,0.25);
+      width: 100%;
     }
 
     /* ── Scroll reveal ── */
@@ -1017,10 +1061,26 @@ const css = `
 `;
 
 const bodyHTML = `
-  <!-- ── Popup banner ── -->
+  <!-- ── Overlay ── -->
+  <div id="ormi-banner-overlay"></div>
+
+  <!-- ── Success modal ── -->
   <div id="ormi-banner">
-    <span class="banner-text">You're on the Ormi list. Time to find out what your hormones have been up to.</span>
-    <button class="banner-dismiss" onclick="dismissBanner()" aria-label="Dismiss">&times;</button>
+    <div class="banner-header">
+      <div class="banner-logo">
+        <svg width="22" height="35" viewBox="0 0 52 82" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 26 2 C 26 2, 3 26, 3 48 C 3 62, 13 74, 26 74 C 39 74, 49 62, 49 48 C 49 26, 26 2, 26 2 Z" stroke="#4A8FA8" stroke-width="2.2" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+          <circle cx="26" cy="52" r="11" stroke="#C9973A" stroke-width="1.9" fill="none"/>
+          <circle cx="26" cy="52" r="4.5" stroke="#C9973A" stroke-width="1.7" fill="none"/>
+          <path d="M 26 74 C 26 78, 32 83, 37 80 C 42 77, 42 70, 37 68 C 33 66, 28 70, 30 75" stroke="#4A8FA8" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.45"/>
+        </svg>
+        <span class="banner-wordmark">Ormi</span>
+      </div>
+      <button class="banner-dismiss" onclick="dismissBanner()" aria-label="Dismiss">&times;</button>
+    </div>
+    <h2 class="banner-heading">You're not too sensitive.<br>You're not imagining it.<br>You're not alone.</h2>
+    <p class="banner-body">You just did something most women never get to do. You asked for the full picture.<br><br>Ormi is built for women who've been dismissed, confused, or told it was just stress. This is the start of something that actually makes sense. And the right information is coming.</p>
+    <p class="banner-closing">Your hormones have been talking. Ormi is how you finally hear them.</p>
   </div>
 
   <!-- ── Nav ── -->
@@ -1432,18 +1492,22 @@ export default function Home() {
     // ── Banner helpers ────────────────────────────────────────────────────────
     window.dismissBanner = function dismissBanner() {
       const banner = document.getElementById('ormi-banner');
+      const overlay = document.getElementById('ormi-banner-overlay');
       if (!banner) return;
       banner.classList.remove('banner-visible');
       banner.classList.add('banner-hiding');
+      overlay.classList.remove('visible');
       setTimeout(() => {
         banner.classList.remove('banner-hiding');
         banner.style.display = 'none';
-      }, 250);
+      }, 260);
     };
 
     function showBanner() {
       const banner = document.getElementById('ormi-banner');
+      const overlay = document.getElementById('ormi-banner-overlay');
       if (!banner) return;
+      overlay.classList.add('visible');
       banner.style.display = '';
       banner.classList.remove('banner-hiding');
       banner.classList.add('banner-visible');
