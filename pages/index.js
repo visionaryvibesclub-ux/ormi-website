@@ -16,7 +16,8 @@ const css = `
       --gold-dim:    rgba(217,174,92,0.12);
       --gold-border: rgba(217,174,92,0.28);
       --gold-text:   #E6CC94;
-      --terracotta:  #C8674A; /* Primary call to action */
+      --terracotta:  #C8674A;
+      --terracotta-deep: #B4553A; /* Buttons: 4.5:1 with warm white text */
       --glow:        #E08A5E; /* Terracotta glow */
       --sky:         #E08A5E;
       --sky-dim:     rgba(224,138,94,0.10);
@@ -217,7 +218,7 @@ const css = `
     .final-form input:focus { border-color: var(--gold-border); }
 
     .btn-gold {
-      background: var(--terracotta);
+      background: var(--terracotta-deep);
       color: var(--warm-white);
       border: none;
       border-radius: 40px;
@@ -1032,6 +1033,15 @@ const css = `
       margin: 0;
     }
 
+    .form-error {
+      margin-top: 12px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--sky-text);
+      max-width: 500px;
+    }
+    .final-content .form-error { margin-left: auto; margin-right: auto; }
+
     /* ── Nav links ── */
     .nav-right { display: flex; align-items: center; gap: 22px; }
     .nav-link {
@@ -1263,13 +1273,13 @@ const bodyHTML = `
     <div class="hero-bg"></div>
     <div class="container">
       <div class="hero-content">
-        <p class="hero-eyebrow">Women's hormonal health</p>
+        <p class="hero-eyebrow">Hormone intelligence for perimenopause and beyond</p>
         <h1 class="hero-headline">
           Everything you've<br />been feeling<br /><em>finally makes sense.</em>
         </h1>
-        <p class="hero-headline-sub">You're not imagining it. You're not too sensitive. You're not depressed for no reason.</p>
+        <p class="hero-headline-sub">You're not imagining it. You're not too sensitive. And you're not the only one.</p>
         <p class="hero-sub">
-          Your hormones have been trying to tell you something for years and nobody's been listening. <strong>Ormi helps you make sense of what's going on.</strong> Clinical hormone testing, AI that knows you specifically, and daily tools that meet you where you are.
+          Ormi puts how you feel first. Then it connects your hormones, your wearable, your daily check-ins and your life. <strong>So you can see what's working, and walk into your GP with data.</strong>
         </p>
         <div id="waitlist">
           <p class="prelaunch-note">Ormi isn't on the App Store yet. Join the waitlist to register your interest and we'll let you know as soon as it's ready.</p>
@@ -1286,31 +1296,32 @@ const bodyHTML = `
   </section>
 
   <!--
-    Stat sources:
-    "1 in 10" — Censuswide study cited in ACM CHI 2024 conference paper
-    (dl.acm.org/doi/10.1145/3613904.3642694), corroborated by Dr Louise Newson
-    survey of 5,187 women (balance-menopause.com, 2022).
-    "35 markers" — Precision Analytical DUTCH Complete panel specification.
-    "£800+" — UK private clinic pricing 2025: DUTCH test approx £285 plus
-    specialist hormone consultation £200-500+. Conservative combined estimate.
+    Stat sources (checked 13 Nov 2026):
+    "Nearly 1 in 10": Newson Health survey of almost 6,000 women, reported by
+    The Independent: nearly one in ten had six to ten appointments before
+    their symptoms were diagnosed as linked to perimenopause or menopause.
+    "7 to 9 years": NHS, Menopause symptoms, reviewed 19 May 2026
+    (nhs.uk/conditions/menopause/symptoms).
+    "35": Precision Analytical, DUTCH Complete: analysis of 35 hormones and
+    metabolites (dutchtest.com).
   -->
   <div class="validation">
     <div class="container">
       <div class="validation-inner">
         <div class="val-item">
-          <div class="val-stat">1 in 10</div>
-          <div class="val-label">women visits more than 9 doctors before getting a perimenopause diagnosis</div>
-          <div class="val-source">Censuswide study, 2024</div>
+          <div class="val-stat">Nearly 1 in 10</div>
+          <div class="val-label">women had six to ten appointments before their symptoms were linked to perimenopause or menopause</div>
+          <div class="val-source">Newson Health survey of almost 6,000 women</div>
+        </div>
+        <div class="val-item">
+          <div class="val-stat">7 to 9 years</div>
+          <div class="val-label">how long menopause symptoms usually last. For some women it is longer</div>
+          <div class="val-source">NHS, reviewed May 2026</div>
         </div>
         <div class="val-item">
           <div class="val-stat">35</div>
-          <div class="val-label">hormone markers Ormi measures, vs the 2 or 3 on a standard NHS blood test</div>
-          <div class="val-source">Precision Analytical DUTCH Complete</div>
-        </div>
-        <div class="val-item">
-          <div class="val-stat">£800+</div>
-          <div class="val-label">what a private hormone clinic charges for testing and a specialist consultation</div>
-          <div class="val-source">UK private clinic pricing, 2025</div>
+          <div class="val-label">hormones and metabolites measured by the at-home DUTCH Complete test</div>
+          <div class="val-source">Precision Analytical</div>
         </div>
       </div>
     </div>
@@ -1339,38 +1350,80 @@ const bodyHTML = `
   </section>
 
   <!-- ── Feelings section ── -->
+  <!-- Symptoms named here are listed by the NHS: nhs.uk/conditions/menopause/symptoms (reviewed 19 May 2026) -->
   <section>
     <div class="container">
       <p class="eyebrow">Sound familiar?</p>
-      <h2 class="section-title">You've been told it's in your head.<br /><em>It's not.</em></h2>
-      <p class="section-sub">These aren't personality traits. They're hormone signals. And once you understand what they're saying, everything changes.</p>
+      <h2 class="section-title">If you don't feel like yourself lately,<br /><em>you're not alone.</em></h2>
+      <p class="section-sub">Mood swings, low mood, brain fog and broken sleep are all recognised symptoms of perimenopause and menopause. Ormi helps you notice your own patterns.</p>
 
       <div class="feelings-grid">
         <div class="feeling-card reveal">
-          <p class="feeling-text">"I feel anxious all the time and I don't know why. It starts about a week before my period and I can't control it."</p>
-          <p class="feeling-reframe">Progesterone crash in your luteal phase. Measurable, explainable, fixable</p>
+          <p class="feeling-text">"I feel anxious all the time and I don't know why."</p>
+          <p class="feeling-reframe">Anxiety can be part of perimenopause. A daily check-in helps you see when it shows up.</p>
         </div>
         <div class="feeling-card reveal">
-          <p class="feeling-text">"I wake up at 3am every night with my heart racing. I feel exhausted but I can't sleep."</p>
-          <p class="feeling-reframe">Cortisol spiking at the wrong time. Your DUTCH test would show exactly when</p>
+          <p class="feeling-text">"I wake up at 3am with my heart racing. I'm exhausted but I can't sleep."</p>
+          <p class="feeling-reframe">Sleep problems are a common symptom. Ormi brings your sleep, your check-ins and your wearable together.</p>
         </div>
         <div class="feeling-card reveal">
-          <p class="feeling-text">"I feel like I'm going mad. My GP said my bloods are normal but something is clearly not right."</p>
-          <p class="feeling-reframe">Standard blood tests miss 32 of the 35 markers that explain what's actually happening</p>
+          <p class="feeling-text">"My GP said my bloods are normal, but something is clearly not right."</p>
+          <p class="feeling-reframe">Ormi helps you build a record of how you feel over time, to take to your GP.</p>
         </div>
         <div class="feeling-card reveal">
-          <p class="feeling-text">"I snap at my kids and then cry about it. I don't recognise myself anymore. Is this just who I am now?"</p>
-          <p class="feeling-reframe">The oestrogen-serotonin connection. Your mood literally runs on your hormones</p>
+          <p class="feeling-text">"I snap at my kids and then cry about it. I don't recognise myself."</p>
+          <p class="feeling-reframe">Mood swings are a recognised symptom. Seeing the pattern makes it easier to talk about.</p>
         </div>
         <div class="feeling-card reveal">
-          <p class="feeling-text">"I'm so tired all the time. Not just sleepy. Bone-deep exhausted. Coffee doesn't even touch it."</p>
-          <p class="feeling-reframe">Cortisol, DHEA, and thyroid markers working together. Often missed individually</p>
+          <p class="feeling-text">"I'm so tired all the time. Coffee doesn't even touch it."</p>
+          <p class="feeling-reframe">Ormi helps you see how your sleep and your energy move together.</p>
         </div>
         <div class="feeling-card reveal">
-          <p class="feeling-text">"My brain just isn't working. I forget words. I lose my train of thought. I'm 42, not 82."</p>
-          <p class="feeling-reframe">Oestrogen and progesterone directly protect cognitive function. This is real and it's documented</p>
+          <p class="feeling-text">"My brain just isn't working. I forget words. I lose my train of thought."</p>
+          <p class="feeling-reframe">The NHS calls this brain fog, and lists it as a common symptom. You're not making it up.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ── Mental health section ── -->
+  <section style="background:var(--obsidian2);">
+    <div class="container">
+      <p class="eyebrow">Mental health first</p>
+      <blockquote class="mental-quote">
+        Ormi starts with how you feel. Then it helps you look at what might be behind it.
+      </blockquote>
+      <div class="mental-grid">
+        <div class="mental-card reveal">
+          <div class="mental-icon" style="background:var(--rose-dim); border:1px solid var(--rose-border);">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2C8 2 3 5.5 3 9C3 11.5 5.2 13.5 8 13.5C10.8 13.5 13 11.5 13 9C13 5.5 8 2 8 2Z" stroke="#F2A57E" stroke-width="1.2"/><circle cx="8" cy="9" r="2" stroke="#F2A57E" stroke-width="1.2"/></svg>
+          </div>
+          <h3 class="mental-title">Anxiety &amp; low mood</h3>
+          <p class="mental-body">Both can be part of perimenopause and menopause. Ormi's daily check-in uses words, not scores, so you can say how you feel in seconds.</p>
+        </div>
+        <div class="mental-card reveal">
+          <div class="mental-icon" style="background:var(--gold-dim); border:1px solid var(--gold-border);">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5" stroke="#D9AE5C" stroke-width="1.2"/><path d="M8 5v3l2 2" stroke="#D9AE5C" stroke-width="1.2" stroke-linecap="round"/></svg>
+          </div>
+          <h3 class="mental-title">Mood swings</h3>
+          <p class="mental-body">The snap, then the regret. Mood swings are a recognised symptom. Ormi gives you CBT-based tools for the moment, and a record of when it happens.</p>
+        </div>
+        <div class="mental-card reveal">
+          <div class="mental-icon" style="background:var(--sky-dim); border:1px solid var(--sky-border);">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h3l2-4 2 8 2-4 2 2h1" stroke="#E08A5E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="mental-title">Brain fog</h3>
+          <p class="mental-body">Memory and concentration can change. Ormi helps you notice what makes the fog lighter or heavier for you.</p>
+        </div>
+        <div class="mental-card reveal">
+          <div class="mental-icon" style="background:var(--rose-dim); border:1px solid var(--rose-border);">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8C4 5.8 5.8 4 8 4C10.2 4 12 5.8 12 8" stroke="#F2A57E" stroke-width="1.2" stroke-linecap="round"/><path d="M8 12V8" stroke="#F2A57E" stroke-width="1.2" stroke-linecap="round"/><circle cx="8" cy="13" r="1" fill="#F2A57E"/></svg>
+          </div>
+          <h3 class="mental-title">Sleep</h3>
+          <p class="mental-body">Broken sleep can make everything else feel harder. Ormi has wind-down tools for the evening, and reads your sleep from your wearable.</p>
+        </div>
+      </div>
+      <p class="pricing-footnote">Ormi does not replace your GP. If you're worried about your mental health, please speak to them.</p>
     </div>
   </section>
 
@@ -1382,10 +1435,10 @@ const bodyHTML = `
           <p class="eyebrow" style="text-align:left;">A different way to think about it</p>
           <h2 class="messenger-title">Your hormones aren't the problem.<br />They're <em>messengers.</em></h2>
           <p class="messenger-body">
-            Every hormone in your body exists for a reason. When something feels off: the anxiety, the exhaustion, the rage, the fog. That's not a flaw in you. That's a signal from a system trying to get your attention.
+            Hormones carry signals all day long. In perimenopause, levels of oestrogen and progesterone change, and that can change how you feel.
           </p>
           <p class="messenger-body">
-            The problem isn't your hormones. It's that nobody's ever taught you how to read what they're saying. Ormi changes that. From the root cause. The actual chemical signals driving how you feel, to the tools that help your body rebalance. Not manage. <em style="color:var(--champagne);">Rebalance.</em>
+            Nobody teaches you how to read those signals. Ormi helps you notice patterns across your check-ins, your wearable and your results, so you can have a better conversation with your clinician.
           </p>
         </div>
         <div class="messenger-hormones">
@@ -1393,70 +1446,30 @@ const bodyHTML = `
             <div class="hormone-dot" style="background:#C8674A;"></div>
             <div>
               <div class="hormone-name">Oestrogen</div>
-              <div class="hormone-what">Runs your mood, memory, skin, and bone density. Also controls how much serotonin your brain makes. When it lurches, you lurch with it.</div>
+              <div class="hormone-what">Levels rise and fall through the cycle, and become less predictable in perimenopause.</div>
             </div>
           </div>
           <div class="hormone-row reveal">
             <div class="hormone-dot" style="background:#E6CC94;"></div>
             <div>
               <div class="hormone-name">Progesterone</div>
-              <div class="hormone-what">Your calm hormone. When it drops (usually in the second half of your cycle): anxiety, poor sleep, and irritability follow. It's not stress. It's chemistry.</div>
+              <div class="hormone-what">Made after ovulation each cycle. Levels change as cycles become irregular.</div>
             </div>
           </div>
           <div class="hormone-row reveal">
             <div class="hormone-dot" style="background:#D9AE5C;"></div>
             <div>
               <div class="hormone-name">Cortisol</div>
-              <div class="hormone-what">Your stress hormone, but also your energy, inflammation, and immune system. A flat diurnal curve explains the afternoon crash that no amount of sleep seems to fix.</div>
+              <div class="hormone-what">Often called the stress hormone. It normally follows a daily rhythm, higher in the morning and lower at night.</div>
             </div>
           </div>
           <div class="hormone-row reveal">
             <div class="hormone-dot" style="background:#C3D0E0;"></div>
             <div>
               <div class="hormone-name">DHEA, testosterone, melatonin + more</div>
-              <div class="hormone-what">The ones your GP has never tested. Between them they explain your drive, your sleep quality, your resilience, and why everything feels harder than it should.</div>
+              <div class="hormone-what">The DUTCH test also looks at these, along with how hormones are broken down.</div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Mental health section ── -->
-  <section>
-    <div class="container">
-      <p class="eyebrow">Hormones &amp; mental health</p>
-      <blockquote class="mental-quote">
-        "The anxiety, the rage, the flat grey feeling, the not recognising yourself. These aren't a mental health crisis. They're a hormone crisis. And they're treatable at the root."
-      </blockquote>
-      <div class="mental-grid">
-        <div class="mental-card reveal">
-          <div class="mental-icon" style="background:var(--rose-dim); border:1px solid var(--rose-border);">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2C8 2 3 5.5 3 9C3 11.5 5.2 13.5 8 13.5C10.8 13.5 13 11.5 13 9C13 5.5 8 2 8 2Z" stroke="#F2A57E" stroke-width="1.2"/><circle cx="8" cy="9" r="2" stroke="#F2A57E" stroke-width="1.2"/></svg>
-          </div>
-          <h3 class="mental-title">Anxiety &amp; low mood</h3>
-          <p class="mental-body">Oestrogen drives serotonin production. Progesterone drives GABA, your brain's natural calm signal. When both drop, anxiety and low mood follow. This is biochemistry, not weakness.</p>
-        </div>
-        <div class="mental-card reveal">
-          <div class="mental-icon" style="background:var(--gold-dim); border:1px solid var(--gold-border);">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5" stroke="#D9AE5C" stroke-width="1.2"/><path d="M8 5v3l2 2" stroke="#D9AE5C" stroke-width="1.2" stroke-linecap="round"/></svg>
-          </div>
-          <h3 class="mental-title">Rage &amp; the guilt cycle</h3>
-          <p class="mental-body">The disproportionate anger, the instant regret, the shame spiral. This is the oestrogen-progesterone imbalance in your luteal phase. It's not who you are. It's a signal that something needs attention.</p>
-        </div>
-        <div class="mental-card reveal">
-          <div class="mental-icon" style="background:var(--sky-dim); border:1px solid var(--sky-border);">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h3l2-4 2 8 2-4 2 2h1" stroke="#E08A5E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <h3 class="mental-title">Brain fog &amp; identity</h3>
-          <p class="mental-body">Forgetting words. Losing your train of thought. Not feeling like yourself. Oestrogen and progesterone both have receptors throughout the brain. When they shift, so does cognition. This is documented, real, and reversible.</p>
-        </div>
-        <div class="mental-card reveal">
-          <div class="mental-icon" style="background:var(--rose-dim); border:1px solid var(--rose-border);">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8C4 5.8 5.8 4 8 4C10.2 4 12 5.8 12 8" stroke="#F2A57E" stroke-width="1.2" stroke-linecap="round"/><path d="M8 12V8" stroke="#F2A57E" stroke-width="1.2" stroke-linecap="round"/><circle cx="8" cy="13" r="1" fill="#F2A57E"/></svg>
-          </div>
-          <h3 class="mental-title">The gut-mood connection</h3>
-          <p class="mental-body">Around 90% of your serotonin is made in your gut. The bacteria that line your gut wall (the estrobolome) directly regulate how oestrogen is metabolised. What you eat is a hormonal intervention.</p>
         </div>
       </div>
     </div>
@@ -1466,33 +1479,24 @@ const bodyHTML = `
   <section style="background:var(--obsidian2);">
     <div class="container">
       <p class="eyebrow">How it works</p>
-      <h2 class="section-title">From root cause<br /><em>to daily action.</em></h2>
-      <p class="section-sub">Ormi isn't a tracker. It's not a chatbot. It's a complete picture of what's happening, and a daily companion that helps you do something about it.</p>
+      <h2 class="section-title">Translate. Act.<br /><em>Connect.</em></h2>
+      <p class="section-sub">Ormi isn't a tracker. It's a daily companion that helps you understand how you feel and decide what to do next.</p>
 
       <div class="steps-grid">
         <div class="step reveal">
           <div class="step-num">1</div>
-          <div class="step-tag">Free</div>
-          <h3 class="step-title">Your hormone portrait</h3>
-          <p class="step-body">A 15-minute 6-domain assessment covers your cycle, mood, sleep, stress, gut, and bone health. Your answers build a picture no blood test has ever shown your GP, plus an AI that knows you specifically.</p>
+          <h3 class="step-title">Translate</h3>
+          <p class="step-body">A daily check-in in words, not scores. Your hormone portrait. Patterns across your wearable, your symptoms and your life.</p>
         </div>
         <div class="step reveal">
           <div class="step-num">2</div>
-          <div class="step-tag">Clinical insight</div>
-          <h3 class="step-title">The test that actually tells you</h3>
-          <p class="step-body">The DUTCH test measures 35 hormone markers from a urine sample at home. The same test private clinics charge hundreds for. Ormi sends it to your door, interprets it with AI, and produces a summary your GP can actually use.</p>
+          <h3 class="step-title">Act</h3>
+          <p class="step-body">A daily plan with CBT-based tools, nervous system tools and wind-down for sleep.</p>
         </div>
         <div class="step reveal">
           <div class="step-num">3</div>
-          <div class="step-tag">Daily</div>
-          <h3 class="step-title">Tools that meet you where you are</h3>
-          <p class="step-body">Phase-matched breathwork, somatic regulation, nutritional guidance, and journalling, all connected to your specific hormonal picture. Not generic wellness. Tools that respond to where you actually are.</p>
-        </div>
-        <div class="step reveal">
-          <div class="step-num">4</div>
-          <div class="step-tag">Clinical insight</div>
-          <h3 class="step-title">A GP review of your results</h3>
-          <p class="step-body">Your DUTCH results are reviewed by a GP, and you get an NHS-ready summary to take to your own doctor. Ormi highlights patterns to discuss with a clinician. It does not diagnose.</p>
+          <h3 class="step-title">Connect</h3>
+          <p class="step-body">Live coaching and community, synced wearables, at-home DUTCH testing and a GP review of your results.</p>
         </div>
       </div>
     </div>
@@ -1501,42 +1505,48 @@ const bodyHTML = `
   <!-- ── Life stages ── -->
   <section>
     <div class="container">
-      <p class="eyebrow">Wherever you are right now</p>
-      <h2 class="section-title">Ormi adapts to <em>her</em> hormonal life.</h2>
-      <p class="section-sub">Not a one-size product. Not a tracker built for 25-year-olds. Ormi is built around every stage of a woman's hormonal life.</p>
+      <p class="eyebrow">Life stages</p>
+      <h2 class="section-title">Wherever you are <em>right now.</em></h2>
+      <p class="section-sub">Ormi is built for perimenopause first, and shaped around the stage you're in.</p>
       <div class="stages-grid">
         <div class="stage-card reveal">
           <div class="stage-dot" style="background:#D9AE5C;"></div>
           <div class="stage-name">Regular cycle</div>
-          <div class="stage-body">Phase-matched tools and content that follow your hormonal rhythm across the month. Not just period tracking. The full picture of what oestrogen, progesterone, and cortisol are doing week by week.</div>
+          <div class="stage-body">Tools and tips that follow the phases of your cycle, so you can see how you feel week by week.</div>
         </div>
         <div class="stage-card reveal">
           <div class="stage-dot" style="background:#E6CC94;"></div>
           <div class="stage-name">Postpartum</div>
-          <div class="stage-body">After birth, oestrogen and progesterone drop off a cliff. Within 24 hours of delivery, progesterone falls to almost zero. Oestrogen follows. This is the most dramatic hormonal shift a woman can experience and almost nobody explains it. The exhaustion, the anxiety, the low mood, the feeling that something is wrong with you. That's not weakness. That's your endocrine system in freefall. Ormi maps what's happening from mood to thyroid to iron to bone, and what actually helps recovery.</div>
+          <div class="stage-body">Hormone levels change quickly after birth. Ormi gives you a calm place to check in, and tools for the moment. It does not replace your midwife, health visitor or GP.</div>
         </div>
         <div class="stage-card reveal">
           <div class="stage-dot" style="background:#C8674A;"></div>
           <div class="stage-name">Perimenopause</div>
-          <div class="stage-body">The erratic cycles, the mood shifts, the sleep that's fallen apart, the anxiety that appeared from nowhere. Ormi makes sense of the unpredictability and gives you a plan built around where you actually are.</div>
+          <div class="stage-body">Cycles change. Sleep changes. Mood changes. Ormi helps you make sense of the pattern and plan around where you are.</div>
         </div>
         <div class="stage-card reveal">
           <div class="stage-dot" style="background:#E08A5E;"></div>
           <div class="stage-name">Menopause</div>
-          <div class="stage-body">Beyond the hot flushes. Bone health, cognitive changes, cardiovascular risk, identity. Ormi gives you the full picture with clarity, not alarm.</div>
+          <div class="stage-body">Beyond hot flushes. Ormi helps you keep track of sleep, mood and what's working, with clarity, not alarm.</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ── DUTCH ── -->
+  <!--
+    Sources (checked 13 Nov 2026): Precision Analytical, DUTCH Complete
+    (dutchtest.com). Clinic prices: Freya Clinic £395 with a 30-minute
+    session (freyaclinic.co.uk/products/dutch-test); Pippa Campbell Health
+    £1,030 package (pippacampbellhealth.com/dutch-test-uk).
+  -->
   <section style="background:var(--obsidian2);">
     <div class="container">
       <div class="dutch-wrap">
         <div>
-          <p class="eyebrow" style="text-align:left; margin-bottom:14px;">Clinical testing</p>
-          <h2 class="dutch-title">Your portrait is a map.<br /><em>DUTCH makes it a GPS.</em></h2>
-          <p class="dutch-body">The DUTCH test is the most comprehensive at-home hormone panel available. It's what private functional medicine clinics use. Ormi brings it to your door, with AI interpretation and a GP summary built in.</p>
+          <p class="eyebrow" style="text-align:left; margin-bottom:14px;">Clinical insight</p>
+          <h2 class="dutch-title">Your hormone portrait is the start.<br /><em>The DUTCH test goes deeper.</em></h2>
+          <p class="dutch-body">The DUTCH Complete is an at-home dried urine test that measures 35 hormones and metabolites. Ormi sends it to your door and adds AI interpretation. A GP reviews your results, and you get an NHS-ready summary to take to your own doctor.</p>
 
           <div class="dutch-clinic-compare">
             <div class="dutch-clinic-label">vs a private hormone clinic</div>
@@ -1545,15 +1555,16 @@ const bodyHTML = `
             </div>
           </div>
 
-          <a href="#final-waitlist" class="btn-gold" style="display:inline-block; text-decoration:none; font-size:12px;">Join the waitlist</a>
+          <a href="#final-waitlist" class="btn-gold" style="display:inline-block; text-decoration:none;">Join the waitlist</a>
         </div>
         <div class="dutch-markers">
           <p style="font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold-text); margin-bottom:12px; font-weight:500;">What DUTCH measures</p>
-          <div class="dutch-marker"><div class="dutch-marker-dot"></div><div class="dutch-marker-text"><strong>Oestrogen &amp; metabolites</strong>: including the pathways that affect breast cancer risk. Completely invisible on a standard blood test.</div></div>
-          <div class="dutch-marker"><div class="dutch-marker-dot"></div><div class="dutch-marker-text"><strong>Cortisol diurnal curve</strong>: not just your level, but when it spikes and crashes across the day. The pattern your GP has never seen.</div></div>
-          <div class="dutch-marker"><div class="dutch-marker-dot"></div><div class="dutch-marker-text"><strong>Progesterone &amp; androgens</strong>: testosterone, DHEA, the hormones nobody's checked and the ones most likely to explain how you're feeling.</div></div>
-          <div class="dutch-marker"><div class="dutch-marker-dot"></div><div class="dutch-marker-text"><strong>Melatonin &amp; organic acids</strong>: sleep hormones and B vitamin markers that affect mood, energy, and everything in between.</div></div>
-          <div class="dutch-marker"><div class="dutch-marker-dot"></div><div class="dutch-marker-text"><strong>35 markers total.</strong> Collected at home. Interpreted by AI. Summarised for your GP. Reviewed by a GP.</div></div>
+          <div class="dutch-marker"><div class="dutch-marker-dot"></div><div class="dutch-marker-text"><strong>Sex hormones</strong>: oestrogen, progesterone and testosterone, and how they are broken down.</div></div>
+          <div class="dutch-marker"><div class="dutch-marker-dot"></div><div class="dutch-marker-text"><strong>Daily cortisol pattern</strong>: free cortisol measured across the day, not at a single point.</div></div>
+          <div class="dutch-marker"><div class="dutch-marker-dot"></div><div class="dutch-marker-text"><strong>DHEA</strong>: and other adrenal hormones.</div></div>
+          <div class="dutch-marker"><div class="dutch-marker-dot"></div><div class="dutch-marker-text"><strong>Melatonin &amp; organic acids</strong>: overnight melatonin and a small panel of organic acid markers.</div></div>
+          <div class="dutch-marker"><div class="dutch-marker-dot"></div><div class="dutch-marker-text"><strong>35 hormones and metabolites.</strong> Collected at home. Interpreted with AI. Reviewed by a GP. Summarised for your doctor.</div></div>
+          <p class="employers-source">The DUTCH test is not an NHS test and it is not a diagnosis. Ormi highlights patterns to discuss with a clinician.</p>
         </div>
       </div>
     </div>
@@ -1649,7 +1660,7 @@ const bodyHTML = `
     <div class="final-bg"></div>
     <div class="container final-content">
       <h2 class="final-headline">
-        You've always known<br />something wasn't right.<br /><em>Now you can find out what.</em>
+        You know yourself best.<br /><em>Ormi helps you see the pattern.</em>
       </h2>
       <p class="final-sub">
         Ormi isn't on the App Store yet. Join the waitlist to register your interest and be the first to know when Ormi launches.
@@ -1718,6 +1729,19 @@ export default function Home() {
       const form = e.target;
       const email = form.querySelector('input[type="email"]').value;
 
+      const button = form.querySelector('button[type="submit"]');
+      let errorEl = form.parentElement.querySelector('.form-error');
+      const showError = () => {
+        if (!errorEl) {
+          errorEl = document.createElement('p');
+          errorEl.className = 'form-error';
+          errorEl.setAttribute('role', 'alert');
+          form.insertAdjacentElement('afterend', errorEl);
+        }
+        errorEl.textContent = "Something went wrong, so you're not on the list yet. Please try again, or email hello@ormi.health.";
+      };
+
+      if (button) button.disabled = true;
       try {
         const res = await fetch('/api/waitlist', {
           method: 'POST',
@@ -1726,12 +1750,16 @@ export default function Home() {
         });
 
         if (res.ok) {
+          if (errorEl) errorEl.remove();
+          form.reset();
           showBanner();
         } else {
-          showBanner();
+          showError();
         }
       } catch (err) {
-        showBanner();
+        showError();
+      } finally {
+        if (button) button.disabled = false;
       }
     };
 
@@ -1766,7 +1794,7 @@ export default function Home() {
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Ormi: Everything you've been feeling finally makes sense.</title>
-        <meta name="description" content="You're not imagining it. You're not too sensitive. Your hormones have been trying to tell you something and nobody's been listening. Ormi changes that." />
+        <meta name="description" content="Ormi is a hormone intelligence app for women in perimenopause and beyond. It puts your mental health first, then helps you connect the dots. Join the waitlist." />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
