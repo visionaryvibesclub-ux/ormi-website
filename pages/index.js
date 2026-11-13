@@ -230,6 +230,15 @@ const css = `
     .btn-gold:hover { opacity: 0.87; }
     .btn-gold:active { transform: scale(0.98); }
 
+    .prelaunch-note {
+      max-width: 500px;
+      margin-bottom: 18px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--white70);
+      font-weight: 400;
+    }
+
     .form-note {
       margin-top: 12px;
       font-size: 11px;
@@ -1103,6 +1112,7 @@ const bodyHTML = `
           Your hormones have been trying to tell you something for years and nobody's been listening. <strong>Ormi is the first platform that actually explains what's going on.</strong> Clinical hormone testing, AI that knows you specifically, and daily tools that work with your body, not against it.
         </p>
         <div id="waitlist">
+          <p class="prelaunch-note">Ormi isn't on the App Store yet. Join the waitlist to register your interest and we'll let you know as soon as she's ready.</p>
           <form class="waitlist-form" onsubmit="handleSubmit(event,'hero-ok')">
             <input type="email" placeholder="Your email address" required autocomplete="email" />
             <button type="submit" class="btn-gold">Join the waitlist</button>
@@ -1443,7 +1453,7 @@ const bodyHTML = `
         You've always known<br />something wasn't right.<br /><em>Now you can find out what.</em>
       </h2>
       <p class="final-sub">
-        Join the waitlist. Be the first to know when Ormi launches. Founding members get their pricing locked in for life.
+        Ormi isn't on the App Store yet. Join the waitlist to register your interest and be the first to know when she launches. Founding members get their pricing locked in for life.
       </p>
       <form class="final-form" onsubmit="handleSubmit(event,'final-ok')">
         <input type="email" placeholder="Your email address" required autocomplete="email" />
