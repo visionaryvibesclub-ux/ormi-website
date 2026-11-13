@@ -1042,6 +1042,150 @@ const css = `
     }
     .final-content .form-error { margin-left: auto; margin-right: auto; }
 
+    /* ── Sun on the horizon (the app's signature motif: Sun.tsx, Home.tsx) ── */
+    .sunrise {
+      --sun: 150px;
+      position: relative;
+      width: calc(var(--sun) * 1.4);
+      height: calc(var(--sun) * 0.62 + 56px);
+      margin-bottom: 28px;
+      pointer-events: none;
+    }
+    .sunrise-glow {
+      position: absolute;
+      left: -45%; right: -45%; top: -70%; bottom: -70%;
+      background: radial-gradient(closest-side, rgba(217,174,92,0.28) 0%, rgba(217,174,92,0) 100%);
+    }
+    .sun-clip {
+      position: absolute;
+      left: 0; right: 0; top: 0;
+      height: calc(var(--sun) * 0.62);
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+    }
+    .sun-float { animation: sunFloat 9s ease-in-out 2.4s infinite alternate; }
+    .sun-disc {
+      width: var(--sun);
+      height: var(--sun);
+      border-radius: 50%;
+      background: linear-gradient(180deg, #EFD39B 0%, #E8C16E 40%, #D9AE5C 80%, #C9973A 100%);
+      animation: sunRise 2.4s cubic-bezier(0.22, 0.8, 0.3, 1) both;
+    }
+    .sun-horizon {
+      position: absolute;
+      left: -8%; right: -8%;
+      top: calc(var(--sun) * 0.62);
+      height: 1px;
+      background: linear-gradient(90deg, rgba(245,230,200,0) 0%, rgba(245,230,200,0.45) 30%, rgba(245,230,200,0.45) 70%, rgba(245,230,200,0) 100%);
+      animation: horizonDraw 1.6s ease-out both;
+    }
+    .sun-bars {
+      position: absolute;
+      left: 0; right: 0;
+      top: calc(var(--sun) * 0.62 + 13px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 9px;
+      animation: fadeIn 1.2s ease-out 1.4s both;
+    }
+    .sun-bar {
+      height: 3px;
+      border-radius: 2px;
+      width: 100%;
+      max-width: calc(var(--sun) * 0.75);
+      background: rgba(239,211,155,var(--o));
+      animation: shimmer var(--d) ease-in-out var(--delay) infinite alternate;
+    }
+    .sun-bar:nth-child(2) { max-width: calc(var(--sun) * 0.46); }
+    .sun-bar:nth-child(3) { max-width: calc(var(--sun) * 0.21); }
+
+    /* evening sun for the last section: the page runs from sunrise to sunset */
+    .sunrise.evening { --sun: 170px; margin: 0 auto 44px; }
+    .sunrise.evening .sun-disc {
+      background: linear-gradient(180deg, #F6C39A 0%, #E08A5E 40%, #C8674A 80%, #A9502F 100%);
+      animation: none;
+    }
+    .sunrise.evening .sunrise-glow { background: radial-gradient(closest-side, rgba(217,121,90,0.28) 0%, rgba(217,121,90,0) 100%); }
+    .sunrise.evening .sun-bar { background: rgba(224,138,94,calc(var(--o) * 1.3)); }
+    .sunrise.evening .sun-horizon, .sunrise.evening .sun-bars { animation: none; }
+
+    @keyframes sunRise { from { transform: translateY(64%); } to { transform: translateY(0); } }
+    @keyframes sunFloat { from { transform: translateY(0); } to { transform: translateY(6px); } }
+    @keyframes horizonDraw { from { transform: scaleX(0.2); opacity: 0; } to { transform: scaleX(1); opacity: 1; } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes shimmer { from { transform: scaleX(1); opacity: 1; } to { transform: scaleX(0.72); opacity: 0.6; } }
+    @keyframes riseIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* one page-load sequence: the sun rises, then the words arrive */
+    .hero-content > *:not(.sunrise) { animation: riseIn 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+    .hero-content > *:nth-child(2) { animation-delay: 0.25s; }
+    .hero-content > *:nth-child(3) { animation-delay: 0.4s; }
+    .hero-content > *:nth-child(4) { animation-delay: 0.6s; }
+    .hero-content > *:nth-child(5) { animation-delay: 0.75s; }
+    .hero-content > *:nth-child(6) { animation-delay: 0.9s; }
+
+    @media (min-width: 1100px) {
+      .hero .sunrise {
+        --sun: 260px;
+        position: absolute;
+        left: 600px;
+        top: 14px;
+        margin: 0;
+      }
+    }
+
+    /* ── One slow breath (the app's breathing orb: BreathOrb.tsx, BreathField.tsx) ── */
+    .breath-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .orb-wrap {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .orb {
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      opacity: 0.9;
+      transition: transform 4000ms cubic-bezier(0.37, 0, 0.63, 1), background-color 700ms ease;
+    }
+    .orb-centre {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      text-align: center;
+      color: var(--champagne);
+      transition: color 500ms ease;
+      pointer-events: none;
+    }
+    .orb-wrap.is-active .orb-centre { color: var(--ink); }
+    .orb-count { font-family: 'Instrument Serif', serif; font-size: 48px; line-height: 1.1; min-height: 4px; }
+    .orb-label { font-size: 15px; font-weight: 600; }
+    button.btn-ghost { background: transparent; font-family: inherit; cursor: pointer; }
+    @media (max-width: 760px) {
+      .breath-grid { grid-template-columns: 1fr; gap: 28px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; }
+      .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+      .orb { transition: background-color 700ms ease; }
+    }
+
     /* ── Nav links ── */
     .nav-right { display: flex; align-items: center; gap: 22px; }
     .nav-link {
@@ -1138,13 +1282,14 @@ const css = `
       padding: 32px 28px;
     }
     .founder-photo {
-      width: 112px;
-      height: 112px;
-      border-radius: 50%;
+      width: 150px;
+      height: 190px;
+      border-radius: 75px 75px 14px 14px;
       object-fit: cover;
+      object-position: center 20%;
       display: block;
-      margin-bottom: 20px;
-      border: 2px solid var(--gold-border);
+      margin-bottom: 22px;
+      border: 1px solid var(--gold-border);
     }
     .founder-name {
       font-family: 'Instrument Serif', serif;
@@ -1273,6 +1418,16 @@ const bodyHTML = `
     <div class="hero-bg"></div>
     <div class="container">
       <div class="hero-content">
+        <div class="sunrise " aria-hidden="true">
+          <div class="sunrise-glow"></div>
+          <div class="sun-clip"><div class="sun-float"><div class="sun-disc"></div></div></div>
+          <div class="sun-horizon"></div>
+          <div class="sun-bars">
+            <div class="sun-bar" style="--d:4.5s; --delay:0s; --o:0.5;"></div>
+            <div class="sun-bar" style="--d:5.2s; --delay:0.5s; --o:0.32;"></div>
+            <div class="sun-bar" style="--d:5.9s; --delay:1s; --o:0.2;"></div>
+          </div>
+        </div>
         <p class="hero-eyebrow">Hormone intelligence for perimenopause and beyond</p>
         <h1 class="hero-headline">
           Everything you've<br />been feeling<br /><em>finally makes sense.</em>
@@ -1502,6 +1657,27 @@ const bodyHTML = `
     </div>
   </section>
 
+  <!-- ── One slow breath ── -->
+  <section id="breath">
+    <div class="container">
+      <div class="breath-grid">
+        <div>
+          <p class="eyebrow" style="text-align:left;">Try it</p>
+          <h2 class="messenger-title">One slow breath.</h2>
+          <p class="messenger-body">This is one of the nervous system tools inside Ormi. In for four, out for six. Three rounds takes thirty seconds.</p>
+          <button type="button" class="btn-ghost" id="breath-btn" onclick="startBreath()">Start</button>
+        </div>
+        <div class="orb-wrap" id="orb-wrap">
+          <div class="orb" id="orb"></div>
+          <div class="orb-centre" aria-live="polite">
+            <span class="orb-count" id="orb-count"></span>
+            <span class="orb-label" id="orb-label">Ready when you are</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ── Life stages ── -->
   <section>
     <div class="container">
@@ -1636,13 +1812,13 @@ const bodyHTML = `
       <h2 class="section-title">Meet the <em>founders.</em></h2>
       <div class="founders-grid">
         <div class="founder-card reveal">
-          <img class="founder-photo" src="/founders/anna-koutras.jpg" alt="Anna Koutras" width="112" height="112" loading="lazy" />
+          <img class="founder-photo" src="/founders/anna-koutras.jpg" alt="Anna Koutras" width="150" height="190" loading="lazy" />
           <h3 class="founder-name">Anna Koutras</h3>
           <p class="founder-role">Co-founder</p>
           <p class="founder-bio">Anna spent over 13 years making complicated things clear for companies including Revolut, The Body Shop and Unilever. Ormi began when her friends started talking about perimenopause and nobody could find straight answers.</p>
         </div>
         <div class="founder-card reveal">
-          <img class="founder-photo" src="/founders/emma-whitehouse.jpg" alt="Dr Emma Whitehouse" width="112" height="112" loading="lazy" />
+          <img class="founder-photo" src="/founders/emma-whitehouse.jpg" alt="Dr Emma Whitehouse" width="150" height="190" loading="lazy" />
           <h3 class="founder-name">Dr Emma Whitehouse</h3>
           <p class="founder-role">Co-founder</p>
           <p class="founder-bio">Emma is an NHS GP. She sees women every week who know something has changed and can't yet put a name to it. She leads Ormi's clinical thinking.</p>
@@ -1659,6 +1835,16 @@ const bodyHTML = `
   <section class="final-cta" id="final-waitlist">
     <div class="final-bg"></div>
     <div class="container final-content">
+      <div class="sunrise evening" aria-hidden="true">
+          <div class="sunrise-glow"></div>
+          <div class="sun-clip"><div class="sun-float"><div class="sun-disc"></div></div></div>
+          <div class="sun-horizon"></div>
+          <div class="sun-bars">
+            <div class="sun-bar" style="--d:4.5s; --delay:0s; --o:0.5;"></div>
+            <div class="sun-bar" style="--d:5.2s; --delay:0.5s; --o:0.32;"></div>
+            <div class="sun-bar" style="--d:5.9s; --delay:1s; --o:0.2;"></div>
+          </div>
+        </div>
       <h2 class="final-headline">
         You know yourself best.<br /><em>Ormi helps you see the pattern.</em>
       </h2>
@@ -1763,6 +1949,51 @@ export default function Home() {
       }
     };
 
+    // ── One slow breath: in for four, out for six, three rounds ───────────────
+    let breathTimers = [];
+    let breathRunning = false;
+    window.startBreath = function startBreath() {
+      const wrap = document.getElementById('orb-wrap');
+      const orb = document.getElementById('orb');
+      const count = document.getElementById('orb-count');
+      const label = document.getElementById('orb-label');
+      const btn = document.getElementById('breath-btn');
+      if (!wrap || !orb) return;
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const later = (fn, ms) => breathTimers.push(setTimeout(fn, ms));
+      const rest = (text, buttonText) => {
+        breathTimers.forEach(clearTimeout);
+        breathTimers = [];
+        breathRunning = false;
+        wrap.classList.remove('is-active');
+        orb.style.transitionDuration = '900ms, 700ms';
+        orb.style.transform = 'scale(1)';
+        orb.style.backgroundColor = '';
+        count.textContent = '';
+        label.textContent = text;
+        btn.textContent = buttonText;
+      };
+      if (breathRunning) { rest('Ready when you are', 'Start'); return; }
+      breathRunning = true;
+      btn.textContent = 'Stop';
+      wrap.classList.add('is-active');
+      const phase = (text, seconds, scale, colour, startAt) => {
+        later(() => {
+          orb.style.transitionDuration = seconds * 1000 + 'ms, 700ms';
+          if (!reduce) orb.style.transform = 'scale(' + scale + ')';
+          orb.style.backgroundColor = colour;
+          label.textContent = text;
+        }, startAt);
+        for (let n = 1; n <= seconds; n++) later(() => { count.textContent = n; }, startAt + (n - 1) * 1000);
+      };
+      const rounds = 3;
+      for (let r = 0; r < rounds; r++) {
+        phase('Breathe in', 4, 1.3, '#E6CC94', r * 10000);
+        phase('Breathe out', 6, 0.82, '#F2A57E', r * 10000 + 4000);
+      }
+      later(() => rest('Nicely done', 'Go again'), rounds * 10000);
+    };
+
     // ── Smooth scroll ─────────────────────────────────────────────────────────
     document.querySelectorAll('a[href="#waitlist"], a[href="#final-waitlist"]').forEach(a => {
       a.addEventListener('click', e => {
@@ -1785,7 +2016,7 @@ export default function Home() {
 
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-    return () => obs.disconnect();
+    return () => { obs.disconnect(); breathTimers.forEach(clearTimeout); };
   }, []);
 
   return (
