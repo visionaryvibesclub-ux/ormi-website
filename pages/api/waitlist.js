@@ -44,8 +44,8 @@ export default async function handler(req, res) {
           <meta charset="UTF-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         </head>
-        <body style="margin:0;padding:0;background:#1A1A2E;font-family:'DM Sans',Helvetica,Arial,sans-serif;color:#F5E6C8;">
-          <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#1A1A2E;">
+        <body style="margin:0;padding:0;background:#0C2340;font-family:'Work Sans',Helvetica,Arial,sans-serif;color:#F5E6C8;">
+          <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#0C2340;">
             <tr>
               <td align="center" style="padding:48px 24px;">
                 <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:560px;">
@@ -54,11 +54,11 @@ export default async function handler(req, res) {
                   <tr>
                     <td style="padding-bottom:32px;">
                       <svg width="28" height="44" viewBox="0 0 52 82" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M 26 2 C 26 2, 3 26, 3 48 C 3 62, 13 74, 26 74 C 39 74, 49 62, 49 48 C 49 26, 26 2, 26 2 Z" stroke="#4A8FA8" stroke-width="2.2" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
-                        <circle cx="26" cy="52" r="11" stroke="#C9973A" stroke-width="1.9" fill="none"/>
-                        <circle cx="26" cy="52" r="4.5" stroke="#C9973A" stroke-width="1.7" fill="none"/>
-                        <path d="M 26 74 C 26 78, 32 83, 37 80 C 42 77, 42 70, 37 68 C 33 66, 28 70, 30 75" stroke="#4A8FA8" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.45"/>
-                      </svg><span style="font-family:Georgia,'Times New Roman',serif;font-size:13px;letter-spacing:0.25em;text-transform:uppercase;color:rgba(245,230,200,0.4);margin-left:12px;vertical-align:middle;">ORMI</span>
+                        <path d="M 26 2 C 26 2, 3 26, 3 48 C 3 62, 13 74, 26 74 C 39 74, 49 62, 49 48 C 49 26, 26 2, 26 2 Z" stroke="#F5E6C8" stroke-width="2.2" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+                        <circle cx="26" cy="52" r="11" stroke="#D9AE5C" stroke-width="1.9" fill="none"/>
+                        <circle cx="26" cy="52" r="4.5" stroke="#D9AE5C" stroke-width="1.7" fill="none"/>
+                        <path d="M 26 74 C 26 78, 32 83, 37 80 C 42 77, 42 70, 37 68 C 33 66, 28 70, 30 75" stroke="#F5E6C8" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.45"/>
+                      </svg><span style="font-family:Georgia,'Times New Roman',serif;font-size:24px;color:#F5E6C8;margin-left:12px;vertical-align:middle;">ormi</span>
                     </td>
                   </tr>
 
@@ -88,14 +88,14 @@ export default async function handler(req, res) {
                   <!-- Divider -->
                   <tr>
                     <td style="padding:28px 0;">
-                      <div style="height:1px;background:rgba(201,168,76,0.25);"></div>
+                      <div style="height:1px;background:rgba(217,174,92,0.25);"></div>
                     </td>
                   </tr>
 
                   <!-- Closing line -->
                   <tr>
                     <td style="padding-bottom:48px;">
-                      <p style="margin:0;font-family:Georgia,'Times New Roman',serif;font-size:18px;font-style:italic;line-height:1.6;color:#C9A84C;font-weight:300;">
+                      <p style="margin:0;font-family:Georgia,'Times New Roman',serif;font-size:18px;font-style:italic;line-height:1.6;color:#D9AE5C;font-weight:300;">
                         Your hormones have been talking. Ormi is how you finally hear them.
                       </p>
                     </td>

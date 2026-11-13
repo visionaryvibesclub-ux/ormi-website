@@ -5,27 +5,33 @@ const css = `
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --obsidian:    #0E0E18;
-      --obsidian2:   #13131E;
-      --champagne:   #F5EDD6;
-      --gold:        #C9A84C;
-      --gold-dim:    rgba(201,168,76,0.12);
-      --gold-border: rgba(201,168,76,0.22);
-      --gold-text:   rgba(201,168,76,0.85);
-      --sky:         #4A8FA8;
-      --sky-dim:     rgba(74,143,168,0.10);
-      --sky-border:  rgba(74,143,168,0.22);
-      --sky-text:    rgba(74,143,168,0.85);
-      --rose:        #B06A8A;
-      --rose-dim:    rgba(176,106,138,0.10);
-      --rose-border: rgba(176,106,138,0.22);
-      --white15:     rgba(245,237,214,0.15);
-      --white30:     rgba(245,237,214,0.30);
-      --white50:     rgba(245,237,214,0.50);
-      --white70:     rgba(245,237,214,0.70);
-      --white90:     rgba(245,237,214,0.90);
+      /* Warm night palette, from Ormi brand and product essentials (13 Nov 2026) */
+      --obsidian:    #0C2340; /* Night (Deep Aegean) */
+      --obsidian2:   #0F2A4A; /* Night card */
+      --ink:         #0A1D36; /* Navy ink */
+      --champagne:   #F5E6C8;
+      --warm-white:  #FFF6E6;
+      --gold:        #D9AE5C; /* Gold mid */
+      --gold-soft:   #E6CC94;
+      --gold-dim:    rgba(217,174,92,0.12);
+      --gold-border: rgba(217,174,92,0.28);
+      --gold-text:   #E6CC94;
+      --terracotta:  #C8674A; /* Primary call to action */
+      --glow:        #E08A5E; /* Terracotta glow */
+      --sky:         #E08A5E;
+      --sky-dim:     rgba(224,138,94,0.10);
+      --sky-border:  rgba(224,138,94,0.28);
+      --sky-text:    #F2A57E;
+      --rose:        #F2A57E; /* Peach */
+      --rose-dim:    rgba(242,165,126,0.10);
+      --rose-border: rgba(242,165,126,0.24);
+      --white15:     rgba(195,208,224,0.18);
+      --white30:     rgba(195,208,224,0.62);
+      --white50:     rgba(195,208,224,0.80);
+      --white70:     rgba(195,208,224,0.94);
+      --white90:     rgba(245,230,200,0.94);
       --card:        rgba(255,255,255,0.04);
-      --card-border: rgba(255,255,255,0.08);
+      --card-border: rgba(255,255,255,0.09);
     }
 
     html { scroll-behavior: smooth; }
@@ -33,13 +39,13 @@ const css = `
     body {
       background: var(--obsidian);
       color: var(--champagne);
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Work Sans', sans-serif;
       font-weight: 300;
       line-height: 1.7;
       overflow-x: hidden;
     }
 
-    .serif { font-family: 'Cormorant Garamond', serif; font-weight: 300; }
+    .serif { font-family: 'Instrument Serif', serif; font-weight: 300; }
 
     /* ── Layout ── */
     .container { max-width: 920px; margin: 0 auto; padding: 0 28px; }
@@ -54,7 +60,7 @@ const css = `
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(14,14,24,0.88);
+      background: rgba(12,35,64,0.88);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--card-border);
     }
@@ -67,20 +73,18 @@ const css = `
     }
 
     .nav-wordmark {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 20px;
-      font-weight: 300;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
+      font-family: 'Instrument Serif', serif;
+      font-size: 27px;
+      font-weight: 400;
       color: var(--champagne);
       line-height: 1;
     }
 
     .nav-divider {
       width: 1px;
-      height: 1.3em;
-      background: var(--gold);
-      opacity: 0.45;
+      height: 1.5em;
+      background: var(--glow);
+      opacity: 0.9;
     }
 
     .nav-cta {
@@ -97,14 +101,15 @@ const css = `
       white-space: nowrap;
     }
 
-    .nav-cta:hover { background: rgba(201,168,76,0.20); }
+    .nav-cta:hover { background: rgba(217,174,92,0.20); }
 
     /* ── Hero ── */
     .hero {
       min-height: 100vh;
       display: flex;
       align-items: center;
-      padding-top: 80px;
+      padding-top: 124px;
+      padding-bottom: 64px;
       position: relative;
       overflow: hidden;
     }
@@ -113,9 +118,9 @@ const css = `
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 90% 65% at 75% 25%, rgba(201,168,76,0.07) 0%, transparent 55%),
-        radial-gradient(ellipse 60% 55% at 15% 75%, rgba(74,143,168,0.06) 0%, transparent 55%),
-        radial-gradient(ellipse 50% 40% at 50% 50%, rgba(176,106,138,0.04) 0%, transparent 60%);
+        radial-gradient(ellipse 90% 65% at 75% 25%, rgba(217,174,92,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 55% at 15% 75%, rgba(224,138,94,0.06) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 50% 50%, rgba(242,165,126,0.04) 0%, transparent 60%);
     }
 
     .hero-content {
@@ -145,7 +150,7 @@ const css = `
     }
 
     .hero-headline {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Instrument Serif', serif;
       font-size: clamp(44px, 7.5vw, 76px);
       font-weight: 300;
       color: var(--champagne);
@@ -159,7 +164,7 @@ const css = `
     }
 
     .hero-headline-sub {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Instrument Serif', serif;
       font-size: clamp(18px, 3vw, 26px);
       font-weight: 300;
       font-style: italic;
@@ -198,7 +203,7 @@ const css = `
       border: 1px solid var(--card-border);
       border-radius: 40px;
       padding: 14px 22px;
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Work Sans', sans-serif;
       font-size: 14px;
       color: var(--champagne);
       outline: none;
@@ -212,14 +217,14 @@ const css = `
     .final-form input:focus { border-color: var(--gold-border); }
 
     .btn-gold {
-      background: var(--gold);
-      color: var(--obsidian);
+      background: var(--terracotta);
+      color: var(--warm-white);
       border: none;
       border-radius: 40px;
       padding: 14px 28px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 12px;
-      font-weight: 500;
+      font-family: 'Work Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       cursor: pointer;
@@ -268,7 +273,7 @@ const css = `
     }
 
     .section-title {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Instrument Serif', serif;
       font-size: clamp(34px, 5.5vw, 56px);
       font-weight: 300;
       color: var(--champagne);
@@ -314,7 +319,7 @@ const css = `
     .val-item:last-child { border-right: none; }
 
     .val-stat {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Instrument Serif', serif;
       font-size: 52px;
       color: var(--gold);
       font-weight: 300;
@@ -356,11 +361,11 @@ const css = `
       transition: border-color 0.2s;
     }
 
-    .feeling-card:hover { border-color: rgba(201,168,76,0.18); }
+    .feeling-card:hover { border-color: rgba(217,174,92,0.18); }
 
     .feeling-card::before {
       content: '"';
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Instrument Serif', serif;
       font-size: 80px;
       color: var(--gold);
       opacity: 0.08;
@@ -371,7 +376,7 @@ const css = `
     }
 
     .feeling-text {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Instrument Serif', serif;
       font-size: 18px;
       font-style: italic;
       color: var(--white70);
@@ -409,7 +414,7 @@ const css = `
     }
 
     .messenger-title {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Instrument Serif', serif;
       font-size: clamp(28px, 4.5vw, 46px);
       font-weight: 300;
       color: var(--champagne);
@@ -473,7 +478,7 @@ const css = `
 
     /* ── Mental health section ── */
     .mental-quote {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Instrument Serif', serif;
       font-size: clamp(22px, 4vw, 38px);
       font-style: italic;
       font-weight: 300;
@@ -498,7 +503,7 @@ const css = `
       transition: border-color 0.2s, background 0.2s;
     }
     .mental-card:hover {
-      border-color: rgba(176,106,138,0.22);
+      border-color: rgba(242,165,126,0.22);
       background: rgba(255,255,255,0.06);
     }
 
@@ -513,7 +518,7 @@ const css = `
     }
 
     .mental-title {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Instrument Serif', serif;
       font-size: 20px;
       color: var(--champagne);
       margin-bottom: 8px;
@@ -547,7 +552,7 @@ const css = `
     .step:hover { border-color: var(--gold-border); }
 
     .step-num {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Instrument Serif', serif;
       font-size: 60px;
       color: var(--gold);
       opacity: 0.10;
@@ -559,7 +564,7 @@ const css = `
     }
 
     .step-title {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Instrument Serif', serif;
       font-size: 21px;
       color: var(--champagne);
       margin-bottom: 10px;
@@ -606,7 +611,7 @@ const css = `
 
     .stage-card:hover {
       border-color: var(--gold-border);
-      background: rgba(201,168,76,0.03);
+      background: rgba(217,174,92,0.03);
     }
 
     .stage-dot {
@@ -617,7 +622,7 @@ const css = `
     }
 
     .stage-name {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Instrument Serif', serif;
       font-size: 20px;
       color: var(--champagne);
       margin-bottom: 8px;
@@ -648,7 +653,7 @@ const css = `
     }
 
     .dutch-title {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Instrument Serif', serif;
       font-size: clamp(26px, 4vw, 40px);
       color: var(--champagne);
       font-weight: 300;
@@ -685,7 +690,7 @@ const css = `
 
     .dutch-clinic-text {
       font-size: 13px;
-      color: var(--white60, rgba(245,237,214,0.60));
+      color: var(--white60, rgba(245,230,200,0.60));
       line-height: 1.6;
       font-weight: 300;
     }
@@ -739,11 +744,11 @@ const css = `
       transition: border-color 0.2s;
     }
 
-    .pricing-card:hover { border-color: rgba(201,168,76,0.18); }
+    .pricing-card:hover { border-color: rgba(217,174,92,0.18); }
 
     .pricing-card.featured {
       border-color: var(--gold-border);
-      background: rgba(201,168,76,0.04);
+      background: rgba(217,174,92,0.04);
     }
 
     .pricing-badge {
@@ -772,7 +777,7 @@ const css = `
     }
 
     .pricing-price {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Instrument Serif', serif;
       font-size: 42px;
       color: var(--champagne);
       font-weight: 300;
@@ -848,13 +853,13 @@ const css = `
     .final-bg {
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 75% 65% at 50% 50%, rgba(201,168,76,0.06) 0%, transparent 65%);
+      background: radial-gradient(ellipse 75% 65% at 50% 50%, rgba(217,174,92,0.06) 0%, transparent 65%);
     }
 
     .final-content { position: relative; z-index: 2; }
 
     .final-headline {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Instrument Serif', serif;
       font-size: clamp(36px, 6.5vw, 68px);
       font-weight: 300;
       color: var(--champagne);
@@ -907,19 +912,17 @@ const css = `
     }
 
     .footer-wordmark {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 17px;
-      font-weight: 300;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
+      font-family: 'Instrument Serif', serif;
+      font-size: 23px;
+      font-weight: 400;
       color: var(--champagne);
     }
 
     .footer-divider {
       width: 1px;
-      height: 1.2em;
-      background: var(--gold);
-      opacity: 0.35;
+      height: 1.4em;
+      background: var(--glow);
+      opacity: 0.9;
     }
 
     .footer-note {
@@ -952,7 +955,7 @@ const css = `
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(14,14,24,0.75);
+      background: rgba(12,35,64,0.75);
       z-index: 9998;
       backdrop-filter: blur(4px);
     }
@@ -996,16 +999,13 @@ const css = `
       gap: 10px;
     }
     .banner-wordmark {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 13px;
-      font-weight: 300;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: #1A1A2E;
-      opacity: 0.5;
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: #0A1D36;
     }
     .banner-dismiss {
-      color: rgba(26,26,46,0.35);
+      color: rgba(10,29,54,0.35);
       font-size: 22px;
       cursor: pointer;
       background: none;
@@ -1014,22 +1014,176 @@ const css = `
       line-height: 1;
       flex-shrink: 0;
     }
-    .banner-dismiss:hover { color: rgba(26,26,46,0.6); }
+    .banner-dismiss:hover { color: rgba(10,29,54,0.6); }
     .banner-heading {
-      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-family: 'Instrument Serif', Georgia, serif;
       font-size: 24px;
       font-weight: 300;
-      color: #1A1A2E;
+      color: #0A1D36;
       line-height: 1.4;
       margin: 0;
     }
     .banner-body {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Work Sans', sans-serif;
       font-size: 13px;
       font-weight: 300;
-      color: rgba(26,26,46,0.55);
+      color: rgba(10,29,54,0.55);
       line-height: 1.6;
       margin: 0;
+    }
+
+    /* ── Nav links ── */
+    .nav-right { display: flex; align-items: center; gap: 22px; }
+    .nav-link {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--white50);
+      text-decoration: none;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+    .nav-link:hover { color: var(--gold-text); }
+
+    /* ── Hero badge ── */
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 26px;
+      padding: 8px 16px;
+      border: 1px solid var(--gold-border);
+      border-radius: 40px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-text);
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--glow);
+    }
+
+    /* ── Employers ── */
+    #employers, #about { scroll-margin-top: 70px; }
+    .employers { padding: 72px 0; }
+    .employers-card {
+      background: var(--obsidian2);
+      border: 1px solid var(--gold-border);
+      border-radius: 24px;
+      padding: 48px 44px;
+    }
+    .employers-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(30px, 4.6vw, 44px);
+      font-weight: 400;
+      color: var(--champagne);
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+    .employers-title em { font-style: italic; color: var(--gold); }
+    .employers-body {
+      font-size: 16px;
+      color: var(--white50);
+      line-height: 1.75;
+      max-width: 620px;
+      margin-bottom: 30px;
+    }
+    .employers-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    .employers-actions a { display: inline-block; text-decoration: none; }
+    .btn-ghost {
+      border: 1px solid var(--gold-border);
+      border-radius: 40px;
+      padding: 13px 26px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold-text);
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .btn-ghost:hover { background: var(--gold-dim); }
+    .employers-source {
+      margin-top: 22px;
+      font-size: 12px;
+      color: var(--white30);
+      line-height: 1.6;
+    }
+
+    /* ── Founders ── */
+    .founders-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+    }
+    .founder-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 22px;
+      padding: 32px 28px;
+    }
+    .founder-photo {
+      width: 112px;
+      height: 112px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      margin-bottom: 20px;
+      border: 2px solid var(--gold-border);
+    }
+    .founder-name {
+      font-family: 'Instrument Serif', serif;
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--champagne);
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+    .founder-role {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-text);
+      margin-bottom: 16px;
+    }
+    .founder-bio {
+      font-size: 15px;
+      color: var(--white50);
+      line-height: 1.7;
+    }
+    .ignite-strip {
+      margin-top: 18px;
+      border: 1px solid var(--gold-border);
+      border-radius: 22px;
+      padding: 26px 28px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 8px 22px;
+    }
+    .ignite-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: 26px;
+      color: var(--champagne);
+      line-height: 1.2;
+    }
+    .ignite-body {
+      font-size: 15px;
+      color: var(--white50);
+      line-height: 1.7;
+    }
+    .pricing-footnote {
+      margin-top: 28px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--white30);
+      line-height: 1.6;
     }
 
     /* ── Scroll reveal ── */
@@ -1047,6 +1201,8 @@ const css = `
     /* ── Responsive ── */
     @media (max-width: 580px) {
       nav { padding: 14px 18px; }
+      .nav-link { display: none; }
+      .employers-card { padding: 34px 24px; }
       section { padding: 64px 0; }
       .waitlist-form { flex-direction: column; }
       .waitlist-form input,
@@ -1069,12 +1225,12 @@ const bodyHTML = `
     <div class="banner-header">
       <div class="banner-logo">
         <svg width="22" height="35" viewBox="0 0 52 82" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M 26 2 C 26 2, 3 26, 3 48 C 3 62, 13 74, 26 74 C 39 74, 49 62, 49 48 C 49 26, 26 2, 26 2 Z" stroke="#4A8FA8" stroke-width="2.2" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
-          <circle cx="26" cy="52" r="11" stroke="#C9973A" stroke-width="1.9" fill="none"/>
-          <circle cx="26" cy="52" r="4.5" stroke="#C9973A" stroke-width="1.7" fill="none"/>
-          <path d="M 26 74 C 26 78, 32 83, 37 80 C 42 77, 42 70, 37 68 C 33 66, 28 70, 30 75" stroke="#4A8FA8" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.45"/>
+          <path d="M 26 2 C 26 2, 3 26, 3 48 C 3 62, 13 74, 26 74 C 39 74, 49 62, 49 48 C 49 26, 26 2, 26 2 Z" stroke="#0A1D36" stroke-width="2.2" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+          <circle cx="26" cy="52" r="11" stroke="#B4553A" stroke-width="1.9" fill="none"/>
+          <circle cx="26" cy="52" r="4.5" stroke="#B4553A" stroke-width="1.7" fill="none"/>
+          <path d="M 26 74 C 26 78, 32 83, 37 80 C 42 77, 42 70, 37 68 C 33 66, 28 70, 30 75" stroke="#0A1D36" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.45"/>
         </svg>
-        <span class="banner-wordmark">Ormi</span>
+        <span class="banner-wordmark">ormi</span>
       </div>
       <button class="banner-dismiss" onclick="dismissBanner()" aria-label="Dismiss">&times;</button>
     </div>
@@ -1087,15 +1243,19 @@ const bodyHTML = `
     <a href="#" class="nav-logo">
       <!-- Ormi mark SVG — teardrop, two gold rings -->
       <svg width="22" height="35" viewBox="0 0 52 82" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M 26 2 C 26 2, 3 26, 3 48 C 3 62, 13 74, 26 74 C 39 74, 49 62, 49 48 C 49 26, 26 2, 26 2 Z" stroke="#4A8FA8" stroke-width="2.2" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
-        <circle cx="26" cy="52" r="11" stroke="#C9A84C" stroke-width="1.9" fill="none"/>
-        <circle cx="26" cy="52" r="4.5" stroke="#C9A84C" stroke-width="1.7" fill="none"/>
-        <path d="M 26 74 C 26 78, 32 83, 37 80 C 42 77, 42 70, 37 68 C 33 66, 28 70, 30 75" stroke="#4A8FA8" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.45"/>
+        <path d="M 26 2 C 26 2, 3 26, 3 48 C 3 62, 13 74, 26 74 C 39 74, 49 62, 49 48 C 49 26, 26 2, 26 2 Z" stroke="#F5E6C8" stroke-width="2.2" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+        <circle cx="26" cy="52" r="11" stroke="#D9AE5C" stroke-width="1.9" fill="none"/>
+        <circle cx="26" cy="52" r="4.5" stroke="#D9AE5C" stroke-width="1.7" fill="none"/>
+        <path d="M 26 74 C 26 78, 32 83, 37 80 C 42 77, 42 70, 37 68 C 33 66, 28 70, 30 75" stroke="#F5E6C8" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.45"/>
       </svg>
       <div class="nav-divider"></div>
-      <span class="nav-wordmark">Ormi</span>
+      <span class="nav-wordmark">ormi</span>
     </a>
-    <a href="#waitlist" class="nav-cta">Join the waitlist</a>
+    <div class="nav-right">
+      <a href="#employers" class="nav-link">For employers</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#waitlist" class="nav-cta">Join the waitlist</a>
+    </div>
   </nav>
 
   <!-- ── Hero ── -->
@@ -1109,7 +1269,7 @@ const bodyHTML = `
         </h1>
         <p class="hero-headline-sub">You're not imagining it. You're not too sensitive. You're not depressed for no reason.</p>
         <p class="hero-sub">
-          Your hormones have been trying to tell you something for years and nobody's been listening. <strong>Ormi is the first platform that actually explains what's going on.</strong> Clinical hormone testing, AI that knows you specifically, and daily tools that work with your body, not against it.
+          Your hormones have been trying to tell you something for years and nobody's been listening. <strong>Ormi helps you make sense of what's going on.</strong> Clinical hormone testing, AI that knows you specifically, and daily tools that meet you where you are.
         </p>
         <div id="waitlist">
           <p class="prelaunch-note">Ormi isn't on the App Store yet. Join the waitlist to register your interest and we'll let you know as soon as it's ready.</p>
@@ -1119,6 +1279,7 @@ const bodyHTML = `
           </form>
           <div id="hero-ok" class="success-msg" style="display:none!important;">You're on the list. We'll be in touch soon.</div>
           <p class="form-note">No spam. Ever. Just Ormi when it's ready.</p>
+          <p class="hero-badge">IGNITE 2026 finalist</p>
         </div>
       </div>
     </div>
@@ -1154,6 +1315,28 @@ const bodyHTML = `
       </div>
     </div>
   </div>
+
+  <!-- ── Employers ── -->
+  <!--
+    Source: Employment Rights Act 2025, equality action plans (gender pay gap
+    and menopause support) for employers with 250+ employees. Voluntary from
+    April 2026, expected to be mandatory from spring 2027 subject to secondary
+    legislation. GOV.UK: gov.uk/government/publications/creating-an-action-plan-guidance-for-employers
+  -->
+  <section class="employers" id="employers">
+    <div class="container">
+      <div class="employers-card reveal">
+        <p class="eyebrow" style="text-align:left;">For employers</p>
+        <h2 class="employers-title">Menopause action plans are coming.<br /><em>Is your team ready?</em></h2>
+        <p class="employers-body">From spring 2027, UK employers with 250 or more staff are expected to publish an action plan showing how they support employees through menopause. Ormi gives the women in your team a place to understand how they feel and what helps. We offer flexible packages to suit your organisation.</p>
+        <div class="employers-actions">
+          <a href="mailto:hello@ormi.health?subject=Ormi%20for%20employers" class="btn-gold">Email hello@ormi.health</a>
+          <a href="#final-waitlist" class="btn-ghost">Join the waitlist</a>
+        </div>
+        <p class="employers-source">Employment Rights Act 2025. Expected from spring 2027, subject to final regulations.</p>
+      </div>
+    </div>
+  </section>
 
   <!-- ── Feelings section ── -->
   <section>
@@ -1207,28 +1390,28 @@ const bodyHTML = `
         </div>
         <div class="messenger-hormones">
           <div class="hormone-row reveal">
-            <div class="hormone-dot" style="background:#C97A9A;"></div>
+            <div class="hormone-dot" style="background:#C8674A;"></div>
             <div>
               <div class="hormone-name">Oestrogen</div>
               <div class="hormone-what">Runs your mood, memory, skin, and bone density. Also controls how much serotonin your brain makes. When it lurches, you lurch with it.</div>
             </div>
           </div>
           <div class="hormone-row reveal">
-            <div class="hormone-dot" style="background:#4A9A80;"></div>
+            <div class="hormone-dot" style="background:#E6CC94;"></div>
             <div>
               <div class="hormone-name">Progesterone</div>
               <div class="hormone-what">Your calm hormone. When it drops (usually in the second half of your cycle): anxiety, poor sleep, and irritability follow. It's not stress. It's chemistry.</div>
             </div>
           </div>
           <div class="hormone-row reveal">
-            <div class="hormone-dot" style="background:#C9A84C;"></div>
+            <div class="hormone-dot" style="background:#D9AE5C;"></div>
             <div>
               <div class="hormone-name">Cortisol</div>
               <div class="hormone-what">Your stress hormone, but also your energy, inflammation, and immune system. A flat diurnal curve explains the afternoon crash that no amount of sleep seems to fix.</div>
             </div>
           </div>
           <div class="hormone-row reveal">
-            <div class="hormone-dot" style="background:#7A6AAA;"></div>
+            <div class="hormone-dot" style="background:#C3D0E0;"></div>
             <div>
               <div class="hormone-name">DHEA, testosterone, melatonin + more</div>
               <div class="hormone-what">The ones your GP has never tested. Between them they explain your drive, your sleep quality, your resilience, and why everything feels harder than it should.</div>
@@ -1249,28 +1432,28 @@ const bodyHTML = `
       <div class="mental-grid">
         <div class="mental-card reveal">
           <div class="mental-icon" style="background:var(--rose-dim); border:1px solid var(--rose-border);">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2C8 2 3 5.5 3 9C3 11.5 5.2 13.5 8 13.5C10.8 13.5 13 11.5 13 9C13 5.5 8 2 8 2Z" stroke="#B06A8A" stroke-width="1.2"/><circle cx="8" cy="9" r="2" stroke="#B06A8A" stroke-width="1.2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2C8 2 3 5.5 3 9C3 11.5 5.2 13.5 8 13.5C10.8 13.5 13 11.5 13 9C13 5.5 8 2 8 2Z" stroke="#F2A57E" stroke-width="1.2"/><circle cx="8" cy="9" r="2" stroke="#F2A57E" stroke-width="1.2"/></svg>
           </div>
           <h3 class="mental-title">Anxiety &amp; low mood</h3>
           <p class="mental-body">Oestrogen drives serotonin production. Progesterone drives GABA, your brain's natural calm signal. When both drop, anxiety and low mood follow. This is biochemistry, not weakness.</p>
         </div>
         <div class="mental-card reveal">
           <div class="mental-icon" style="background:var(--gold-dim); border:1px solid var(--gold-border);">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5" stroke="#C9A84C" stroke-width="1.2"/><path d="M8 5v3l2 2" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5" stroke="#D9AE5C" stroke-width="1.2"/><path d="M8 5v3l2 2" stroke="#D9AE5C" stroke-width="1.2" stroke-linecap="round"/></svg>
           </div>
           <h3 class="mental-title">Rage &amp; the guilt cycle</h3>
           <p class="mental-body">The disproportionate anger, the instant regret, the shame spiral. This is the oestrogen-progesterone imbalance in your luteal phase. It's not who you are. It's a signal that something needs attention.</p>
         </div>
         <div class="mental-card reveal">
           <div class="mental-icon" style="background:var(--sky-dim); border:1px solid var(--sky-border);">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h3l2-4 2 8 2-4 2 2h1" stroke="#4A8FA8" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h3l2-4 2 8 2-4 2 2h1" stroke="#E08A5E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <h3 class="mental-title">Brain fog &amp; identity</h3>
           <p class="mental-body">Forgetting words. Losing your train of thought. Not feeling like yourself. Oestrogen and progesterone both have receptors throughout the brain. When they shift, so does cognition. This is documented, real, and reversible.</p>
         </div>
         <div class="mental-card reveal">
           <div class="mental-icon" style="background:var(--rose-dim); border:1px solid var(--rose-border);">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8C4 5.8 5.8 4 8 4C10.2 4 12 5.8 12 8" stroke="#B06A8A" stroke-width="1.2" stroke-linecap="round"/><path d="M8 12V8" stroke="#B06A8A" stroke-width="1.2" stroke-linecap="round"/><circle cx="8" cy="13" r="1" fill="#B06A8A"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8C4 5.8 5.8 4 8 4C10.2 4 12 5.8 12 8" stroke="#F2A57E" stroke-width="1.2" stroke-linecap="round"/><path d="M8 12V8" stroke="#F2A57E" stroke-width="1.2" stroke-linecap="round"/><circle cx="8" cy="13" r="1" fill="#F2A57E"/></svg>
           </div>
           <h3 class="mental-title">The gut-mood connection</h3>
           <p class="mental-body">Around 90% of your serotonin is made in your gut. The bacteria that line your gut wall (the estrobolome) directly regulate how oestrogen is metabolised. What you eat is a hormonal intervention.</p>
@@ -1295,21 +1478,21 @@ const bodyHTML = `
         </div>
         <div class="step reveal">
           <div class="step-num">2</div>
-          <div class="step-tag">DUTCH+</div>
+          <div class="step-tag">Clinical insight</div>
           <h3 class="step-title">The test that actually tells you</h3>
           <p class="step-body">The DUTCH test measures 35 hormone markers from a urine sample at home. The same test private clinics charge hundreds for. Ormi sends it to your door, interprets it with AI, and produces a summary your GP can actually use.</p>
         </div>
         <div class="step reveal">
           <div class="step-num">3</div>
           <div class="step-tag">Daily</div>
-          <h3 class="step-title">Tools that work with your body</h3>
+          <h3 class="step-title">Tools that meet you where you are</h3>
           <p class="step-body">Phase-matched breathwork, somatic regulation, nutritional guidance, and journalling, all connected to your specific hormonal picture. Not generic wellness. Tools that respond to where you actually are.</p>
         </div>
         <div class="step reveal">
           <div class="step-num">4</div>
-          <div class="step-tag">DUTCH+ &amp; Specialist</div>
-          <h3 class="step-title">A specialist who reads your results with you</h3>
-          <p class="step-body">A 1:1 results review with a hormone specialist, not a GP who has 8 minutes. Someone who can explain what your DUTCH results mean specifically for you and what to do next.</p>
+          <div class="step-tag">Clinical insight</div>
+          <h3 class="step-title">A GP review of your results</h3>
+          <p class="step-body">Your DUTCH results are reviewed by a GP, and you get an NHS-ready summary to take to your own doctor. Ormi highlights patterns to discuss with a clinician. It does not diagnose.</p>
         </div>
       </div>
     </div>
@@ -1323,22 +1506,22 @@ const bodyHTML = `
       <p class="section-sub">Not a one-size product. Not a tracker built for 25-year-olds. Ormi is built around every stage of a woman's hormonal life.</p>
       <div class="stages-grid">
         <div class="stage-card reveal">
-          <div class="stage-dot" style="background:#C9A84C;"></div>
+          <div class="stage-dot" style="background:#D9AE5C;"></div>
           <div class="stage-name">Regular cycle</div>
           <div class="stage-body">Phase-matched tools and content that follow your hormonal rhythm across the month. Not just period tracking. The full picture of what oestrogen, progesterone, and cortisol are doing week by week.</div>
         </div>
         <div class="stage-card reveal">
-          <div class="stage-dot" style="background:#4A9A80;"></div>
+          <div class="stage-dot" style="background:#E6CC94;"></div>
           <div class="stage-name">Postpartum</div>
           <div class="stage-body">After birth, oestrogen and progesterone drop off a cliff. Within 24 hours of delivery, progesterone falls to almost zero. Oestrogen follows. This is the most dramatic hormonal shift a woman can experience and almost nobody explains it. The exhaustion, the anxiety, the low mood, the feeling that something is wrong with you. That's not weakness. That's your endocrine system in freefall. Ormi maps what's happening from mood to thyroid to iron to bone, and what actually helps recovery.</div>
         </div>
         <div class="stage-card reveal">
-          <div class="stage-dot" style="background:#C97A9A;"></div>
+          <div class="stage-dot" style="background:#C8674A;"></div>
           <div class="stage-name">Perimenopause</div>
           <div class="stage-body">The erratic cycles, the mood shifts, the sleep that's fallen apart, the anxiety that appeared from nowhere. Ormi makes sense of the unpredictability and gives you a plan built around where you actually are.</div>
         </div>
         <div class="stage-card reveal">
-          <div class="stage-dot" style="background:#4A8FA8;"></div>
+          <div class="stage-dot" style="background:#E08A5E;"></div>
           <div class="stage-name">Menopause</div>
           <div class="stage-body">Beyond the hot flushes. Bone health, cognitive changes, cardiovascular risk, identity. Ormi gives you the full picture with clarity, not alarm.</div>
         </div>
@@ -1358,7 +1541,7 @@ const bodyHTML = `
           <div class="dutch-clinic-compare">
             <div class="dutch-clinic-label">vs a private hormone clinic</div>
             <div class="dutch-clinic-text">
-              A private clinic would charge <strong>£600–1,200</strong> for a DUTCH test, interpretation, and a specialist consultation. Ormi brings all three together, <strong>at a fraction of the cost</strong>, from your own home, with AI available 24 hours a day.
+              Private clinics charge from <strong>£395 to over £1,000</strong> for a DUTCH test with interpretation. Ormi brings the test, AI interpretation and a GP results review together, from your own home.
             </div>
           </div>
 
@@ -1370,7 +1553,7 @@ const bodyHTML = `
           <div class="dutch-marker"><div class="dutch-marker-dot"></div><div class="dutch-marker-text"><strong>Cortisol diurnal curve</strong>: not just your level, but when it spikes and crashes across the day. The pattern your GP has never seen.</div></div>
           <div class="dutch-marker"><div class="dutch-marker-dot"></div><div class="dutch-marker-text"><strong>Progesterone &amp; androgens</strong>: testosterone, DHEA, the hormones nobody's checked and the ones most likely to explain how you're feeling.</div></div>
           <div class="dutch-marker"><div class="dutch-marker-dot"></div><div class="dutch-marker-text"><strong>Melatonin &amp; organic acids</strong>: sleep hormones and B vitamin markers that affect mood, energy, and everything in between.</div></div>
-          <div class="dutch-marker"><div class="dutch-marker-dot"></div><div class="dutch-marker-text"><strong>35 markers total.</strong> Collected at home. Interpreted by AI. Summarised for your GP. Reviewed with a specialist.</div></div>
+          <div class="dutch-marker"><div class="dutch-marker-dot"></div><div class="dutch-marker-text"><strong>35 markers total.</strong> Collected at home. Interpreted by AI. Summarised for your GP. Reviewed by a GP.</div></div>
         </div>
       </div>
     </div>
@@ -1381,7 +1564,7 @@ const bodyHTML = `
     <div class="container">
       <p class="eyebrow">Pricing</p>
       <h2 class="section-title">Start free.<br /><em>Go deeper when you're ready.</em></h2>
-      <p class="section-sub">No subscription needed to get started. Upgrade when Ormi has earned it. Founding member pricing locked in for life.</p>
+      <p class="section-sub">No subscription needed to get started. Go deeper when Ormi has earned it.</p>
 
       <div class="pricing-grid">
 
@@ -1392,55 +1575,71 @@ const bodyHTML = `
           <div class="pricing-price-note">Always free, no card required</div>
           <div class="pricing-hr"></div>
           <div class="pricing-features">
-            <div class="pricing-feature">6-domain symptom assessment</div>
-            <div class="pricing-feature">Your personal Hormone Portrait</div>
-            <div class="pricing-feature">3 AI questions per day</div>
-            <div class="pricing-feature">Hormone map &amp; education</div>
-            <div class="pricing-feature">In-the-moment regulation tools</div>
-            <div class="pricing-feature">Food &amp; gut nutrition tips</div>
-            <div class="pricing-feature">Bone health awareness guide</div>
+            <div class="pricing-feature">Your hormone portrait</div>
+            <div class="pricing-feature">Daily check-ins in words, not scores</div>
+            <div class="pricing-feature">Core tools</div>
           </div>
         </div>
 
-        <!-- DUTCH+ -->
-        <div class="pricing-card featured reveal">
-          <div class="pricing-badge">Most complete</div>
-          <div class="pricing-tier">DUTCH+</div>
-          <div class="pricing-price">TBC</div>
-          <div class="pricing-price-note">Founding member pricing coming soon</div>
+        <!-- Ormi Circle -->
+        <div class="pricing-card reveal">
+          <div class="pricing-tier">Ormi Circle</div>
+          <div class="pricing-price">£14.99</div>
+          <div class="pricing-price-note">a month, or £129 a year</div>
           <div class="pricing-hr"></div>
           <div class="pricing-features">
             <div class="pricing-feature">Everything in Free</div>
-            <div class="pricing-feature">DUTCH test kit dispatched to your door</div>
-            <div class="pricing-feature">35-marker AI interpretation</div>
-            <div class="pricing-feature">Full DUTCH Hormone Portrait</div>
-            <div class="pricing-feature">Personalised supplement protocol</div>
-            <div class="pricing-feature">GP Summary document</div>
-            <div class="pricing-feature">Unlimited AI questions</div>
-            <div class="pricing-feature">Phase-matched tool library</div>
-            <div class="pricing-feature">Therapeutic community access</div>
+            <div class="pricing-feature">Wearable sync</div>
+            <div class="pricing-feature">Full tool library</div>
+            <div class="pricing-feature">Live coaching</div>
+            <div class="pricing-feature">AI guidance</div>
           </div>
-          <div class="pricing-clinic-note">Private clinic equivalent: £400–800 for the test and interpretation alone.</div>
-          <div class="pricing-tbc">Pricing confirmed at launch for waitlist members first.</div>
         </div>
 
-        <!-- DUTCH+ & Specialist -->
-        <div class="pricing-card reveal">
-          <div class="pricing-tier">DUTCH+ &amp; Specialist</div>
-          <div class="pricing-price">TBC</div>
-          <div class="pricing-price-note">Founding member pricing coming soon</div>
+        <!-- Clinical insight -->
+        <div class="pricing-card featured reveal">
+          <div class="pricing-badge">Most complete</div>
+          <div class="pricing-tier">Clinical insight</div>
+          <div class="pricing-price">£349 / £399</div>
+          <div class="pricing-price-note">One-off. DUTCH Complete £349 or DUTCH Plus £399</div>
           <div class="pricing-hr"></div>
           <div class="pricing-features">
-            <div class="pricing-feature">Everything in DUTCH+</div>
-            <div class="pricing-feature">1:1 results review with a hormone specialist</div>
-            <div class="pricing-feature">Personalised protocol from your specialist</div>
-            <div class="pricing-feature">Priority support</div>
-            <div class="pricing-feature">Quarterly DUTCH retesting (optional)</div>
+            <div class="pricing-feature">At-home DUTCH Hormone Test</div>
+            <div class="pricing-feature">Cortisol mapping</div>
+            <div class="pricing-feature">GP results review</div>
+            <div class="pricing-feature">NHS-ready summary</div>
+            <div class="pricing-feature">A year of Ormi Circle</div>
           </div>
-          <div class="pricing-clinic-note">Private clinic equivalent: £800–1,200 for test, interpretation, and specialist consultation.</div>
-          <div class="pricing-tbc">Pricing confirmed at launch for waitlist members first.</div>
         </div>
 
+      </div>
+      <p class="pricing-footnote">Ormi highlights patterns to discuss with a clinician. It does not diagnose.</p>
+    </div>
+    </div>
+  </section>
+
+  <!-- ── About ── -->
+  <section id="about" style="background:var(--obsidian2);">
+    <div class="container">
+      <p class="eyebrow">About</p>
+      <h2 class="section-title">Meet the <em>founders.</em></h2>
+      <div class="founders-grid">
+        <div class="founder-card reveal">
+          <img class="founder-photo" src="/founders/anna-koutras.jpg" alt="Anna Koutras" width="112" height="112" loading="lazy" />
+          <h3 class="founder-name">Anna Koutras</h3>
+          <p class="founder-role">Co-founder</p>
+          <p class="founder-bio">Anna spent over 13 years making complicated things clear for companies including Revolut, The Body Shop and Unilever. Ormi began when her friends started talking about perimenopause and nobody could find straight answers.</p>
+        </div>
+        <div class="founder-card reveal">
+          <img class="founder-photo" src="/founders/emma-whitehouse.jpg" alt="Dr Emma Whitehouse" width="112" height="112" loading="lazy" />
+          <h3 class="founder-name">Dr Emma Whitehouse</h3>
+          <p class="founder-role">Co-founder</p>
+          <p class="founder-bio">Emma is an NHS GP. She sees women every week who know something has changed and can't yet put a name to it. She leads Ormi's clinical thinking.</p>
+        </div>
+      </div>
+      <div class="ignite-strip reveal">
+        <div class="ignite-title">IGNITE 2026 finalist</div>
+        <p class="ignite-body">Ormi was a finalist in IGNITE 2026, run by the Ford Family Foundation and delivered with Cambio.</p>
       </div>
     </div>
   </section>
@@ -1453,7 +1652,7 @@ const bodyHTML = `
         You've always known<br />something wasn't right.<br /><em>Now you can find out what.</em>
       </h2>
       <p class="final-sub">
-        Ormi isn't on the App Store yet. Join the waitlist to register your interest and be the first to know when Ormi launches. Founding members get their pricing locked in for life.
+        Ormi isn't on the App Store yet. Join the waitlist to register your interest and be the first to know when Ormi launches.
       </p>
       <form class="final-form" onsubmit="handleSubmit(event,'final-ok')">
         <input type="email" placeholder="Your email address" required autocomplete="email" />
@@ -1470,12 +1669,12 @@ const bodyHTML = `
       <div class="footer-inner">
         <a href="#" class="footer-logo">
           <svg width="16" height="26" viewBox="0 0 52 82" fill="none">
-            <path d="M 26 2 C 26 2, 3 26, 3 48 C 3 62, 13 74, 26 74 C 39 74, 49 62, 49 48 C 49 26, 26 2, 26 2 Z" stroke="#4A8FA8" stroke-width="2.2" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
-            <circle cx="26" cy="52" r="11" stroke="#C9A84C" stroke-width="1.9" fill="none"/>
-            <circle cx="26" cy="52" r="4.5" stroke="#C9A84C" stroke-width="1.7" fill="none"/>
+            <path d="M 26 2 C 26 2, 3 26, 3 48 C 3 62, 13 74, 26 74 C 39 74, 49 62, 49 48 C 49 26, 26 2, 26 2 Z" stroke="#F5E6C8" stroke-width="2.2" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+            <circle cx="26" cy="52" r="11" stroke="#D9AE5C" stroke-width="1.9" fill="none"/>
+            <circle cx="26" cy="52" r="4.5" stroke="#D9AE5C" stroke-width="1.7" fill="none"/>
           </svg>
           <div class="footer-divider"></div>
-          <span class="footer-wordmark">Ormi</span>
+          <span class="footer-wordmark">ormi</span>
         </a>
         <p class="footer-note">© 2026 Ormi. All rights reserved. Ormi is not a medical service.</p>
         <div class="footer-links">
@@ -1568,9 +1767,10 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Ormi: Everything you've been feeling finally makes sense.</title>
         <meta name="description" content="You're not imagining it. You're not too sensitive. Your hormones have been trying to tell you something and nobody's been listening. Ormi changes that." />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
         <style dangerouslySetInnerHTML={{ __html: css }} />
       </Head>
       <div dangerouslySetInnerHTML={{ __html: bodyHTML }} />
