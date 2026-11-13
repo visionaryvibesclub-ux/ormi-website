@@ -119,9 +119,9 @@ const css = `
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 90% 65% at 75% 25%, rgba(217,174,92,0.07) 0%, transparent 55%),
-        radial-gradient(ellipse 60% 55% at 15% 75%, rgba(224,138,94,0.06) 0%, transparent 55%),
-        radial-gradient(ellipse 50% 40% at 50% 50%, rgba(242,165,126,0.04) 0%, transparent 60%);
+        radial-gradient(ellipse 80% 70% at 82% 18%, rgba(200,103,74,0.30) 0%, transparent 60%),
+        radial-gradient(ellipse 55% 50% at 100% 60%, rgba(217,174,92,0.14) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 55% at 10% 90%, rgba(224,138,94,0.10) 0%, transparent 55%);
     }
 
     .hero-content {
@@ -1042,6 +1042,144 @@ const css = `
     }
     .final-content .form-error { margin-left: auto; margin-right: auto; }
 
+    /* ── Colour: champagne sections and coloured tiles, all from the brand palette ── */
+    .light {
+      background: #F5E6C8;
+      --champagne:   #0A1D36;
+      --white90:     #0A1D36;
+      --white70:     rgba(10,29,54,0.92);
+      --white50:     rgba(10,29,54,0.80);
+      --white30:     rgba(10,29,54,0.66);
+      --white15:     rgba(10,29,54,0.16);
+      --gold:        #B4553A;
+      --gold-text:   #0A1D36;
+      --gold-border: rgba(180,85,58,0.40);
+      --gold-dim:    rgba(180,85,58,0.10);
+      --card:        #FFF6E6;
+      --card-border: rgba(10,29,54,0.10);
+    }
+    .light .feeling-card::before { opacity: 0.16; }
+    .light .feeling-card:hover, .light .pricing-card:hover { border-color: rgba(180,85,58,0.40); }
+    .light .feeling-reframe { font-weight: 500; }
+    .light .pricing-badge { background: #B4553A; color: #FFF6E6; }
+    .light .pricing-card.featured {
+      background: #0C2340;
+      border-color: #0C2340;
+      --champagne:   #F5E6C8;
+      --white50:     rgba(195,208,224,0.86);
+      --white30:     rgba(195,208,224,0.70);
+      --gold:        #D9AE5C;
+      --gold-text:   #E6CC94;
+      --card-border: rgba(255,255,255,0.14);
+    }
+    .light .pricing-card.featured .pricing-badge { background: #D9AE5C; color: #0A1D36; }
+
+    /* How it works: three tiles in the app's warm colours */
+    .steps-grid .step {
+      border: none;
+      --champagne: #0A1D36;
+      --white50:   rgba(10,29,54,0.86);
+      --gold:      #0A1D36;
+    }
+    .steps-grid .step:nth-child(1) { background: #E6CC94; }
+    .steps-grid .step:nth-child(2) { background: #F2A57E; }
+    .steps-grid .step:nth-child(3) { background: #E08A5E; }
+    .steps-grid .step-num { opacity: 0.22; }
+    .steps-grid .step-body { font-weight: 400; }
+
+    /* stats: one colour each */
+    .val-item:nth-child(1) .val-stat { color: #E6CC94; }
+    .val-item:nth-child(2) .val-stat { color: #F2A57E; }
+    .val-item:nth-child(3) .val-stat { color: #E08A5E; }
+
+    /* life stages: a coloured edge per stage */
+    .stages-grid .stage-card { border-top: 3px solid var(--stage, #D9AE5C); }
+    .stages-grid .stage-card:nth-child(1) { --stage: #D9AE5C; }
+    .stages-grid .stage-card:nth-child(2) { --stage: #E6CC94; }
+    .stages-grid .stage-card:nth-child(3) { --stage: #C8674A; }
+    .stages-grid .stage-card:nth-child(4) { --stage: #E08A5E; }
+
+    /* employers: terracotta wash */
+    .employers-card {
+      background: linear-gradient(135deg, rgba(200,103,74,0.34) 0%, rgba(224,138,94,0.16) 45%, rgba(15,42,74,0.9) 100%), #0F2A4A !important;
+      border-color: rgba(224,138,94,0.45) !important;
+    }
+
+    .light .section-title em { color: #B4553A; }
+
+    /* ── Graphics ported from the app (explore/motifs.tsx, portrait/HormoneMotif.tsx) ── */
+    @keyframes breatheSoft { from { transform: scale(1); } to { transform: scale(1.04); } }
+    @keyframes breatheRing { from { transform: scale(0.8); } to { transform: scale(1.15); } }
+    @keyframes driftX { from { transform: translateX(-4px); } to { transform: translateX(4px); } }
+    @keyframes driftXr { from { transform: translateX(4px); } to { transform: translateX(-4px); } }
+    @keyframes glowIn { from { opacity: 0.15; } to { opacity: 1; } }
+    @keyframes turn { to { transform: rotate(360deg); } }
+    @keyframes ripple { from { transform: scale(0.92); opacity: 0.9; } to { transform: scale(1.06); opacity: 0.35; } }
+    @keyframes thought {
+      0%, 36% { opacity: 0; transform: translateY(2px); }
+      50%, 84% { opacity: 1; transform: translateY(0); }
+      94%, 100% { opacity: 0; transform: translateY(-0.6px); }
+    }
+    @keyframes thoughtDot1 { 0%, 18% { opacity: 0; } 26%, 84% { opacity: 1; } 94%, 100% { opacity: 0; } }
+    @keyframes thoughtDot2 { 0% { opacity: 0; } 8%, 84% { opacity: 1; } 94%, 100% { opacity: 0; } }
+
+    /* somatic rings on the employer card */
+    .employers-card { position: relative; overflow: hidden; }
+    .employers-card > *:not(.rings) { position: relative; z-index: 1; }
+    .rings {
+      position: absolute;
+      right: 0; top: 0;
+      width: 320px; height: 320px;
+      pointer-events: none;
+      transform-origin: 100% 0;
+      animation: breatheSoft 6s ease-in-out infinite alternate;
+    }
+    .rings span { position: absolute; border-radius: 50%; }
+    .rings span:nth-child(1) { right: -90px; top: -90px; width: 280px; height: 280px; background: #E6CC94; }
+    .rings span:nth-child(2) { right: -50px; top: -50px; width: 200px; height: 200px; background: #F2A57E; }
+    .rings span:nth-child(3) { right: -10px; top: -10px; width: 120px; height: 120px; background: #C8674A; }
+    .rings span:nth-child(4) { right: 30px; top: 30px; width: 40px; height: 40px; background: #F5E6C8; }
+    @media (max-width: 760px) {
+      .rings { transform: scale(0.34); animation: none; }
+      .mental-grid { grid-template-columns: 1fr !important; }
+    }
+
+    /* feeling suns: one sun on the horizon per feeling */
+    .fsun { position: relative; width: 104px; height: 62px; margin: 6px 0 22px 10px; transform: scale(1.25); transform-origin: 0 50%; }
+    .fsun-sky { position: absolute; left: 0; right: 0; top: 0; height: 46px; overflow: hidden; }
+    .fsun-disc {
+      position: absolute; left: 50%; bottom: calc(-36px * var(--sink, 0.42));
+      width: 36px; height: 36px; margin-left: -18px; border-radius: 50%;
+      background: var(--hue); opacity: var(--dim, 1);
+    }
+    .fsun-line { position: absolute; left: 0; right: 0; top: 46px; height: 1px; background: linear-gradient(90deg, rgba(10,29,54,0), rgba(10,29,54,0.4) 25%, rgba(10,29,54,0.4) 75%, rgba(10,29,54,0)); }
+    .fsun-bar { position: absolute; left: 50%; top: 54px; width: 30px; height: 2px; margin-left: -15px; border-radius: 2px; background: var(--hue); opacity: 0.55; animation: shimmer 4.5s ease-in-out infinite alternate; }
+    .fsun-cloud {
+      position: absolute; left: 54%; bottom: 0; width: 34px; height: 13px;
+      border-radius: 17px 17px 0 0; background: var(--card); border: 1px solid var(--hue); border-bottom: none;
+      animation: driftX var(--speed, 5s) ease-in-out infinite alternate;
+    }
+    .fsun-bite { position: absolute; left: calc(50% - 6px); bottom: 12px; width: 30px; height: 30px; border-radius: 50%; background: var(--card); }
+    .fsun-star { position: absolute; width: 3px; height: 3px; border-radius: 50%; background: rgba(10,29,54,0.5); }
+
+    /* hormone line motifs */
+    .hormone-motif { width: 46px; height: 46px; flex-shrink: 0; margin-top: 2px; }
+    .hormone-motif .turn { transform-origin: 32px 32px; animation: turn 60s linear infinite; }
+    .hormone-motif .ripple { transform-origin: 32px 32px; animation: ripple 5s ease-in-out infinite alternate; }
+
+    /* marks on the three coloured tiles */
+    .step-mark { width: 92px; height: 66px; margin-bottom: 20px; display: block; overflow: visible; }
+    .step-mark .cloud { animation: thought 4.5s linear infinite; }
+    .step-mark .d1 { animation: thoughtDot1 4.5s linear infinite; }
+    .step-mark .d2 { animation: thoughtDot2 4.5s linear infinite; }
+    .step-mark .br { transform-origin: 17px 17px; animation: breatheRing 6s ease-in-out infinite alternate; }
+    .step-mark .tl { animation: driftX 5s ease-in-out infinite alternate; }
+    .step-mark .tr { animation: driftXr 5s ease-in-out infinite alternate; }
+    .step-mark .tg { animation: glowIn 5s ease-in-out infinite alternate; }
+
+    /* the 35 markers */
+    .dutch-dots { width: 210px; max-width: 70%; height: auto; display: block; margin-bottom: 26px; }
+
     /* the hero is a flex box, so its container needs an explicit width to line up with the other sections */
     .hero > .container { width: 100%; }
     @media (min-width: 900px) {
@@ -1498,6 +1636,7 @@ const bodyHTML = `
   <section class="employers" id="employers">
     <div class="container">
       <div class="employers-card reveal">
+        <div class="rings" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
         <p class="eyebrow" style="text-align:left;">For employers</p>
         <h2 class="employers-title">Menopause action plans are coming.<br /><em>Is your team ready?</em></h2>
         <p class="employers-body">From spring 2027, UK employers with 250 or more staff are expected to publish an action plan showing how they support employees through menopause. Ormi gives the women in your team a place to understand how they feel and what helps. We offer flexible packages to suit your organisation.</p>
@@ -1512,7 +1651,7 @@ const bodyHTML = `
 
   <!-- ── Feelings section ── -->
   <!-- Symptoms named here are listed by the NHS: nhs.uk/conditions/menopause/symptoms (reviewed 19 May 2026) -->
-  <section>
+  <section class="light">
     <div class="container">
       <p class="eyebrow">Sound familiar?</p>
       <h2 class="section-title">If you don't feel like yourself lately,<br /><em>you're not alone.</em></h2>
@@ -1520,26 +1659,32 @@ const bodyHTML = `
 
       <div class="feelings-grid">
         <div class="feeling-card reveal">
+          <div class="fsun" aria-hidden="true" style="--hue:#E08A5E; --sink:0.42; --dim:1;"><div class="fsun-sky"><span class="fsun-disc"></span><span class="fsun-cloud" style="--speed:2.4s;"></span></div><span class="fsun-line"></span><span class="fsun-bar"></span></div>
           <p class="feeling-text">"I feel anxious all the time and I don't know why."</p>
           <p class="feeling-reframe">Anxiety can be part of perimenopause. A daily check-in helps you see when it shows up.</p>
         </div>
         <div class="feeling-card reveal">
+          <div class="fsun" aria-hidden="true" style="--hue:#D9AE5C; --sink:0.2; --dim:1;"><div class="fsun-sky"><span class="fsun-disc"></span><span class="fsun-bite"></span><span class="fsun-star" style="left:18%;top:10px;"></span><span class="fsun-star" style="left:80%;top:6px;"></span></div><span class="fsun-line"></span><span class="fsun-bar"></span></div>
           <p class="feeling-text">"I wake up at 3am with my heart racing. I'm exhausted but I can't sleep."</p>
           <p class="feeling-reframe">Sleep problems are a common symptom. Ormi brings your sleep, your check-ins and your wearable together.</p>
         </div>
         <div class="feeling-card reveal">
+          <div class="fsun" aria-hidden="true" style="--hue:#F2A57E; --sink:0.42; --dim:0.75;"><div class="fsun-sky"><span class="fsun-disc"></span></div><span class="fsun-line"></span><span class="fsun-bar"></span></div>
           <p class="feeling-text">"My GP said my bloods are normal, but something is clearly not right."</p>
           <p class="feeling-reframe">Ormi helps you build a record of how you feel over time, to take to your GP.</p>
         </div>
         <div class="feeling-card reveal">
+          <div class="fsun" aria-hidden="true" style="--hue:#C8674A; --sink:0.42; --dim:1;"><div class="fsun-sky"><span class="fsun-disc"></span><span class="fsun-cloud" style="--speed:2.4s;"></span></div><span class="fsun-line"></span><span class="fsun-bar"></span></div>
           <p class="feeling-text">"I snap at my kids and then cry about it. I don't recognise myself."</p>
           <p class="feeling-reframe">Mood swings are a recognised symptom. Seeing the pattern makes it easier to talk about.</p>
         </div>
         <div class="feeling-card reveal">
+          <div class="fsun" aria-hidden="true" style="--hue:#B4553A; --sink:0.72; --dim:0.7;"><div class="fsun-sky"><span class="fsun-disc"></span></div><span class="fsun-line"></span><span class="fsun-bar"></span></div>
           <p class="feeling-text">"I'm so tired all the time. Coffee doesn't even touch it."</p>
           <p class="feeling-reframe">Ormi helps you see how your sleep and your energy move together.</p>
         </div>
         <div class="feeling-card reveal">
+          <div class="fsun" aria-hidden="true" style="--hue:#D9AE5C; --sink:0.42; --dim:0.6;"><div class="fsun-sky"><span class="fsun-disc"></span><span class="fsun-cloud" style="--speed:5s;"></span></div><span class="fsun-line"></span><span class="fsun-bar"></span></div>
           <p class="feeling-text">"My brain just isn't working. I forget words. I lose my train of thought."</p>
           <p class="feeling-reframe">The NHS calls this brain fog, and lists it as a common symptom. You're not making it up.</p>
         </div>
@@ -1604,28 +1749,28 @@ const bodyHTML = `
         </div>
         <div class="messenger-hormones">
           <div class="hormone-row reveal">
-            <div class="hormone-dot" style="background:#C8674A;"></div>
+            <svg class="hormone-motif" viewBox="0 0 64 64" aria-hidden="true"><g class="turn" stroke="#E08A5E" stroke-width="1.8" fill="none"><ellipse cx="32" cy="19" rx="7" ry="13" transform="rotate(0 32 32)"/><ellipse cx="32" cy="19" rx="7" ry="13" transform="rotate(72 32 32)"/><ellipse cx="32" cy="19" rx="7" ry="13" transform="rotate(144 32 32)"/><ellipse cx="32" cy="19" rx="7" ry="13" transform="rotate(216 32 32)"/><ellipse cx="32" cy="19" rx="7" ry="13" transform="rotate(288 32 32)"/><circle cx="32" cy="32" r="3.5" fill="#E08A5E"/></g></svg>
             <div>
               <div class="hormone-name">Oestrogen</div>
               <div class="hormone-what">Levels rise and fall through the cycle, and become less predictable in perimenopause.</div>
             </div>
           </div>
           <div class="hormone-row reveal">
-            <div class="hormone-dot" style="background:#E6CC94;"></div>
+            <svg class="hormone-motif" viewBox="0 0 64 64" aria-hidden="true"><g stroke="#E6CC94" stroke-width="1.8" fill="none"><circle cx="32" cy="32" r="5" fill="#E6CC94"/><circle cx="32" cy="32" r="13"/><g class="ripple"><circle cx="32" cy="32" r="22" opacity="0.6"/><circle cx="32" cy="32" r="30" opacity="0.3"/></g></g></svg>
             <div>
               <div class="hormone-name">Progesterone</div>
               <div class="hormone-what">Made after ovulation each cycle. Levels change as cycles become irregular.</div>
             </div>
           </div>
           <div class="hormone-row reveal">
-            <div class="hormone-dot" style="background:#D9AE5C;"></div>
+            <svg class="hormone-motif" viewBox="0 0 64 64" aria-hidden="true"><g stroke="#D9AE5C" stroke-width="4" stroke-linecap="round"><circle cx="14" cy="14" r="6" fill="#D9AE5C" stroke="none"/><line x1="14" y1="56" x2="14" y2="20"/><line x1="23" y1="56" x2="23" y2="27"/><line x1="32" y1="56" x2="32" y2="34"/><line x1="41" y1="56" x2="41" y2="41"/><line x1="50" y1="56" x2="50" y2="48"/></g></svg>
             <div>
               <div class="hormone-name">Cortisol</div>
               <div class="hormone-what">Often called the stress hormone. It normally follows a daily rhythm, higher in the morning and lower at night.</div>
             </div>
           </div>
           <div class="hormone-row reveal">
-            <div class="hormone-dot" style="background:#C3D0E0;"></div>
+            <svg class="hormone-motif" viewBox="0 0 64 64" aria-hidden="true"><g stroke="#C3D0E0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M16 52 L32 38 L48 52" opacity="0.4"/><path d="M16 40 L32 26 L48 40" opacity="0.7"/><path d="M16 28 L32 14 L48 28"/></g></svg>
             <div>
               <div class="hormone-name">DHEA, testosterone, melatonin + more</div>
               <div class="hormone-what">The DUTCH test also looks at these, along with how hormones are broken down.</div>
@@ -1646,16 +1791,19 @@ const bodyHTML = `
       <div class="steps-grid">
         <div class="step reveal">
           <div class="step-num">1</div>
+          <svg class="step-mark" viewBox="0 0 26 24" aria-hidden="true"><g class="cloud" fill="#0A1D36"><circle cx="11" cy="9" r="5"/><circle cx="17" cy="8" r="5.5"/><circle cx="21" cy="11.5" r="3.6"/><circle cx="8" cy="12" r="3.6"/><rect x="8" y="10" width="13" height="5.6" rx="2.8"/></g><circle class="d1" cx="7" cy="17.6" r="1.9" fill="#0A1D36"/><circle class="d2" cx="4.6" cy="20.4" r="1.2" fill="#0A1D36"/></svg>
           <h3 class="step-title">Translate</h3>
           <p class="step-body">A daily check-in in words, not scores. Your hormone portrait. Patterns across your wearable, your symptoms and your life.</p>
         </div>
         <div class="step reveal">
           <div class="step-num">2</div>
+          <svg class="step-mark" viewBox="0 0 34 34" aria-hidden="true"><g fill="none" stroke="#0A1D36" stroke-width="1.3" stroke-linecap="round"><circle cx="17" cy="17" r="4"/><g class="br"><circle cx="17" cy="17" r="9" opacity="0.7"/><circle cx="17" cy="17" r="13" opacity="0.35"/></g></g></svg>
           <h3 class="step-title">Act</h3>
           <p class="step-body">A daily plan with CBT-based tools, nervous system tools and wind-down for sleep.</p>
         </div>
         <div class="step reveal">
           <div class="step-num">3</div>
+          <svg class="step-mark" viewBox="0 0 110 74" aria-hidden="true"><circle class="tl" cx="38" cy="37" r="32" fill="none" stroke="#0A1D36" stroke-width="1.8"/><circle class="tr" cx="72" cy="37" r="32" fill="rgba(10,29,54,0.10)" stroke="#0A1D36" stroke-width="1.8"/><circle class="tg" cx="55" cy="37" r="4.5" fill="#FFF6E6"/></svg>
           <h3 class="step-title">Connect</h3>
           <p class="step-body">Live coaching and community, synced wearables, at-home DUTCH testing and a GP review of your results.</p>
         </div>
@@ -1740,6 +1888,7 @@ const bodyHTML = `
           <a href="#final-waitlist" class="btn-gold" style="display:inline-block; text-decoration:none;">Join the waitlist</a>
         </div>
         <div class="dutch-markers">
+          <svg class="dutch-dots" viewBox="0 0 92 70" role="img" aria-label="35 dots, one for each hormone and metabolite the DUTCH Complete test measures"><circle cx="8.0" cy="7" r="3.2" fill="#F5E6C8"/><circle cx="20.7" cy="7" r="3.2" fill="#E08A5E"/><circle cx="33.4" cy="7" r="3.2" fill="#D9AE5C"/><circle cx="46.1" cy="7" r="3.2" fill="#F2A57E"/><circle cx="58.8" cy="7" r="3.2" fill="#FFF6E6"/><circle cx="71.5" cy="7" r="3.2" fill="#F5E6C8"/><circle cx="84.2" cy="7" r="3.2" fill="#E08A5E"/><circle cx="8.0" cy="21" r="3.2" fill="#D9AE5C"/><circle cx="20.7" cy="21" r="3.2" fill="#F2A57E"/><circle cx="33.4" cy="21" r="3.2" fill="#FFF6E6"/><circle cx="46.1" cy="21" r="3.2" fill="#F5E6C8"/><circle cx="58.8" cy="21" r="3.2" fill="#E08A5E"/><circle cx="71.5" cy="21" r="3.2" fill="#D9AE5C"/><circle cx="84.2" cy="21" r="3.2" fill="#F2A57E"/><circle cx="8.0" cy="35" r="3.2" fill="#FFF6E6"/><circle cx="20.7" cy="35" r="3.2" fill="#F5E6C8"/><circle cx="33.4" cy="35" r="3.2" fill="#E08A5E"/><circle cx="46.1" cy="35" r="3.2" fill="#D9AE5C"/><circle cx="58.8" cy="35" r="3.2" fill="#F2A57E"/><circle cx="71.5" cy="35" r="3.2" fill="#FFF6E6"/><circle cx="84.2" cy="35" r="3.2" fill="#F5E6C8"/><circle cx="8.0" cy="49" r="3.2" fill="#E08A5E"/><circle cx="20.7" cy="49" r="3.2" fill="#D9AE5C"/><circle cx="33.4" cy="49" r="3.2" fill="#F2A57E"/><circle cx="46.1" cy="49" r="3.2" fill="#FFF6E6"/><circle cx="58.8" cy="49" r="3.2" fill="#F5E6C8"/><circle cx="71.5" cy="49" r="3.2" fill="#E08A5E"/><circle cx="84.2" cy="49" r="3.2" fill="#D9AE5C"/><circle cx="8.0" cy="63" r="3.2" fill="#F2A57E"/><circle cx="20.7" cy="63" r="3.2" fill="#FFF6E6"/><circle cx="33.4" cy="63" r="3.2" fill="#F5E6C8"/><circle cx="46.1" cy="63" r="3.2" fill="#E08A5E"/><circle cx="58.8" cy="63" r="3.2" fill="#D9AE5C"/><circle cx="71.5" cy="63" r="3.2" fill="#F2A57E"/><circle cx="84.2" cy="63" r="3.2" fill="#FFF6E6"/></svg>
           <p style="font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold-text); margin-bottom:12px; font-weight:500;">What DUTCH measures</p>
           <div class="dutch-marker"><div class="dutch-marker-dot"></div><div class="dutch-marker-text"><strong>Sex hormones</strong>: oestrogen, progesterone and testosterone, and how they are broken down.</div></div>
           <div class="dutch-marker"><div class="dutch-marker-dot"></div><div class="dutch-marker-text"><strong>Daily cortisol pattern</strong>: free cortisol measured across the day, not at a single point.</div></div>
@@ -1753,7 +1902,7 @@ const bodyHTML = `
   </section>
 
   <!-- ── Pricing ── -->
-  <section>
+  <section class="light">
     <div class="container">
       <p class="eyebrow">Pricing</p>
       <h2 class="section-title">Start free.<br /><em>Go deeper when you're ready.</em></h2>
