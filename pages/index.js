@@ -49,7 +49,7 @@ const css = `
     .serif { font-family: 'Instrument Serif', serif; font-weight: 300; }
 
     /* ── Layout ── */
-    .container { max-width: 920px; margin: 0 auto; padding: 0 28px; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
     section { padding: 88px 0; }
 
     /* ── Nav ── */
@@ -89,7 +89,7 @@ const css = `
     }
 
     .nav-cta {
-      font-size: 11px;
+      font-size: 13px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--gold-text);
@@ -127,11 +127,11 @@ const css = `
     .hero-content {
       position: relative;
       z-index: 2;
-      max-width: 700px;
+      max-width: 780px;
     }
 
     .hero-eyebrow {
-      font-size: 10px;
+      font-size: 12px;
       letter-spacing: 0.24em;
       text-transform: uppercase;
       color: var(--gold-text);
@@ -152,7 +152,7 @@ const css = `
 
     .hero-headline {
       font-family: 'Instrument Serif', serif;
-      font-size: clamp(44px, 7.5vw, 76px);
+      font-size: clamp(44px, 7.2vw, 92px);
       font-weight: 300;
       color: var(--champagne);
       line-height: 1.1;
@@ -166,7 +166,7 @@ const css = `
 
     .hero-headline-sub {
       font-family: 'Instrument Serif', serif;
-      font-size: clamp(18px, 3vw, 26px);
+      font-size: clamp(20px, 2.6vw, 30px);
       font-weight: 300;
       font-style: italic;
       color: var(--white50);
@@ -175,11 +175,11 @@ const css = `
     }
 
     .hero-sub {
-      font-size: 16px;
+      font-size: 18px;
       color: var(--white50);
-      line-height: 1.75;
-      max-width: 540px;
-      margin-bottom: 48px;
+      line-height: 1.7;
+      max-width: 640px;
+      margin-bottom: 44px;
       font-weight: 300;
     }
 
@@ -205,7 +205,7 @@ const css = `
       border-radius: 40px;
       padding: 14px 22px;
       font-family: 'Work Sans', sans-serif;
-      font-size: 14px;
+      font-size: 16px;
       color: var(--champagne);
       outline: none;
       transition: border-color 0.2s;
@@ -224,7 +224,7 @@ const css = `
       border-radius: 40px;
       padding: 14px 28px;
       font-family: 'Work Sans', sans-serif;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -239,7 +239,7 @@ const css = `
     .prelaunch-note {
       max-width: 500px;
       margin-bottom: 18px;
-      font-size: 14px;
+      font-size: 16px;
       line-height: 1.6;
       color: var(--white70);
       font-weight: 400;
@@ -247,7 +247,7 @@ const css = `
 
     .form-note {
       margin-top: 12px;
-      font-size: 11px;
+      font-size: 13px;
       color: var(--white30);
       font-style: italic;
     }
@@ -258,37 +258,37 @@ const css = `
       background: var(--sky-dim);
       border: 1px solid var(--sky-border);
       border-radius: 14px;
-      font-size: 14px;
+      font-size: 16px;
       color: var(--sky-text);
       max-width: 500px;
     }
 
     /* ── Section headers ── */
     .eyebrow {
-      font-size: 10px;
+      font-size: 12px;
       letter-spacing: 0.24em;
       text-transform: uppercase;
       color: var(--gold-text);
-      text-align: center;
+      text-align: left;
       margin-bottom: 18px;
     }
 
     .section-title {
       font-family: 'Instrument Serif', serif;
-      font-size: clamp(34px, 5.5vw, 56px);
+      font-size: clamp(34px, 5.2vw, 66px);
       font-weight: 300;
       color: var(--champagne);
-      text-align: center;
-      line-height: 1.15;
-      margin-bottom: 18px;
+      text-align: left;
+      line-height: 1.1;
+      margin-bottom: 20px;
     }
 
     .section-sub {
-      font-size: 16px;
+      font-size: 18px;
       color: var(--white50);
-      text-align: center;
-      max-width: 560px;
-      margin: 0 auto 60px;
+      text-align: left;
+      max-width: 680px;
+      margin: 0 0 56px;
       line-height: 1.75;
       font-weight: 300;
     }
@@ -329,7 +329,7 @@ const css = `
     }
 
     .val-label {
-      font-size: 12px;
+      font-size: 14px;
       color: var(--white50);
       line-height: 1.6;
       font-weight: 300;
@@ -338,7 +338,7 @@ const css = `
     }
 
     .val-source {
-      font-size: 10px;
+      font-size: 12px;
       color: var(--white30);
       font-style: italic;
       margin-top: 6px;
@@ -378,7 +378,7 @@ const css = `
 
     .feeling-text {
       font-family: 'Instrument Serif', serif;
-      font-size: 18px;
+      font-size: 20px;
       font-style: italic;
       color: var(--white70);
       line-height: 1.55;
@@ -389,7 +389,7 @@ const css = `
     }
 
     .feeling-reframe {
-      font-size: 12px;
+      font-size: 14px;
       color: var(--gold-text);
       font-weight: 400;
       letter-spacing: 0.04em;
@@ -429,7 +429,7 @@ const css = `
     }
 
     .messenger-body {
-      font-size: 15px;
+      font-size: 17px;
       color: var(--white50);
       line-height: 1.8;
       font-weight: 300;
@@ -464,14 +464,14 @@ const css = `
     }
 
     .hormone-name {
-      font-size: 13px;
+      font-size: 16px;
       color: var(--white90);
       font-weight: 400;
       margin-bottom: 2px;
     }
 
     .hormone-what {
-      font-size: 12px;
+      font-size: 14px;
       color: var(--white50);
       line-height: 1.5;
       font-weight: 300;
@@ -484,10 +484,10 @@ const css = `
       font-style: italic;
       font-weight: 300;
       color: var(--champagne);
-      text-align: center;
-      line-height: 1.5;
-      max-width: 700px;
-      margin: 0 auto 48px;
+      text-align: left;
+      line-height: 1.4;
+      max-width: 860px;
+      margin: 0 0 48px;
     }
 
     .mental-grid {
@@ -520,14 +520,14 @@ const css = `
 
     .mental-title {
       font-family: 'Instrument Serif', serif;
-      font-size: 20px;
+      font-size: 22px;
       color: var(--champagne);
       margin-bottom: 8px;
       font-weight: 400;
     }
 
     .mental-body {
-      font-size: 13px;
+      font-size: 16px;
       color: var(--white50);
       line-height: 1.7;
       font-weight: 300;
@@ -566,7 +566,7 @@ const css = `
 
     .step-title {
       font-family: 'Instrument Serif', serif;
-      font-size: 21px;
+      font-size: 24px;
       color: var(--champagne);
       margin-bottom: 10px;
       font-weight: 400;
@@ -574,7 +574,7 @@ const css = `
     }
 
     .step-body {
-      font-size: 13px;
+      font-size: 16px;
       color: var(--white50);
       line-height: 1.7;
       font-weight: 300;
@@ -582,7 +582,7 @@ const css = `
 
     .step-tag {
       display: inline-block;
-      font-size: 9px;
+      font-size: 12px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--gold-text);
@@ -624,14 +624,14 @@ const css = `
 
     .stage-name {
       font-family: 'Instrument Serif', serif;
-      font-size: 20px;
+      font-size: 22px;
       color: var(--champagne);
       margin-bottom: 8px;
       font-weight: 400;
     }
 
     .stage-body {
-      font-size: 12px;
+      font-size: 14px;
       color: var(--white50);
       line-height: 1.65;
       font-weight: 300;
@@ -665,7 +665,7 @@ const css = `
     .dutch-title em { font-style: italic; color: var(--gold); }
 
     .dutch-body {
-      font-size: 14px;
+      font-size: 16px;
       color: var(--white50);
       line-height: 1.8;
       font-weight: 300;
@@ -681,7 +681,7 @@ const css = `
     }
 
     .dutch-clinic-label {
-      font-size: 9px;
+      font-size: 12px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--sky-text);
@@ -690,7 +690,7 @@ const css = `
     }
 
     .dutch-clinic-text {
-      font-size: 13px;
+      font-size: 16px;
       color: var(--white60, rgba(245,230,200,0.60));
       line-height: 1.6;
       font-weight: 300;
@@ -720,7 +720,7 @@ const css = `
     }
 
     .dutch-marker-text {
-      font-size: 13px;
+      font-size: 16px;
       color: var(--white50);
       line-height: 1.6;
       font-weight: 300;
@@ -757,7 +757,7 @@ const css = `
       top: -13px;
       left: 50%;
       transform: translateX(-50%);
-      font-size: 9px;
+      font-size: 12px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--obsidian);
@@ -769,7 +769,7 @@ const css = `
     }
 
     .pricing-tier {
-      font-size: 10px;
+      font-size: 12px;
       letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--gold-text);
@@ -787,7 +787,7 @@ const css = `
     }
 
     .pricing-price-note {
-      font-size: 12px;
+      font-size: 14px;
       color: var(--white30);
       margin-bottom: 24px;
       font-weight: 300;
@@ -812,7 +812,7 @@ const css = `
       display: flex;
       align-items: flex-start;
       gap: 10px;
-      font-size: 13px;
+      font-size: 16px;
       color: var(--white50);
       font-weight: 300;
       line-height: 1.5;
@@ -822,12 +822,12 @@ const css = `
       content: '✓';
       color: var(--gold);
       flex-shrink: 0;
-      font-size: 11px;
+      font-size: 13px;
       margin-top: 2px;
     }
 
     .pricing-clinic-note {
-      font-size: 11px;
+      font-size: 13px;
       color: var(--white30);
       font-style: italic;
       line-height: 1.6;
@@ -836,7 +836,7 @@ const css = `
     }
 
     .pricing-tbc {
-      font-size: 11px;
+      font-size: 13px;
       color: var(--gold-text);
       letter-spacing: 0.08em;
       font-style: italic;
@@ -874,7 +874,7 @@ const css = `
     .final-headline em { font-style: italic; color: var(--gold); }
 
     .final-sub {
-      font-size: 16px;
+      font-size: 18px;
       color: var(--white50);
       max-width: 480px;
       margin: 0 auto 48px;
@@ -927,7 +927,7 @@ const css = `
     }
 
     .footer-note {
-      font-size: 11px;
+      font-size: 13px;
       color: var(--white30);
       font-weight: 300;
     }
@@ -935,7 +935,7 @@ const css = `
     .footer-links { display: flex; gap: 22px; }
 
     .footer-links a {
-      font-size: 12px;
+      font-size: 14px;
       color: var(--white30);
       text-decoration: none;
       transition: color 0.2s;
@@ -1001,13 +1001,13 @@ const css = `
     }
     .banner-wordmark {
       font-family: 'Instrument Serif', Georgia, serif;
-      font-size: 20px;
+      font-size: 22px;
       font-weight: 400;
       color: #0A1D36;
     }
     .banner-dismiss {
       color: rgba(10,29,54,0.35);
-      font-size: 22px;
+      font-size: 24px;
       cursor: pointer;
       background: none;
       border: none;
@@ -1026,7 +1026,7 @@ const css = `
     }
     .banner-body {
       font-family: 'Work Sans', sans-serif;
-      font-size: 13px;
+      font-size: 16px;
       font-weight: 300;
       color: rgba(10,29,54,0.55);
       line-height: 1.6;
@@ -1035,12 +1035,18 @@ const css = `
 
     .form-error {
       margin-top: 12px;
-      font-size: 13px;
+      font-size: 16px;
       line-height: 1.6;
       color: var(--sky-text);
       max-width: 500px;
     }
     .final-content .form-error { margin-left: auto; margin-right: auto; }
+
+    /* the hero is a flex box, so its container needs an explicit width to line up with the other sections */
+    .hero > .container { width: 100%; }
+    @media (min-width: 900px) {
+      .feelings-grid { grid-template-columns: repeat(3, 1fr) !important; }
+    }
 
     /* ── Sun on the horizon (the app's signature motif: Sun.tsx, Home.tsx) ── */
     .sunrise {
@@ -1128,10 +1134,10 @@ const css = `
 
     @media (min-width: 1100px) {
       .hero .sunrise {
-        --sun: 260px;
+        --sun: 280px;
         position: absolute;
-        left: 600px;
-        top: 14px;
+        left: clamp(660px, calc(100vw - 460px), 800px);
+        top: 20px;
         margin: 0;
       }
     }
@@ -1173,7 +1179,7 @@ const css = `
     }
     .orb-wrap.is-active .orb-centre { color: var(--ink); }
     .orb-count { font-family: 'Instrument Serif', serif; font-size: 48px; line-height: 1.1; min-height: 4px; }
-    .orb-label { font-size: 15px; font-weight: 600; }
+    .orb-label { font-size: 17px; font-weight: 600; }
     button.btn-ghost { background: transparent; font-family: inherit; cursor: pointer; }
     @media (max-width: 760px) {
       .breath-grid { grid-template-columns: 1fr; gap: 28px; }
@@ -1189,7 +1195,7 @@ const css = `
     /* ── Nav links ── */
     .nav-right { display: flex; align-items: center; gap: 22px; }
     .nav-link {
-      font-size: 11px;
+      font-size: 13px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--white50);
@@ -1208,7 +1214,7 @@ const css = `
       padding: 8px 16px;
       border: 1px solid var(--gold-border);
       border-radius: 40px;
-      font-size: 10px;
+      font-size: 12px;
       font-weight: 500;
       letter-spacing: 0.2em;
       text-transform: uppercase;
@@ -1241,7 +1247,7 @@ const css = `
     }
     .employers-title em { font-style: italic; color: var(--gold); }
     .employers-body {
-      font-size: 16px;
+      font-size: 18px;
       color: var(--white50);
       line-height: 1.75;
       max-width: 620px;
@@ -1253,7 +1259,7 @@ const css = `
       border: 1px solid var(--gold-border);
       border-radius: 40px;
       padding: 13px 26px;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -1264,7 +1270,7 @@ const css = `
     .btn-ghost:hover { background: var(--gold-dim); }
     .employers-source {
       margin-top: 22px;
-      font-size: 12px;
+      font-size: 14px;
       color: var(--white30);
       line-height: 1.6;
     }
@@ -1300,7 +1306,7 @@ const css = `
       margin-bottom: 4px;
     }
     .founder-role {
-      font-size: 10px;
+      font-size: 12px;
       font-weight: 500;
       letter-spacing: 0.2em;
       text-transform: uppercase;
@@ -1308,7 +1314,7 @@ const css = `
       margin-bottom: 16px;
     }
     .founder-bio {
-      font-size: 15px;
+      font-size: 17px;
       color: var(--white50);
       line-height: 1.7;
     }
@@ -1329,14 +1335,14 @@ const css = `
       line-height: 1.2;
     }
     .ignite-body {
-      font-size: 15px;
+      font-size: 17px;
       color: var(--white50);
       line-height: 1.7;
     }
     .pricing-footnote {
       margin-top: 28px;
-      text-align: center;
-      font-size: 13px;
+      text-align: left;
+      font-size: 15px;
       color: var(--white30);
       line-height: 1.6;
     }
@@ -1734,7 +1740,7 @@ const bodyHTML = `
           <a href="#final-waitlist" class="btn-gold" style="display:inline-block; text-decoration:none;">Join the waitlist</a>
         </div>
         <div class="dutch-markers">
-          <p style="font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold-text); margin-bottom:12px; font-weight:500;">What DUTCH measures</p>
+          <p style="font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold-text); margin-bottom:12px; font-weight:500;">What DUTCH measures</p>
           <div class="dutch-marker"><div class="dutch-marker-dot"></div><div class="dutch-marker-text"><strong>Sex hormones</strong>: oestrogen, progesterone and testosterone, and how they are broken down.</div></div>
           <div class="dutch-marker"><div class="dutch-marker-dot"></div><div class="dutch-marker-text"><strong>Daily cortisol pattern</strong>: free cortisol measured across the day, not at a single point.</div></div>
           <div class="dutch-marker"><div class="dutch-marker-dot"></div><div class="dutch-marker-text"><strong>DHEA</strong>: and other adrenal hormones.</div></div>
@@ -1856,7 +1862,7 @@ const bodyHTML = `
         <button type="submit" class="btn-gold">Join the waitlist</button>
       </form>
       <div id="final-ok" class="success-msg" style="display:none!important; margin:20px auto 0;">You're on the list. We'll be in touch soon.</div>
-      <p style="margin-top:14px; font-size:11px; color:var(--white30); font-style:italic;">No spam. Ever.</p>
+      <p style="margin-top:14px; font-size:13px; color:var(--white30); font-style:italic;">No spam. Ever.</p>
     </div>
   </section>
 
