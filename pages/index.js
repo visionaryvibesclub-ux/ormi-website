@@ -1349,6 +1349,23 @@ const css = `
     .faq-answer { padding: 0 50px 24px 0; font-size: 17px; line-height: 1.7; color: var(--white50); max-width: 640px; animation: riseIn 0.35s ease both; }
     .faq-answer a { color: var(--gold-text); }
 
+    /* ── IGNITE feature band ── */
+    a.hero-badge { text-decoration: none; transition: background 0.2s, border-color 0.2s; }
+    a.hero-badge:hover { background: var(--gold-dim); border-color: var(--gold); }
+    #ignite { scroll-margin-top: 70px; }
+    section.ignite { padding: 56px 0; background: linear-gradient(100deg, #E6CC94 0%, #E8C16E 45%, #F2A57E 100%); }
+    .ignite-inner { display: flex; align-items: center; gap: 44px; }
+    .ignite-medal { width: 190px; height: 190px; flex-shrink: 0; }
+    .ignite-rays { transform-origin: 100px 100px; animation: turn 50s linear infinite; }
+    .ignite-eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: #0A1D36; margin-bottom: 10px; }
+    .ignite-headline { font-family: 'Instrument Serif', serif; font-weight: 400; font-size: clamp(44px, 6.4vw, 88px); line-height: 1; color: #0A1D36; margin-bottom: 14px; }
+    .ignite-headline em { font-style: italic; }
+    .ignite-copy { font-size: 19px; line-height: 1.6; color: rgba(10,29,54,0.88); max-width: 560px; }
+    @media (max-width: 760px) {
+      .ignite-inner { flex-direction: column; align-items: flex-start; gap: 22px; }
+      .ignite-medal { width: 132px; height: 132px; }
+    }
+
     /* the hero is a flex box, so its container needs an explicit width to line up with the other sections */
     .hero > .container { width: 100%; }
     @media (min-width: 900px) {
@@ -1758,7 +1775,7 @@ const bodyHTML = `
           </form>
           <div id="hero-ok" class="success-msg" style="display:none!important;">You're on the list. We'll be in touch soon.</div>
           <p class="form-note">No spam. Ever. Just Ormi when it's ready. See our <a href="/privacy" style="color:inherit;">privacy notice</a>.</p>
-          <p class="hero-badge">IGNITE 2026 finalist</p>
+          <a href="#ignite" class="hero-badge">IGNITE 2026 finalist</a>
         </div>
       </div>
     </div>
@@ -1795,6 +1812,26 @@ const bodyHTML = `
       </div>
     </div>
   </div>
+
+  <!-- ── IGNITE 2026 ── -->
+  <section class="ignite" id="ignite">
+    <div class="container">
+      <div class="ignite-inner">
+        <svg class="ignite-medal" viewBox="0 0 200 200" aria-hidden="true">
+          <g class="ignite-rays" stroke="#0A1D36" stroke-width="3" stroke-linecap="round"><line x1="100" y1="14" x2="100" y2="30" transform="rotate(0 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(15 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(30 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(45 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(60 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(75 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(90 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(105 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(120 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(135 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(150 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(165 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(180 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(195 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(210 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(225 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(240 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(255 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(270 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(285 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(300 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(315 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(330 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(345 100 100)"/></g>
+          <circle cx="100" cy="100" r="62" fill="#0A1D36"/>
+          <circle cx="100" cy="100" r="54" fill="none" stroke="#E6CC94" stroke-width="1.2"/>
+          <text x="100" y="92" text-anchor="middle" font-family="'Instrument Serif', serif" font-size="30" fill="#F5E6C8">2026</text>
+          <text x="100" y="116" text-anchor="middle" font-family="'Work Sans', sans-serif" font-size="11" font-weight="600" letter-spacing="3" fill="#E6CC94">FINALIST</text>
+        </svg>
+        <div>
+          <p class="ignite-eyebrow">Recognition</p>
+          <h2 class="ignite-headline">IGNITE 2026 <em>finalist.</em></h2>
+          <p class="ignite-copy">Ormi was a finalist in IGNITE 2026, run by the Ford Family Foundation and delivered with Cambio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ── Employers ── -->
   <!--
@@ -2228,18 +2265,14 @@ const bodyHTML = `
           <img class="founder-photo" src="/founders/anna-koutras.jpg" alt="Anna Koutras" width="150" height="190" loading="lazy" />
           <h3 class="founder-name">Anna Koutras</h3>
           <p class="founder-role">Co-founder</p>
-          <p class="founder-bio">Anna spent over 13 years making complicated things clear for companies including Revolut, The Body Shop and Unilever. Ormi began when her friends started talking about perimenopause and nobody could find straight answers.</p>
+          <p class="founder-bio">Anna spent over 13 years making complicated things clear for companies including Revolut, The Body Shop and Unilever. Ormi began when she and her friends started talking about perimenopause, and nobody could find straight answers.</p>
         </div>
         <div class="founder-card reveal">
           <img class="founder-photo" src="/founders/emma-whitehouse.jpg" alt="Dr Emma Whitehouse" width="150" height="190" loading="lazy" />
           <h3 class="founder-name">Dr Emma Whitehouse</h3>
           <p class="founder-role">Co-founder</p>
-          <p class="founder-bio">Emma is an NHS GP. She sees women every week who know something has changed and can't yet put a name to it. She leads Ormi's clinical thinking.</p>
+          <p class="founder-bio">Emma trained at Somerville College, Oxford and Guy's, King's and St Thomas' Medical School. She has been a GP for 14 years across the NHS and private practice, with postgraduate training in menopause care and functional medicine. She sees women in clinic who know something has changed and can't yet put a name to it, and she leads Ormi's clinical thinking.</p>
         </div>
-      </div>
-      <div class="ignite-strip reveal">
-        <div class="ignite-title">IGNITE 2026 finalist</div>
-        <p class="ignite-body">Ormi was a finalist in IGNITE 2026, run by the Ford Family Foundation and delivered with Cambio.</p>
       </div>
     </div>
   </section>
