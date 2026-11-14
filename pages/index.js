@@ -119,9 +119,9 @@ const css = `
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 90% 65% at 75% 25%, rgba(217,174,92,0.07) 0%, transparent 55%),
-        radial-gradient(ellipse 60% 55% at 15% 75%, rgba(224,138,94,0.06) 0%, transparent 55%),
-        radial-gradient(ellipse 50% 40% at 50% 50%, rgba(242,165,126,0.04) 0%, transparent 60%);
+        radial-gradient(ellipse 80% 70% at 82% 18%, rgba(200,103,74,0.30) 0%, transparent 60%),
+        radial-gradient(ellipse 55% 50% at 100% 60%, rgba(217,174,92,0.14) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 55% at 10% 90%, rgba(224,138,94,0.10) 0%, transparent 55%);
     }
 
     .hero-content {
@@ -1042,6 +1042,313 @@ const css = `
     }
     .final-content .form-error { margin-left: auto; margin-right: auto; }
 
+    /* ── Colour: champagne sections and coloured tiles, all from the brand palette ── */
+    .light {
+      background: #F5E6C8;
+      --champagne:   #0A1D36;
+      --white90:     #0A1D36;
+      --white70:     rgba(10,29,54,0.92);
+      --white50:     rgba(10,29,54,0.80);
+      --white30:     rgba(10,29,54,0.66);
+      --white15:     rgba(10,29,54,0.16);
+      --gold:        #B4553A;
+      --gold-text:   #0A1D36;
+      --gold-border: rgba(180,85,58,0.40);
+      --gold-dim:    rgba(180,85,58,0.10);
+      --card:        #FFF6E6;
+      --card-border: rgba(10,29,54,0.10);
+    }
+    .light .feeling-card::before { opacity: 0.16; }
+    .light .feeling-card:hover, .light .pricing-card:hover { border-color: rgba(180,85,58,0.40); }
+    .light .feeling-reframe { font-weight: 500; }
+    .light .pricing-badge { background: #B4553A; color: #FFF6E6; }
+    .light .pricing-card.featured {
+      background: #0C2340;
+      border-color: #0C2340;
+      --champagne:   #F5E6C8;
+      --white50:     rgba(195,208,224,0.86);
+      --white30:     rgba(195,208,224,0.70);
+      --gold:        #D9AE5C;
+      --gold-text:   #E6CC94;
+      --card-border: rgba(255,255,255,0.14);
+    }
+    .light .pricing-card.featured .pricing-badge { background: #D9AE5C; color: #0A1D36; }
+
+    /* How it works: three tiles in the app's warm colours */
+    .steps-grid .step {
+      border: none;
+      --champagne: #0A1D36;
+      --white50:   rgba(10,29,54,0.86);
+      --gold:      #0A1D36;
+    }
+    .steps-grid .step:nth-child(1) { background: #E6CC94; }
+    .steps-grid .step:nth-child(2) { background: #F2A57E; }
+    .steps-grid .step:nth-child(3) { background: #E08A5E; }
+    .steps-grid .step-num { opacity: 0.22; }
+    .steps-grid .step-body { font-weight: 400; }
+
+    /* stats: one colour each */
+    .val-item:nth-child(1) .val-stat { color: #E6CC94; }
+    .val-item:nth-child(2) .val-stat { color: #F2A57E; }
+    .val-item:nth-child(3) .val-stat { color: #E08A5E; }
+
+    /* life stages: a coloured edge per stage */
+    .stages-grid .stage-card { border-top: 3px solid var(--stage, #D9AE5C); }
+    .stages-grid .stage-card:nth-child(1) { --stage: #D9AE5C; }
+    .stages-grid .stage-card:nth-child(2) { --stage: #E6CC94; }
+    .stages-grid .stage-card:nth-child(3) { --stage: #C8674A; }
+    .stages-grid .stage-card:nth-child(4) { --stage: #E08A5E; }
+
+    /* employers: terracotta wash */
+    .employers-card {
+      background: linear-gradient(135deg, rgba(200,103,74,0.34) 0%, rgba(224,138,94,0.16) 45%, rgba(15,42,74,0.9) 100%), #0F2A4A !important;
+      border-color: rgba(224,138,94,0.45) !important;
+    }
+
+    .light .section-title em { color: #B4553A; }
+
+    /* ── Graphics ported from the app (explore/motifs.tsx, portrait/HormoneMotif.tsx) ── */
+    @keyframes breatheSoft { from { transform: scale(1); } to { transform: scale(1.04); } }
+    @keyframes breatheRing { from { transform: scale(0.8); } to { transform: scale(1.15); } }
+    @keyframes driftX { from { transform: translateX(-4px); } to { transform: translateX(4px); } }
+    @keyframes driftXr { from { transform: translateX(4px); } to { transform: translateX(-4px); } }
+    @keyframes glowIn { from { opacity: 0.15; } to { opacity: 1; } }
+    @keyframes turn { to { transform: rotate(360deg); } }
+    @keyframes ripple { from { transform: scale(0.92); opacity: 0.9; } to { transform: scale(1.06); opacity: 0.35; } }
+    @keyframes thought {
+      0%, 36% { opacity: 0; transform: translateY(2px); }
+      50%, 84% { opacity: 1; transform: translateY(0); }
+      94%, 100% { opacity: 0; transform: translateY(-0.6px); }
+    }
+    @keyframes thoughtDot1 { 0%, 18% { opacity: 0; } 26%, 84% { opacity: 1; } 94%, 100% { opacity: 0; } }
+    @keyframes thoughtDot2 { 0% { opacity: 0; } 8%, 84% { opacity: 1; } 94%, 100% { opacity: 0; } }
+
+    /* a team of suns on the employer card: five suns, five tempos, one horizon */
+    .employers-card { position: relative; overflow: hidden; }
+    .employers-card > *:not(.team) { position: relative; z-index: 1; }
+    .team {
+      --h: 150px;
+      position: absolute;
+      right: 48px; top: 50%;
+      width: 380px; height: calc(var(--h) + 50px);
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+    .team-sky { position: absolute; left: 0; right: 0; top: 0; height: var(--h); overflow: hidden; }
+    .team-sky span {
+      position: absolute;
+      left: var(--x);
+      bottom: calc(var(--s) * var(--sink) * -1);
+      width: var(--s); height: var(--s);
+      border-radius: 50%;
+      background: var(--hue);
+      animation: teamFloat var(--t) ease-in-out infinite alternate;
+    }
+    .team-line {
+      position: absolute; left: -4%; right: -4%; top: var(--h); height: 1px;
+      background: linear-gradient(90deg, rgba(245,230,200,0), rgba(245,230,200,0.5) 25%, rgba(245,230,200,0.5) 75%, rgba(245,230,200,0));
+    }
+    .team-bars { position: absolute; left: 0; right: 0; top: calc(var(--h) + 13px); display: flex; flex-direction: column; align-items: center; gap: 9px; }
+    .team-bars i { display: block; height: 3px; border-radius: 2px; background: rgba(239,211,155,0.5); width: 62%; animation: shimmer 4.5s ease-in-out infinite alternate; }
+    .team-bars i:nth-child(2) { width: 38%; background: rgba(239,211,155,0.32); animation-duration: 5.2s; animation-delay: 0.5s; }
+    .team-bars i:nth-child(3) { width: 17%; background: rgba(239,211,155,0.2); animation-duration: 5.9s; animation-delay: 1s; }
+    @keyframes teamFloat { from { transform: translateY(7px); } to { transform: translateY(-9px); } }
+    @media (max-width: 1080px) {
+      .team { --h: 104px; position: relative; right: auto; top: auto; transform: none; width: 100%; max-width: 380px; margin-bottom: 26px; }
+    }
+    @media (max-width: 760px) {
+      .mental-grid { grid-template-columns: 1fr !important; }
+    }
+
+    /* the DUTCH card: a warm sunrise wash with navy type */
+    .dutch-wrap {
+      background: linear-gradient(135deg, #F2A57E 0%, #EDBE8C 52%, #E6CC94 100%) !important;
+      border: none !important;
+      --champagne: #0A1D36;
+      --white90:   #0A1D36;
+      --white70:   #0A1D36;
+      --white60:   rgba(10,29,54,0.88);
+      --white50:   rgba(10,29,54,0.88);
+      --white30:   rgba(10,29,54,0.74);
+      --gold:      #0A1D36;
+      --gold-text: #0A1D36;
+      --sky-text:  #0A1D36;
+      --sky-dim:   rgba(255,246,230,0.55);
+      --sky-border: rgba(10,29,54,0.16);
+    }
+    .dutch-wrap .dutch-body, .dutch-wrap .dutch-marker-text, .dutch-wrap .dutch-clinic-text { font-weight: 400; }
+    .dutch-dots circle { animation: twinkle 3.2s ease-in-out infinite alternate; animation-delay: calc(var(--i) * 120ms); }
+    @keyframes twinkle { from { opacity: 1; } to { opacity: 0.28; } }
+
+    /* life stages: the perimenopause dot pulses, since that is where Ormi starts */
+    .stages-grid .stage-dot { position: relative; width: 9px; height: 9px; }
+    .stages-grid .stage-card:nth-child(3) .stage-dot::after {
+      content: '';
+      position: absolute; inset: 0;
+      border-radius: 50%;
+      background: #E08A5E;
+      animation: livePulse 1.8s ease-out infinite;
+    }
+    @keyframes livePulse { from { transform: scale(1); opacity: 0.85; } to { transform: scale(3.2); opacity: 0; } }
+
+    /* feeling suns: one sun on the horizon per feeling */
+    .fsun { position: relative; width: 104px; height: 62px; margin: 6px 0 22px 10px; transform: scale(1.25); transform-origin: 0 50%; }
+    .fsun-sky { position: absolute; left: 0; right: 0; top: 0; height: 46px; overflow: hidden; }
+    .fsun-disc {
+      position: absolute; left: 50%; bottom: calc(-36px * var(--sink, 0.42));
+      width: 36px; height: 36px; margin-left: -18px; border-radius: 50%;
+      background: var(--hue); opacity: var(--dim, 1);
+    }
+    .fsun-line { position: absolute; left: 0; right: 0; top: 46px; height: 1px; background: linear-gradient(90deg, rgba(10,29,54,0), rgba(10,29,54,0.4) 25%, rgba(10,29,54,0.4) 75%, rgba(10,29,54,0)); }
+    .fsun-bar { position: absolute; left: 50%; top: 54px; width: 30px; height: 2px; margin-left: -15px; border-radius: 2px; background: var(--hue); opacity: 0.55; animation: shimmer 4.5s ease-in-out infinite alternate; }
+    .fsun-cloud {
+      position: absolute; left: 54%; bottom: 0; width: 34px; height: 13px;
+      border-radius: 17px 17px 0 0; background: var(--card); border: 1px solid var(--hue); border-bottom: none;
+      animation: driftX var(--speed, 5s) ease-in-out infinite alternate;
+    }
+    .fsun-bite { position: absolute; left: calc(50% - 6px); bottom: 12px; width: 30px; height: 30px; border-radius: 50%; background: var(--card); }
+    .fsun-star { position: absolute; width: 3px; height: 3px; border-radius: 50%; background: rgba(10,29,54,0.5); }
+
+    /* hormone line motifs */
+    .hormone-motif { width: 46px; height: 46px; flex-shrink: 0; margin-top: 2px; }
+    .hormone-motif .turn { transform-origin: 32px 32px; animation: turn 60s linear infinite; }
+    .hormone-motif .ripple { transform-origin: 32px 32px; animation: ripple 5s ease-in-out infinite alternate; }
+
+    /* marks on the three coloured tiles */
+    .step-mark { width: 92px; height: 66px; margin-bottom: 20px; display: block; overflow: visible; }
+    .step-mark .cloud { animation: thought 4.5s linear infinite; }
+    .step-mark .d1 { animation: thoughtDot1 4.5s linear infinite; }
+    .step-mark .d2 { animation: thoughtDot2 4.5s linear infinite; }
+    .step-mark .br { transform-origin: 17px 17px; animation: breatheRing 6s ease-in-out infinite alternate; }
+    .step-mark .tl { animation: driftX 5s ease-in-out infinite alternate; }
+    .step-mark .tr { animation: driftXr 5s ease-in-out infinite alternate; }
+    .step-mark .tg { animation: glowIn 5s ease-in-out infinite alternate; }
+
+    /* the 35 markers */
+    .dutch-dots { width: 210px; max-width: 70%; height: auto; display: block; margin-bottom: 26px; }
+
+    /* ── Always up to date ── */
+    .living-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    @media (max-width: 900px) { .living-grid { grid-template-columns: 1fr; gap: 36px; } }
+    .living-card {
+      background: linear-gradient(160deg, rgba(200,103,74,0.22) 0%, rgba(15,42,74,0.6) 55%), #0F2A4A;
+      border: 1px solid rgba(224,138,94,0.4);
+      border-radius: 26px;
+      padding: 30px 28px 26px;
+    }
+    .living-tag { font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-text); margin-bottom: 18px; }
+    .week { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-bottom: 24px; }
+    .day { text-align: center; opacity: 0.4; transition: opacity 0.6s ease; }
+    .day.is-past { opacity: 0.75; }
+    .day.is-today { opacity: 1; }
+    .day-sky { position: relative; height: 50px; overflow: hidden; border-radius: 10px 10px 0 0; transition: background 0.6s ease; }
+    .day.is-today .day-sky { background: rgba(245,230,200,0.08); }
+    .day-sun {
+      position: absolute; left: 50%; bottom: 0;
+      width: 26px; height: 26px; margin-left: -13px; border-radius: 50%;
+      background: var(--hue, #D9AE5C);
+      transform: translateY(calc(26px * var(--lvl, 0.5)));
+      transition: transform 0.9s cubic-bezier(0.22, 0.8, 0.3, 1), background 0.6s ease;
+    }
+    .day.is-future .day-sun { transform: translateY(26px); }
+    .day-line { height: 1px; background: rgba(245,230,200,0.4); }
+    .day-name { margin-top: 8px; font-size: 13px; font-weight: 500; color: var(--white50); }
+    .day.is-today .day-name { color: var(--champagne); }
+    .said { display: flex; align-items: baseline; gap: 12px; margin-bottom: 18px; }
+    .said-label { font-size: 15px; color: var(--white50); }
+    .said-word { font-family: 'Instrument Serif', serif; font-size: 34px; line-height: 1; color: var(--champagne); }
+    .plan-title { font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-text); margin-bottom: 10px; }
+    .plan-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .plan-list li {
+      display: flex; align-items: center; gap: 12px;
+      background: rgba(245,230,200,0.07);
+      border: 1px solid rgba(245,230,200,0.12);
+      border-radius: 14px;
+      padding: 13px 16px;
+      font-size: 16px;
+      color: var(--champagne);
+    }
+    .plan-list li::before { content: ''; width: 9px; height: 9px; border-radius: 50%; background: var(--dot, #E08A5E); flex-shrink: 0; }
+    .plan-list li:nth-child(1) { --dot: #E6CC94; } .plan-list li:nth-child(2) { --dot: #F2A57E; } .plan-list li:nth-child(3) { --dot: #E08A5E; }
+    .living-card.is-swapping .said-word, .living-card.is-swapping .plan-list li { animation: riseIn 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+    .living-card.is-swapping .plan-list li:nth-child(2) { animation-delay: 0.08s; }
+    .living-card.is-swapping .plan-list li:nth-child(3) { animation-delay: 0.16s; }
+    .living-note { margin-top: 16px; font-size: 13px; color: var(--white30); }
+
+    /* ── Tests compared ── */
+    .tests-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    @media (max-width: 900px) { .tests-grid { grid-template-columns: 1fr; } }
+    .test-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 22px;
+      padding: 30px 26px;
+      display: flex;
+      flex-direction: column;
+    }
+    .test-card { --tone: #F2A57E; --tint: 242,165,126; background: rgba(var(--tint),0.09); border-color: rgba(var(--tint),0.42); }
+    .test-card.is-blood { --tone: #E08A5E; --tint: 200,103,74; background: rgba(var(--tint),0.16); border-color: rgba(224,138,94,0.5); }
+    .test-card.is-dutch { --tone: #E8C16E; --tint: 232,193,110; background: rgba(var(--tint),0.10); border-color: rgba(var(--tint),0.55); }
+    .test-card .test-name, .test-card .test-label { color: var(--tone); }
+    .test-card .test-row { border-top-color: rgba(var(--tint),0.28); }
+    .t-strip { color: #F2A57E; } .t-blood { color: #E08A5E; } .t-dutch { color: #E8C16E; }
+    .test-dots { display: flex; flex-wrap: wrap; gap: 6px; width: 132px; min-height: 84px; align-content: flex-start; margin-bottom: 22px; }
+    .test-dots i { width: 12px; height: 12px; border-radius: 50%; background: var(--c, #E6CC94); animation: twinkle 3.2s ease-in-out infinite alternate; animation-delay: calc(var(--i, 0) * 120ms); }
+    .test-count { font-size: 13px; color: var(--white30); margin-bottom: 6px; }
+    .test-name { font-family: 'Instrument Serif', serif; font-size: 30px; font-weight: 400; color: var(--champagne); line-height: 1.15; margin-bottom: 18px; }
+    .test-row { border-top: 1px solid var(--card-border); padding: 14px 0; }
+    .test-label { font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-text); margin-bottom: 6px; }
+    .test-text { font-size: 16px; color: var(--white50); line-height: 1.65; }
+    .tests-close { margin-top: 34px; max-width: 760px; font-family: 'Instrument Serif', serif; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.35; color: var(--champagne); }
+    .tests-source { margin-top: 18px; font-size: 13px; color: var(--white30); line-height: 1.6; max-width: 760px; }
+
+    @media (max-width: 900px) { .test-dots { min-height: 0; } }
+
+    /* ── FAQs ── */
+    #faqs, #tests { scroll-margin-top: 70px; }
+    .faq-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 56px; align-items: start; }
+    @media (max-width: 900px) { .faq-grid { grid-template-columns: 1fr; gap: 8px; } }
+    .faq-list { border-top: 1px solid var(--card-border); }
+    .faq-item { border-bottom: 1px solid var(--card-border); }
+    .faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 22px 0;
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(22px, 2.1vw, 27px);
+      line-height: 1.25;
+      color: var(--champagne);
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary:focus-visible { outline: 2px solid var(--glow); outline-offset: 4px; border-radius: 6px; }
+    .faq-plus {
+      position: relative;
+      flex-shrink: 0;
+      width: 30px; height: 30px;
+      margin-top: 2px;
+      border-radius: 50%;
+      border: 1px solid var(--gold-border);
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+    .faq-plus::before, .faq-plus::after {
+      content: '';
+      position: absolute;
+      left: 50%; top: 50%;
+      width: 12px; height: 1.5px;
+      margin: -0.75px 0 0 -6px;
+      background: var(--gold-text);
+    }
+    .faq-plus::after { transform: rotate(90deg); transition: transform 0.3s ease; }
+    .faq-item[open] .faq-plus { background: var(--terracotta-deep); border-color: var(--terracotta-deep); transform: rotate(180deg); }
+    .faq-item[open] .faq-plus::before, .faq-item[open] .faq-plus::after { background: var(--warm-white); }
+    .faq-item[open] .faq-plus::after { transform: rotate(0deg); }
+    .faq-answer { padding: 0 50px 24px 0; font-size: 17px; line-height: 1.7; color: var(--white50); max-width: 640px; animation: riseIn 0.35s ease both; }
+    .faq-answer a { color: var(--gold-text); }
+
     /* the hero is a flex box, so its container needs an explicit width to line up with the other sections */
     .hero > .container { width: 100%; }
     @media (min-width: 900px) {
@@ -1415,6 +1722,7 @@ const bodyHTML = `
     <div class="nav-right">
       <a href="#employers" class="nav-link">For employers</a>
       <a href="#about" class="nav-link">About</a>
+      <a href="#faqs" class="nav-link">FAQs</a>
       <a href="#waitlist" class="nav-cta">Join the waitlist</a>
     </div>
   </nav>
@@ -1449,7 +1757,7 @@ const bodyHTML = `
             <button type="submit" class="btn-gold">Join the waitlist</button>
           </form>
           <div id="hero-ok" class="success-msg" style="display:none!important;">You're on the list. We'll be in touch soon.</div>
-          <p class="form-note">No spam. Ever. Just Ormi when it's ready.</p>
+          <p class="form-note">No spam. Ever. Just Ormi when it's ready. See our <a href="/privacy" style="color:inherit;">privacy notice</a>.</p>
           <p class="hero-badge">IGNITE 2026 finalist</p>
         </div>
       </div>
@@ -1498,6 +1806,7 @@ const bodyHTML = `
   <section class="employers" id="employers">
     <div class="container">
       <div class="employers-card reveal">
+        <div class="team" aria-hidden="true"><div class="team-sky"><span style="--x:2%; --s:52px; --hue:#E6CC94; --sink:0.35; --t:5.2s;"></span><span style="--x:17%; --s:78px; --hue:#F2A57E; --sink:0.30; --t:6.4s;"></span><span style="--x:38%; --s:104px; --hue:#C8674A; --sink:0.38; --t:7.5s;"></span><span style="--x:66%; --s:70px; --hue:#D9AE5C; --sink:0.32; --t:5.8s;"></span><span style="--x:85%; --s:46px; --hue:#E08A5E; --sink:0.40; --t:4.6s;"></span></div><span class="team-line"></span><div class="team-bars"><i></i><i></i><i></i></div></div>
         <p class="eyebrow" style="text-align:left;">For employers</p>
         <h2 class="employers-title">Menopause action plans are coming.<br /><em>Is your team ready?</em></h2>
         <p class="employers-body">From spring 2027, UK employers with 250 or more staff are expected to publish an action plan showing how they support employees through menopause. Ormi gives the women in your team a place to understand how they feel and what helps. We offer flexible packages to suit your organisation.</p>
@@ -1512,7 +1821,7 @@ const bodyHTML = `
 
   <!-- ── Feelings section ── -->
   <!-- Symptoms named here are listed by the NHS: nhs.uk/conditions/menopause/symptoms (reviewed 19 May 2026) -->
-  <section>
+  <section class="light">
     <div class="container">
       <p class="eyebrow">Sound familiar?</p>
       <h2 class="section-title">If you don't feel like yourself lately,<br /><em>you're not alone.</em></h2>
@@ -1520,26 +1829,32 @@ const bodyHTML = `
 
       <div class="feelings-grid">
         <div class="feeling-card reveal">
+          <div class="fsun" aria-hidden="true" style="--hue:#E08A5E; --sink:0.42; --dim:1;"><div class="fsun-sky"><span class="fsun-disc"></span><span class="fsun-cloud" style="--speed:2.4s;"></span></div><span class="fsun-line"></span><span class="fsun-bar"></span></div>
           <p class="feeling-text">"I feel anxious all the time and I don't know why."</p>
           <p class="feeling-reframe">Anxiety can be part of perimenopause. A daily check-in helps you see when it shows up.</p>
         </div>
         <div class="feeling-card reveal">
+          <div class="fsun" aria-hidden="true" style="--hue:#D9AE5C; --sink:0.2; --dim:1;"><div class="fsun-sky"><span class="fsun-disc"></span><span class="fsun-bite"></span><span class="fsun-star" style="left:18%;top:10px;"></span><span class="fsun-star" style="left:80%;top:6px;"></span></div><span class="fsun-line"></span><span class="fsun-bar"></span></div>
           <p class="feeling-text">"I wake up at 3am with my heart racing. I'm exhausted but I can't sleep."</p>
           <p class="feeling-reframe">Sleep problems are a common symptom. Ormi brings your sleep, your check-ins and your wearable together.</p>
         </div>
         <div class="feeling-card reveal">
+          <div class="fsun" aria-hidden="true" style="--hue:#F2A57E; --sink:0.42; --dim:0.75;"><div class="fsun-sky"><span class="fsun-disc"></span></div><span class="fsun-line"></span><span class="fsun-bar"></span></div>
           <p class="feeling-text">"My GP said my bloods are normal, but something is clearly not right."</p>
           <p class="feeling-reframe">Ormi helps you build a record of how you feel over time, to take to your GP.</p>
         </div>
         <div class="feeling-card reveal">
+          <div class="fsun" aria-hidden="true" style="--hue:#C8674A; --sink:0.42; --dim:1;"><div class="fsun-sky"><span class="fsun-disc"></span><span class="fsun-cloud" style="--speed:2.4s;"></span></div><span class="fsun-line"></span><span class="fsun-bar"></span></div>
           <p class="feeling-text">"I snap at my kids and then cry about it. I don't recognise myself."</p>
           <p class="feeling-reframe">Mood swings are a recognised symptom. Seeing the pattern makes it easier to talk about.</p>
         </div>
         <div class="feeling-card reveal">
+          <div class="fsun" aria-hidden="true" style="--hue:#B4553A; --sink:0.72; --dim:0.7;"><div class="fsun-sky"><span class="fsun-disc"></span></div><span class="fsun-line"></span><span class="fsun-bar"></span></div>
           <p class="feeling-text">"I'm so tired all the time. Coffee doesn't even touch it."</p>
           <p class="feeling-reframe">Ormi helps you see how your sleep and your energy move together.</p>
         </div>
         <div class="feeling-card reveal">
+          <div class="fsun" aria-hidden="true" style="--hue:#D9AE5C; --sink:0.42; --dim:0.6;"><div class="fsun-sky"><span class="fsun-disc"></span><span class="fsun-cloud" style="--speed:5s;"></span></div><span class="fsun-line"></span><span class="fsun-bar"></span></div>
           <p class="feeling-text">"My brain just isn't working. I forget words. I lose my train of thought."</p>
           <p class="feeling-reframe">The NHS calls this brain fog, and lists it as a common symptom. You're not making it up.</p>
         </div>
@@ -1604,28 +1919,28 @@ const bodyHTML = `
         </div>
         <div class="messenger-hormones">
           <div class="hormone-row reveal">
-            <div class="hormone-dot" style="background:#C8674A;"></div>
+            <svg class="hormone-motif" viewBox="0 0 64 64" aria-hidden="true"><g class="turn" stroke="#E08A5E" stroke-width="1.8" fill="none"><ellipse cx="32" cy="19" rx="7" ry="13" transform="rotate(0 32 32)"/><ellipse cx="32" cy="19" rx="7" ry="13" transform="rotate(72 32 32)"/><ellipse cx="32" cy="19" rx="7" ry="13" transform="rotate(144 32 32)"/><ellipse cx="32" cy="19" rx="7" ry="13" transform="rotate(216 32 32)"/><ellipse cx="32" cy="19" rx="7" ry="13" transform="rotate(288 32 32)"/><circle cx="32" cy="32" r="3.5" fill="#E08A5E"/></g></svg>
             <div>
               <div class="hormone-name">Oestrogen</div>
               <div class="hormone-what">Levels rise and fall through the cycle, and become less predictable in perimenopause.</div>
             </div>
           </div>
           <div class="hormone-row reveal">
-            <div class="hormone-dot" style="background:#E6CC94;"></div>
+            <svg class="hormone-motif" viewBox="0 0 64 64" aria-hidden="true"><g stroke="#E6CC94" stroke-width="1.8" fill="none"><circle cx="32" cy="32" r="5" fill="#E6CC94"/><circle cx="32" cy="32" r="13"/><g class="ripple"><circle cx="32" cy="32" r="22" opacity="0.6"/><circle cx="32" cy="32" r="30" opacity="0.3"/></g></g></svg>
             <div>
               <div class="hormone-name">Progesterone</div>
               <div class="hormone-what">Made after ovulation each cycle. Levels change as cycles become irregular.</div>
             </div>
           </div>
           <div class="hormone-row reveal">
-            <div class="hormone-dot" style="background:#D9AE5C;"></div>
+            <svg class="hormone-motif" viewBox="0 0 64 64" aria-hidden="true"><g stroke="#D9AE5C" stroke-width="4" stroke-linecap="round"><circle cx="14" cy="14" r="6" fill="#D9AE5C" stroke="none"/><line x1="14" y1="56" x2="14" y2="20"/><line x1="23" y1="56" x2="23" y2="27"/><line x1="32" y1="56" x2="32" y2="34"/><line x1="41" y1="56" x2="41" y2="41"/><line x1="50" y1="56" x2="50" y2="48"/></g></svg>
             <div>
               <div class="hormone-name">Cortisol</div>
               <div class="hormone-what">Often called the stress hormone. It normally follows a daily rhythm, higher in the morning and lower at night.</div>
             </div>
           </div>
           <div class="hormone-row reveal">
-            <div class="hormone-dot" style="background:#C3D0E0;"></div>
+            <svg class="hormone-motif" viewBox="0 0 64 64" aria-hidden="true"><g stroke="#C3D0E0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M16 52 L32 38 L48 52" opacity="0.4"/><path d="M16 40 L32 26 L48 40" opacity="0.7"/><path d="M16 28 L32 14 L48 28"/></g></svg>
             <div>
               <div class="hormone-name">DHEA, testosterone, melatonin + more</div>
               <div class="hormone-what">The DUTCH test also looks at these, along with how hormones are broken down.</div>
@@ -1646,18 +1961,47 @@ const bodyHTML = `
       <div class="steps-grid">
         <div class="step reveal">
           <div class="step-num">1</div>
+          <svg class="step-mark" viewBox="0 0 26 24" aria-hidden="true"><g class="cloud" fill="#0A1D36"><circle cx="11" cy="9" r="5"/><circle cx="17" cy="8" r="5.5"/><circle cx="21" cy="11.5" r="3.6"/><circle cx="8" cy="12" r="3.6"/><rect x="8" y="10" width="13" height="5.6" rx="2.8"/></g><circle class="d1" cx="7" cy="17.6" r="1.9" fill="#0A1D36"/><circle class="d2" cx="4.6" cy="20.4" r="1.2" fill="#0A1D36"/></svg>
           <h3 class="step-title">Translate</h3>
           <p class="step-body">A daily check-in in words, not scores. Your hormone portrait. Patterns across your wearable, your symptoms and your life.</p>
         </div>
         <div class="step reveal">
           <div class="step-num">2</div>
+          <svg class="step-mark" viewBox="0 0 34 34" aria-hidden="true"><g fill="none" stroke="#0A1D36" stroke-width="1.3" stroke-linecap="round"><circle cx="17" cy="17" r="4"/><g class="br"><circle cx="17" cy="17" r="9" opacity="0.7"/><circle cx="17" cy="17" r="13" opacity="0.35"/></g></g></svg>
           <h3 class="step-title">Act</h3>
           <p class="step-body">A daily plan with CBT-based tools, nervous system tools and wind-down for sleep.</p>
         </div>
         <div class="step reveal">
           <div class="step-num">3</div>
+          <svg class="step-mark" viewBox="0 0 110 74" aria-hidden="true"><circle class="tl" cx="38" cy="37" r="32" fill="none" stroke="#0A1D36" stroke-width="1.8"/><circle class="tr" cx="72" cy="37" r="32" fill="rgba(10,29,54,0.10)" stroke="#0A1D36" stroke-width="1.8"/><circle class="tg" cx="55" cy="37" r="4.5" fill="#FFF6E6"/></svg>
           <h3 class="step-title">Connect</h3>
           <p class="step-body">Live coaching and community, synced wearables, at-home DUTCH testing and a GP review of your results.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Always up to date ── -->
+  <section id="living">
+    <div class="container">
+      <div class="living-grid">
+        <div>
+          <p class="eyebrow">Always up to date</p>
+          <h2 class="section-title">Not a one-off result.<br /><em>A picture that moves with you.</em></h2>
+          <p class="messenger-body">A test result is one moment in time. Ormi keeps listening. Each check-in you make, each night of sleep from your wearable and each result you add updates your picture.</p>
+          <p class="messenger-body">Then Ormi turns it into a plan for today. Three small things, chosen from what you've told us, so you always know what to do next.</p>
+        </div>
+        <div class="living-card" id="living-card" aria-label="Example: a week of check-ins, each one changing the plan for that day">
+          <p class="living-tag">Your week</p>
+          <div class="week"><div class="day" data-day="0"><div class="day-sky"><span class="day-sun"></span></div><div class="day-line"></div><div class="day-name">M</div></div><div class="day" data-day="1"><div class="day-sky"><span class="day-sun"></span></div><div class="day-line"></div><div class="day-name">T</div></div><div class="day" data-day="2"><div class="day-sky"><span class="day-sun"></span></div><div class="day-line"></div><div class="day-name">W</div></div><div class="day" data-day="3"><div class="day-sky"><span class="day-sun"></span></div><div class="day-line"></div><div class="day-name">T</div></div><div class="day" data-day="4"><div class="day-sky"><span class="day-sun"></span></div><div class="day-line"></div><div class="day-name">F</div></div><div class="day" data-day="5"><div class="day-sky"><span class="day-sun"></span></div><div class="day-line"></div><div class="day-name">S</div></div><div class="day" data-day="6"><div class="day-sky"><span class="day-sun"></span></div><div class="day-line"></div><div class="day-name">S</div></div></div>
+          <div class="said"><span class="said-label">Today you said</span><span class="said-word" id="said-word">Wired</span></div>
+          <p class="plan-title">Today's plan</p>
+          <ul class="plan-list" id="plan-list">
+            <li>A nervous system tool</li>
+            <li>One slow breath</li>
+            <li>Wind-down for sleep</li>
+          </ul>
+          <p class="living-note">An example. Your plan is built from your own check-ins.</p>
         </div>
       </div>
     </div>
@@ -1689,7 +2033,7 @@ const bodyHTML = `
     <div class="container">
       <p class="eyebrow">Life stages</p>
       <h2 class="section-title">Wherever you are <em>right now.</em></h2>
-      <p class="section-sub">Ormi is built for perimenopause first, and shaped around the stage you're in.</p>
+      <p class="section-sub">Ormi is built for every moment of hormonal change. We're focused on perimenopause first, but Ormi is relevant to you, whatever stage you're in.</p>
       <div class="stages-grid">
         <div class="stage-card reveal">
           <div class="stage-dot" style="background:#D9AE5C;"></div>
@@ -1740,6 +2084,7 @@ const bodyHTML = `
           <a href="#final-waitlist" class="btn-gold" style="display:inline-block; text-decoration:none;">Join the waitlist</a>
         </div>
         <div class="dutch-markers">
+          <svg class="dutch-dots" viewBox="0 0 92 70" role="img" aria-label="35 dots, one for each hormone and metabolite the DUTCH Complete test measures"><circle cx="8.0" cy="7" r="3.2" fill="#0A1D36" style="--i:0;"/><circle cx="20.7" cy="7" r="3.2" fill="#C8674A" style="--i:1;"/><circle cx="33.4" cy="7" r="3.2" fill="#B4553A" style="--i:2;"/><circle cx="46.1" cy="7" r="3.2" fill="#0A1D36" style="--i:3;"/><circle cx="58.8" cy="7" r="3.2" fill="#FFF6E6" style="--i:4;"/><circle cx="71.5" cy="7" r="3.2" fill="#0A1D36" style="--i:5;"/><circle cx="84.2" cy="7" r="3.2" fill="#C8674A" style="--i:6;"/><circle cx="8.0" cy="21" r="3.2" fill="#B4553A" style="--i:1;"/><circle cx="20.7" cy="21" r="3.2" fill="#0A1D36" style="--i:2;"/><circle cx="33.4" cy="21" r="3.2" fill="#FFF6E6" style="--i:3;"/><circle cx="46.1" cy="21" r="3.2" fill="#0A1D36" style="--i:4;"/><circle cx="58.8" cy="21" r="3.2" fill="#C8674A" style="--i:5;"/><circle cx="71.5" cy="21" r="3.2" fill="#B4553A" style="--i:6;"/><circle cx="84.2" cy="21" r="3.2" fill="#0A1D36" style="--i:7;"/><circle cx="8.0" cy="35" r="3.2" fill="#FFF6E6" style="--i:2;"/><circle cx="20.7" cy="35" r="3.2" fill="#0A1D36" style="--i:3;"/><circle cx="33.4" cy="35" r="3.2" fill="#C8674A" style="--i:4;"/><circle cx="46.1" cy="35" r="3.2" fill="#B4553A" style="--i:5;"/><circle cx="58.8" cy="35" r="3.2" fill="#0A1D36" style="--i:6;"/><circle cx="71.5" cy="35" r="3.2" fill="#FFF6E6" style="--i:7;"/><circle cx="84.2" cy="35" r="3.2" fill="#0A1D36" style="--i:8;"/><circle cx="8.0" cy="49" r="3.2" fill="#C8674A" style="--i:3;"/><circle cx="20.7" cy="49" r="3.2" fill="#B4553A" style="--i:4;"/><circle cx="33.4" cy="49" r="3.2" fill="#0A1D36" style="--i:5;"/><circle cx="46.1" cy="49" r="3.2" fill="#FFF6E6" style="--i:6;"/><circle cx="58.8" cy="49" r="3.2" fill="#0A1D36" style="--i:7;"/><circle cx="71.5" cy="49" r="3.2" fill="#C8674A" style="--i:8;"/><circle cx="84.2" cy="49" r="3.2" fill="#B4553A" style="--i:9;"/><circle cx="8.0" cy="63" r="3.2" fill="#0A1D36" style="--i:4;"/><circle cx="20.7" cy="63" r="3.2" fill="#FFF6E6" style="--i:5;"/><circle cx="33.4" cy="63" r="3.2" fill="#0A1D36" style="--i:6;"/><circle cx="46.1" cy="63" r="3.2" fill="#C8674A" style="--i:7;"/><circle cx="58.8" cy="63" r="3.2" fill="#B4553A" style="--i:8;"/><circle cx="71.5" cy="63" r="3.2" fill="#0A1D36" style="--i:9;"/><circle cx="84.2" cy="63" r="3.2" fill="#FFF6E6" style="--i:10;"/></svg>
           <p style="font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold-text); margin-bottom:12px; font-weight:500;">What DUTCH measures</p>
           <div class="dutch-marker"><div class="dutch-marker-dot"></div><div class="dutch-marker-text"><strong>Sex hormones</strong>: oestrogen, progesterone and testosterone, and how they are broken down.</div></div>
           <div class="dutch-marker"><div class="dutch-marker-dot"></div><div class="dutch-marker-text"><strong>Daily cortisol pattern</strong>: free cortisol measured across the day, not at a single point.</div></div>
@@ -1752,8 +2097,70 @@ const bodyHTML = `
     </div>
   </section>
 
+  <!-- ── Tests compared ── -->
+  <!--
+    Sources (checked 14 Nov 2026):
+    NICE NG23 rec 1.2.1 and quality standard QS143 statement 1: diagnose perimenopause in
+    otherwise healthy women over 45 on symptoms, without laboratory tests, because hormone
+    levels fluctuate; FSH test considered at 40 to 45 and under 40; other tests such as
+    thyroid function may be needed if non-menopausal causes are suspected.
+    RCOG position on over-the-counter FSH tests, as reported by Which? and the BBC.
+    Precision Analytical, DUTCH Complete (dutchtest.com): 35 hormones, four or five dried
+    urine samples over 24 hours.
+  -->
+  <section id="tests">
+    <div class="container">
+      <p class="eyebrow">Tests, explained</p>
+      <h2 class="section-title"><span class="t-strip">Strip test</span>, <span class="t-blood">blood test</span> or <span class="t-dutch">the DUTCH test</span>?<br /><em>What each one shows.</em></h2>
+      <p class="section-sub">No test can diagnose perimenopause on its own. Your symptoms come first. Here is what each test measures, and what it can't tell you.</p>
+      <div class="tests-grid">
+        <div class="test-card reveal">
+          <div class="test-dots" aria-hidden="true"><i style="--c:#F2A57E; --i:0;"></i></div>
+          <p class="test-count">1 hormone</p>
+          <h3 class="test-name">Strip test</h3>
+          <div class="test-row">
+            <p class="test-label">What it measures</p>
+            <p class="test-text">One hormone, FSH, in a urine sample, at one moment. Sold in supermarkets and pharmacies for a few pounds.</p>
+          </div>
+          <div class="test-row">
+            <p class="test-label">What it can't tell you</p>
+            <p class="test-text">A raised result may point to perimenopause or menopause, but a normal one doesn't rule it out. The Royal College of Obstetricians and Gynaecologists does not recommend these tests.</p>
+          </div>
+        </div>
+        <div class="test-card is-blood reveal">
+          <div class="test-dots" aria-hidden="true"><i style="--c:#E08A5E; --i:0;"></i><i style="--c:#E08A5E; --i:1;"></i></div>
+          <p class="test-count">Usually 1 or 2 hormones</p>
+          <h3 class="test-name">Blood test</h3>
+          <div class="test-row">
+            <p class="test-label">What it measures</p>
+            <p class="test-text">Usually FSH, sometimes with oestradiol, from a single sample. Through your GP or a private lab.</p>
+          </div>
+          <div class="test-row">
+            <p class="test-label">What it can't tell you</p>
+            <p class="test-text">Hormone levels move up and down in perimenopause, so one sample is a snapshot. NICE says women over 45 should be diagnosed on symptoms, without lab tests. Blood tests can still help under 45, or to rule out other causes such as thyroid problems.</p>
+          </div>
+        </div>
+        <div class="test-card is-dutch reveal">
+          <div class="test-dots" aria-hidden="true"><i style="--c:#EFD39B; --i:0;"></i><i style="--c:#C9973A; --i:1;"></i><i style="--c:#D9AE5C; --i:2;"></i><i style="--c:#F5E6C8; --i:3;"></i><i style="--c:#E8C16E; --i:4;"></i><i style="--c:#EFD39B; --i:5;"></i><i style="--c:#C9973A; --i:6;"></i><i style="--c:#D9AE5C; --i:1;"></i><i style="--c:#F5E6C8; --i:2;"></i><i style="--c:#E8C16E; --i:3;"></i><i style="--c:#EFD39B; --i:4;"></i><i style="--c:#C9973A; --i:5;"></i><i style="--c:#D9AE5C; --i:6;"></i><i style="--c:#F5E6C8; --i:7;"></i><i style="--c:#E8C16E; --i:2;"></i><i style="--c:#EFD39B; --i:3;"></i><i style="--c:#C9973A; --i:4;"></i><i style="--c:#D9AE5C; --i:5;"></i><i style="--c:#F5E6C8; --i:6;"></i><i style="--c:#E8C16E; --i:7;"></i><i style="--c:#EFD39B; --i:8;"></i><i style="--c:#C9973A; --i:3;"></i><i style="--c:#D9AE5C; --i:4;"></i><i style="--c:#F5E6C8; --i:5;"></i><i style="--c:#E8C16E; --i:6;"></i><i style="--c:#EFD39B; --i:7;"></i><i style="--c:#C9973A; --i:8;"></i><i style="--c:#D9AE5C; --i:9;"></i><i style="--c:#F5E6C8; --i:4;"></i><i style="--c:#E8C16E; --i:5;"></i><i style="--c:#EFD39B; --i:6;"></i><i style="--c:#C9973A; --i:7;"></i><i style="--c:#D9AE5C; --i:8;"></i><i style="--c:#F5E6C8; --i:9;"></i><i style="--c:#E8C16E; --i:10;"></i></div>
+          <p class="test-count">35 hormones and metabolites</p>
+          <h3 class="test-name">The DUTCH test</h3>
+          <div class="test-row">
+            <p class="test-label">What it measures</p>
+            <p class="test-text">35 hormones and metabolites from four or five dried urine samples collected at home over 24 hours, including a daily cortisol pattern.</p>
+          </div>
+          <div class="test-row">
+            <p class="test-label">What it can't tell you</p>
+            <p class="test-text">It does not diagnose perimenopause, and it is not an NHS test. NICE does not call for any hormone test to diagnose perimenopause in women over 45. It gives you a wider picture to discuss with a clinician.</p>
+          </div>
+        </div>
+      </div>
+      <p class="tests-close">That's why Ormi starts with a free hormone portrait and daily check-ins, and keeps the DUTCH test optional.</p>
+      <p class="tests-source">Sources: NICE guideline NG23 and quality standard QS143. Royal College of Obstetricians and Gynaecologists. Precision Analytical.</p>
+    </div>
+  </section>
+
   <!-- ── Pricing ── -->
-  <section>
+  <section class="light">
     <div class="container">
       <p class="eyebrow">Pricing</p>
       <h2 class="section-title">Start free.<br /><em>Go deeper when you're ready.</em></h2>
@@ -1837,6 +2244,57 @@ const bodyHTML = `
     </div>
   </section>
 
+  <!-- ── FAQs ── -->
+  <section id="faqs">
+    <div class="container">
+      <div class="faq-grid">
+        <div>
+          <p class="eyebrow">FAQs</p>
+          <h2 class="section-title">Is Ormi <em>right for you?</em></h2>
+          <p class="section-sub">Straight answers to the questions we hear most. If yours isn't here, email <a href="mailto:hello@ormi.health" style="color:var(--gold-text);">hello@ormi.health</a>.</p>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>Is Ormi right for me?<span class="faq-plus" aria-hidden="true"></span></summary>
+            <p class="faq-answer">Ormi is for you if you don't feel like yourself lately and want to understand why, in plain words. It starts with how you feel, then connects that to your hormones, your wearable and your daily life. If what you need is a diagnosis or a prescription, that is a conversation for your GP. Ormi can help you prepare for it.</p>
+          </details>
+          <details class="faq-item">
+            <summary>I'm not in perimenopause yet. Is it still for me?<span class="faq-plus" aria-hidden="true"></span></summary>
+            <p class="faq-answer">Yes. Ormi is built for every moment of hormonal change. We're focused on perimenopause first, but it is relevant to you whatever stage you're in, including a regular cycle, postpartum and menopause.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Does Ormi diagnose perimenopause?<span class="faq-plus" aria-hidden="true"></span></summary>
+            <p class="faq-answer">No. Ormi highlights patterns to discuss with a clinician. It does not diagnose, and it does not replace your GP.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Do I need to take the DUTCH test?<span class="faq-plus" aria-hidden="true"></span></summary>
+            <p class="faq-answer">No. Ormi starts with a free hormone portrait and daily check-ins. The DUTCH test is optional, for when you want a deeper look. See <a href="#tests">how the tests compare</a>.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How much does it cost?<span class="faq-plus" aria-hidden="true"></span></summary>
+            <p class="faq-answer">Ormi has a free version: your hormone portrait, daily check-ins and core tools. Ormi Circle is £14.99 a month or £129 a year. Clinical insight, which includes the DUTCH test, a GP results review and a year of Ormi Circle, is a one-off £349 or £399.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can I download Ormi now?<span class="faq-plus" aria-hidden="true"></span></summary>
+            <p class="faq-answer">Not yet. Ormi isn't on the App Store yet. Join the waitlist and we'll let you know as soon as it's ready.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Who is behind Ormi?<span class="faq-plus" aria-hidden="true"></span></summary>
+            <p class="faq-answer">Ormi was founded by Anna Koutras and Dr Emma Whitehouse, an NHS GP. You can <a href="#about">meet the founders</a> further up this page.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What happens to my data?<span class="faq-plus" aria-hidden="true"></span></summary>
+            <p class="faq-answer">We never sell your data. Our <a href="/privacy">privacy notice</a> explains what we collect and why.</p>
+          </details>
+          <details class="faq-item">
+            <summary>I'm an employer. Can Ormi support my team?<span class="faq-plus" aria-hidden="true"></span></summary>
+            <p class="faq-answer">Yes. We offer flexible packages for organisations. Email <a href="mailto:hello@ormi.health?subject=Ormi%20for%20employers">hello@ormi.health</a> or see the <a href="#employers">employer section</a>.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ── Final CTA ── -->
   <section class="final-cta" id="final-waitlist">
     <div class="final-bg"></div>
@@ -1879,10 +2337,10 @@ const bodyHTML = `
           <div class="footer-divider"></div>
           <span class="footer-wordmark">ormi</span>
         </a>
-        <p class="footer-note">© 2026 Ormi. All rights reserved. Ormi is not a medical service.</p>
+        <p class="footer-note">© 2026 Ormi Wellness Ltd. All rights reserved. Ormi is not a medical service.<br />Company number 17209350. Registered office: 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ.</p>
         <div class="footer-links">
           <a href="mailto:hello@ormi.health">hello@ormi.health</a>
-          <a href="#">Privacy</a>
+          <a href="/privacy">Privacy</a>
         </div>
       </div>
     </div>
@@ -1955,6 +2413,47 @@ export default function Home() {
       }
     };
 
+    // ── Always up to date: the week fills in and the plan changes with each check-in ──
+    const livingStates = [
+      { word: 'Wired', hue: '#E08A5E', lvl: 0.12, plan: ['A nervous system tool', 'One slow breath', 'Wind-down for sleep'] },
+      { word: 'Foggy', hue: '#D9AE5C', lvl: 0.55, plan: ['A CBT-based tool', 'A food tip for today', 'Wind-down for sleep'] },
+      { word: "Can't sleep", hue: '#E6CC94', lvl: 0.7, plan: ['Wind-down for sleep', 'A nervous system tool', 'A food tip for today'] },
+      { word: 'Low mood', hue: '#C8674A', lvl: 0.62, plan: ['A CBT-based tool', 'One slow breath', 'A food tip for today'] },
+      { word: 'Overwhelmed', hue: '#F2A57E', lvl: 0.3, plan: ['One slow breath', 'A CBT-based tool', 'Wind-down for sleep'] },
+    ];
+    const livingCard = document.getElementById('living-card');
+    let livingTimer = null;
+    let livingStep = 0;
+    const paintLiving = (step, animate) => {
+      if (!livingCard) return;
+      const dayEls = livingCard.querySelectorAll('.day');
+      dayEls.forEach((el, i) => {
+        const sun = el.querySelector('.day-sun');
+        el.classList.toggle('is-past', i < step);
+        el.classList.toggle('is-today', i === step);
+        el.classList.toggle('is-future', i > step);
+        if (i <= step) {
+          sun.style.setProperty('--hue', livingStates[i].hue);
+          sun.style.setProperty('--lvl', livingStates[i].lvl);
+        }
+      });
+      const state = livingStates[step];
+      document.getElementById('said-word').textContent = state.word;
+      document.querySelectorAll('#plan-list li').forEach((li, i) => { li.textContent = state.plan[i]; });
+      if (animate) {
+        livingCard.classList.remove('is-swapping');
+        void livingCard.offsetWidth;
+        livingCard.classList.add('is-swapping');
+      }
+    };
+    paintLiving(0, false);
+    if (livingCard && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      livingTimer = setInterval(() => {
+        livingStep = (livingStep + 1) % livingStates.length;
+        paintLiving(livingStep, true);
+      }, 3600);
+    }
+
     // ── One slow breath: in for four, out for six, three rounds ───────────────
     let breathTimers = [];
     let breathRunning = false;
@@ -2022,7 +2521,7 @@ export default function Home() {
 
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-    return () => { obs.disconnect(); breathTimers.forEach(clearTimeout); };
+    return () => { obs.disconnect(); breathTimers.forEach(clearTimeout); if (livingTimer) clearInterval(livingTimer); };
   }, []);
 
   return (
@@ -2033,9 +2532,7 @@ export default function Home() {
         <title>Ormi: Everything you've been feeling finally makes sense.</title>
         <meta name="description" content="Ormi is a hormone intelligence app for women in perimenopause and beyond. It puts your mental health first, then helps you connect the dots. Join the waitlist." />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="/fonts.css" />
         <style dangerouslySetInnerHTML={{ __html: css }} />
       </Head>
       <div dangerouslySetInnerHTML={{ __html: bodyHTML }} />

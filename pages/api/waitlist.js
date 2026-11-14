@@ -104,8 +104,8 @@ export default async function handler(req, res) {
                   <!-- Footer -->
                   <tr>
                     <td>
-                      <p style="margin:0;font-size:11px;color:rgba(245,230,200,0.30);line-height:1.6;font-weight:300;">
-                        ormi.health &nbsp;&middot;&nbsp; hello@ormi.health &nbsp;&middot;&nbsp; You're receiving this because you joined the Ormi waitlist.
+                      <p style="margin:0;font-size:12px;color:rgba(245,230,200,0.55);line-height:1.6;font-weight:300;">
+                        ormi.health &nbsp;&middot;&nbsp; hello@ormi.health &nbsp;&middot;&nbsp; You're receiving this because you joined the Ormi waitlist. To leave the list, email hello@ormi.health. Privacy notice: https://ormi.health/privacy
                       </p>
                     </td>
                   </tr>
@@ -126,7 +126,7 @@ Ormi is built for women who've been dismissed, confused, or told it was just str
 Your hormones have been talking. Ormi is how you finally hear them.
 
 ---
-ormi.health · hello@ormi.health · You're receiving this because you joined the Ormi waitlist.`,
+ormi.health · hello@ormi.health · You're receiving this because you joined the Ormi waitlist. To leave the list, email hello@ormi.health. Privacy notice: https://ormi.health/privacy`,
     });
 
     return res.status(200).json({ status: 'success' });
