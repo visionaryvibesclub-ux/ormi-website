@@ -1317,7 +1317,21 @@ const css = `
     .test-list { list-style: none; margin-top: 12px; display: flex; flex-direction: column; gap: 8px; }
     .test-list li { position: relative; padding-left: 20px; font-size: 16px; line-height: 1.5; color: var(--champagne); }
     .test-list li::before { content: ''; position: absolute; left: 0; top: 9px; width: 8px; height: 8px; border-radius: 50%; background: var(--tone); }
-    .tests-grid { grid-template-columns: 1fr 1fr 1.3fr; align-items: start; }
+    .tests-grid { grid-template-columns: 1fr 1.25fr; align-items: start; }
+    .tests-side { display: flex; flex-direction: column; gap: 18px; }
+    details.test-card { display: block; padding: 0; }
+    details.test-card > summary { list-style: none; cursor: pointer; display: flex; gap: 18px; align-items: flex-start; justify-content: space-between; padding: 26px; border-radius: 22px; }
+    details.test-card > summary::-webkit-details-marker { display: none; }
+    details.test-card > summary:focus-visible { outline: 2px solid var(--glow); outline-offset: 3px; }
+    .test-sum { display: block; }
+    details.test-card .test-dots { min-height: 0; height: auto; margin-bottom: 14px; }
+    .test-teaser { display: block; margin-top: 10px; font-size: 16px; line-height: 1.5; color: var(--white70); }
+    .test-toggle { flex: none; position: relative; width: 38px; height: 38px; margin-top: 2px; border-radius: 50%; border: 1px solid var(--tone); }
+    .test-toggle::before, .test-toggle::after { content: ''; position: absolute; left: 50%; top: 50%; width: 14px; height: 1.5px; margin: -0.75px 0 0 -7px; background: var(--tone); transition: transform 0.25s ease; }
+    .test-toggle::after { transform: rotate(90deg); }
+    details[open] > summary .test-toggle::after { transform: rotate(0deg); }
+    details.test-card > .test-row { margin-left: 26px; margin-right: 26px; }
+    details.test-card > .test-row:last-child { margin-bottom: 26px; }
     @media (max-width: 1000px) { .tests-grid { grid-template-columns: 1fr; } }
     .test-list.muted li { color: var(--white50); }
     .test-list li strong { color: var(--champagne); font-weight: 600; }
@@ -1426,6 +1440,17 @@ const css = `
       }
       .feelings-grid > *, .stages-grid > * { flex: 0 0 84%; scroll-snap-align: start; }
     }
+
+    .merged-how { margin-top: 72px; margin-bottom: 30px; }
+    .merged-sub { font-family: 'Instrument Serif', serif; font-size: clamp(26px, 2.6vw, 34px); line-height: 1.25; color: var(--champagne); max-width: 780px; }
+
+    /* Employers: a short band on the home page, full detail on /employers */
+    .employers-band { padding: 36px 0; }
+    .eband { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; padding: 28px 34px; border-radius: 22px; border: 1px solid var(--card-border); background: linear-gradient(120deg, rgba(200,103,74,0.20), rgba(15,42,74,0.6) 60%); }
+    .eband .eyebrow { margin-bottom: 8px; }
+    .eband-title { font-family: 'Instrument Serif', serif; font-size: clamp(26px, 2.8vw, 36px); line-height: 1.15; color: var(--champagne); }
+    .eband-title em { color: var(--gold-text); }
+    .eband .btn-ghost { text-decoration: none; white-space: nowrap; }
 
     /* ── App previews ── */
     .hero-phone { display: none; }
@@ -1883,7 +1908,7 @@ const bodyHTML = `
       <span class="nav-wordmark">ormi</span>
     </a>
     <div class="nav-right">
-      <a href="#employers" class="nav-link">For employers</a>
+      <a href="/employers" class="nav-link">For employers</a>
       <a href="#about" class="nav-link">About</a>
       <a href="#faqs" class="nav-link">FAQs</a>
       <a href="#waitlist" class="nav-cta">Join the waitlist</a>
@@ -1986,32 +2011,14 @@ const bodyHTML = `
     April 2026, expected to be mandatory from spring 2027 subject to secondary
     legislation. GOV.UK: gov.uk/government/publications/creating-an-action-plan-guidance-for-employers
   -->
-  <section class="employers" id="employers">
+  <section class="employers-band" id="employers">
     <div class="container">
-      <div class="employers-card reveal">
-        <svg class="flow flow-team" viewBox="0 0 600 300" aria-hidden="true">
-          <defs>
-            <linearGradient id="fade-flow-team" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.14" stop-color="#fff" stop-opacity="1"/><stop offset="0.86" stop-color="#fff" stop-opacity="1"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
-            <mask id="mask-flow-team"><rect x="0" y="0" width="600" height="250" fill="url(#fade-flow-team)"/></mask>
-          </defs>
-          <g mask="url(#mask-flow-team)"><g class="flow-wave" style="--lam:-300px; --dur:22s;"><path d="M -300.0 120.0 L -294.0 125.8 L -288.0 131.4 L -282.0 136.9 L -276.0 142.2 L -270.0 147.0 L -264.0 151.5 L -258.0 155.4 L -252.0 158.8 L -246.0 161.6 L -240.0 163.7 L -234.0 165.2 L -228.0 165.9 L -222.0 165.9 L -216.0 165.2 L -210.0 163.7 L -204.0 161.6 L -198.0 158.8 L -192.0 155.4 L -186.0 151.5 L -180.0 147.0 L -174.0 142.2 L -168.0 136.9 L -162.0 131.4 L -156.0 125.8 L -150.0 120.0 L -144.0 114.2 L -138.0 108.6 L -132.0 103.1 L -126.0 97.8 L -120.0 93.0 L -114.0 88.5 L -108.0 84.6 L -102.0 81.2 L -96.0 78.4 L -90.0 76.3 L -84.0 74.8 L -78.0 74.1 L -72.0 74.1 L -66.0 74.8 L -60.0 76.3 L -54.0 78.4 L -48.0 81.2 L -42.0 84.6 L -36.0 88.5 L -30.0 93.0 L -24.0 97.8 L -18.0 103.1 L -12.0 108.6 L -6.0 114.2 L 0.0 120.0 L 6.0 125.8 L 12.0 131.4 L 18.0 136.9 L 24.0 142.2 L 30.0 147.0 L 36.0 151.5 L 42.0 155.4 L 48.0 158.8 L 54.0 161.6 L 60.0 163.7 L 66.0 165.2 L 72.0 165.9 L 78.0 165.9 L 84.0 165.2 L 90.0 163.7 L 96.0 161.6 L 102.0 158.8 L 108.0 155.4 L 114.0 151.5 L 120.0 147.0 L 126.0 142.2 L 132.0 136.9 L 138.0 131.4 L 144.0 125.8 L 150.0 120.0 L 156.0 114.2 L 162.0 108.6 L 168.0 103.1 L 174.0 97.8 L 180.0 93.0 L 186.0 88.5 L 192.0 84.6 L 198.0 81.2 L 204.0 78.4 L 210.0 76.3 L 216.0 74.8 L 222.0 74.1 L 228.0 74.1 L 234.0 74.8 L 240.0 76.3 L 246.0 78.4 L 252.0 81.2 L 258.0 84.6 L 264.0 88.5 L 270.0 93.0 L 276.0 97.8 L 282.0 103.1 L 288.0 108.6 L 294.0 114.2 L 300.0 120.0 L 306.0 125.8 L 312.0 131.4 L 318.0 136.9 L 324.0 142.2 L 330.0 147.0 L 336.0 151.5 L 342.0 155.4 L 348.0 158.8 L 354.0 161.6 L 360.0 163.7 L 366.0 165.2 L 372.0 165.9 L 378.0 165.9 L 384.0 165.2 L 390.0 163.7 L 396.0 161.6 L 402.0 158.8 L 408.0 155.4 L 414.0 151.5 L 420.0 147.0 L 426.0 142.2 L 432.0 136.9 L 438.0 131.4 L 444.0 125.8 L 450.0 120.0 L 456.0 114.2 L 462.0 108.6 L 468.0 103.1 L 474.0 97.8 L 480.0 93.0 L 486.0 88.5 L 492.0 84.6 L 498.0 81.2 L 504.0 78.4 L 510.0 76.3 L 516.0 74.8 L 522.0 74.1 L 528.0 74.1 L 534.0 74.8 L 540.0 76.3 L 546.0 78.4 L 552.0 81.2 L 558.0 84.6 L 564.0 88.5 L 570.0 93.0 L 576.0 97.8 L 582.0 103.1 L 588.0 108.6 L 594.0 114.2 L 600.0 120.0 L 606.0 125.8 L 612.0 131.4 L 618.0 136.9 L 624.0 142.2 L 630.0 147.0 L 636.0 151.5 L 642.0 155.4 L 648.0 158.8 L 654.0 161.6 L 660.0 163.7 L 666.0 165.2 L 672.0 165.9 L 678.0 165.9 L 684.0 165.2 L 690.0 163.7 L 696.0 161.6 L 702.0 158.8 L 708.0 155.4 L 714.0 151.5 L 720.0 147.0 L 726.0 142.2 L 732.0 136.9 L 738.0 131.4 L 744.0 125.8 L 750.0 120.0 L 756.0 114.2 L 762.0 108.6 L 768.0 103.1 L 774.0 97.8 L 780.0 93.0 L 786.0 88.5 L 792.0 84.6 L 798.0 81.2 L 804.0 78.4 L 810.0 76.3 L 816.0 74.8 L 822.0 74.1 L 828.0 74.1 L 834.0 74.8 L 840.0 76.3 L 846.0 78.4 L 852.0 81.2 L 858.0 84.6 L 864.0 88.5 L 870.0 93.0 L 876.0 97.8 L 882.0 103.1 L 888.0 108.6 L 894.0 114.2 L 900.0 120.0" fill="none" stroke="#E8C16E" stroke-width="7.800000000000001" stroke-linecap="round" opacity="0.22" transform="translate(0 0)" style="filter:blur(5px)"/><path d="M -300.0 120.0 L -294.0 125.8 L -288.0 131.4 L -282.0 136.9 L -276.0 142.2 L -270.0 147.0 L -264.0 151.5 L -258.0 155.4 L -252.0 158.8 L -246.0 161.6 L -240.0 163.7 L -234.0 165.2 L -228.0 165.9 L -222.0 165.9 L -216.0 165.2 L -210.0 163.7 L -204.0 161.6 L -198.0 158.8 L -192.0 155.4 L -186.0 151.5 L -180.0 147.0 L -174.0 142.2 L -168.0 136.9 L -162.0 131.4 L -156.0 125.8 L -150.0 120.0 L -144.0 114.2 L -138.0 108.6 L -132.0 103.1 L -126.0 97.8 L -120.0 93.0 L -114.0 88.5 L -108.0 84.6 L -102.0 81.2 L -96.0 78.4 L -90.0 76.3 L -84.0 74.8 L -78.0 74.1 L -72.0 74.1 L -66.0 74.8 L -60.0 76.3 L -54.0 78.4 L -48.0 81.2 L -42.0 84.6 L -36.0 88.5 L -30.0 93.0 L -24.0 97.8 L -18.0 103.1 L -12.0 108.6 L -6.0 114.2 L 0.0 120.0 L 6.0 125.8 L 12.0 131.4 L 18.0 136.9 L 24.0 142.2 L 30.0 147.0 L 36.0 151.5 L 42.0 155.4 L 48.0 158.8 L 54.0 161.6 L 60.0 163.7 L 66.0 165.2 L 72.0 165.9 L 78.0 165.9 L 84.0 165.2 L 90.0 163.7 L 96.0 161.6 L 102.0 158.8 L 108.0 155.4 L 114.0 151.5 L 120.0 147.0 L 126.0 142.2 L 132.0 136.9 L 138.0 131.4 L 144.0 125.8 L 150.0 120.0 L 156.0 114.2 L 162.0 108.6 L 168.0 103.1 L 174.0 97.8 L 180.0 93.0 L 186.0 88.5 L 192.0 84.6 L 198.0 81.2 L 204.0 78.4 L 210.0 76.3 L 216.0 74.8 L 222.0 74.1 L 228.0 74.1 L 234.0 74.8 L 240.0 76.3 L 246.0 78.4 L 252.0 81.2 L 258.0 84.6 L 264.0 88.5 L 270.0 93.0 L 276.0 97.8 L 282.0 103.1 L 288.0 108.6 L 294.0 114.2 L 300.0 120.0 L 306.0 125.8 L 312.0 131.4 L 318.0 136.9 L 324.0 142.2 L 330.0 147.0 L 336.0 151.5 L 342.0 155.4 L 348.0 158.8 L 354.0 161.6 L 360.0 163.7 L 366.0 165.2 L 372.0 165.9 L 378.0 165.9 L 384.0 165.2 L 390.0 163.7 L 396.0 161.6 L 402.0 158.8 L 408.0 155.4 L 414.0 151.5 L 420.0 147.0 L 426.0 142.2 L 432.0 136.9 L 438.0 131.4 L 444.0 125.8 L 450.0 120.0 L 456.0 114.2 L 462.0 108.6 L 468.0 103.1 L 474.0 97.8 L 480.0 93.0 L 486.0 88.5 L 492.0 84.6 L 498.0 81.2 L 504.0 78.4 L 510.0 76.3 L 516.0 74.8 L 522.0 74.1 L 528.0 74.1 L 534.0 74.8 L 540.0 76.3 L 546.0 78.4 L 552.0 81.2 L 558.0 84.6 L 564.0 88.5 L 570.0 93.0 L 576.0 97.8 L 582.0 103.1 L 588.0 108.6 L 594.0 114.2 L 600.0 120.0 L 606.0 125.8 L 612.0 131.4 L 618.0 136.9 L 624.0 142.2 L 630.0 147.0 L 636.0 151.5 L 642.0 155.4 L 648.0 158.8 L 654.0 161.6 L 660.0 163.7 L 666.0 165.2 L 672.0 165.9 L 678.0 165.9 L 684.0 165.2 L 690.0 163.7 L 696.0 161.6 L 702.0 158.8 L 708.0 155.4 L 714.0 151.5 L 720.0 147.0 L 726.0 142.2 L 732.0 136.9 L 738.0 131.4 L 744.0 125.8 L 750.0 120.0 L 756.0 114.2 L 762.0 108.6 L 768.0 103.1 L 774.0 97.8 L 780.0 93.0 L 786.0 88.5 L 792.0 84.6 L 798.0 81.2 L 804.0 78.4 L 810.0 76.3 L 816.0 74.8 L 822.0 74.1 L 828.0 74.1 L 834.0 74.8 L 840.0 76.3 L 846.0 78.4 L 852.0 81.2 L 858.0 84.6 L 864.0 88.5 L 870.0 93.0 L 876.0 97.8 L 882.0 103.1 L 888.0 108.6 L 894.0 114.2 L 900.0 120.0" fill="none" stroke="#E8C16E" stroke-width="2.6" stroke-linecap="round"/><circle cx="-75.0" cy="74.0" r="5" fill="#E8C16E"/><circle cx="-75.0" cy="74.0" r="11" fill="#E8C16E" opacity="0.18"/><circle cx="225.0" cy="74.0" r="5" fill="#E8C16E"/><circle cx="225.0" cy="74.0" r="11" fill="#E8C16E" opacity="0.18"/><circle cx="525.0" cy="74.0" r="5" fill="#E8C16E"/><circle cx="525.0" cy="74.0" r="11" fill="#E8C16E" opacity="0.18"/><circle cx="825.0" cy="74.0" r="5" fill="#E8C16E"/><circle cx="825.0" cy="74.0" r="11" fill="#E8C16E" opacity="0.18"/></g><g class="flow-wave" style="--lam:-240px; --dur:17s;"><path d="M -240.0 198.5 L -234.0 199.0 L -228.0 198.7 L -222.0 197.5 L -216.0 195.5 L -210.0 192.8 L -204.0 189.4 L -198.0 185.4 L -192.0 180.8 L -186.0 175.9 L -180.0 170.8 L -174.0 165.5 L -168.0 160.1 L -162.0 154.9 L -156.0 150.0 L -150.0 145.4 L -144.0 141.3 L -138.0 137.8 L -132.0 134.9 L -126.0 132.8 L -120.0 131.5 L -114.0 131.0 L -108.0 131.3 L -102.0 132.5 L -96.0 134.5 L -90.0 137.2 L -84.0 140.6 L -78.0 144.6 L -72.0 149.2 L -66.0 154.1 L -60.0 159.2 L -54.0 164.5 L -48.0 169.9 L -42.0 175.1 L -36.0 180.0 L -30.0 184.6 L -24.0 188.7 L -18.0 192.2 L -12.0 195.1 L -6.0 197.2 L 0.0 198.5 L 6.0 199.0 L 12.0 198.7 L 18.0 197.5 L 24.0 195.5 L 30.0 192.8 L 36.0 189.4 L 42.0 185.4 L 48.0 180.8 L 54.0 175.9 L 60.0 170.8 L 66.0 165.5 L 72.0 160.1 L 78.0 154.9 L 84.0 150.0 L 90.0 145.4 L 96.0 141.3 L 102.0 137.8 L 108.0 134.9 L 114.0 132.8 L 120.0 131.5 L 126.0 131.0 L 132.0 131.3 L 138.0 132.5 L 144.0 134.5 L 150.0 137.2 L 156.0 140.6 L 162.0 144.6 L 168.0 149.2 L 174.0 154.1 L 180.0 159.2 L 186.0 164.5 L 192.0 169.9 L 198.0 175.1 L 204.0 180.0 L 210.0 184.6 L 216.0 188.7 L 222.0 192.2 L 228.0 195.1 L 234.0 197.2 L 240.0 198.5 L 246.0 199.0 L 252.0 198.7 L 258.0 197.5 L 264.0 195.5 L 270.0 192.8 L 276.0 189.4 L 282.0 185.4 L 288.0 180.8 L 294.0 175.9 L 300.0 170.8 L 306.0 165.5 L 312.0 160.1 L 318.0 154.9 L 324.0 150.0 L 330.0 145.4 L 336.0 141.3 L 342.0 137.8 L 348.0 134.9 L 354.0 132.8 L 360.0 131.5 L 366.0 131.0 L 372.0 131.3 L 378.0 132.5 L 384.0 134.5 L 390.0 137.2 L 396.0 140.6 L 402.0 144.6 L 408.0 149.2 L 414.0 154.1 L 420.0 159.2 L 426.0 164.5 L 432.0 169.9 L 438.0 175.1 L 444.0 180.0 L 450.0 184.6 L 456.0 188.7 L 462.0 192.2 L 468.0 195.1 L 474.0 197.2 L 480.0 198.5 L 486.0 199.0 L 492.0 198.7 L 498.0 197.5 L 504.0 195.5 L 510.0 192.8 L 516.0 189.4 L 522.0 185.4 L 528.0 180.8 L 534.0 175.9 L 540.0 170.8 L 546.0 165.5 L 552.0 160.1 L 558.0 154.9 L 564.0 150.0 L 570.0 145.4 L 576.0 141.3 L 582.0 137.8 L 588.0 134.9 L 594.0 132.8 L 600.0 131.5 L 606.0 131.0 L 612.0 131.3 L 618.0 132.5 L 624.0 134.5 L 630.0 137.2 L 636.0 140.6 L 642.0 144.6 L 648.0 149.2 L 654.0 154.1 L 660.0 159.2 L 666.0 164.5 L 672.0 169.9 L 678.0 175.1 L 684.0 180.0 L 690.0 184.6 L 696.0 188.7 L 702.0 192.2 L 708.0 195.1 L 714.0 197.2 L 720.0 198.5 L 726.0 199.0 L 732.0 198.7 L 738.0 197.5 L 744.0 195.5 L 750.0 192.8 L 756.0 189.4 L 762.0 185.4 L 768.0 180.8 L 774.0 175.9 L 780.0 170.8 L 786.0 165.5 L 792.0 160.1 L 798.0 154.9 L 804.0 150.0 L 810.0 145.4 L 816.0 141.3 L 822.0 137.8 L 828.0 134.9 L 834.0 132.8 L 840.0 131.5" fill="none" stroke="#F2A57E" stroke-width="6.6000000000000005" stroke-linecap="round" opacity="0.22" transform="translate(0 0)" style="filter:blur(5px)"/><path d="M -240.0 198.5 L -234.0 199.0 L -228.0 198.7 L -222.0 197.5 L -216.0 195.5 L -210.0 192.8 L -204.0 189.4 L -198.0 185.4 L -192.0 180.8 L -186.0 175.9 L -180.0 170.8 L -174.0 165.5 L -168.0 160.1 L -162.0 154.9 L -156.0 150.0 L -150.0 145.4 L -144.0 141.3 L -138.0 137.8 L -132.0 134.9 L -126.0 132.8 L -120.0 131.5 L -114.0 131.0 L -108.0 131.3 L -102.0 132.5 L -96.0 134.5 L -90.0 137.2 L -84.0 140.6 L -78.0 144.6 L -72.0 149.2 L -66.0 154.1 L -60.0 159.2 L -54.0 164.5 L -48.0 169.9 L -42.0 175.1 L -36.0 180.0 L -30.0 184.6 L -24.0 188.7 L -18.0 192.2 L -12.0 195.1 L -6.0 197.2 L 0.0 198.5 L 6.0 199.0 L 12.0 198.7 L 18.0 197.5 L 24.0 195.5 L 30.0 192.8 L 36.0 189.4 L 42.0 185.4 L 48.0 180.8 L 54.0 175.9 L 60.0 170.8 L 66.0 165.5 L 72.0 160.1 L 78.0 154.9 L 84.0 150.0 L 90.0 145.4 L 96.0 141.3 L 102.0 137.8 L 108.0 134.9 L 114.0 132.8 L 120.0 131.5 L 126.0 131.0 L 132.0 131.3 L 138.0 132.5 L 144.0 134.5 L 150.0 137.2 L 156.0 140.6 L 162.0 144.6 L 168.0 149.2 L 174.0 154.1 L 180.0 159.2 L 186.0 164.5 L 192.0 169.9 L 198.0 175.1 L 204.0 180.0 L 210.0 184.6 L 216.0 188.7 L 222.0 192.2 L 228.0 195.1 L 234.0 197.2 L 240.0 198.5 L 246.0 199.0 L 252.0 198.7 L 258.0 197.5 L 264.0 195.5 L 270.0 192.8 L 276.0 189.4 L 282.0 185.4 L 288.0 180.8 L 294.0 175.9 L 300.0 170.8 L 306.0 165.5 L 312.0 160.1 L 318.0 154.9 L 324.0 150.0 L 330.0 145.4 L 336.0 141.3 L 342.0 137.8 L 348.0 134.9 L 354.0 132.8 L 360.0 131.5 L 366.0 131.0 L 372.0 131.3 L 378.0 132.5 L 384.0 134.5 L 390.0 137.2 L 396.0 140.6 L 402.0 144.6 L 408.0 149.2 L 414.0 154.1 L 420.0 159.2 L 426.0 164.5 L 432.0 169.9 L 438.0 175.1 L 444.0 180.0 L 450.0 184.6 L 456.0 188.7 L 462.0 192.2 L 468.0 195.1 L 474.0 197.2 L 480.0 198.5 L 486.0 199.0 L 492.0 198.7 L 498.0 197.5 L 504.0 195.5 L 510.0 192.8 L 516.0 189.4 L 522.0 185.4 L 528.0 180.8 L 534.0 175.9 L 540.0 170.8 L 546.0 165.5 L 552.0 160.1 L 558.0 154.9 L 564.0 150.0 L 570.0 145.4 L 576.0 141.3 L 582.0 137.8 L 588.0 134.9 L 594.0 132.8 L 600.0 131.5 L 606.0 131.0 L 612.0 131.3 L 618.0 132.5 L 624.0 134.5 L 630.0 137.2 L 636.0 140.6 L 642.0 144.6 L 648.0 149.2 L 654.0 154.1 L 660.0 159.2 L 666.0 164.5 L 672.0 169.9 L 678.0 175.1 L 684.0 180.0 L 690.0 184.6 L 696.0 188.7 L 702.0 192.2 L 708.0 195.1 L 714.0 197.2 L 720.0 198.5 L 726.0 199.0 L 732.0 198.7 L 738.0 197.5 L 744.0 195.5 L 750.0 192.8 L 756.0 189.4 L 762.0 185.4 L 768.0 180.8 L 774.0 175.9 L 780.0 170.8 L 786.0 165.5 L 792.0 160.1 L 798.0 154.9 L 804.0 150.0 L 810.0 145.4 L 816.0 141.3 L 822.0 137.8 L 828.0 134.9 L 834.0 132.8 L 840.0 131.5" fill="none" stroke="#F2A57E" stroke-width="2.2" stroke-linecap="round"/><circle cx="-113.5" cy="131.0" r="5" fill="#F2A57E"/><circle cx="-113.5" cy="131.0" r="11" fill="#F2A57E" opacity="0.18"/><circle cx="126.5" cy="131.0" r="5" fill="#F2A57E"/><circle cx="126.5" cy="131.0" r="11" fill="#F2A57E" opacity="0.18"/><circle cx="366.5" cy="131.0" r="5" fill="#F2A57E"/><circle cx="366.5" cy="131.0" r="11" fill="#F2A57E" opacity="0.18"/><circle cx="606.5" cy="131.0" r="5" fill="#F2A57E"/><circle cx="606.5" cy="131.0" r="11" fill="#F2A57E" opacity="0.18"/></g><g class="flow-wave" style="--lam:-200px; --dur:13s;"><path d="M -200.0 226.3 L -194.0 222.6 L -188.0 218.6 L -182.0 214.5 L -176.0 210.4 L -170.0 206.4 L -164.0 202.8 L -158.0 199.6 L -152.0 196.9 L -146.0 194.9 L -140.0 193.6 L -134.0 193.0 L -128.0 193.2 L -122.0 194.2 L -116.0 196.0 L -110.0 198.4 L -104.0 201.4 L -98.0 204.9 L -92.0 208.7 L -86.0 212.8 L -80.0 216.9 L -74.0 221.0 L -68.0 224.8 L -62.0 228.4 L -56.0 231.4 L -50.0 233.9 L -44.0 235.6 L -38.0 236.7 L -32.0 237.0 L -26.0 236.5 L -20.0 235.3 L -14.0 233.3 L -8.0 230.7 L -2.0 227.5 L 4.0 223.9 L 10.0 220.0 L 16.0 215.9 L 22.0 211.7 L 28.0 207.7 L 34.0 203.9 L 40.0 200.6 L 46.0 197.7 L 52.0 195.5 L 58.0 193.9 L 64.0 193.1 L 70.0 193.1 L 76.0 193.8 L 82.0 195.3 L 88.0 197.5 L 94.0 200.3 L 100.0 203.7 L 106.0 207.4 L 112.0 211.4 L 118.0 215.5 L 124.0 219.6 L 130.0 223.6 L 136.0 227.2 L 142.0 230.4 L 148.0 233.1 L 154.0 235.1 L 160.0 236.4 L 166.0 237.0 L 172.0 236.8 L 178.0 235.8 L 184.0 234.0 L 190.0 231.6 L 196.0 228.6 L 202.0 225.1 L 208.0 221.3 L 214.0 217.2 L 220.0 213.1 L 226.0 209.0 L 232.0 205.2 L 238.0 201.6 L 244.0 198.6 L 250.0 196.1 L 256.0 194.4 L 262.0 193.3 L 268.0 193.0 L 274.0 193.5 L 280.0 194.7 L 286.0 196.7 L 292.0 199.3 L 298.0 202.5 L 304.0 206.1 L 310.0 210.0 L 316.0 214.1 L 322.0 218.3 L 328.0 222.3 L 334.0 226.1 L 340.0 229.4 L 346.0 232.3 L 352.0 234.5 L 358.0 236.1 L 364.0 236.9 L 370.0 236.9 L 376.0 236.2 L 382.0 234.7 L 388.0 232.5 L 394.0 229.7 L 400.0 226.3 L 406.0 222.6 L 412.0 218.6 L 418.0 214.5 L 424.0 210.4 L 430.0 206.4 L 436.0 202.8 L 442.0 199.6 L 448.0 196.9 L 454.0 194.9 L 460.0 193.6 L 466.0 193.0 L 472.0 193.2 L 478.0 194.2 L 484.0 196.0 L 490.0 198.4 L 496.0 201.4 L 502.0 204.9 L 508.0 208.7 L 514.0 212.8 L 520.0 216.9 L 526.0 221.0 L 532.0 224.8 L 538.0 228.4 L 544.0 231.4 L 550.0 233.9 L 556.0 235.6 L 562.0 236.7 L 568.0 237.0 L 574.0 236.5 L 580.0 235.3 L 586.0 233.3 L 592.0 230.7 L 598.0 227.5 L 604.0 223.9 L 610.0 220.0 L 616.0 215.9 L 622.0 211.7 L 628.0 207.7 L 634.0 203.9 L 640.0 200.6 L 646.0 197.7 L 652.0 195.5 L 658.0 193.9 L 664.0 193.1 L 670.0 193.1 L 676.0 193.8 L 682.0 195.3 L 688.0 197.5 L 694.0 200.3 L 700.0 203.7 L 706.0 207.4 L 712.0 211.4 L 718.0 215.5 L 724.0 219.6 L 730.0 223.6 L 736.0 227.2 L 742.0 230.4 L 748.0 233.1 L 754.0 235.1 L 760.0 236.4 L 766.0 237.0 L 772.0 236.8 L 778.0 235.8 L 784.0 234.0 L 790.0 231.6 L 796.0 228.6" fill="none" stroke="#E08A5E" stroke-width="5.4" stroke-linecap="round" opacity="0.22" transform="translate(0 0)" style="filter:blur(5px)"/><path d="M -200.0 226.3 L -194.0 222.6 L -188.0 218.6 L -182.0 214.5 L -176.0 210.4 L -170.0 206.4 L -164.0 202.8 L -158.0 199.6 L -152.0 196.9 L -146.0 194.9 L -140.0 193.6 L -134.0 193.0 L -128.0 193.2 L -122.0 194.2 L -116.0 196.0 L -110.0 198.4 L -104.0 201.4 L -98.0 204.9 L -92.0 208.7 L -86.0 212.8 L -80.0 216.9 L -74.0 221.0 L -68.0 224.8 L -62.0 228.4 L -56.0 231.4 L -50.0 233.9 L -44.0 235.6 L -38.0 236.7 L -32.0 237.0 L -26.0 236.5 L -20.0 235.3 L -14.0 233.3 L -8.0 230.7 L -2.0 227.5 L 4.0 223.9 L 10.0 220.0 L 16.0 215.9 L 22.0 211.7 L 28.0 207.7 L 34.0 203.9 L 40.0 200.6 L 46.0 197.7 L 52.0 195.5 L 58.0 193.9 L 64.0 193.1 L 70.0 193.1 L 76.0 193.8 L 82.0 195.3 L 88.0 197.5 L 94.0 200.3 L 100.0 203.7 L 106.0 207.4 L 112.0 211.4 L 118.0 215.5 L 124.0 219.6 L 130.0 223.6 L 136.0 227.2 L 142.0 230.4 L 148.0 233.1 L 154.0 235.1 L 160.0 236.4 L 166.0 237.0 L 172.0 236.8 L 178.0 235.8 L 184.0 234.0 L 190.0 231.6 L 196.0 228.6 L 202.0 225.1 L 208.0 221.3 L 214.0 217.2 L 220.0 213.1 L 226.0 209.0 L 232.0 205.2 L 238.0 201.6 L 244.0 198.6 L 250.0 196.1 L 256.0 194.4 L 262.0 193.3 L 268.0 193.0 L 274.0 193.5 L 280.0 194.7 L 286.0 196.7 L 292.0 199.3 L 298.0 202.5 L 304.0 206.1 L 310.0 210.0 L 316.0 214.1 L 322.0 218.3 L 328.0 222.3 L 334.0 226.1 L 340.0 229.4 L 346.0 232.3 L 352.0 234.5 L 358.0 236.1 L 364.0 236.9 L 370.0 236.9 L 376.0 236.2 L 382.0 234.7 L 388.0 232.5 L 394.0 229.7 L 400.0 226.3 L 406.0 222.6 L 412.0 218.6 L 418.0 214.5 L 424.0 210.4 L 430.0 206.4 L 436.0 202.8 L 442.0 199.6 L 448.0 196.9 L 454.0 194.9 L 460.0 193.6 L 466.0 193.0 L 472.0 193.2 L 478.0 194.2 L 484.0 196.0 L 490.0 198.4 L 496.0 201.4 L 502.0 204.9 L 508.0 208.7 L 514.0 212.8 L 520.0 216.9 L 526.0 221.0 L 532.0 224.8 L 538.0 228.4 L 544.0 231.4 L 550.0 233.9 L 556.0 235.6 L 562.0 236.7 L 568.0 237.0 L 574.0 236.5 L 580.0 235.3 L 586.0 233.3 L 592.0 230.7 L 598.0 227.5 L 604.0 223.9 L 610.0 220.0 L 616.0 215.9 L 622.0 211.7 L 628.0 207.7 L 634.0 203.9 L 640.0 200.6 L 646.0 197.7 L 652.0 195.5 L 658.0 193.9 L 664.0 193.1 L 670.0 193.1 L 676.0 193.8 L 682.0 195.3 L 688.0 197.5 L 694.0 200.3 L 700.0 203.7 L 706.0 207.4 L 712.0 211.4 L 718.0 215.5 L 724.0 219.6 L 730.0 223.6 L 736.0 227.2 L 742.0 230.4 L 748.0 233.1 L 754.0 235.1 L 760.0 236.4 L 766.0 237.0 L 772.0 236.8 L 778.0 235.8 L 784.0 234.0 L 790.0 231.6 L 796.0 228.6" fill="none" stroke="#E08A5E" stroke-width="1.8" stroke-linecap="round"/><circle cx="-132.8" cy="193.0" r="5" fill="#E08A5E"/><circle cx="-132.8" cy="193.0" r="11" fill="#E08A5E" opacity="0.18"/><circle cx="67.2" cy="193.0" r="5" fill="#E08A5E"/><circle cx="67.2" cy="193.0" r="11" fill="#E08A5E" opacity="0.18"/><circle cx="267.2" cy="193.0" r="5" fill="#E08A5E"/><circle cx="267.2" cy="193.0" r="11" fill="#E08A5E" opacity="0.18"/><circle cx="467.2" cy="193.0" r="5" fill="#E08A5E"/><circle cx="467.2" cy="193.0" r="11" fill="#E08A5E" opacity="0.18"/><circle cx="667.2" cy="193.0" r="5" fill="#E08A5E"/><circle cx="667.2" cy="193.0" r="11" fill="#E08A5E" opacity="0.18"/></g></g>
-          
-        </svg>
-        <p class="eyebrow" style="text-align:left;">For employers</p>
-        <h2 class="employers-title">Menopause action plans are coming.<br /><em>Is your team ready?</em></h2>
-        <p class="employers-body">From spring 2027, UK employers with 250 or more staff are expected to publish an action plan showing how they support employees through menopause. Ormi gives the women in your team a place to understand how they feel and what helps. We offer flexible packages to suit your organisation.</p>
-        <div class="employers-actions">
-          <a href="mailto:hello@ormi.health?subject=Ormi%20for%20employers" class="btn-gold">Email hello@ormi.health</a>
-          <a href="#final-waitlist" class="btn-ghost">Join the waitlist</a>
+      <div class="eband reveal">
+        <div>
+          <p class="eyebrow" style="text-align:left;">For employers</p>
+          <p class="eband-title">Menopause action plans are coming. <em>Is your team ready?</em></p>
         </div>
-        <div class="didyouknow">
-          <p class="dyk-label">Did you know?</p>
-          <div class="dyk-item">
-            <p class="dyk-figure">£60,000+</p>
-            <p class="dyk-text">awarded by employment tribunals in each of two recent cases involving menopause symptoms at work. Ask us about a package for your team.</p>
-          </div>
-        </div>
-        <p class="employers-source">Employment Rights Act 2025. Expected from spring 2027, subject to final regulations. Tribunal awards: Lynskey v Direct Line Insurance Services (£64,645) and Shearer v South Lanarkshire Council (£61,074).</p>
+        <a href="/employers" class="btn-ghost">Ormi for employers</a>
       </div>
     </div>
   </section>
@@ -2236,15 +2243,11 @@ const bodyHTML = `
           </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ── How it works ── -->
-  <section style="background:var(--obsidian2);">
-    <div class="container">
-      <p class="eyebrow">How it works</p>
-      <h2 class="section-title">Translate. Act.<br /><em>Connect.</em></h2>
-      <p class="section-sub">Ormi isn't a tracker. It's a daily companion that helps you understand how you feel and decide what to do next.</p>
+      <div class="merged-how">
+        <p class="eyebrow" style="text-align:left;">How Ormi helps</p>
+        <p class="merged-sub">Ormi isn't a tracker. It's a daily companion that helps you understand how you feel and decide what to do next.</p>
+      </div>
 
       <div class="steps-grid">
         <div class="step reveal">
@@ -2353,10 +2356,17 @@ const bodyHTML = `
       <h2 class="section-title">Three ways to test your hormones.<br /><em>Only one follows them through the whole day.</em></h2>
       <p class="section-sub">Hormones don't hold still. They shift through the day and through the month. So what a test can tell you depends on how much of that it sees.</p>
       <div class="tests-grid">
-        <div class="test-card reveal">
-          <div class="test-dots" aria-hidden="true"><i style="--c:#F2A57E; --i:0;"></i><i style="--c:#F2A57E; --i:1;"></i><i style="--c:#F2A57E; --i:2;"></i></div>
-          <p class="test-count">1 to 3 hormones</p>
-          <h3 class="test-name">Strip tests</h3>
+        <div class="tests-side">
+          <details class="test-card reveal">
+            <summary>
+              <span class="test-sum">
+                <div class="test-dots" aria-hidden="true"><i style="--c:#F2A57E; --i:0;"></i><i style="--c:#F2A57E; --i:1;"></i><i style="--c:#F2A57E; --i:2;"></i></div>
+                <p class="test-count">1 to 3 hormones</p>
+                <h3 class="test-name">Strip tests</h3>
+                <span class="test-teaser">One reading at one moment, and a glass of water can change it.</span>
+              </span>
+              <span class="test-toggle" aria-hidden="true"></span>
+            </summary>
           <div class="test-row">
             <p class="test-label">What it measures</p>
             <p class="test-text">FSH on its own, or FSH with a marker for oestrogen and one for progesterone. You dip a strip in urine on set days of your cycle.</p>
@@ -2365,11 +2375,17 @@ const bodyHTML = `
             <p class="test-label">Where it falls short</p>
             <ul class="test-list muted"><li><strong>One moment in time.</strong> One dip, one reading.</li><li><strong>A glass of water can change it.</strong> Dilute urine reads lower, which is why the instructions tell you to limit fluids first.</li><li><strong>Not a good guide in perimenopause.</strong> FSH swings up and down, so a normal result doesn't rule it out. The Royal College of Obstetricians and Gynaecologists does not recommend over-the-counter menopause tests.</li><li><strong>Big gaps.</strong> No cortisol, testosterone, DHEA or melatonin, and nothing on how hormones are broken down.</li></ul>
           </div>
-        </div>
-        <div class="test-card is-blood reveal">
-          <div class="test-dots" aria-hidden="true"><i style="--c:#E08A5E; --i:0;"></i><i style="--c:#E08A5E; --i:1;"></i></div>
-          <p class="test-count">Usually 1 or 2 hormones</p>
-          <h3 class="test-name">Blood test</h3>
+          </details>
+          <details class="test-card is-blood reveal">
+            <summary>
+              <span class="test-sum">
+                <div class="test-dots" aria-hidden="true"><i style="--c:#E08A5E; --i:0;"></i><i style="--c:#E08A5E; --i:1;"></i></div>
+                <p class="test-count">Usually 1 or 2 hormones</p>
+                <h3 class="test-name">Blood test</h3>
+                <span class="test-teaser">A snapshot. The same test at a different time can give a different answer.</span>
+              </span>
+              <span class="test-toggle" aria-hidden="true"></span>
+            </summary>
           <div class="test-row">
             <p class="test-label">What it measures</p>
             <p class="test-text">Usually FSH, sometimes with oestradiol, from one blood sample. Through your GP or a private lab.</p>
@@ -2378,6 +2394,7 @@ const bodyHTML = `
             <p class="test-label">Where it falls short</p>
             <ul class="test-list muted"><li><strong>A snapshot.</strong> Hormone levels move through the day and through the month, so the same test at a different time can give a different answer.</li><li><strong>It can look normal when you feel anything but.</strong> In perimenopause, levels rise and fall from one day to the next.</li><li><strong>One sample, one view.</strong> It can't show a daily cortisol rhythm, or how your hormones are being broken down.</li><li><strong>Still valuable</strong> for ruling out other causes, such as thyroid problems. It's one piece, not the picture.</li></ul>
           </div>
+          </details>
         </div>
         <div class="test-card is-dutch reveal">
           <p class="test-badge">The whole day</p>
