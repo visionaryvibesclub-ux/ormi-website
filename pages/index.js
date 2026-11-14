@@ -1129,7 +1129,7 @@ const css = `
     .team {
       --h: 150px;
       position: absolute;
-      right: 48px; top: 50%;
+      right: 48px; top: 34%;
       width: 380px; height: calc(var(--h) + 50px);
       transform: translateY(-50%);
       pointer-events: none;
@@ -1153,7 +1153,7 @@ const css = `
     .team-bars i:nth-child(2) { width: 38%; background: rgba(239,211,155,0.32); animation-duration: 5.2s; animation-delay: 0.5s; }
     .team-bars i:nth-child(3) { width: 17%; background: rgba(239,211,155,0.2); animation-duration: 5.9s; animation-delay: 1s; }
     @keyframes teamFloat { from { transform: translateY(7px); } to { transform: translateY(-9px); } }
-    @media (max-width: 1080px) {
+    @media (max-width: 1200px) {
       .team { --h: 104px; position: relative; right: auto; top: auto; transform: none; width: 100%; max-width: 380px; margin-bottom: 26px; }
     }
     @media (max-width: 760px) {
@@ -1351,6 +1351,16 @@ const css = `
     .faq-item[open] .faq-plus::after { transform: rotate(0deg); }
     .faq-answer { padding: 0 50px 24px 0; font-size: 17px; line-height: 1.7; color: var(--white50); max-width: 640px; animation: riseIn 0.35s ease both; }
     .faq-answer a { color: var(--gold-text); }
+
+    /* ── Employers: did you know ── */
+    .didyouknow { margin-top: 30px; padding: 22px 24px; border-radius: 18px; background: rgba(12,35,64,0.55); border: 1px solid rgba(245,230,200,0.14); max-width: 650px; }
+    .dyk-label { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 24px; color: #EFD39B; margin-bottom: 14px; }
+    .dyk-row { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+    .dyk-figure { font-family: 'Instrument Serif', serif; font-size: 44px; line-height: 1; margin-bottom: 8px; }
+    .dyk-item:nth-child(1) .dyk-figure { color: #E08A5E; }
+    .dyk-item:nth-child(2) .dyk-figure { color: #E6CC94; }
+    .dyk-text { font-size: 16px; line-height: 1.55; color: var(--white50); }
+    @media (max-width: 640px) { .dyk-row { grid-template-columns: 1fr; gap: 18px; } }
 
     /* ── IGNITE feature band ── */
     a.hero-badge { text-decoration: none; transition: background 0.2s, border-color 0.2s; }
@@ -1854,29 +1864,50 @@ const bodyHTML = `
           <a href="mailto:hello@ormi.health?subject=Ormi%20for%20employers" class="btn-gold">Email hello@ormi.health</a>
           <a href="#final-waitlist" class="btn-ghost">Join the waitlist</a>
         </div>
-        <p class="employers-source">Employment Rights Act 2025. Expected from spring 2027, subject to final regulations.</p>
+        <div class="didyouknow">
+          <p class="dyk-label">Did you know?</p>
+          <div class="dyk-row">
+            <div class="dyk-item">
+              <p class="dyk-figure">£64,645</p>
+              <p class="dyk-text">awarded by an employment tribunal in 2023 to an employee whose menopause symptoms were not accommodated at work.</p>
+            </div>
+            <div class="dyk-item">
+              <p class="dyk-figure">From £45</p>
+              <p class="dyk-text">per eligible employee a year for an Ormi employer plan.</p>
+            </div>
+          </div>
+        </div>
+        <p class="employers-source">Employment Rights Act 2025. Expected from spring 2027, subject to final regulations. Tribunal award: Lynskey v Direct Line Insurance Services, 2023.</p>
       </div>
     </div>
   </section>
 
   <!-- ── Feelings section ── -->
-  <!-- Symptoms named here are listed by the NHS: nhs.uk/conditions/menopause/symptoms (reviewed 19 May 2026) -->
+  <!--
+    Symptoms named here are listed by the NHS: nhs.uk/conditions/menopause/symptoms (reviewed 19 May 2026).
+    Hormone links (checked 14 Nov 2026), all worded as "may" or "linked with":
+    Oxford Health NHS Foundation Trust leaflet: lowering oestrogen can lead to mental and physical
+    changes, including low mood, low energy, increased anxiety and brain fog.
+    Patient.info, quoting Dr Heather Currie: changes in oestrogen and progesterone have a direct
+    effect on the sleep cycle beyond hot flushes and night sweats.
+    NICE QS143: hormone levels fluctuate during the perimenopause.
+  -->
   <section class="light">
     <div class="container">
       <p class="eyebrow">Sound familiar?</p>
       <h2 class="section-title">If you don't feel like yourself lately,<br /><em>you're not alone.</em></h2>
-      <p class="section-sub">Mood swings, low mood, brain fog and broken sleep are all recognised symptoms of perimenopause and menopause. Ormi helps you notice your own patterns.</p>
+      <p class="section-sub">Mood swings, low mood, brain fog and broken sleep are all recognised symptoms of perimenopause and menopause, when levels of oestrogen and progesterone are changing. Ormi helps you notice your own patterns.</p>
 
       <div class="feelings-grid">
         <div class="feeling-card reveal">
           <div class="fsun" aria-hidden="true" style="--hue:#E08A5E; --sink:0.42; --dim:1;"><div class="fsun-sky"><span class="fsun-disc"></span><span class="fsun-cloud" style="--speed:2.4s;"></span></div><span class="fsun-line"></span><span class="fsun-bar"></span></div>
           <p class="feeling-text">"I feel anxious all the time and I don't know why."</p>
-          <p class="feeling-reframe">Anxiety can be part of perimenopause. A daily check-in helps you see when it shows up.</p>
+          <p class="feeling-reframe">Changing oestrogen and progesterone levels may play a part. Anxiety can be part of perimenopause, and a daily check-in helps you see when it shows up.</p>
         </div>
         <div class="feeling-card reveal">
           <div class="fsun" aria-hidden="true" style="--hue:#D9AE5C; --sink:0.2; --dim:1;"><div class="fsun-sky"><span class="fsun-disc"></span><span class="fsun-bite"></span><span class="fsun-star" style="left:18%;top:10px;"></span><span class="fsun-star" style="left:80%;top:6px;"></span></div><span class="fsun-line"></span><span class="fsun-bar"></span></div>
           <p class="feeling-text">"I wake up at 3am with my heart racing. I'm exhausted but I can't sleep."</p>
-          <p class="feeling-reframe">Sleep problems are a common symptom. Ormi brings your sleep, your check-ins and your wearable together.</p>
+          <p class="feeling-reframe">Changes in oestrogen and progesterone can affect the sleep cycle, and night sweats can wake you. Ormi brings your sleep, your check-ins and your wearable together.</p>
         </div>
         <div class="feeling-card reveal">
           <div class="fsun" aria-hidden="true" style="--hue:#F2A57E; --sink:0.42; --dim:0.75;"><div class="fsun-sky"><span class="fsun-disc"></span></div><span class="fsun-line"></span><span class="fsun-bar"></span></div>
@@ -1886,17 +1917,17 @@ const bodyHTML = `
         <div class="feeling-card reveal">
           <div class="fsun" aria-hidden="true" style="--hue:#C8674A; --sink:0.42; --dim:1;"><div class="fsun-sky"><span class="fsun-disc"></span><span class="fsun-cloud" style="--speed:2.4s;"></span></div><span class="fsun-line"></span><span class="fsun-bar"></span></div>
           <p class="feeling-text">"I snap at my kids and then cry about it. I don't recognise myself."</p>
-          <p class="feeling-reframe">Mood swings are a recognised symptom. Seeing the pattern makes it easier to talk about.</p>
+          <p class="feeling-reframe">Mood swings are a recognised symptom, and falling oestrogen may be involved. Seeing the pattern makes it easier to talk about.</p>
         </div>
         <div class="feeling-card reveal">
           <div class="fsun" aria-hidden="true" style="--hue:#B4553A; --sink:0.72; --dim:0.7;"><div class="fsun-sky"><span class="fsun-disc"></span></div><span class="fsun-line"></span><span class="fsun-bar"></span></div>
           <p class="feeling-text">"I'm so tired all the time. Coffee doesn't even touch it."</p>
-          <p class="feeling-reframe">Ormi helps you see how your sleep and your energy move together.</p>
+          <p class="feeling-reframe">Lower oestrogen is linked with low energy, and broken sleep adds to it. Ormi helps you see how your sleep and your energy move together.</p>
         </div>
         <div class="feeling-card reveal">
           <div class="fsun" aria-hidden="true" style="--hue:#D9AE5C; --sink:0.42; --dim:0.6;"><div class="fsun-sky"><span class="fsun-disc"></span><span class="fsun-cloud" style="--speed:5s;"></span></div><span class="fsun-line"></span><span class="fsun-bar"></span></div>
           <p class="feeling-text">"My brain just isn't working. I forget words. I lose my train of thought."</p>
-          <p class="feeling-reframe">The NHS calls this brain fog, and lists it as a common symptom. You're not making it up.</p>
+          <p class="feeling-reframe">The NHS lists brain fog as a common symptom, and lower oestrogen is thought to play a part. You're not making it up.</p>
         </div>
       </div>
     </div>
@@ -1915,7 +1946,7 @@ const bodyHTML = `
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2C8 2 3 5.5 3 9C3 11.5 5.2 13.5 8 13.5C10.8 13.5 13 11.5 13 9C13 5.5 8 2 8 2Z" stroke="#F2A57E" stroke-width="1.2"/><circle cx="8" cy="9" r="2" stroke="#F2A57E" stroke-width="1.2"/></svg>
           </div>
           <h3 class="mental-title">Anxiety &amp; low mood</h3>
-          <p class="mental-body">Both can be part of perimenopause and menopause. Ormi's daily check-in uses words, not scores, so you can say how you feel in seconds.</p>
+          <p class="mental-body">Both can be part of perimenopause and menopause, when oestrogen and progesterone levels are changing. Ormi's daily check-in uses words, not scores, so you can say how you feel in seconds.</p>
         </div>
         <div class="mental-card reveal">
           <div class="mental-icon" style="background:var(--gold-dim); border:1px solid var(--gold-border);">
@@ -1929,14 +1960,14 @@ const bodyHTML = `
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h3l2-4 2 8 2-4 2 2h1" stroke="#E08A5E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <h3 class="mental-title">Brain fog</h3>
-          <p class="mental-body">Memory and concentration can change. Ormi helps you notice what makes the fog lighter or heavier for you.</p>
+          <p class="mental-body">Memory and concentration can change, and lower oestrogen is thought to play a part. Ormi helps you notice what makes the fog lighter or heavier for you.</p>
         </div>
         <div class="mental-card reveal">
           <div class="mental-icon" style="background:var(--rose-dim); border:1px solid var(--rose-border);">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8C4 5.8 5.8 4 8 4C10.2 4 12 5.8 12 8" stroke="#F2A57E" stroke-width="1.2" stroke-linecap="round"/><path d="M8 12V8" stroke="#F2A57E" stroke-width="1.2" stroke-linecap="round"/><circle cx="8" cy="13" r="1" fill="#F2A57E"/></svg>
           </div>
           <h3 class="mental-title">Sleep</h3>
-          <p class="mental-body">Broken sleep can make everything else feel harder. Ormi has wind-down tools for the evening, and reads your sleep from your wearable.</p>
+          <p class="mental-body">Changes in oestrogen and progesterone can affect sleep, and broken sleep can make everything else feel harder. Ormi has wind-down tools for the evening, and reads your sleep from your wearable.</p>
         </div>
       </div>
       <p class="pricing-footnote">Ormi does not replace your GP. If you're worried about your mental health, please speak to them.</p>
