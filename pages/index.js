@@ -1227,6 +1227,54 @@ const css = `
     /* the 35 markers */
     .dutch-dots { width: 210px; max-width: 70%; height: auto; display: block; margin-bottom: 26px; }
 
+    /* ── Always up to date ── */
+    .living-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    @media (max-width: 900px) { .living-grid { grid-template-columns: 1fr; gap: 36px; } }
+    .living-card {
+      background: linear-gradient(160deg, rgba(200,103,74,0.22) 0%, rgba(15,42,74,0.6) 55%), #0F2A4A;
+      border: 1px solid rgba(224,138,94,0.4);
+      border-radius: 26px;
+      padding: 30px 28px 26px;
+    }
+    .living-tag { font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-text); margin-bottom: 18px; }
+    .week { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-bottom: 24px; }
+    .day { text-align: center; opacity: 0.4; transition: opacity 0.6s ease; }
+    .day.is-past { opacity: 0.75; }
+    .day.is-today { opacity: 1; }
+    .day-sky { position: relative; height: 50px; overflow: hidden; border-radius: 10px 10px 0 0; transition: background 0.6s ease; }
+    .day.is-today .day-sky { background: rgba(245,230,200,0.08); }
+    .day-sun {
+      position: absolute; left: 50%; bottom: 0;
+      width: 26px; height: 26px; margin-left: -13px; border-radius: 50%;
+      background: var(--hue, #D9AE5C);
+      transform: translateY(calc(26px * var(--lvl, 0.5)));
+      transition: transform 0.9s cubic-bezier(0.22, 0.8, 0.3, 1), background 0.6s ease;
+    }
+    .day.is-future .day-sun { transform: translateY(26px); }
+    .day-line { height: 1px; background: rgba(245,230,200,0.4); }
+    .day-name { margin-top: 8px; font-size: 13px; font-weight: 500; color: var(--white50); }
+    .day.is-today .day-name { color: var(--champagne); }
+    .said { display: flex; align-items: baseline; gap: 12px; margin-bottom: 18px; }
+    .said-label { font-size: 15px; color: var(--white50); }
+    .said-word { font-family: 'Instrument Serif', serif; font-size: 34px; line-height: 1; color: var(--champagne); }
+    .plan-title { font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-text); margin-bottom: 10px; }
+    .plan-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .plan-list li {
+      display: flex; align-items: center; gap: 12px;
+      background: rgba(245,230,200,0.07);
+      border: 1px solid rgba(245,230,200,0.12);
+      border-radius: 14px;
+      padding: 13px 16px;
+      font-size: 16px;
+      color: var(--champagne);
+    }
+    .plan-list li::before { content: ''; width: 9px; height: 9px; border-radius: 50%; background: var(--dot, #E08A5E); flex-shrink: 0; }
+    .plan-list li:nth-child(1) { --dot: #E6CC94; } .plan-list li:nth-child(2) { --dot: #F2A57E; } .plan-list li:nth-child(3) { --dot: #E08A5E; }
+    .living-card.is-swapping .said-word, .living-card.is-swapping .plan-list li { animation: riseIn 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+    .living-card.is-swapping .plan-list li:nth-child(2) { animation-delay: 0.08s; }
+    .living-card.is-swapping .plan-list li:nth-child(3) { animation-delay: 0.16s; }
+    .living-note { margin-top: 16px; font-size: 13px; color: var(--white30); }
+
     /* ── Tests compared ── */
     .tests-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
     @media (max-width: 900px) { .tests-grid { grid-template-columns: 1fr; } }
@@ -1238,7 +1286,12 @@ const css = `
       display: flex;
       flex-direction: column;
     }
-    .test-card.is-dutch { border-color: rgba(224,138,94,0.55); background: rgba(224,138,94,0.08); }
+    .test-card { --tone: #F2A57E; --tint: 242,165,126; background: rgba(var(--tint),0.09); border-color: rgba(var(--tint),0.42); }
+    .test-card.is-blood { --tone: #E08A5E; --tint: 200,103,74; background: rgba(var(--tint),0.16); border-color: rgba(224,138,94,0.5); }
+    .test-card.is-dutch { --tone: #E8C16E; --tint: 232,193,110; background: rgba(var(--tint),0.10); border-color: rgba(var(--tint),0.55); }
+    .test-card .test-name, .test-card .test-label { color: var(--tone); }
+    .test-card .test-row { border-top-color: rgba(var(--tint),0.28); }
+    .t-strip { color: #F2A57E; } .t-blood { color: #E08A5E; } .t-dutch { color: #E8C16E; }
     .test-dots { display: flex; flex-wrap: wrap; gap: 6px; width: 132px; min-height: 84px; align-content: flex-start; margin-bottom: 22px; }
     .test-dots i { width: 12px; height: 12px; border-radius: 50%; background: var(--c, #E6CC94); animation: twinkle 3.2s ease-in-out infinite alternate; animation-delay: calc(var(--i, 0) * 120ms); }
     .test-count { font-size: 13px; color: var(--white30); margin-bottom: 6px; }
@@ -1704,7 +1757,7 @@ const bodyHTML = `
             <button type="submit" class="btn-gold">Join the waitlist</button>
           </form>
           <div id="hero-ok" class="success-msg" style="display:none!important;">You're on the list. We'll be in touch soon.</div>
-          <p class="form-note">No spam. Ever. Just Ormi when it's ready.</p>
+          <p class="form-note">No spam. Ever. Just Ormi when it's ready. See our <a href="/privacy" style="color:inherit;">privacy notice</a>.</p>
           <p class="hero-badge">IGNITE 2026 finalist</p>
         </div>
       </div>
@@ -1928,6 +1981,32 @@ const bodyHTML = `
     </div>
   </section>
 
+  <!-- ── Always up to date ── -->
+  <section id="living">
+    <div class="container">
+      <div class="living-grid">
+        <div>
+          <p class="eyebrow">Always up to date</p>
+          <h2 class="section-title">Not a one-off result.<br /><em>A picture that moves with you.</em></h2>
+          <p class="messenger-body">A test result is one moment in time. Ormi keeps listening. Each check-in you make, each night of sleep from your wearable and each result you add updates your picture.</p>
+          <p class="messenger-body">Then Ormi turns it into a plan for today. Three small things, chosen from what you've told us, so you always know what to do next.</p>
+        </div>
+        <div class="living-card" id="living-card" aria-label="Example: a week of check-ins, each one changing the plan for that day">
+          <p class="living-tag">Your week</p>
+          <div class="week"><div class="day" data-day="0"><div class="day-sky"><span class="day-sun"></span></div><div class="day-line"></div><div class="day-name">M</div></div><div class="day" data-day="1"><div class="day-sky"><span class="day-sun"></span></div><div class="day-line"></div><div class="day-name">T</div></div><div class="day" data-day="2"><div class="day-sky"><span class="day-sun"></span></div><div class="day-line"></div><div class="day-name">W</div></div><div class="day" data-day="3"><div class="day-sky"><span class="day-sun"></span></div><div class="day-line"></div><div class="day-name">T</div></div><div class="day" data-day="4"><div class="day-sky"><span class="day-sun"></span></div><div class="day-line"></div><div class="day-name">F</div></div><div class="day" data-day="5"><div class="day-sky"><span class="day-sun"></span></div><div class="day-line"></div><div class="day-name">S</div></div><div class="day" data-day="6"><div class="day-sky"><span class="day-sun"></span></div><div class="day-line"></div><div class="day-name">S</div></div></div>
+          <div class="said"><span class="said-label">Today you said</span><span class="said-word" id="said-word">Wired</span></div>
+          <p class="plan-title">Today's plan</p>
+          <ul class="plan-list" id="plan-list">
+            <li>A nervous system tool</li>
+            <li>One slow breath</li>
+            <li>Wind-down for sleep</li>
+          </ul>
+          <p class="living-note">An example. Your plan is built from your own check-ins.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ── One slow breath ── -->
   <section id="breath">
     <div class="container">
@@ -2032,11 +2111,11 @@ const bodyHTML = `
   <section id="tests">
     <div class="container">
       <p class="eyebrow">Tests, explained</p>
-      <h2 class="section-title">Strip test, blood test or the DUTCH test?<br /><em>What each one shows.</em></h2>
+      <h2 class="section-title"><span class="t-strip">Strip test</span>, <span class="t-blood">blood test</span> or <span class="t-dutch">the DUTCH test</span>?<br /><em>What each one shows.</em></h2>
       <p class="section-sub">No test can diagnose perimenopause on its own. Your symptoms come first. Here is what each test measures, and what it can't tell you.</p>
       <div class="tests-grid">
         <div class="test-card reveal">
-          <div class="test-dots" aria-hidden="true"><i style="--c:#E6CC94; --i:0;"></i></div>
+          <div class="test-dots" aria-hidden="true"><i style="--c:#F2A57E; --i:0;"></i></div>
           <p class="test-count">1 hormone</p>
           <h3 class="test-name">Strip test</h3>
           <div class="test-row">
@@ -2048,8 +2127,8 @@ const bodyHTML = `
             <p class="test-text">A raised result may point to perimenopause or menopause, but a normal one doesn't rule it out. The Royal College of Obstetricians and Gynaecologists does not recommend these tests.</p>
           </div>
         </div>
-        <div class="test-card reveal">
-          <div class="test-dots" aria-hidden="true"><i style="--c:#F2A57E; --i:0;"></i><i style="--c:#F2A57E; --i:1;"></i></div>
+        <div class="test-card is-blood reveal">
+          <div class="test-dots" aria-hidden="true"><i style="--c:#E08A5E; --i:0;"></i><i style="--c:#E08A5E; --i:1;"></i></div>
           <p class="test-count">Usually 1 or 2 hormones</p>
           <h3 class="test-name">Blood test</h3>
           <div class="test-row">
@@ -2062,7 +2141,7 @@ const bodyHTML = `
           </div>
         </div>
         <div class="test-card is-dutch reveal">
-          <div class="test-dots" aria-hidden="true"><i style="--c:#F5E6C8; --i:0;"></i><i style="--c:#E08A5E; --i:1;"></i><i style="--c:#D9AE5C; --i:2;"></i><i style="--c:#F2A57E; --i:3;"></i><i style="--c:#FFF6E6; --i:4;"></i><i style="--c:#F5E6C8; --i:5;"></i><i style="--c:#E08A5E; --i:6;"></i><i style="--c:#D9AE5C; --i:1;"></i><i style="--c:#F2A57E; --i:2;"></i><i style="--c:#FFF6E6; --i:3;"></i><i style="--c:#F5E6C8; --i:4;"></i><i style="--c:#E08A5E; --i:5;"></i><i style="--c:#D9AE5C; --i:6;"></i><i style="--c:#F2A57E; --i:7;"></i><i style="--c:#FFF6E6; --i:2;"></i><i style="--c:#F5E6C8; --i:3;"></i><i style="--c:#E08A5E; --i:4;"></i><i style="--c:#D9AE5C; --i:5;"></i><i style="--c:#F2A57E; --i:6;"></i><i style="--c:#FFF6E6; --i:7;"></i><i style="--c:#F5E6C8; --i:8;"></i><i style="--c:#E08A5E; --i:3;"></i><i style="--c:#D9AE5C; --i:4;"></i><i style="--c:#F2A57E; --i:5;"></i><i style="--c:#FFF6E6; --i:6;"></i><i style="--c:#F5E6C8; --i:7;"></i><i style="--c:#E08A5E; --i:8;"></i><i style="--c:#D9AE5C; --i:9;"></i><i style="--c:#F2A57E; --i:4;"></i><i style="--c:#FFF6E6; --i:5;"></i><i style="--c:#F5E6C8; --i:6;"></i><i style="--c:#E08A5E; --i:7;"></i><i style="--c:#D9AE5C; --i:8;"></i><i style="--c:#F2A57E; --i:9;"></i><i style="--c:#FFF6E6; --i:10;"></i></div>
+          <div class="test-dots" aria-hidden="true"><i style="--c:#EFD39B; --i:0;"></i><i style="--c:#C9973A; --i:1;"></i><i style="--c:#D9AE5C; --i:2;"></i><i style="--c:#F5E6C8; --i:3;"></i><i style="--c:#E8C16E; --i:4;"></i><i style="--c:#EFD39B; --i:5;"></i><i style="--c:#C9973A; --i:6;"></i><i style="--c:#D9AE5C; --i:1;"></i><i style="--c:#F5E6C8; --i:2;"></i><i style="--c:#E8C16E; --i:3;"></i><i style="--c:#EFD39B; --i:4;"></i><i style="--c:#C9973A; --i:5;"></i><i style="--c:#D9AE5C; --i:6;"></i><i style="--c:#F5E6C8; --i:7;"></i><i style="--c:#E8C16E; --i:2;"></i><i style="--c:#EFD39B; --i:3;"></i><i style="--c:#C9973A; --i:4;"></i><i style="--c:#D9AE5C; --i:5;"></i><i style="--c:#F5E6C8; --i:6;"></i><i style="--c:#E8C16E; --i:7;"></i><i style="--c:#EFD39B; --i:8;"></i><i style="--c:#C9973A; --i:3;"></i><i style="--c:#D9AE5C; --i:4;"></i><i style="--c:#F5E6C8; --i:5;"></i><i style="--c:#E8C16E; --i:6;"></i><i style="--c:#EFD39B; --i:7;"></i><i style="--c:#C9973A; --i:8;"></i><i style="--c:#D9AE5C; --i:9;"></i><i style="--c:#F5E6C8; --i:4;"></i><i style="--c:#E8C16E; --i:5;"></i><i style="--c:#EFD39B; --i:6;"></i><i style="--c:#C9973A; --i:7;"></i><i style="--c:#D9AE5C; --i:8;"></i><i style="--c:#F5E6C8; --i:9;"></i><i style="--c:#E8C16E; --i:10;"></i></div>
           <p class="test-count">35 hormones and metabolites</p>
           <h3 class="test-name">The DUTCH test</h3>
           <div class="test-row">
@@ -2205,7 +2284,7 @@ const bodyHTML = `
           </details>
           <details class="faq-item">
             <summary>What happens to my data?<span class="faq-plus" aria-hidden="true"></span></summary>
-            <p class="faq-answer">We never sell your data. If you have a question about how we look after it, email <a href="mailto:hello@ormi.health">hello@ormi.health</a>.</p>
+            <p class="faq-answer">We never sell your data. Our <a href="/privacy">privacy notice</a> explains what we collect and why.</p>
           </details>
           <details class="faq-item">
             <summary>I'm an employer. Can Ormi support my team?<span class="faq-plus" aria-hidden="true"></span></summary>
@@ -2261,7 +2340,7 @@ const bodyHTML = `
         <p class="footer-note">© 2026 Ormi. All rights reserved. Ormi is not a medical service.</p>
         <div class="footer-links">
           <a href="mailto:hello@ormi.health">hello@ormi.health</a>
-          <a href="#">Privacy</a>
+          <a href="/privacy">Privacy</a>
         </div>
       </div>
     </div>
@@ -2334,6 +2413,47 @@ export default function Home() {
       }
     };
 
+    // ── Always up to date: the week fills in and the plan changes with each check-in ──
+    const livingStates = [
+      { word: 'Wired', hue: '#E08A5E', lvl: 0.12, plan: ['A nervous system tool', 'One slow breath', 'Wind-down for sleep'] },
+      { word: 'Foggy', hue: '#D9AE5C', lvl: 0.55, plan: ['A CBT-based tool', 'A food tip for today', 'Wind-down for sleep'] },
+      { word: "Can't sleep", hue: '#E6CC94', lvl: 0.7, plan: ['Wind-down for sleep', 'A nervous system tool', 'A food tip for today'] },
+      { word: 'Low mood', hue: '#C8674A', lvl: 0.62, plan: ['A CBT-based tool', 'One slow breath', 'A food tip for today'] },
+      { word: 'Overwhelmed', hue: '#F2A57E', lvl: 0.3, plan: ['One slow breath', 'A CBT-based tool', 'Wind-down for sleep'] },
+    ];
+    const livingCard = document.getElementById('living-card');
+    let livingTimer = null;
+    let livingStep = 0;
+    const paintLiving = (step, animate) => {
+      if (!livingCard) return;
+      const dayEls = livingCard.querySelectorAll('.day');
+      dayEls.forEach((el, i) => {
+        const sun = el.querySelector('.day-sun');
+        el.classList.toggle('is-past', i < step);
+        el.classList.toggle('is-today', i === step);
+        el.classList.toggle('is-future', i > step);
+        if (i <= step) {
+          sun.style.setProperty('--hue', livingStates[i].hue);
+          sun.style.setProperty('--lvl', livingStates[i].lvl);
+        }
+      });
+      const state = livingStates[step];
+      document.getElementById('said-word').textContent = state.word;
+      document.querySelectorAll('#plan-list li').forEach((li, i) => { li.textContent = state.plan[i]; });
+      if (animate) {
+        livingCard.classList.remove('is-swapping');
+        void livingCard.offsetWidth;
+        livingCard.classList.add('is-swapping');
+      }
+    };
+    paintLiving(0, false);
+    if (livingCard && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      livingTimer = setInterval(() => {
+        livingStep = (livingStep + 1) % livingStates.length;
+        paintLiving(livingStep, true);
+      }, 3600);
+    }
+
     // ── One slow breath: in for four, out for six, three rounds ───────────────
     let breathTimers = [];
     let breathRunning = false;
@@ -2401,7 +2521,7 @@ export default function Home() {
 
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-    return () => { obs.disconnect(); breathTimers.forEach(clearTimeout); };
+    return () => { obs.disconnect(); breathTimers.forEach(clearTimeout); if (livingTimer) clearInterval(livingTimer); };
   }, []);
 
   return (
@@ -2412,9 +2532,7 @@ export default function Home() {
         <title>Ormi: Everything you've been feeling finally makes sense.</title>
         <meta name="description" content="Ormi is a hormone intelligence app for women in perimenopause and beyond. It puts your mental health first, then helps you connect the dots. Join the waitlist." />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="/fonts.css" />
         <style dangerouslySetInnerHTML={{ __html: css }} />
       </Head>
       <div dangerouslySetInnerHTML={{ __html: bodyHTML }} />
