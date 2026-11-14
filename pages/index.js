@@ -680,6 +680,9 @@ const css = `
       margin-bottom: 24px;
     }
 
+    .tests-clinic { max-width: 760px; margin: 28px 0 8px; }
+    .tests-clinic .dutch-clinic-compare { margin-bottom: 0; }
+
     .dutch-clinic-label {
       font-size: 12px;
       letter-spacing: 0.18em;
@@ -1415,6 +1418,15 @@ const css = `
       .ignite-medal { width: 132px; height: 132px; }
     }
 
+    /* On phones, long card stacks become a sideways swipe so the page stays short */
+    @media (max-width: 760px) {
+      .feelings-grid, .stages-grid {
+        display: flex !important; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory;
+        margin-right: -24px; padding-right: 24px; padding-bottom: 12px; -webkit-overflow-scrolling: touch;
+      }
+      .feelings-grid > *, .stages-grid > * { flex: 0 0 84%; scroll-snap-align: start; }
+    }
+
     /* ── App previews ── */
     .hero-phone { display: none; }
     @media (min-width: 1240px) {
@@ -1598,6 +1610,9 @@ const css = `
     }
 
     /* ── One slow breath (the app's breathing orb: BreathOrb.tsx, BreathField.tsx) ── */
+    .mh-breath { margin-top: 64px; padding-top: 48px; border-top: 1px solid rgba(245,230,200,0.12); }
+    .mh-breath .orb-wrap { width: 240px; height: 240px; }
+
     .breath-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -2132,6 +2147,23 @@ const bodyHTML = `
           </div>
         </div>
       </div>
+      <div class="mh-breath" id="breath">
+      <div class="breath-grid">
+        <div>
+          <p class="eyebrow" style="text-align:left;">Try it</p>
+          <h2 class="messenger-title">One slow breath.</h2>
+          <p class="messenger-body">This is one of the nervous system tools inside Ormi. In for four, out for six. Three rounds takes thirty seconds.</p>
+          <button type="button" class="btn-ghost" id="breath-btn" onclick="startBreath()">Start</button>
+        </div>
+        <div class="orb-wrap" id="orb-wrap">
+          <div class="orb" id="orb"></div>
+          <div class="orb-centre" aria-live="polite">
+            <span class="orb-count" id="orb-count"></span>
+            <span class="orb-label" id="orb-label">Ready when you are</span>
+          </div>
+        </div>
+      </div>
+      </div>
       <p class="pricing-footnote">Ormi does not replace your GP. If you're worried about your mental health, please speak to them.</p>
     </div>
   </section>
@@ -2263,27 +2295,6 @@ const bodyHTML = `
     </div>
   </section>
 
-  <!-- ── One slow breath ── -->
-  <section id="breath">
-    <div class="container">
-      <div class="breath-grid">
-        <div>
-          <p class="eyebrow" style="text-align:left;">Try it</p>
-          <h2 class="messenger-title">One slow breath.</h2>
-          <p class="messenger-body">This is one of the nervous system tools inside Ormi. In for four, out for six. Three rounds takes thirty seconds.</p>
-          <button type="button" class="btn-ghost" id="breath-btn" onclick="startBreath()">Start</button>
-        </div>
-        <div class="orb-wrap" id="orb-wrap">
-          <div class="orb" id="orb"></div>
-          <div class="orb-centre" aria-live="polite">
-            <span class="orb-count" id="orb-count"></span>
-            <span class="orb-label" id="orb-label">Ready when you are</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ── Life stages ── -->
   <section>
     <div class="container">
@@ -2315,44 +2326,12 @@ const bodyHTML = `
     </div>
   </section>
 
-  <!-- ── DUTCH ── -->
   <!--
     Sources (checked 13 Nov 2026): Precision Analytical, DUTCH Complete
     (dutchtest.com). Clinic prices: Freya Clinic £395 with a 30-minute
     session (freyaclinic.co.uk/products/dutch-test); Pippa Campbell Health
     £1,030 package (pippacampbellhealth.com/dutch-test-uk).
   -->
-  <section style="background:var(--obsidian2);">
-    <div class="container">
-      <div class="dutch-wrap">
-        <div>
-          <p class="eyebrow" style="text-align:left; margin-bottom:14px;">Clinical insight</p>
-          <h2 class="dutch-title">Your hormone portrait is the start.<br /><em>The DUTCH test goes deeper.</em></h2>
-          <p class="dutch-body">The DUTCH Complete is an at-home dried urine test that measures 35 hormones and metabolites. Ormi sends it to your door and adds AI interpretation. A GP reviews your results, and you get an NHS-ready summary to take to your own doctor.</p>
-
-          <div class="dutch-clinic-compare">
-            <div class="dutch-clinic-label">vs a private hormone clinic</div>
-            <div class="dutch-clinic-text">
-              Private clinics charge from <strong>£395 to over £1,000</strong> for a DUTCH test with interpretation. Ormi brings the test, AI interpretation and a GP results review together, from your own home.
-            </div>
-          </div>
-
-          <a href="#final-waitlist" class="btn-gold" style="display:inline-block; text-decoration:none;">Join the waitlist</a>
-        </div>
-        <div class="dutch-markers">
-          <svg class="dutch-dots" viewBox="0 0 92 70" role="img" aria-label="35 dots, one for each hormone and metabolite the DUTCH Complete test measures"><circle cx="8.0" cy="7" r="3.2" fill="#0A1D36" style="--i:0;"/><circle cx="20.7" cy="7" r="3.2" fill="#C8674A" style="--i:1;"/><circle cx="33.4" cy="7" r="3.2" fill="#B4553A" style="--i:2;"/><circle cx="46.1" cy="7" r="3.2" fill="#0A1D36" style="--i:3;"/><circle cx="58.8" cy="7" r="3.2" fill="#FFF6E6" style="--i:4;"/><circle cx="71.5" cy="7" r="3.2" fill="#0A1D36" style="--i:5;"/><circle cx="84.2" cy="7" r="3.2" fill="#C8674A" style="--i:6;"/><circle cx="8.0" cy="21" r="3.2" fill="#B4553A" style="--i:1;"/><circle cx="20.7" cy="21" r="3.2" fill="#0A1D36" style="--i:2;"/><circle cx="33.4" cy="21" r="3.2" fill="#FFF6E6" style="--i:3;"/><circle cx="46.1" cy="21" r="3.2" fill="#0A1D36" style="--i:4;"/><circle cx="58.8" cy="21" r="3.2" fill="#C8674A" style="--i:5;"/><circle cx="71.5" cy="21" r="3.2" fill="#B4553A" style="--i:6;"/><circle cx="84.2" cy="21" r="3.2" fill="#0A1D36" style="--i:7;"/><circle cx="8.0" cy="35" r="3.2" fill="#FFF6E6" style="--i:2;"/><circle cx="20.7" cy="35" r="3.2" fill="#0A1D36" style="--i:3;"/><circle cx="33.4" cy="35" r="3.2" fill="#C8674A" style="--i:4;"/><circle cx="46.1" cy="35" r="3.2" fill="#B4553A" style="--i:5;"/><circle cx="58.8" cy="35" r="3.2" fill="#0A1D36" style="--i:6;"/><circle cx="71.5" cy="35" r="3.2" fill="#FFF6E6" style="--i:7;"/><circle cx="84.2" cy="35" r="3.2" fill="#0A1D36" style="--i:8;"/><circle cx="8.0" cy="49" r="3.2" fill="#C8674A" style="--i:3;"/><circle cx="20.7" cy="49" r="3.2" fill="#B4553A" style="--i:4;"/><circle cx="33.4" cy="49" r="3.2" fill="#0A1D36" style="--i:5;"/><circle cx="46.1" cy="49" r="3.2" fill="#FFF6E6" style="--i:6;"/><circle cx="58.8" cy="49" r="3.2" fill="#0A1D36" style="--i:7;"/><circle cx="71.5" cy="49" r="3.2" fill="#C8674A" style="--i:8;"/><circle cx="84.2" cy="49" r="3.2" fill="#B4553A" style="--i:9;"/><circle cx="8.0" cy="63" r="3.2" fill="#0A1D36" style="--i:4;"/><circle cx="20.7" cy="63" r="3.2" fill="#FFF6E6" style="--i:5;"/><circle cx="33.4" cy="63" r="3.2" fill="#0A1D36" style="--i:6;"/><circle cx="46.1" cy="63" r="3.2" fill="#C8674A" style="--i:7;"/><circle cx="58.8" cy="63" r="3.2" fill="#B4553A" style="--i:8;"/><circle cx="71.5" cy="63" r="3.2" fill="#0A1D36" style="--i:9;"/><circle cx="84.2" cy="63" r="3.2" fill="#FFF6E6" style="--i:10;"/></svg>
-          <p style="font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold-text); margin-bottom:12px; font-weight:500;">What DUTCH measures</p>
-          <div class="dutch-marker"><div class="dutch-marker-dot"></div><div class="dutch-marker-text"><strong>Sex hormones</strong>: oestrogen, progesterone and testosterone, and how they are broken down.</div></div>
-          <div class="dutch-marker"><div class="dutch-marker-dot"></div><div class="dutch-marker-text"><strong>Daily cortisol pattern</strong>: free cortisol measured across the day, not at a single point.</div></div>
-          <div class="dutch-marker"><div class="dutch-marker-dot"></div><div class="dutch-marker-text"><strong>DHEA</strong>: and other adrenal hormones.</div></div>
-          <div class="dutch-marker"><div class="dutch-marker-dot"></div><div class="dutch-marker-text"><strong>Melatonin &amp; organic acids</strong>: overnight melatonin and a small panel of organic acid markers.</div></div>
-          <div class="dutch-marker"><div class="dutch-marker-dot"></div><div class="dutch-marker-text"><strong>35 hormones and metabolites.</strong> Collected at home. Interpreted with AI. Reviewed by a GP. Summarised for your doctor.</div></div>
-          <p class="employers-source">The DUTCH test is not an NHS test and it is not a diagnosis. Ormi highlights patterns to discuss with a clinician.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ── Tests compared ── -->
   <!--
     Sources (checked 14 Nov 2026):
@@ -2430,6 +2409,14 @@ const bodyHTML = `
       </div>
       <p class="tests-close">One reading is a moment. <em>A full day is a pattern.</em></p>
       <p class="tests-after">No test diagnoses perimenopause on its own, and how you feel always comes first. That's why every DUTCH result at Ormi is read alongside your check-ins and reviewed by a GP.</p>
+      <div class="tests-clinic">
+        <div class="dutch-clinic-compare">
+        <div class="dutch-clinic-label">vs a private hormone clinic</div>
+        <div class="dutch-clinic-text">
+          Private clinics charge from <strong>£395 to over £1,000</strong> for a DUTCH test with interpretation. Ormi brings the test, AI interpretation and a GP results review together, from your own home.
+        </div>
+          </div>
+      </div>
       <p class="tests-source">Sources: Royal College of Obstetricians and Gynaecologists. NICE quality standard QS143. Precision Analytical.</p>
     </div>
   </section>
