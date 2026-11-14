@@ -241,7 +241,7 @@ const css = `
       margin-bottom: 18px;
       font-size: 16px;
       line-height: 1.6;
-      color: var(--white70);
+      color: #EFD39B;
       font-weight: 400;
     }
 
@@ -1299,6 +1299,9 @@ const css = `
     .test-row { border-top: 1px solid var(--card-border); padding: 14px 0; }
     .test-label { font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-text); margin-bottom: 6px; }
     .test-text { font-size: 16px; color: var(--white50); line-height: 1.65; }
+    .test-list { list-style: none; margin-top: 12px; display: flex; flex-direction: column; gap: 8px; }
+    .test-list li { position: relative; padding-left: 20px; font-size: 16px; line-height: 1.5; color: var(--champagne); }
+    .test-list li::before { content: ''; position: absolute; left: 0; top: 9px; width: 8px; height: 8px; border-radius: 50%; background: var(--tone); }
     .tests-close { margin-top: 34px; max-width: 760px; font-family: 'Instrument Serif', serif; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.35; color: var(--champagne); }
     .tests-source { margin-top: 18px; font-size: 13px; color: var(--white30); line-height: 1.6; max-width: 760px; }
 
@@ -1878,7 +1881,7 @@ const bodyHTML = `
         <div class="feeling-card reveal">
           <div class="fsun" aria-hidden="true" style="--hue:#F2A57E; --sink:0.42; --dim:0.75;"><div class="fsun-sky"><span class="fsun-disc"></span></div><span class="fsun-line"></span><span class="fsun-bar"></span></div>
           <p class="feeling-text">"My GP said my bloods are normal, but something is clearly not right."</p>
-          <p class="feeling-reframe">Ormi helps you build a record of how you feel over time, to take to your GP.</p>
+          <p class="feeling-reframe">Hormone levels rise and fall in perimenopause, so a single blood test can look normal. Ormi helps you build a record of how you feel over time, to take to your GP.</p>
         </div>
         <div class="feeling-card reveal">
           <div class="fsun" aria-hidden="true" style="--hue:#C8674A; --sink:0.42; --dim:1;"><div class="fsun-sky"><span class="fsun-disc"></span><span class="fsun-cloud" style="--speed:2.4s;"></span></div><span class="fsun-line"></span><span class="fsun-bar"></span></div>
@@ -2142,26 +2145,28 @@ const bodyHTML = `
     levels fluctuate; FSH test considered at 40 to 45 and under 40; other tests such as
     thyroid function may be needed if non-menopausal causes are suspected.
     RCOG position on over-the-counter FSH tests, as reported by Which? and the BBC.
+    App-read strips measuring FSH plus urinary markers of oestrogen (E1G) and progesterone (PdG),
+    taken on set cycle days: manufacturer's own product pages, checked 14 Nov 2026.
     Precision Analytical, DUTCH Complete (dutchtest.com): 35 hormones, four or five dried
     urine samples over 24 hours.
   -->
   <section id="tests">
     <div class="container">
       <p class="eyebrow">Tests, explained</p>
-      <h2 class="section-title"><span class="t-strip">Strip test</span>, <span class="t-blood">blood test</span> or <span class="t-dutch">the DUTCH test</span>?<br /><em>What each one shows.</em></h2>
+      <h2 class="section-title"><span class="t-strip">Strip tests</span>, <span class="t-blood">blood test</span> or <span class="t-dutch">the DUTCH test</span>?<br /><em>What each one shows.</em></h2>
       <p class="section-sub">No test can diagnose perimenopause on its own. Your symptoms come first. Here is what each test measures, and what it can't tell you.</p>
       <div class="tests-grid">
         <div class="test-card reveal">
-          <div class="test-dots" aria-hidden="true"><i style="--c:#F2A57E; --i:0;"></i></div>
-          <p class="test-count">1 hormone</p>
-          <h3 class="test-name">Strip test</h3>
+          <div class="test-dots" aria-hidden="true"><i style="--c:#F2A57E; --i:0;"></i><i style="--c:#F2A57E; --i:1;"></i><i style="--c:#F2A57E; --i:2;"></i></div>
+          <p class="test-count">1 to 3 hormones</p>
+          <h3 class="test-name">Strip tests</h3>
           <div class="test-row">
             <p class="test-label">What it measures</p>
-            <p class="test-text">One hormone, FSH, in a urine sample, at one moment. Sold in supermarkets and pharmacies for a few pounds.</p>
+            <p class="test-text">Urine strips you dip at home on set days of your cycle. The simplest shop tests read one hormone, FSH, which tends to rise as menopause approaches. App-read strips add a marker for oestrogen and a marker for progesterone, so you can watch those three change from cycle to cycle.</p>
           </div>
           <div class="test-row">
             <p class="test-label">What it can't tell you</p>
-            <p class="test-text">A raised result may point to perimenopause or menopause, but a normal one doesn't rule it out. The Royal College of Obstetricians and Gynaecologists does not recommend these tests.</p>
+            <p class="test-text">Nothing about cortisol, testosterone, DHEA or melatonin, and nothing about how hormones are broken down. A raised FSH result may point to perimenopause or menopause, but a normal one doesn't rule it out. The Royal College of Obstetricians and Gynaecologists does not recommend over-the-counter menopause tests.</p>
           </div>
         </div>
         <div class="test-card is-blood reveal">
@@ -2183,7 +2188,16 @@ const bodyHTML = `
           <h3 class="test-name">The DUTCH test</h3>
           <div class="test-row">
             <p class="test-label">What it measures</p>
-            <p class="test-text">35 hormones and metabolites from four or five dried urine samples collected at home over 24 hours, including a daily cortisol pattern.</p>
+            <p class="test-text">The widest picture of the three. 35 hormones and metabolites, from four or five dried urine samples you collect at home across a full day. No needles.</p>
+            <ul class="test-list">
+              <li>Oestrogen, progesterone and testosterone, and how each is broken down</li>
+              <li>Your cortisol rhythm, from morning to night</li>
+              <li>DHEA and overnight melatonin</li>
+            </ul>
+          </div>
+          <div class="test-row">
+            <p class="test-label">With Ormi</p>
+            <p class="test-text">AI interpretation in plain words, a GP review of your results, an NHS-ready summary for your own doctor and a year of Ormi Circle.</p>
           </div>
           <div class="test-row">
             <p class="test-label">What it can't tell you</p>
