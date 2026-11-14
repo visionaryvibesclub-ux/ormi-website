@@ -75,7 +75,7 @@ const css = `
 
     .nav-wordmark {
       font-family: 'Instrument Serif', serif;
-      font-size: 27px;
+      font-size: 26px;
       font-weight: 400;
       color: var(--champagne);
       line-height: 1;
@@ -378,7 +378,7 @@ const css = `
 
     .feeling-text {
       font-family: 'Instrument Serif', serif;
-      font-size: 20px;
+      font-size: 22px;
       font-style: italic;
       color: var(--white70);
       line-height: 1.55;
@@ -429,7 +429,7 @@ const css = `
     }
 
     .messenger-body {
-      font-size: 17px;
+      font-size: 16px;
       color: var(--white50);
       line-height: 1.8;
       font-weight: 300;
@@ -917,7 +917,7 @@ const css = `
 
     .footer-wordmark {
       font-family: 'Instrument Serif', serif;
-      font-size: 23px;
+      font-size: 24px;
       font-weight: 400;
       color: var(--champagne);
     }
@@ -1270,7 +1270,7 @@ const css = `
     .day-name { margin-top: 8px; font-size: 13px; font-weight: 500; color: var(--white50); }
     .day.is-today .day-name { color: var(--champagne); }
     .said { display: flex; align-items: baseline; gap: 12px; margin-bottom: 18px; }
-    .said-label { font-size: 15px; color: var(--white50); }
+    .said-label { font-size: 16px; color: var(--white50); }
     .said-word { font-family: 'Instrument Serif', serif; font-size: 34px; line-height: 1; color: var(--champagne); }
     .plan-title { font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-text); margin-bottom: 10px; }
     .plan-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
@@ -1345,11 +1345,11 @@ const css = `
     }
     .test-badge { position: absolute; top: -14px; left: 28px; background: #E8C16E; color: #0A1D36; font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; padding: 6px 14px; border-radius: 30px; }
     .test-card.is-dutch .test-name { font-size: 40px; }
-    .test-lead { font-size: 19px; line-height: 1.5; color: var(--champagne); margin-bottom: 20px; }
+    .test-lead { font-size: 18px; line-height: 1.5; color: var(--champagne); margin-bottom: 20px; }
     .test-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: 10px; padding-top: 20px; border-top: 1px solid rgba(232,193,110,0.28); }
     .test-price { font-family: 'Instrument Serif', serif; font-size: 24px; color: #EFD39B; }
     .tests-close em { font-style: italic; color: #E8C16E; }
-    .tests-after { margin-top: 14px; max-width: 760px; font-size: 17px; line-height: 1.65; color: var(--white50); }
+    .tests-after { margin-top: 14px; max-width: 760px; font-size: 16px; line-height: 1.65; color: var(--white50); }
     .dyk-item .dyk-text { max-width: 520px; }
     .tests-close { margin-top: 34px; max-width: 760px; font-family: 'Instrument Serif', serif; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.35; color: var(--champagne); }
     .tests-source { margin-top: 18px; font-size: 13px; color: var(--white30); line-height: 1.6; max-width: 760px; }
@@ -1398,7 +1398,7 @@ const css = `
     .faq-item[open] .faq-plus { background: var(--terracotta-deep); border-color: var(--terracotta-deep); transform: rotate(180deg); }
     .faq-item[open] .faq-plus::before, .faq-item[open] .faq-plus::after { background: var(--warm-white); }
     .faq-item[open] .faq-plus::after { transform: rotate(0deg); }
-    .faq-answer { padding: 0 50px 24px 0; font-size: 17px; line-height: 1.7; color: var(--white50); max-width: 640px; animation: riseIn 0.35s ease both; }
+    .faq-answer { padding: 0 50px 24px 0; font-size: 16px; line-height: 1.7; color: var(--white50); max-width: 640px; animation: riseIn 0.35s ease both; }
     .faq-answer a { color: var(--gold-text); }
 
     /* ── Employers: did you know ── */
@@ -1422,7 +1422,7 @@ const css = `
     .ignite-eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: #0A1D36; margin-bottom: 10px; }
     .ignite-headline { font-family: 'Instrument Serif', serif; font-weight: 400; font-size: clamp(44px, 6.4vw, 88px); line-height: 1; color: #0A1D36; margin-bottom: 14px; }
     .ignite-headline em { font-style: italic; }
-    .ignite-copy { font-size: 19px; line-height: 1.6; color: rgba(10,29,54,0.88); max-width: 560px; }
+    .ignite-copy { font-size: 18px; line-height: 1.6; color: rgba(10,29,54,0.88); max-width: 560px; }
     .ignite-link { display: inline-block; margin-top: 16px; font-size: 16px; font-weight: 600; color: #0A1D36; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1.5px; }
     .ignite-link:hover { text-decoration-thickness: 2.5px; }
     .ignite-link:focus-visible { outline: 2px solid #0A1D36; outline-offset: 4px; border-radius: 4px; }
@@ -1451,6 +1451,33 @@ const css = `
     .eband-title { font-family: 'Instrument Serif', serif; font-size: clamp(26px, 2.8vw, 36px); line-height: 1.15; color: var(--champagne); }
     .eband-title em { color: var(--gold-text); }
     .eband .btn-ghost { text-decoration: none; white-space: nowrap; }
+
+    /* Phone-only waitlist button that stays in reach while you scroll */
+    .sticky-cta { display: none; }
+    @media (max-width: 760px) {
+      .sticky-cta {
+        display: block; position: fixed; z-index: 90;
+        left: 16px; right: 16px; bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+        padding: 17px 20px; border-radius: 40px; text-align: center; text-decoration: none;
+        font-size: 14px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+        color: #FFF6E6; background: var(--terracotta-deep);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+        transform: translateY(160%); transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+      }
+      .sticky-cta.is-on { transform: none; }
+      .sticky-cta:focus-visible { outline: 2px solid var(--champagne); outline-offset: 3px; }
+    }
+
+    /* Rhythm line: a steady cycle beside perimenopause */
+    .rhythm { margin: 8px 0 44px; max-width: 980px; }
+    .rhythm svg { display: block; width: 100%; height: 118px; overflow: visible; }
+    @media (max-width: 760px) { .rhythm svg { height: 86px; } .rhythm { margin-bottom: 32px; } }
+    .rhythm-line { fill: none; stroke: #B4553A; stroke-width: 2.6; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 2.6s cubic-bezier(0.3, 0.6, 0.2, 1) 0.2s; }
+    .rhythm.visible .rhythm-line { stroke-dashoffset: 0; }
+    .rhythm-labels { display: grid; grid-template-columns: 47% 53%; margin-top: 10px; font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #0A1D36; }
+    .rhythm-labels span + span { padding-left: 14px; color: #B4553A; }
+    .rhythm-note { margin-top: 10px; font-size: 14px; line-height: 1.5; color: rgba(10,29,54,0.7); max-width: 640px; }
+    @media (prefers-reduced-motion: reduce) { .rhythm-line { stroke-dashoffset: 0; transition: none; } }
 
     /* ── App previews ── */
     .hero-phone { display: none; }
@@ -1488,7 +1515,7 @@ const css = `
     .mh .section-sub { margin-bottom: 26px; }
     .mh-chips { display: flex; flex-wrap: wrap; gap: 10px; }
     .mh-chip {
-      font-family: inherit; font-size: 17px; font-weight: 500; cursor: pointer;
+      font-family: inherit; font-size: 16px; font-weight: 500; cursor: pointer;
       padding: 13px 22px; border-radius: 40px;
       color: var(--champagne); background: transparent;
       border: 1.5px solid rgba(245,230,200,0.28);
@@ -1674,7 +1701,7 @@ const css = `
     }
     .orb-wrap.is-active .orb-centre { color: var(--ink); }
     .orb-count { font-family: 'Instrument Serif', serif; font-size: 48px; line-height: 1.1; min-height: 4px; }
-    .orb-label { font-size: 17px; font-weight: 600; }
+    .orb-label { font-size: 16px; font-weight: 600; }
     button.btn-ghost { background: transparent; font-family: inherit; cursor: pointer; }
     @media (max-width: 760px) {
       .breath-grid { grid-template-columns: 1fr; gap: 28px; }
@@ -1794,7 +1821,7 @@ const css = `
     }
     .founder-name {
       font-family: 'Instrument Serif', serif;
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 400;
       color: var(--champagne);
       line-height: 1.2;
@@ -1809,7 +1836,7 @@ const css = `
       margin-bottom: 16px;
     }
     .founder-bio {
-      font-size: 17px;
+      font-size: 16px;
       color: var(--white50);
       line-height: 1.7;
     }
@@ -1830,14 +1857,14 @@ const css = `
       line-height: 1.2;
     }
     .ignite-body {
-      font-size: 17px;
+      font-size: 16px;
       color: var(--white50);
       line-height: 1.7;
     }
     .pricing-footnote {
       margin-top: 28px;
       text-align: left;
-      font-size: 15px;
+      font-size: 16px;
       color: var(--white30);
       line-height: 1.6;
     }
@@ -2039,6 +2066,14 @@ const bodyHTML = `
       <h2 class="section-title">If you don't feel like yourself lately,<br /><em>you're not alone.</em></h2>
       <p class="section-sub">Mood swings, low mood, brain fog and broken sleep are all recognised symptoms of perimenopause and menopause, when levels of oestrogen and progesterone are changing. Ormi helps you notice your own patterns.</p>
 
+      <figure class="rhythm reveal">
+        <svg viewBox="0 0 1000 120" preserveAspectRatio="none" role="img" aria-label="Illustration: a line that rises and falls evenly on the left, for a regular cycle, and unevenly on the right, for perimenopause.">
+          <line x1="470" y1="6" x2="470" y2="114" stroke="rgba(10,29,54,0.28)" stroke-width="1" stroke-dasharray="3 5"/>
+          <path class="rhythm-line" vector-effect="non-scaling-stroke" pathLength="1" d="M 0.0 60.0 L 4.0 55.7 L 8.0 51.4 L 12.0 47.5 L 16.0 43.9 L 20.0 40.7 L 24.0 38.0 L 28.0 36.0 L 32.0 34.7 L 36.0 34.1 L 40.0 34.1 L 44.0 35.0 L 48.0 36.5 L 52.0 38.7 L 56.0 41.4 L 60.0 44.7 L 64.0 48.4 L 68.0 52.5 L 72.0 56.7 L 76.0 61.1 L 80.0 65.4 L 84.0 69.6 L 88.0 73.5 L 92.0 77.0 L 96.0 80.0 L 100.0 82.5 L 104.0 84.4 L 108.0 85.5 L 112.0 86.0 L 116.0 85.7 L 120.0 84.7 L 124.0 83.0 L 128.0 80.7 L 132.0 77.8 L 136.0 74.4 L 140.0 70.6 L 144.0 66.5 L 148.0 62.2 L 152.0 57.8 L 156.0 53.5 L 160.0 49.4 L 164.0 45.6 L 168.0 42.2 L 172.0 39.3 L 176.0 37.0 L 180.0 35.3 L 184.0 34.3 L 188.0 34.0 L 192.0 34.5 L 196.0 35.6 L 200.0 37.5 L 204.0 40.0 L 208.0 43.0 L 212.0 46.5 L 216.0 50.4 L 220.0 54.6 L 224.0 58.9 L 228.0 63.3 L 232.0 67.5 L 236.0 71.6 L 240.0 75.3 L 244.0 78.6 L 248.0 81.3 L 252.0 83.5 L 256.0 85.0 L 260.0 85.9 L 264.0 85.9 L 268.0 85.3 L 272.0 84.0 L 276.0 82.0 L 280.0 79.3 L 284.0 76.1 L 288.0 72.5 L 292.0 68.6 L 296.0 64.3 L 300.0 60.0 L 304.0 55.7 L 308.0 51.4 L 312.0 47.5 L 316.0 43.9 L 320.0 40.7 L 324.0 38.0 L 328.0 36.0 L 332.0 34.7 L 336.0 34.1 L 340.0 34.1 L 344.0 35.0 L 348.0 36.5 L 352.0 38.7 L 356.0 41.4 L 360.0 44.7 L 364.0 48.4 L 368.0 52.5 L 372.0 56.7 L 376.0 61.1 L 380.0 65.4 L 384.0 69.6 L 388.0 73.5 L 392.0 77.0 L 396.0 80.0 L 400.0 82.5 L 404.0 84.4 L 408.0 85.5 L 412.0 86.0 L 416.0 85.7 L 420.0 84.7 L 424.0 83.0 L 428.0 80.7 L 432.0 77.8 L 436.0 74.4 L 440.0 70.6 L 444.0 66.6 L 448.0 62.4 L 452.0 58.3 L 456.0 54.4 L 460.0 50.8 L 464.0 47.6 L 468.0 45.0 L 472.0 43.0 L 476.0 41.7 L 480.0 41.0 L 484.0 41.0 L 488.0 41.7 L 492.0 42.9 L 496.0 44.6 L 500.0 46.7 L 504.0 49.1 L 508.0 51.6 L 512.0 54.1 L 516.0 56.5 L 520.0 58.7 L 524.0 60.6 L 528.0 62.2 L 532.0 63.6 L 536.0 64.9 L 540.0 66.1 L 544.0 67.1 L 548.0 67.9 L 552.0 68.4 L 556.0 68.6 L 560.0 68.5 L 564.0 67.8 L 568.0 66.8 L 572.0 65.3 L 576.0 63.4 L 580.0 61.1 L 584.0 58.5 L 588.0 55.7 L 592.0 52.7 L 596.0 49.7 L 600.0 46.7 L 604.0 43.7 L 608.0 41.0 L 612.0 38.4 L 616.0 36.1 L 620.0 34.1 L 624.0 32.5 L 628.0 31.3 L 632.0 30.6 L 636.0 30.3 L 640.0 30.6 L 644.0 31.5 L 648.0 33.1 L 652.0 35.4 L 656.0 38.4 L 660.0 42.2 L 664.0 46.8 L 668.0 52.2 L 672.0 58.3 L 676.0 65.0 L 680.0 72.1 L 684.0 79.2 L 688.0 86.0 L 692.0 92.1 L 696.0 96.9 L 700.0 99.9 L 704.0 100.8 L 708.0 99.1 L 712.0 94.8 L 716.0 87.8 L 720.0 78.6 L 724.0 68.0 L 728.0 56.7 L 732.0 45.8 L 736.0 36.6 L 740.0 29.9 L 744.0 26.5 L 748.0 26.6 L 752.0 30.0 L 756.0 36.4 L 760.0 44.6 L 764.0 53.7 L 768.0 62.7 L 772.0 70.5 L 776.0 76.4 L 780.0 80.2 L 784.0 81.7 L 788.0 81.3 L 792.0 79.2 L 796.0 76.0 L 800.0 72.3 L 804.0 68.3 L 808.0 64.5 L 812.0 61.2 L 816.0 58.4 L 820.0 56.3 L 824.0 54.7 L 828.0 53.6 L 832.0 52.9 L 836.0 52.6 L 840.0 52.5 L 844.0 52.5 L 848.0 52.6 L 852.0 52.7 L 856.0 52.9 L 860.0 53.0 L 864.0 53.0 L 868.0 53.0 L 872.0 53.0 L 876.0 52.8 L 880.0 52.6 L 884.0 52.4 L 888.0 52.2 L 892.0 51.9 L 896.0 51.7 L 900.0 51.5 L 904.0 51.3 L 908.0 51.3 L 912.0 51.5 L 916.0 51.9 L 920.0 52.6 L 924.0 53.7 L 928.0 55.1 L 932.0 57.0 L 936.0 59.4 L 940.0 62.2 L 944.0 65.6 L 948.0 69.3 L 952.0 73.4 L 956.0 77.6 L 960.0 81.8 L 964.0 85.7 L 968.0 89.0 L 972.0 91.6 L 976.0 93.1 L 980.0 93.4 L 984.0 92.3 L 988.0 89.7 L 992.0 85.9 L 996.0 80.8 L 1000.0 74.7"/>
+        </svg>
+        <div class="rhythm-labels"><span>A regular cycle</span><span>Perimenopause</span></div>
+        <figcaption class="rhythm-note">An illustration, not real data. Oestrogen rises and falls through the cycle, and becomes less predictable in perimenopause.</figcaption>
+      </figure>
       <div class="feelings-grid">
         <article class="fcard reveal" style="--tone:#E08A5E;">
           <p class="fcard-tag">Anxiety</p>
@@ -2157,7 +2192,6 @@ const bodyHTML = `
       <div class="mh-breath" id="breath">
       <div class="breath-grid">
         <div>
-          <p class="eyebrow" style="text-align:left;">Try it</p>
           <h2 class="messenger-title">One slow breath.</h2>
           <p class="messenger-body">This is one of the nervous system tools inside Ormi. In for four, out for six. Three rounds takes thirty seconds.</p>
           <button type="button" class="btn-ghost" id="breath-btn" onclick="startBreath()">Start</button>
@@ -2203,7 +2237,6 @@ const bodyHTML = `
     <div class="container">
       <div class="messenger-grid">
         <div>
-          <p class="eyebrow" style="text-align:left;">A different way to think about it</p>
           <h2 class="messenger-title">Your hormones aren't the problem.<br />They're <em>messengers.</em></h2>
           <p class="messenger-body">
             Hormones carry signals all day long. In perimenopause, levels of oestrogen and progesterone change, and that can change how you feel.
@@ -2301,7 +2334,6 @@ const bodyHTML = `
   <!-- ── Life stages ── -->
   <section>
     <div class="container">
-      <p class="eyebrow">Life stages</p>
       <h2 class="section-title">Wherever you are <em>right now.</em></h2>
       <p class="section-sub">Ormi is built for every moment of hormonal change. We're focused on perimenopause first, but Ormi is relevant to you, whatever stage you're in.</p>
       <div class="stages-grid">
@@ -2441,7 +2473,6 @@ const bodyHTML = `
   <!-- ── Pricing ── -->
   <section class="light">
     <div class="container">
-      <p class="eyebrow">Pricing</p>
       <h2 class="section-title">Start free.<br /><em>Go deeper when you're ready.</em></h2>
       <p class="section-sub">No subscription needed to get started. Go deeper when Ormi has earned it.</p>
 
@@ -2500,7 +2531,6 @@ const bodyHTML = `
   <!-- ── About ── -->
   <section id="about" style="background:var(--obsidian2);">
     <div class="container">
-      <p class="eyebrow">About</p>
       <h2 class="section-title">Meet the <em>founders.</em></h2>
       <div class="founders-grid">
         <div class="founder-card reveal">
@@ -2524,7 +2554,6 @@ const bodyHTML = `
     <div class="container">
       <div class="faq-grid">
         <div>
-          <p class="eyebrow">FAQs</p>
           <h2 class="section-title">Is Ormi <em>right for you?</em></h2>
           <p class="section-sub">Straight answers to the questions we hear most. If yours isn't here, email <a href="mailto:hello@ormi.health" style="color:var(--gold-text);">hello@ormi.health</a>.</p>
         </div>
@@ -2596,6 +2625,8 @@ const bodyHTML = `
       <p style="margin-top:14px; font-size:13px; color:var(--white30); font-style:italic;">No spam. Ever.</p>
     </div>
   </section>
+
+  <a href="#final-waitlist" class="sticky-cta" id="sticky-cta">Join the waitlist</a>
 
   <!-- ── Footer ── -->
   <footer>
@@ -2685,6 +2716,18 @@ export default function Home() {
         if (button) button.disabled = false;
       }
     };
+
+    // ── Phone waitlist button: show it only when no sign-up form is on screen ──
+    const stickyCta = document.getElementById('sticky-cta');
+    const formZones = [document.querySelector('.hero'), document.getElementById('final-waitlist')].filter(Boolean);
+    if (stickyCta && formZones.length && 'IntersectionObserver' in window) {
+      const onScreen = new Set();
+      const stickyObserver = new IntersectionObserver((entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) onScreen.add(e.target); else onScreen.delete(e.target); });
+        stickyCta.classList.toggle('is-on', onScreen.size === 0);
+      }, { threshold: 0.05 });
+      formZones.forEach((z) => stickyObserver.observe(z));
+    }
 
     // ── Mental health check-in: choose a word, see what Ormi does with it ──
     const mhStage = document.getElementById('mh-stage');
