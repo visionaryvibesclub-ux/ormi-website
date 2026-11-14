@@ -2337,7 +2337,7 @@ const bodyHTML = `
           <div class="footer-divider"></div>
           <span class="footer-wordmark">ormi</span>
         </a>
-        <p class="footer-note">© 2026 Ormi Wellness Ltd. All rights reserved. Ormi is not a medical service.<br />Company number 17209350. Registered office: 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ.</p>
+        <p class="footer-note">© 2026 Ormi Wellness Ltd. All rights reserved. Ormi is not a medical service.<br />Registered in England and Wales, company number 17209350. Registered office: 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ.</p>
         <div class="footer-links">
           <a href="mailto:hello@ormi.health">hello@ormi.health</a>
           <a href="/privacy">Privacy</a>

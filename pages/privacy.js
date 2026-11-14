@@ -57,7 +57,7 @@ export default function Privacy() {
         <p>This notice explains what Ormi does with your personal information when you visit ormi.health or join our waitlist. It covers this website only. The Ormi app will have its own privacy notice when it launches.</p>
 
         <h2>Who we are</h2>
-        <p>Ormi is run by <strong>Ormi Wellness Ltd</strong>, company number 17209350. Our registered office is 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, United Kingdom.</p>
+        <p>Ormi is run by <strong>Ormi Wellness Ltd</strong>, registered in England and Wales, company number 17209350. Our registered office is 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, United Kingdom.</p>
         <p>We are the controller of the information described on this page. If you have a question about your information, email <a href="mailto:hello@ormi.health">hello@ormi.health</a>.</p>
 
         <h2>What we collect</h2>
@@ -106,7 +106,7 @@ export default function Privacy() {
         <p>If we change how we use your information, we will update this page and change the date at the top.</p>
       </main>
 
-      <footer>© 2026 Ormi Wellness Ltd. Company number 17209350. Registered office: 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ. <a href="/">ormi.health</a></footer>
+      <footer>© 2026 Ormi Wellness Ltd. Registered in England and Wales, company number 17209350. Registered office: 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ. <a href="/">ormi.health</a></footer>
     </>
   );
 }
