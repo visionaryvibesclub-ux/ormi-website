@@ -1302,6 +1302,26 @@ const css = `
     .test-list { list-style: none; margin-top: 12px; display: flex; flex-direction: column; gap: 8px; }
     .test-list li { position: relative; padding-left: 20px; font-size: 16px; line-height: 1.5; color: var(--champagne); }
     .test-list li::before { content: ''; position: absolute; left: 0; top: 9px; width: 8px; height: 8px; border-radius: 50%; background: var(--tone); }
+    .tests-grid { grid-template-columns: 1fr 1fr 1.3fr; align-items: start; }
+    @media (max-width: 1000px) { .tests-grid { grid-template-columns: 1fr; } }
+    .test-list.muted li { color: var(--white50); }
+    .test-list li strong { color: var(--champagne); font-weight: 600; }
+    .test-list.muted li::before { background: transparent; border: 1.5px solid var(--tone); width: 7px; height: 7px; }
+    .test-card.is-dutch {
+      position: relative;
+      background: linear-gradient(170deg, rgba(232,193,110,0.20) 0%, rgba(232,193,110,0.07) 60%), #0F2A4A;
+      border: 1.5px solid #E8C16E;
+      box-shadow: 0 0 0 6px rgba(232,193,110,0.08), 0 24px 60px rgba(0,0,0,0.25);
+      padding: 34px 30px;
+    }
+    .test-badge { position: absolute; top: -14px; left: 28px; background: #E8C16E; color: #0A1D36; font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; padding: 6px 14px; border-radius: 30px; }
+    .test-card.is-dutch .test-name { font-size: 40px; }
+    .test-lead { font-size: 19px; line-height: 1.5; color: var(--champagne); margin-bottom: 20px; }
+    .test-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: 10px; padding-top: 20px; border-top: 1px solid rgba(232,193,110,0.28); }
+    .test-price { font-family: 'Instrument Serif', serif; font-size: 24px; color: #EFD39B; }
+    .tests-close em { font-style: italic; color: #E8C16E; }
+    .tests-after { margin-top: 14px; max-width: 760px; font-size: 17px; line-height: 1.65; color: var(--white50); }
+    .dyk-item .dyk-text { max-width: 520px; }
     .tests-close { margin-top: 34px; max-width: 760px; font-family: 'Instrument Serif', serif; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.35; color: var(--champagne); }
     .tests-source { margin-top: 18px; font-size: 13px; color: var(--white30); line-height: 1.6; max-width: 760px; }
 
@@ -1871,15 +1891,9 @@ const bodyHTML = `
         </div>
         <div class="didyouknow">
           <p class="dyk-label">Did you know?</p>
-          <div class="dyk-row">
-            <div class="dyk-item">
-              <p class="dyk-figure">£60,000+</p>
-              <p class="dyk-text">awarded by employment tribunals in each of two recent cases involving menopause symptoms at work.</p>
-            </div>
-            <div class="dyk-item">
-              <p class="dyk-figure">From £45</p>
-              <p class="dyk-text">per eligible employee a year for an Ormi employer plan.</p>
-            </div>
+          <div class="dyk-item">
+            <p class="dyk-figure">£60,000+</p>
+            <p class="dyk-text">awarded by employment tribunals in each of two recent cases involving menopause symptoms at work. Ask us about a package for your team.</p>
           </div>
         </div>
         <p class="employers-source">Employment Rights Act 2025. Expected from spring 2027, subject to final regulations. Tribunal awards: Lynskey v Direct Line Insurance Services (£64,645) and Shearer v South Lanarkshire Council (£61,074).</p>
@@ -2176,21 +2190,23 @@ const bodyHTML = `
   <!-- ── Tests compared ── -->
   <!--
     Sources (checked 14 Nov 2026):
-    NICE NG23 rec 1.2.1 and quality standard QS143 statement 1: diagnose perimenopause in
-    otherwise healthy women over 45 on symptoms, without laboratory tests, because hormone
-    levels fluctuate; FSH test considered at 40 to 45 and under 40; other tests such as
-    thyroid function may be needed if non-menopausal causes are suspected.
-    RCOG position on over-the-counter FSH tests, as reported by Which? and the BBC.
-    App-read strips measuring FSH plus urinary markers of oestrogen (E1G) and progesterone (PdG),
-    taken on set cycle days: manufacturer's own product pages, checked 14 Nov 2026.
-    Precision Analytical, DUTCH Complete (dutchtest.com): 35 hormones, four or five dried
-    urine samples over 24 hours.
+    RCOG: over-the-counter menopause tests "are not a good method of detecting menopause or
+    perimenopause"; a raised FSH may point to it, a normal one does not rule it out (as reported
+    by Which?, the BBC and The Pharmacist).
+    Urine strips and dilution: strip makers' own instructions and Hoag Health ("avoid excess
+    fluids right before testing").
+    Hormone levels fluctuate during the perimenopause: NICE QS143, statement 1 rationale.
+    DUTCH Complete: 35 hormones and metabolites, four or five dried urine samples over 24 hours,
+    daily free cortisol pattern, melatonin, six organic acids, values reported relative to
+    creatinine to correct for hydration (Precision Analytical, dutchtest.com and provider sheet).
+    App-read strips measuring FSH plus urinary markers of oestrogen (E1G) and progesterone (PdG):
+    manufacturer's own product pages.
   -->
   <section id="tests">
     <div class="container">
       <p class="eyebrow">Tests, explained</p>
-      <h2 class="section-title"><span class="t-strip">Strip tests</span>, <span class="t-blood">blood test</span> or <span class="t-dutch">the DUTCH test</span>?<br /><em>What each one shows.</em></h2>
-      <p class="section-sub">No test can diagnose perimenopause on its own. Your symptoms come first. Here is what each test measures, and what it can't tell you.</p>
+      <h2 class="section-title">Three ways to test your hormones.<br /><em>Only one follows them through the whole day.</em></h2>
+      <p class="section-sub">Hormones don't hold still. They shift through the day and through the month. So what a test can tell you depends on how much of that it sees.</p>
       <div class="tests-grid">
         <div class="test-card reveal">
           <div class="test-dots" aria-hidden="true"><i style="--c:#F2A57E; --i:0;"></i><i style="--c:#F2A57E; --i:1;"></i><i style="--c:#F2A57E; --i:2;"></i></div>
@@ -2198,11 +2214,11 @@ const bodyHTML = `
           <h3 class="test-name">Strip tests</h3>
           <div class="test-row">
             <p class="test-label">What it measures</p>
-            <p class="test-text">Urine strips you dip at home on set days of your cycle. The simplest shop tests read one hormone, FSH, which tends to rise as menopause approaches. App-read strips add a marker for oestrogen and a marker for progesterone, so you can watch those three change from cycle to cycle.</p>
+            <p class="test-text">FSH on its own, or FSH with a marker for oestrogen and one for progesterone. You dip a strip in urine on set days of your cycle.</p>
           </div>
           <div class="test-row">
-            <p class="test-label">What it can't tell you</p>
-            <p class="test-text">Nothing about cortisol, testosterone, DHEA or melatonin, and nothing about how hormones are broken down. A raised FSH result may point to perimenopause or menopause, but a normal one doesn't rule it out. The Royal College of Obstetricians and Gynaecologists does not recommend over-the-counter menopause tests.</p>
+            <p class="test-label">Where it falls short</p>
+            <ul class="test-list muted"><li><strong>One moment in time.</strong> One dip, one reading.</li><li><strong>A glass of water can change it.</strong> Dilute urine reads lower, which is why the instructions tell you to limit fluids first.</li><li><strong>Not a good guide in perimenopause.</strong> FSH swings up and down, so a normal result doesn't rule it out. The Royal College of Obstetricians and Gynaecologists does not recommend over-the-counter menopause tests.</li><li><strong>Big gaps.</strong> No cortisol, testosterone, DHEA or melatonin, and nothing on how hormones are broken down.</li></ul>
           </div>
         </div>
         <div class="test-card is-blood reveal">
@@ -2211,38 +2227,44 @@ const bodyHTML = `
           <h3 class="test-name">Blood test</h3>
           <div class="test-row">
             <p class="test-label">What it measures</p>
-            <p class="test-text">Usually FSH, sometimes with oestradiol, from a single sample. Through your GP or a private lab.</p>
+            <p class="test-text">Usually FSH, sometimes with oestradiol, from one blood sample. Through your GP or a private lab.</p>
           </div>
           <div class="test-row">
-            <p class="test-label">What it can't tell you</p>
-            <p class="test-text">Hormone levels move up and down in perimenopause, so one sample is a snapshot. NICE says women over 45 should be diagnosed on symptoms, without lab tests. Blood tests can still help under 45, or to rule out other causes such as thyroid problems.</p>
+            <p class="test-label">Where it falls short</p>
+            <ul class="test-list muted"><li><strong>A snapshot.</strong> Hormone levels move through the day and through the month, so the same test at a different time can give a different answer.</li><li><strong>It can look normal when you feel anything but.</strong> In perimenopause, levels rise and fall from one day to the next.</li><li><strong>One sample, one view.</strong> It can't show a daily cortisol rhythm, or how your hormones are being broken down.</li><li><strong>Still valuable</strong> for ruling out other causes, such as thyroid problems. It's one piece, not the picture.</li></ul>
           </div>
         </div>
         <div class="test-card is-dutch reveal">
+          <p class="test-badge">The whole day</p>
           <div class="test-dots" aria-hidden="true"><i style="--c:#EFD39B; --i:0;"></i><i style="--c:#C9973A; --i:1;"></i><i style="--c:#D9AE5C; --i:2;"></i><i style="--c:#F5E6C8; --i:3;"></i><i style="--c:#E8C16E; --i:4;"></i><i style="--c:#EFD39B; --i:5;"></i><i style="--c:#C9973A; --i:6;"></i><i style="--c:#D9AE5C; --i:1;"></i><i style="--c:#F5E6C8; --i:2;"></i><i style="--c:#E8C16E; --i:3;"></i><i style="--c:#EFD39B; --i:4;"></i><i style="--c:#C9973A; --i:5;"></i><i style="--c:#D9AE5C; --i:6;"></i><i style="--c:#F5E6C8; --i:7;"></i><i style="--c:#E8C16E; --i:2;"></i><i style="--c:#EFD39B; --i:3;"></i><i style="--c:#C9973A; --i:4;"></i><i style="--c:#D9AE5C; --i:5;"></i><i style="--c:#F5E6C8; --i:6;"></i><i style="--c:#E8C16E; --i:7;"></i><i style="--c:#EFD39B; --i:8;"></i><i style="--c:#C9973A; --i:3;"></i><i style="--c:#D9AE5C; --i:4;"></i><i style="--c:#F5E6C8; --i:5;"></i><i style="--c:#E8C16E; --i:6;"></i><i style="--c:#EFD39B; --i:7;"></i><i style="--c:#C9973A; --i:8;"></i><i style="--c:#D9AE5C; --i:9;"></i><i style="--c:#F5E6C8; --i:4;"></i><i style="--c:#E8C16E; --i:5;"></i><i style="--c:#EFD39B; --i:6;"></i><i style="--c:#C9973A; --i:7;"></i><i style="--c:#D9AE5C; --i:8;"></i><i style="--c:#F5E6C8; --i:9;"></i><i style="--c:#E8C16E; --i:10;"></i></div>
           <p class="test-count">35 hormones and metabolites</p>
           <h3 class="test-name">The DUTCH test</h3>
+          <p class="test-lead">The fullest picture of the three. Your hormones across a whole day, not a single moment.</p>
           <div class="test-row">
-            <p class="test-label">What it measures</p>
-            <p class="test-text">The widest picture of the three. 35 hormones and metabolites, from four or five dried urine samples you collect at home across a full day. No needles.</p>
-            <ul class="test-list">
-              <li>Oestrogen, progesterone and testosterone, and how each is broken down</li>
-              <li>Your cortisol rhythm, from morning to night</li>
-              <li>DHEA and overnight melatonin</li>
-            </ul>
+            <p class="test-label">What you see</p>
+            <ul class="test-list"><li><strong>35 hormones and metabolites</strong> in one test</li><li><strong>Oestrogen, progesterone and testosterone,</strong> and how each one is broken down</li><li><strong>Your cortisol rhythm,</strong> mapped from morning to night</li><li><strong>DHEA, overnight melatonin</strong> and six organic acid markers</li></ul>
+          </div>
+          <div class="test-row">
+            <p class="test-label">Why it's different</p>
+            <ul class="test-list"><li><strong>A day, not a minute.</strong> Four or five samples across 24 hours.</li><li><strong>Water doesn't throw it off.</strong> Each sample is adjusted for how dilute it is.</li><li><strong>Done at home.</strong> No needles, no clinic, no time off.</li></ul>
           </div>
           <div class="test-row">
             <p class="test-label">With Ormi</p>
-            <p class="test-text">AI interpretation in plain words, a GP review of your results, an NHS-ready summary for your own doctor and a year of Ormi Circle.</p>
+            <p class="test-text">AI interpretation in plain words. A GP review of your results. An NHS-ready summary for your own doctor. And a year of Ormi Circle, so your results sit alongside your daily check-ins and your wearable.</p>
           </div>
           <div class="test-row">
-            <p class="test-label">What it can't tell you</p>
-            <p class="test-text">It does not diagnose perimenopause, and it is not an NHS test. NICE does not call for any hormone test to diagnose perimenopause in women over 45. It gives you a wider picture to discuss with a clinician.</p>
+            <p class="test-label">Good to know</p>
+            <p class="test-text">The DUTCH test is not an NHS test and it does not diagnose. It gives you and your clinician more to work with.</p>
+          </div>
+          <div class="test-cta">
+            <a href="#final-waitlist" class="btn-gold" style="display:inline-block; text-decoration:none;">Join the waitlist</a>
+            <span class="test-price">£349 or £399, one-off</span>
           </div>
         </div>
       </div>
-      <p class="tests-close">That's why Ormi starts with a free hormone portrait and daily check-ins, and keeps the DUTCH test optional.</p>
-      <p class="tests-source">Sources: NICE guideline NG23 and quality standard QS143. Royal College of Obstetricians and Gynaecologists. Precision Analytical.</p>
+      <p class="tests-close">One reading is a moment. <em>A full day is a pattern.</em></p>
+      <p class="tests-after">No test diagnoses perimenopause on its own, and how you feel always comes first. That's why every DUTCH result at Ormi is read alongside your check-ins and reviewed by a GP.</p>
+      <p class="tests-source">Sources: Royal College of Obstetricians and Gynaecologists. NICE quality standard QS143. Precision Analytical.</p>
     </div>
   </section>
 
