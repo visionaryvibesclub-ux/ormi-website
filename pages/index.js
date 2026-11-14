@@ -75,7 +75,7 @@ const css = `
 
     .nav-wordmark {
       font-family: 'Instrument Serif', serif;
-      font-size: 27px;
+      font-size: 26px;
       font-weight: 400;
       color: var(--champagne);
       line-height: 1;
@@ -241,7 +241,7 @@ const css = `
       margin-bottom: 18px;
       font-size: 16px;
       line-height: 1.6;
-      color: var(--white70);
+      color: #EFD39B;
       font-weight: 400;
     }
 
@@ -378,7 +378,7 @@ const css = `
 
     .feeling-text {
       font-family: 'Instrument Serif', serif;
-      font-size: 20px;
+      font-size: 22px;
       font-style: italic;
       color: var(--white70);
       line-height: 1.55;
@@ -429,7 +429,7 @@ const css = `
     }
 
     .messenger-body {
-      font-size: 17px;
+      font-size: 16px;
       color: var(--white50);
       line-height: 1.8;
       font-weight: 300;
@@ -680,6 +680,9 @@ const css = `
       margin-bottom: 24px;
     }
 
+    .tests-clinic { max-width: 760px; margin: 28px 0 8px; }
+    .tests-clinic .dutch-clinic-compare { margin-bottom: 0; }
+
     .dutch-clinic-label {
       font-size: 12px;
       letter-spacing: 0.18em;
@@ -914,7 +917,7 @@ const css = `
 
     .footer-wordmark {
       font-family: 'Instrument Serif', serif;
-      font-size: 23px;
+      font-size: 24px;
       font-weight: 400;
       color: var(--champagne);
     }
@@ -1107,6 +1110,18 @@ const css = `
 
     .light .section-title em { color: #B4553A; }
 
+    /* Sound familiar: what you notice, what may be behind it, how Ormi helps */
+    .fcard { background: #FFF6E6; border: 1px solid rgba(10,29,54,0.10); border-top: 5px solid var(--tone); border-radius: 22px; padding: 26px 26px 24px; display: flex; flex-direction: column; }
+    .fcard-tag { align-self: flex-start; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #0A1D36; margin-bottom: 14px; }
+    .fcard-quote { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 26px; line-height: 1.3; color: #0A1D36; margin-bottom: 22px; }
+    .fcard-block { border-top: 1px solid rgba(10,29,54,0.12); padding-top: 14px; margin-bottom: 16px; }
+    .fcard-ormi { margin-bottom: 0; margin-top: auto; }
+    .fcard-label { font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(10,29,54,0.66); margin-bottom: 8px; }
+    .fcard-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+    .fcard-chips span { font-size: 13px; font-weight: 600; color: #0A1D36; padding: 4px 11px; border-radius: 20px; background: color-mix(in srgb, var(--tone) 30%, #FFF6E6); border: 1px solid color-mix(in srgb, var(--tone) 55%, #FFF6E6); }
+    .fcard-text { font-size: 16px; line-height: 1.6; color: rgba(10,29,54,0.86); }
+    .fcard-ormi .fcard-text { font-weight: 500; color: #0A1D36; }
+
     /* ── Graphics ported from the app (explore/motifs.tsx, portrait/HormoneMotif.tsx) ── */
     @keyframes breatheSoft { from { transform: scale(1); } to { transform: scale(1.04); } }
     @keyframes breatheRing { from { transform: scale(0.8); } to { transform: scale(1.15); } }
@@ -1125,11 +1140,11 @@ const css = `
 
     /* a team of suns on the employer card: five suns, five tempos, one horizon */
     .employers-card { position: relative; overflow: hidden; }
-    .employers-card > *:not(.team) { position: relative; z-index: 1; }
+    .employers-card > *:not(.flow) { position: relative; z-index: 1; }
     .team {
       --h: 150px;
       position: absolute;
-      right: 48px; top: 50%;
+      right: 48px; top: 34%;
       width: 380px; height: calc(var(--h) + 50px);
       transform: translateY(-50%);
       pointer-events: none;
@@ -1153,7 +1168,7 @@ const css = `
     .team-bars i:nth-child(2) { width: 38%; background: rgba(239,211,155,0.32); animation-duration: 5.2s; animation-delay: 0.5s; }
     .team-bars i:nth-child(3) { width: 17%; background: rgba(239,211,155,0.2); animation-duration: 5.9s; animation-delay: 1s; }
     @keyframes teamFloat { from { transform: translateY(7px); } to { transform: translateY(-9px); } }
-    @media (max-width: 1080px) {
+    @media (max-width: 1200px) {
       .team { --h: 104px; position: relative; right: auto; top: auto; transform: none; width: 100%; max-width: 380px; margin-bottom: 26px; }
     }
     @media (max-width: 760px) {
@@ -1241,21 +1256,21 @@ const css = `
     .day { text-align: center; opacity: 0.4; transition: opacity 0.6s ease; }
     .day.is-past { opacity: 0.75; }
     .day.is-today { opacity: 1; }
-    .day-sky { position: relative; height: 50px; overflow: hidden; border-radius: 10px 10px 0 0; transition: background 0.6s ease; }
+    .day-sky { position: relative; height: 50px; border-radius: 10px 10px 0 0; transition: background 0.6s ease; }
     .day.is-today .day-sky { background: rgba(245,230,200,0.08); }
     .day-sun {
-      position: absolute; left: 50%; bottom: 0;
-      width: 26px; height: 26px; margin-left: -13px; border-radius: 50%;
+      position: absolute; left: 50%; bottom: 6px;
+      width: 14px; height: 14px; margin-left: -7px; border-radius: 50%;
       background: var(--hue, #D9AE5C);
-      transform: translateY(calc(26px * var(--lvl, 0.5)));
-      transition: transform 0.9s cubic-bezier(0.22, 0.8, 0.3, 1), background 0.6s ease;
+      transform: translateY(calc(-30px * (1 - var(--lvl, 0.5))));
+      transition: transform 0.9s cubic-bezier(0.22, 0.8, 0.3, 1), background 0.6s ease, opacity 0.6s ease;
     }
-    .day.is-future .day-sun { transform: translateY(26px); }
+    .day.is-future .day-sun { transform: translateY(0); opacity: 0.25; background: #C3D0E0; }
     .day-line { height: 1px; background: rgba(245,230,200,0.4); }
     .day-name { margin-top: 8px; font-size: 13px; font-weight: 500; color: var(--white50); }
     .day.is-today .day-name { color: var(--champagne); }
     .said { display: flex; align-items: baseline; gap: 12px; margin-bottom: 18px; }
-    .said-label { font-size: 15px; color: var(--white50); }
+    .said-label { font-size: 16px; color: var(--white50); }
     .said-word { font-family: 'Instrument Serif', serif; font-size: 34px; line-height: 1; color: var(--champagne); }
     .plan-title { font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-text); margin-bottom: 10px; }
     .plan-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
@@ -1299,6 +1314,43 @@ const css = `
     .test-row { border-top: 1px solid var(--card-border); padding: 14px 0; }
     .test-label { font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-text); margin-bottom: 6px; }
     .test-text { font-size: 16px; color: var(--white50); line-height: 1.65; }
+    .test-list { list-style: none; margin-top: 12px; display: flex; flex-direction: column; gap: 8px; }
+    .test-list li { position: relative; padding-left: 20px; font-size: 16px; line-height: 1.5; color: var(--champagne); }
+    .test-list li::before { content: ''; position: absolute; left: 0; top: 9px; width: 8px; height: 8px; border-radius: 50%; background: var(--tone); }
+    .tests-grid { grid-template-columns: 1fr 1.25fr; align-items: start; }
+    .tests-side { display: flex; flex-direction: column; gap: 18px; }
+    details.test-card { display: block; padding: 0; }
+    details.test-card > summary { list-style: none; cursor: pointer; display: flex; gap: 18px; align-items: flex-start; justify-content: space-between; padding: 26px; border-radius: 22px; }
+    details.test-card > summary::-webkit-details-marker { display: none; }
+    details.test-card > summary:focus-visible { outline: 2px solid var(--glow); outline-offset: 3px; }
+    .test-sum { display: block; }
+    details.test-card .test-dots { min-height: 0; height: auto; margin-bottom: 14px; }
+    .test-teaser { display: block; margin-top: 10px; font-size: 16px; line-height: 1.5; color: var(--white70); }
+    .test-toggle { flex: none; position: relative; width: 38px; height: 38px; margin-top: 2px; border-radius: 50%; border: 1px solid var(--tone); }
+    .test-toggle::before, .test-toggle::after { content: ''; position: absolute; left: 50%; top: 50%; width: 14px; height: 1.5px; margin: -0.75px 0 0 -7px; background: var(--tone); transition: transform 0.25s ease; }
+    .test-toggle::after { transform: rotate(90deg); }
+    details[open] > summary .test-toggle::after { transform: rotate(0deg); }
+    details.test-card > .test-row { margin-left: 26px; margin-right: 26px; }
+    details.test-card > .test-row:last-child { margin-bottom: 26px; }
+    @media (max-width: 1000px) { .tests-grid { grid-template-columns: 1fr; } }
+    .test-list.muted li { color: var(--white50); }
+    .test-list li strong { color: var(--champagne); font-weight: 600; }
+    .test-list.muted li::before { background: transparent; border: 1.5px solid var(--tone); width: 7px; height: 7px; }
+    .test-card.is-dutch {
+      position: relative;
+      background: linear-gradient(170deg, rgba(232,193,110,0.20) 0%, rgba(232,193,110,0.07) 60%), #0F2A4A;
+      border: 1.5px solid #E8C16E;
+      box-shadow: 0 0 0 6px rgba(232,193,110,0.08), 0 24px 60px rgba(0,0,0,0.25);
+      padding: 34px 30px;
+    }
+    .test-badge { position: absolute; top: -14px; left: 28px; background: #E8C16E; color: #0A1D36; font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; padding: 6px 14px; border-radius: 30px; }
+    .test-card.is-dutch .test-name { font-size: 40px; }
+    .test-lead { font-size: 18px; line-height: 1.5; color: var(--champagne); margin-bottom: 20px; }
+    .test-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: 10px; padding-top: 20px; border-top: 1px solid rgba(232,193,110,0.28); }
+    .test-price { font-family: 'Instrument Serif', serif; font-size: 24px; color: #EFD39B; }
+    .tests-close em { font-style: italic; color: #E8C16E; }
+    .tests-after { margin-top: 14px; max-width: 760px; font-size: 16px; line-height: 1.65; color: var(--white50); }
+    .dyk-item .dyk-text { max-width: 520px; }
     .tests-close { margin-top: 34px; max-width: 760px; font-family: 'Instrument Serif', serif; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.35; color: var(--champagne); }
     .tests-source { margin-top: 18px; font-size: 13px; color: var(--white30); line-height: 1.6; max-width: 760px; }
 
@@ -1346,8 +1398,168 @@ const css = `
     .faq-item[open] .faq-plus { background: var(--terracotta-deep); border-color: var(--terracotta-deep); transform: rotate(180deg); }
     .faq-item[open] .faq-plus::before, .faq-item[open] .faq-plus::after { background: var(--warm-white); }
     .faq-item[open] .faq-plus::after { transform: rotate(0deg); }
-    .faq-answer { padding: 0 50px 24px 0; font-size: 17px; line-height: 1.7; color: var(--white50); max-width: 640px; animation: riseIn 0.35s ease both; }
+    .faq-answer { padding: 0 50px 24px 0; font-size: 16px; line-height: 1.7; color: var(--white50); max-width: 640px; animation: riseIn 0.35s ease both; }
     .faq-answer a { color: var(--gold-text); }
+
+    /* ── Employers: did you know ── */
+    .didyouknow { margin-top: 30px; padding: 22px 24px; border-radius: 18px; background: rgba(12,35,64,0.55); border: 1px solid rgba(245,230,200,0.14); max-width: 650px; }
+    .dyk-label { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 24px; color: #EFD39B; margin-bottom: 14px; }
+    .dyk-row { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+    .dyk-figure { font-family: 'Instrument Serif', serif; font-size: 44px; line-height: 1; margin-bottom: 8px; }
+    .dyk-item:nth-child(1) .dyk-figure { color: #E08A5E; }
+    .dyk-item:nth-child(2) .dyk-figure { color: #E6CC94; }
+    .dyk-text { font-size: 16px; line-height: 1.55; color: var(--white50); }
+    @media (max-width: 640px) { .dyk-row { grid-template-columns: 1fr; gap: 18px; } }
+
+    /* ── IGNITE feature band ── */
+    a.hero-badge { text-decoration: none; transition: background 0.2s, border-color 0.2s; }
+    a.hero-badge:hover { background: var(--gold-dim); border-color: var(--gold); }
+    #ignite { scroll-margin-top: 70px; }
+    section.ignite { padding: 56px 0; background: linear-gradient(100deg, #E6CC94 0%, #E8C16E 45%, #F2A57E 100%); }
+    .ignite-inner { display: flex; align-items: center; gap: 44px; }
+    .ignite-medal { width: 190px; height: 190px; flex-shrink: 0; }
+    .ignite-rays { transform-origin: 100px 100px; animation: turn 50s linear infinite; }
+    .ignite-eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: #0A1D36; margin-bottom: 10px; }
+    .ignite-headline { font-family: 'Instrument Serif', serif; font-weight: 400; font-size: clamp(44px, 6.4vw, 88px); line-height: 1; color: #0A1D36; margin-bottom: 14px; }
+    .ignite-headline em { font-style: italic; }
+    .ignite-copy { font-size: 18px; line-height: 1.6; color: rgba(10,29,54,0.88); max-width: 560px; }
+    .ignite-link { display: inline-block; margin-top: 16px; font-size: 16px; font-weight: 600; color: #0A1D36; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1.5px; }
+    .ignite-link:hover { text-decoration-thickness: 2.5px; }
+    .ignite-link:focus-visible { outline: 2px solid #0A1D36; outline-offset: 4px; border-radius: 4px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    @media (max-width: 760px) {
+      .ignite-inner { flex-direction: column; align-items: flex-start; gap: 22px; }
+      .ignite-medal { width: 132px; height: 132px; }
+    }
+
+    /* On phones, long card stacks become a sideways swipe so the page stays short */
+    @media (max-width: 760px) {
+      .feelings-grid, .stages-grid {
+        display: flex !important; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory;
+        margin-right: -24px; padding-right: 24px; padding-bottom: 12px; -webkit-overflow-scrolling: touch;
+      }
+      .feelings-grid > *, .stages-grid > * { flex: 0 0 84%; scroll-snap-align: start; }
+    }
+
+    .merged-how { margin-top: 72px; margin-bottom: 30px; }
+    .merged-sub { font-family: 'Instrument Serif', serif; font-size: clamp(26px, 2.6vw, 34px); line-height: 1.25; color: var(--champagne); max-width: 780px; }
+
+    /* Employers: a short band on the home page, full detail on /employers */
+    .employers-band { padding: 36px 0; }
+    .eband { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; padding: 28px 34px; border-radius: 22px; border: 1px solid var(--card-border); background: linear-gradient(120deg, rgba(200,103,74,0.20), rgba(15,42,74,0.6) 60%); }
+    .eband .eyebrow { margin-bottom: 8px; }
+    .eband-title { font-family: 'Instrument Serif', serif; font-size: clamp(26px, 2.8vw, 36px); line-height: 1.15; color: var(--champagne); }
+    .eband-title em { color: var(--gold-text); }
+    .eband .btn-ghost { text-decoration: none; white-space: nowrap; }
+
+    /* Phone-only waitlist button that stays in reach while you scroll */
+    .sticky-cta { display: none; }
+    @media (max-width: 760px) {
+      .sticky-cta {
+        display: block; position: fixed; z-index: 90;
+        left: 16px; right: 16px; bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+        padding: 17px 20px; border-radius: 40px; text-align: center; text-decoration: none;
+        font-size: 14px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+        color: #FFF6E6; background: var(--terracotta-deep);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+        transform: translateY(160%); transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+      }
+      .sticky-cta.is-on { transform: none; }
+      .sticky-cta:focus-visible { outline: 2px solid var(--champagne); outline-offset: 3px; }
+    }
+
+    /* Rhythm line: a steady cycle beside perimenopause */
+    .rhythm { margin: 8px 0 44px; max-width: 980px; }
+    .rhythm svg { display: block; width: 100%; height: 118px; overflow: visible; }
+    @media (max-width: 760px) { .rhythm svg { height: 86px; } .rhythm { margin-bottom: 32px; } }
+    .rhythm-line { fill: none; stroke: #B4553A; stroke-width: 2.6; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 2.6s cubic-bezier(0.3, 0.6, 0.2, 1) 0.2s; }
+    .rhythm.visible .rhythm-line { stroke-dashoffset: 0; }
+    .rhythm-labels { display: grid; grid-template-columns: 47% 53%; margin-top: 10px; font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #0A1D36; }
+    .rhythm-labels span + span { padding-left: 14px; color: #B4553A; }
+    .rhythm-note { margin-top: 10px; font-size: 14px; line-height: 1.5; color: rgba(10,29,54,0.7); max-width: 640px; }
+    @media (prefers-reduced-motion: reduce) { .rhythm-line { stroke-dashoffset: 0; transition: none; } }
+
+    /* ── App previews ── */
+    .hero-phone { display: none; }
+    @media (min-width: 1240px) {
+      .hero .hero-phone {
+        display: block; position: absolute; z-index: 1;
+        left: clamp(680px, calc(100vw - 480px), 800px); top: 0;
+        width: 300px; height: auto;
+        border-radius: 13.85% / 6.4%;
+        box-shadow: 0 0 0 7px #10131A, 0 0 0 8px rgba(245,230,200,0.16), 0 34px 60px rgba(0,0,0,0.5);
+        animation: riseIn 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) 0.3s both;
+      }
+      .hero .flow-hero {
+        left: calc(clamp(680px, calc(100vw - 480px), 800px) - 170px);
+        top: 170px; width: 640px; z-index: 0;
+      }
+      .hero .flow-hero text { display: none; }
+      .hero-content > p { max-width: 640px; }
+    }
+    .inside { background: var(--obsidian); }
+    .inside-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; margin-top: 44px; }
+    .inside-item { margin: 0; text-align: left; }
+    .inside-item img { display: block; width: 100%; max-width: 270px; height: auto; margin: 7px 7px 28px; border-radius: 13.85% / 6.4%; box-shadow: 0 0 0 7px #10131A, 0 0 0 8px rgba(245,230,200,0.16), 0 26px 44px rgba(0,0,0,0.45); }
+    .inside-item figcaption { font-size: 16px; line-height: 1.6; color: var(--white70); max-width: 270px; }
+    .inside-item strong { display: block; font-family: 'Instrument Serif', serif; font-weight: 400; font-size: 26px; line-height: 1.2; color: var(--champagne); margin-bottom: 6px; }
+    .inside-step { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--gold); color: var(--gold-text); font-size: 14px; font-weight: 600; margin-bottom: 10px; }
+    @media (max-width: 760px) {
+      .inside-row { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 12px; margin-right: -24px; padding-right: 24px; -webkit-overflow-scrolling: touch; }
+      .inside-item { flex: 0 0 72%; scroll-snap-align: start; }
+    }
+
+    /* ── Mental health: a check-in you can try ── */
+    .mh-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    @media (max-width: 900px) { .mh-grid { grid-template-columns: 1fr; gap: 34px; } }
+    .mh .section-sub { margin-bottom: 26px; }
+    .mh-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+    .mh-chip {
+      font-family: inherit; font-size: 16px; font-weight: 500; cursor: pointer;
+      padding: 13px 22px; border-radius: 40px;
+      color: var(--champagne); background: transparent;
+      border: 1.5px solid rgba(245,230,200,0.28);
+      transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.15s ease;
+    }
+    .mh-chip:hover { border-color: var(--hue); }
+    .mh-chip:active { transform: scale(0.97); }
+    .mh-chip:focus-visible { outline: 2px solid var(--glow); outline-offset: 3px; }
+    .mh-chip.is-on { background: var(--hue); border-color: var(--hue); color: #0A1D36; font-weight: 600; }
+    .mh-stage {
+      position: relative; overflow: hidden;
+      border-radius: 28px; padding: 40px 36px;
+      min-height: 380px; display: flex; flex-direction: column; justify-content: flex-end;
+      background: #0C2340; border: 1px solid rgba(245,230,200,0.12);
+    }
+    .mh-wave { position: absolute; left: 0; top: 14px; width: 100%; height: 130px; overflow: hidden; pointer-events: none; -webkit-mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent); mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent); }
+    .mh-wave path { stroke: var(--hue); transition: stroke 0.7s ease; }
+    .mh-copy { position: relative; z-index: 1; }
+    .mh-panel { animation: riseIn 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+    .mh-title { font-family: 'Instrument Serif', serif; font-weight: 400; font-size: clamp(34px, 3.6vw, 48px); line-height: 1.1; color: var(--champagne); margin-bottom: 14px; }
+    .mh-text { font-size: 18px; line-height: 1.65; color: var(--white70); max-width: 460px; }
+    @media (max-width: 640px) { .mh-stage { padding: 30px 24px; min-height: 340px; } }
+
+    /* ── Hormone flow: three hormones as moving waves, signals riding the crests ── */
+    .flow { display: block; width: 100%; max-width: 420px; height: auto; margin-bottom: 26px; overflow: visible; animation: flowIn 1.8s cubic-bezier(0.22, 0.8, 0.3, 1) both; pointer-events: none; }
+    .flow-wave { animation: flowMove var(--dur) linear infinite; }
+    @keyframes flowMove { from { transform: translateX(0); } to { transform: translateX(var(--lam)); } }
+    @keyframes flowIn { from { opacity: 0; transform: scaleY(0.5); } to { opacity: 1; transform: scaleY(1); } }
+    .hero-content > .flow { animation: flowIn 1.8s cubic-bezier(0.22, 0.8, 0.3, 1) both; }
+    .flow-final { margin: 0 auto 40px; max-width: 460px; }
+    .employers-card > .flow-team { position: absolute; right: 40px; top: 30%; width: 400px; max-width: none; margin: 0; transform: translateY(-50%); animation: none; z-index: 0; }
+    @media (min-width: 1100px) {
+      .hero .flow-hero {
+        position: absolute;
+        left: clamp(640px, calc(100vw - 520px), 760px);
+        top: 6px;
+        width: 520px;
+        max-width: none;
+        margin: 0;
+      }
+    }
+    @media (max-width: 1200px) {
+      .employers-card > .flow-team { position: relative; right: auto; top: auto; transform: none; width: 100%; max-width: 380px; margin-bottom: 20px; }
+    }
 
     /* the hero is a flex box, so its container needs an explicit width to line up with the other sections */
     .hero > .container { width: 100%; }
@@ -1432,7 +1644,7 @@ const css = `
     @keyframes riseIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
 
     /* one page-load sequence: the sun rises, then the words arrive */
-    .hero-content > *:not(.sunrise) { animation: riseIn 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+    .hero-content > *:not(.flow) { animation: riseIn 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
     .hero-content > *:nth-child(2) { animation-delay: 0.25s; }
     .hero-content > *:nth-child(3) { animation-delay: 0.4s; }
     .hero-content > *:nth-child(4) { animation-delay: 0.6s; }
@@ -1450,6 +1662,9 @@ const css = `
     }
 
     /* ── One slow breath (the app's breathing orb: BreathOrb.tsx, BreathField.tsx) ── */
+    .mh-breath { margin-top: 64px; padding-top: 48px; border-top: 1px solid rgba(245,230,200,0.12); }
+    .mh-breath .orb-wrap { width: 240px; height: 240px; }
+
     .breath-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1486,7 +1701,7 @@ const css = `
     }
     .orb-wrap.is-active .orb-centre { color: var(--ink); }
     .orb-count { font-family: 'Instrument Serif', serif; font-size: 48px; line-height: 1.1; min-height: 4px; }
-    .orb-label { font-size: 17px; font-weight: 600; }
+    .orb-label { font-size: 16px; font-weight: 600; }
     button.btn-ghost { background: transparent; font-family: inherit; cursor: pointer; }
     @media (max-width: 760px) {
       .breath-grid { grid-template-columns: 1fr; gap: 28px; }
@@ -1606,7 +1821,7 @@ const css = `
     }
     .founder-name {
       font-family: 'Instrument Serif', serif;
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 400;
       color: var(--champagne);
       line-height: 1.2;
@@ -1621,7 +1836,7 @@ const css = `
       margin-bottom: 16px;
     }
     .founder-bio {
-      font-size: 17px;
+      font-size: 16px;
       color: var(--white50);
       line-height: 1.7;
     }
@@ -1642,14 +1857,14 @@ const css = `
       line-height: 1.2;
     }
     .ignite-body {
-      font-size: 17px;
+      font-size: 16px;
       color: var(--white50);
       line-height: 1.7;
     }
     .pricing-footnote {
       margin-top: 28px;
       text-align: left;
-      font-size: 15px;
+      font-size: 16px;
       color: var(--white30);
       line-height: 1.6;
     }
@@ -1720,7 +1935,7 @@ const bodyHTML = `
       <span class="nav-wordmark">ormi</span>
     </a>
     <div class="nav-right">
-      <a href="#employers" class="nav-link">For employers</a>
+      <a href="/employers" class="nav-link">For employers</a>
       <a href="#about" class="nav-link">About</a>
       <a href="#faqs" class="nav-link">FAQs</a>
       <a href="#waitlist" class="nav-cta">Join the waitlist</a>
@@ -1732,16 +1947,15 @@ const bodyHTML = `
     <div class="hero-bg"></div>
     <div class="container">
       <div class="hero-content">
-        <div class="sunrise " aria-hidden="true">
-          <div class="sunrise-glow"></div>
-          <div class="sun-clip"><div class="sun-float"><div class="sun-disc"></div></div></div>
-          <div class="sun-horizon"></div>
-          <div class="sun-bars">
-            <div class="sun-bar" style="--d:4.5s; --delay:0s; --o:0.5;"></div>
-            <div class="sun-bar" style="--d:5.2s; --delay:0.5s; --o:0.32;"></div>
-            <div class="sun-bar" style="--d:5.9s; --delay:1s; --o:0.2;"></div>
-          </div>
-        </div>
+        <svg class="flow flow-hero" viewBox="0 0 600 300" aria-hidden="true">
+          <defs>
+            <linearGradient id="fade-flow-hero" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.14" stop-color="#fff" stop-opacity="1"/><stop offset="0.86" stop-color="#fff" stop-opacity="1"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+            <mask id="mask-flow-hero"><rect x="0" y="0" width="600" height="250" fill="url(#fade-flow-hero)"/></mask>
+          </defs>
+          <g mask="url(#mask-flow-hero)"><g class="flow-wave" style="--lam:-300px; --dur:22s;"><path d="M -300.0 120.0 L -294.0 125.8 L -288.0 131.4 L -282.0 136.9 L -276.0 142.2 L -270.0 147.0 L -264.0 151.5 L -258.0 155.4 L -252.0 158.8 L -246.0 161.6 L -240.0 163.7 L -234.0 165.2 L -228.0 165.9 L -222.0 165.9 L -216.0 165.2 L -210.0 163.7 L -204.0 161.6 L -198.0 158.8 L -192.0 155.4 L -186.0 151.5 L -180.0 147.0 L -174.0 142.2 L -168.0 136.9 L -162.0 131.4 L -156.0 125.8 L -150.0 120.0 L -144.0 114.2 L -138.0 108.6 L -132.0 103.1 L -126.0 97.8 L -120.0 93.0 L -114.0 88.5 L -108.0 84.6 L -102.0 81.2 L -96.0 78.4 L -90.0 76.3 L -84.0 74.8 L -78.0 74.1 L -72.0 74.1 L -66.0 74.8 L -60.0 76.3 L -54.0 78.4 L -48.0 81.2 L -42.0 84.6 L -36.0 88.5 L -30.0 93.0 L -24.0 97.8 L -18.0 103.1 L -12.0 108.6 L -6.0 114.2 L 0.0 120.0 L 6.0 125.8 L 12.0 131.4 L 18.0 136.9 L 24.0 142.2 L 30.0 147.0 L 36.0 151.5 L 42.0 155.4 L 48.0 158.8 L 54.0 161.6 L 60.0 163.7 L 66.0 165.2 L 72.0 165.9 L 78.0 165.9 L 84.0 165.2 L 90.0 163.7 L 96.0 161.6 L 102.0 158.8 L 108.0 155.4 L 114.0 151.5 L 120.0 147.0 L 126.0 142.2 L 132.0 136.9 L 138.0 131.4 L 144.0 125.8 L 150.0 120.0 L 156.0 114.2 L 162.0 108.6 L 168.0 103.1 L 174.0 97.8 L 180.0 93.0 L 186.0 88.5 L 192.0 84.6 L 198.0 81.2 L 204.0 78.4 L 210.0 76.3 L 216.0 74.8 L 222.0 74.1 L 228.0 74.1 L 234.0 74.8 L 240.0 76.3 L 246.0 78.4 L 252.0 81.2 L 258.0 84.6 L 264.0 88.5 L 270.0 93.0 L 276.0 97.8 L 282.0 103.1 L 288.0 108.6 L 294.0 114.2 L 300.0 120.0 L 306.0 125.8 L 312.0 131.4 L 318.0 136.9 L 324.0 142.2 L 330.0 147.0 L 336.0 151.5 L 342.0 155.4 L 348.0 158.8 L 354.0 161.6 L 360.0 163.7 L 366.0 165.2 L 372.0 165.9 L 378.0 165.9 L 384.0 165.2 L 390.0 163.7 L 396.0 161.6 L 402.0 158.8 L 408.0 155.4 L 414.0 151.5 L 420.0 147.0 L 426.0 142.2 L 432.0 136.9 L 438.0 131.4 L 444.0 125.8 L 450.0 120.0 L 456.0 114.2 L 462.0 108.6 L 468.0 103.1 L 474.0 97.8 L 480.0 93.0 L 486.0 88.5 L 492.0 84.6 L 498.0 81.2 L 504.0 78.4 L 510.0 76.3 L 516.0 74.8 L 522.0 74.1 L 528.0 74.1 L 534.0 74.8 L 540.0 76.3 L 546.0 78.4 L 552.0 81.2 L 558.0 84.6 L 564.0 88.5 L 570.0 93.0 L 576.0 97.8 L 582.0 103.1 L 588.0 108.6 L 594.0 114.2 L 600.0 120.0 L 606.0 125.8 L 612.0 131.4 L 618.0 136.9 L 624.0 142.2 L 630.0 147.0 L 636.0 151.5 L 642.0 155.4 L 648.0 158.8 L 654.0 161.6 L 660.0 163.7 L 666.0 165.2 L 672.0 165.9 L 678.0 165.9 L 684.0 165.2 L 690.0 163.7 L 696.0 161.6 L 702.0 158.8 L 708.0 155.4 L 714.0 151.5 L 720.0 147.0 L 726.0 142.2 L 732.0 136.9 L 738.0 131.4 L 744.0 125.8 L 750.0 120.0 L 756.0 114.2 L 762.0 108.6 L 768.0 103.1 L 774.0 97.8 L 780.0 93.0 L 786.0 88.5 L 792.0 84.6 L 798.0 81.2 L 804.0 78.4 L 810.0 76.3 L 816.0 74.8 L 822.0 74.1 L 828.0 74.1 L 834.0 74.8 L 840.0 76.3 L 846.0 78.4 L 852.0 81.2 L 858.0 84.6 L 864.0 88.5 L 870.0 93.0 L 876.0 97.8 L 882.0 103.1 L 888.0 108.6 L 894.0 114.2 L 900.0 120.0" fill="none" stroke="#E8C16E" stroke-width="7.800000000000001" stroke-linecap="round" opacity="0.22" transform="translate(0 0)" style="filter:blur(5px)"/><path d="M -300.0 120.0 L -294.0 125.8 L -288.0 131.4 L -282.0 136.9 L -276.0 142.2 L -270.0 147.0 L -264.0 151.5 L -258.0 155.4 L -252.0 158.8 L -246.0 161.6 L -240.0 163.7 L -234.0 165.2 L -228.0 165.9 L -222.0 165.9 L -216.0 165.2 L -210.0 163.7 L -204.0 161.6 L -198.0 158.8 L -192.0 155.4 L -186.0 151.5 L -180.0 147.0 L -174.0 142.2 L -168.0 136.9 L -162.0 131.4 L -156.0 125.8 L -150.0 120.0 L -144.0 114.2 L -138.0 108.6 L -132.0 103.1 L -126.0 97.8 L -120.0 93.0 L -114.0 88.5 L -108.0 84.6 L -102.0 81.2 L -96.0 78.4 L -90.0 76.3 L -84.0 74.8 L -78.0 74.1 L -72.0 74.1 L -66.0 74.8 L -60.0 76.3 L -54.0 78.4 L -48.0 81.2 L -42.0 84.6 L -36.0 88.5 L -30.0 93.0 L -24.0 97.8 L -18.0 103.1 L -12.0 108.6 L -6.0 114.2 L 0.0 120.0 L 6.0 125.8 L 12.0 131.4 L 18.0 136.9 L 24.0 142.2 L 30.0 147.0 L 36.0 151.5 L 42.0 155.4 L 48.0 158.8 L 54.0 161.6 L 60.0 163.7 L 66.0 165.2 L 72.0 165.9 L 78.0 165.9 L 84.0 165.2 L 90.0 163.7 L 96.0 161.6 L 102.0 158.8 L 108.0 155.4 L 114.0 151.5 L 120.0 147.0 L 126.0 142.2 L 132.0 136.9 L 138.0 131.4 L 144.0 125.8 L 150.0 120.0 L 156.0 114.2 L 162.0 108.6 L 168.0 103.1 L 174.0 97.8 L 180.0 93.0 L 186.0 88.5 L 192.0 84.6 L 198.0 81.2 L 204.0 78.4 L 210.0 76.3 L 216.0 74.8 L 222.0 74.1 L 228.0 74.1 L 234.0 74.8 L 240.0 76.3 L 246.0 78.4 L 252.0 81.2 L 258.0 84.6 L 264.0 88.5 L 270.0 93.0 L 276.0 97.8 L 282.0 103.1 L 288.0 108.6 L 294.0 114.2 L 300.0 120.0 L 306.0 125.8 L 312.0 131.4 L 318.0 136.9 L 324.0 142.2 L 330.0 147.0 L 336.0 151.5 L 342.0 155.4 L 348.0 158.8 L 354.0 161.6 L 360.0 163.7 L 366.0 165.2 L 372.0 165.9 L 378.0 165.9 L 384.0 165.2 L 390.0 163.7 L 396.0 161.6 L 402.0 158.8 L 408.0 155.4 L 414.0 151.5 L 420.0 147.0 L 426.0 142.2 L 432.0 136.9 L 438.0 131.4 L 444.0 125.8 L 450.0 120.0 L 456.0 114.2 L 462.0 108.6 L 468.0 103.1 L 474.0 97.8 L 480.0 93.0 L 486.0 88.5 L 492.0 84.6 L 498.0 81.2 L 504.0 78.4 L 510.0 76.3 L 516.0 74.8 L 522.0 74.1 L 528.0 74.1 L 534.0 74.8 L 540.0 76.3 L 546.0 78.4 L 552.0 81.2 L 558.0 84.6 L 564.0 88.5 L 570.0 93.0 L 576.0 97.8 L 582.0 103.1 L 588.0 108.6 L 594.0 114.2 L 600.0 120.0 L 606.0 125.8 L 612.0 131.4 L 618.0 136.9 L 624.0 142.2 L 630.0 147.0 L 636.0 151.5 L 642.0 155.4 L 648.0 158.8 L 654.0 161.6 L 660.0 163.7 L 666.0 165.2 L 672.0 165.9 L 678.0 165.9 L 684.0 165.2 L 690.0 163.7 L 696.0 161.6 L 702.0 158.8 L 708.0 155.4 L 714.0 151.5 L 720.0 147.0 L 726.0 142.2 L 732.0 136.9 L 738.0 131.4 L 744.0 125.8 L 750.0 120.0 L 756.0 114.2 L 762.0 108.6 L 768.0 103.1 L 774.0 97.8 L 780.0 93.0 L 786.0 88.5 L 792.0 84.6 L 798.0 81.2 L 804.0 78.4 L 810.0 76.3 L 816.0 74.8 L 822.0 74.1 L 828.0 74.1 L 834.0 74.8 L 840.0 76.3 L 846.0 78.4 L 852.0 81.2 L 858.0 84.6 L 864.0 88.5 L 870.0 93.0 L 876.0 97.8 L 882.0 103.1 L 888.0 108.6 L 894.0 114.2 L 900.0 120.0" fill="none" stroke="#E8C16E" stroke-width="2.6" stroke-linecap="round"/><circle cx="-75.0" cy="74.0" r="5" fill="#E8C16E"/><circle cx="-75.0" cy="74.0" r="11" fill="#E8C16E" opacity="0.18"/><circle cx="225.0" cy="74.0" r="5" fill="#E8C16E"/><circle cx="225.0" cy="74.0" r="11" fill="#E8C16E" opacity="0.18"/><circle cx="525.0" cy="74.0" r="5" fill="#E8C16E"/><circle cx="525.0" cy="74.0" r="11" fill="#E8C16E" opacity="0.18"/><circle cx="825.0" cy="74.0" r="5" fill="#E8C16E"/><circle cx="825.0" cy="74.0" r="11" fill="#E8C16E" opacity="0.18"/></g><g class="flow-wave" style="--lam:-240px; --dur:17s;"><path d="M -240.0 198.5 L -234.0 199.0 L -228.0 198.7 L -222.0 197.5 L -216.0 195.5 L -210.0 192.8 L -204.0 189.4 L -198.0 185.4 L -192.0 180.8 L -186.0 175.9 L -180.0 170.8 L -174.0 165.5 L -168.0 160.1 L -162.0 154.9 L -156.0 150.0 L -150.0 145.4 L -144.0 141.3 L -138.0 137.8 L -132.0 134.9 L -126.0 132.8 L -120.0 131.5 L -114.0 131.0 L -108.0 131.3 L -102.0 132.5 L -96.0 134.5 L -90.0 137.2 L -84.0 140.6 L -78.0 144.6 L -72.0 149.2 L -66.0 154.1 L -60.0 159.2 L -54.0 164.5 L -48.0 169.9 L -42.0 175.1 L -36.0 180.0 L -30.0 184.6 L -24.0 188.7 L -18.0 192.2 L -12.0 195.1 L -6.0 197.2 L 0.0 198.5 L 6.0 199.0 L 12.0 198.7 L 18.0 197.5 L 24.0 195.5 L 30.0 192.8 L 36.0 189.4 L 42.0 185.4 L 48.0 180.8 L 54.0 175.9 L 60.0 170.8 L 66.0 165.5 L 72.0 160.1 L 78.0 154.9 L 84.0 150.0 L 90.0 145.4 L 96.0 141.3 L 102.0 137.8 L 108.0 134.9 L 114.0 132.8 L 120.0 131.5 L 126.0 131.0 L 132.0 131.3 L 138.0 132.5 L 144.0 134.5 L 150.0 137.2 L 156.0 140.6 L 162.0 144.6 L 168.0 149.2 L 174.0 154.1 L 180.0 159.2 L 186.0 164.5 L 192.0 169.9 L 198.0 175.1 L 204.0 180.0 L 210.0 184.6 L 216.0 188.7 L 222.0 192.2 L 228.0 195.1 L 234.0 197.2 L 240.0 198.5 L 246.0 199.0 L 252.0 198.7 L 258.0 197.5 L 264.0 195.5 L 270.0 192.8 L 276.0 189.4 L 282.0 185.4 L 288.0 180.8 L 294.0 175.9 L 300.0 170.8 L 306.0 165.5 L 312.0 160.1 L 318.0 154.9 L 324.0 150.0 L 330.0 145.4 L 336.0 141.3 L 342.0 137.8 L 348.0 134.9 L 354.0 132.8 L 360.0 131.5 L 366.0 131.0 L 372.0 131.3 L 378.0 132.5 L 384.0 134.5 L 390.0 137.2 L 396.0 140.6 L 402.0 144.6 L 408.0 149.2 L 414.0 154.1 L 420.0 159.2 L 426.0 164.5 L 432.0 169.9 L 438.0 175.1 L 444.0 180.0 L 450.0 184.6 L 456.0 188.7 L 462.0 192.2 L 468.0 195.1 L 474.0 197.2 L 480.0 198.5 L 486.0 199.0 L 492.0 198.7 L 498.0 197.5 L 504.0 195.5 L 510.0 192.8 L 516.0 189.4 L 522.0 185.4 L 528.0 180.8 L 534.0 175.9 L 540.0 170.8 L 546.0 165.5 L 552.0 160.1 L 558.0 154.9 L 564.0 150.0 L 570.0 145.4 L 576.0 141.3 L 582.0 137.8 L 588.0 134.9 L 594.0 132.8 L 600.0 131.5 L 606.0 131.0 L 612.0 131.3 L 618.0 132.5 L 624.0 134.5 L 630.0 137.2 L 636.0 140.6 L 642.0 144.6 L 648.0 149.2 L 654.0 154.1 L 660.0 159.2 L 666.0 164.5 L 672.0 169.9 L 678.0 175.1 L 684.0 180.0 L 690.0 184.6 L 696.0 188.7 L 702.0 192.2 L 708.0 195.1 L 714.0 197.2 L 720.0 198.5 L 726.0 199.0 L 732.0 198.7 L 738.0 197.5 L 744.0 195.5 L 750.0 192.8 L 756.0 189.4 L 762.0 185.4 L 768.0 180.8 L 774.0 175.9 L 780.0 170.8 L 786.0 165.5 L 792.0 160.1 L 798.0 154.9 L 804.0 150.0 L 810.0 145.4 L 816.0 141.3 L 822.0 137.8 L 828.0 134.9 L 834.0 132.8 L 840.0 131.5" fill="none" stroke="#F2A57E" stroke-width="6.6000000000000005" stroke-linecap="round" opacity="0.22" transform="translate(0 0)" style="filter:blur(5px)"/><path d="M -240.0 198.5 L -234.0 199.0 L -228.0 198.7 L -222.0 197.5 L -216.0 195.5 L -210.0 192.8 L -204.0 189.4 L -198.0 185.4 L -192.0 180.8 L -186.0 175.9 L -180.0 170.8 L -174.0 165.5 L -168.0 160.1 L -162.0 154.9 L -156.0 150.0 L -150.0 145.4 L -144.0 141.3 L -138.0 137.8 L -132.0 134.9 L -126.0 132.8 L -120.0 131.5 L -114.0 131.0 L -108.0 131.3 L -102.0 132.5 L -96.0 134.5 L -90.0 137.2 L -84.0 140.6 L -78.0 144.6 L -72.0 149.2 L -66.0 154.1 L -60.0 159.2 L -54.0 164.5 L -48.0 169.9 L -42.0 175.1 L -36.0 180.0 L -30.0 184.6 L -24.0 188.7 L -18.0 192.2 L -12.0 195.1 L -6.0 197.2 L 0.0 198.5 L 6.0 199.0 L 12.0 198.7 L 18.0 197.5 L 24.0 195.5 L 30.0 192.8 L 36.0 189.4 L 42.0 185.4 L 48.0 180.8 L 54.0 175.9 L 60.0 170.8 L 66.0 165.5 L 72.0 160.1 L 78.0 154.9 L 84.0 150.0 L 90.0 145.4 L 96.0 141.3 L 102.0 137.8 L 108.0 134.9 L 114.0 132.8 L 120.0 131.5 L 126.0 131.0 L 132.0 131.3 L 138.0 132.5 L 144.0 134.5 L 150.0 137.2 L 156.0 140.6 L 162.0 144.6 L 168.0 149.2 L 174.0 154.1 L 180.0 159.2 L 186.0 164.5 L 192.0 169.9 L 198.0 175.1 L 204.0 180.0 L 210.0 184.6 L 216.0 188.7 L 222.0 192.2 L 228.0 195.1 L 234.0 197.2 L 240.0 198.5 L 246.0 199.0 L 252.0 198.7 L 258.0 197.5 L 264.0 195.5 L 270.0 192.8 L 276.0 189.4 L 282.0 185.4 L 288.0 180.8 L 294.0 175.9 L 300.0 170.8 L 306.0 165.5 L 312.0 160.1 L 318.0 154.9 L 324.0 150.0 L 330.0 145.4 L 336.0 141.3 L 342.0 137.8 L 348.0 134.9 L 354.0 132.8 L 360.0 131.5 L 366.0 131.0 L 372.0 131.3 L 378.0 132.5 L 384.0 134.5 L 390.0 137.2 L 396.0 140.6 L 402.0 144.6 L 408.0 149.2 L 414.0 154.1 L 420.0 159.2 L 426.0 164.5 L 432.0 169.9 L 438.0 175.1 L 444.0 180.0 L 450.0 184.6 L 456.0 188.7 L 462.0 192.2 L 468.0 195.1 L 474.0 197.2 L 480.0 198.5 L 486.0 199.0 L 492.0 198.7 L 498.0 197.5 L 504.0 195.5 L 510.0 192.8 L 516.0 189.4 L 522.0 185.4 L 528.0 180.8 L 534.0 175.9 L 540.0 170.8 L 546.0 165.5 L 552.0 160.1 L 558.0 154.9 L 564.0 150.0 L 570.0 145.4 L 576.0 141.3 L 582.0 137.8 L 588.0 134.9 L 594.0 132.8 L 600.0 131.5 L 606.0 131.0 L 612.0 131.3 L 618.0 132.5 L 624.0 134.5 L 630.0 137.2 L 636.0 140.6 L 642.0 144.6 L 648.0 149.2 L 654.0 154.1 L 660.0 159.2 L 666.0 164.5 L 672.0 169.9 L 678.0 175.1 L 684.0 180.0 L 690.0 184.6 L 696.0 188.7 L 702.0 192.2 L 708.0 195.1 L 714.0 197.2 L 720.0 198.5 L 726.0 199.0 L 732.0 198.7 L 738.0 197.5 L 744.0 195.5 L 750.0 192.8 L 756.0 189.4 L 762.0 185.4 L 768.0 180.8 L 774.0 175.9 L 780.0 170.8 L 786.0 165.5 L 792.0 160.1 L 798.0 154.9 L 804.0 150.0 L 810.0 145.4 L 816.0 141.3 L 822.0 137.8 L 828.0 134.9 L 834.0 132.8 L 840.0 131.5" fill="none" stroke="#F2A57E" stroke-width="2.2" stroke-linecap="round"/><circle cx="-113.5" cy="131.0" r="5" fill="#F2A57E"/><circle cx="-113.5" cy="131.0" r="11" fill="#F2A57E" opacity="0.18"/><circle cx="126.5" cy="131.0" r="5" fill="#F2A57E"/><circle cx="126.5" cy="131.0" r="11" fill="#F2A57E" opacity="0.18"/><circle cx="366.5" cy="131.0" r="5" fill="#F2A57E"/><circle cx="366.5" cy="131.0" r="11" fill="#F2A57E" opacity="0.18"/><circle cx="606.5" cy="131.0" r="5" fill="#F2A57E"/><circle cx="606.5" cy="131.0" r="11" fill="#F2A57E" opacity="0.18"/></g><g class="flow-wave" style="--lam:-200px; --dur:13s;"><path d="M -200.0 226.3 L -194.0 222.6 L -188.0 218.6 L -182.0 214.5 L -176.0 210.4 L -170.0 206.4 L -164.0 202.8 L -158.0 199.6 L -152.0 196.9 L -146.0 194.9 L -140.0 193.6 L -134.0 193.0 L -128.0 193.2 L -122.0 194.2 L -116.0 196.0 L -110.0 198.4 L -104.0 201.4 L -98.0 204.9 L -92.0 208.7 L -86.0 212.8 L -80.0 216.9 L -74.0 221.0 L -68.0 224.8 L -62.0 228.4 L -56.0 231.4 L -50.0 233.9 L -44.0 235.6 L -38.0 236.7 L -32.0 237.0 L -26.0 236.5 L -20.0 235.3 L -14.0 233.3 L -8.0 230.7 L -2.0 227.5 L 4.0 223.9 L 10.0 220.0 L 16.0 215.9 L 22.0 211.7 L 28.0 207.7 L 34.0 203.9 L 40.0 200.6 L 46.0 197.7 L 52.0 195.5 L 58.0 193.9 L 64.0 193.1 L 70.0 193.1 L 76.0 193.8 L 82.0 195.3 L 88.0 197.5 L 94.0 200.3 L 100.0 203.7 L 106.0 207.4 L 112.0 211.4 L 118.0 215.5 L 124.0 219.6 L 130.0 223.6 L 136.0 227.2 L 142.0 230.4 L 148.0 233.1 L 154.0 235.1 L 160.0 236.4 L 166.0 237.0 L 172.0 236.8 L 178.0 235.8 L 184.0 234.0 L 190.0 231.6 L 196.0 228.6 L 202.0 225.1 L 208.0 221.3 L 214.0 217.2 L 220.0 213.1 L 226.0 209.0 L 232.0 205.2 L 238.0 201.6 L 244.0 198.6 L 250.0 196.1 L 256.0 194.4 L 262.0 193.3 L 268.0 193.0 L 274.0 193.5 L 280.0 194.7 L 286.0 196.7 L 292.0 199.3 L 298.0 202.5 L 304.0 206.1 L 310.0 210.0 L 316.0 214.1 L 322.0 218.3 L 328.0 222.3 L 334.0 226.1 L 340.0 229.4 L 346.0 232.3 L 352.0 234.5 L 358.0 236.1 L 364.0 236.9 L 370.0 236.9 L 376.0 236.2 L 382.0 234.7 L 388.0 232.5 L 394.0 229.7 L 400.0 226.3 L 406.0 222.6 L 412.0 218.6 L 418.0 214.5 L 424.0 210.4 L 430.0 206.4 L 436.0 202.8 L 442.0 199.6 L 448.0 196.9 L 454.0 194.9 L 460.0 193.6 L 466.0 193.0 L 472.0 193.2 L 478.0 194.2 L 484.0 196.0 L 490.0 198.4 L 496.0 201.4 L 502.0 204.9 L 508.0 208.7 L 514.0 212.8 L 520.0 216.9 L 526.0 221.0 L 532.0 224.8 L 538.0 228.4 L 544.0 231.4 L 550.0 233.9 L 556.0 235.6 L 562.0 236.7 L 568.0 237.0 L 574.0 236.5 L 580.0 235.3 L 586.0 233.3 L 592.0 230.7 L 598.0 227.5 L 604.0 223.9 L 610.0 220.0 L 616.0 215.9 L 622.0 211.7 L 628.0 207.7 L 634.0 203.9 L 640.0 200.6 L 646.0 197.7 L 652.0 195.5 L 658.0 193.9 L 664.0 193.1 L 670.0 193.1 L 676.0 193.8 L 682.0 195.3 L 688.0 197.5 L 694.0 200.3 L 700.0 203.7 L 706.0 207.4 L 712.0 211.4 L 718.0 215.5 L 724.0 219.6 L 730.0 223.6 L 736.0 227.2 L 742.0 230.4 L 748.0 233.1 L 754.0 235.1 L 760.0 236.4 L 766.0 237.0 L 772.0 236.8 L 778.0 235.8 L 784.0 234.0 L 790.0 231.6 L 796.0 228.6" fill="none" stroke="#E08A5E" stroke-width="5.4" stroke-linecap="round" opacity="0.22" transform="translate(0 0)" style="filter:blur(5px)"/><path d="M -200.0 226.3 L -194.0 222.6 L -188.0 218.6 L -182.0 214.5 L -176.0 210.4 L -170.0 206.4 L -164.0 202.8 L -158.0 199.6 L -152.0 196.9 L -146.0 194.9 L -140.0 193.6 L -134.0 193.0 L -128.0 193.2 L -122.0 194.2 L -116.0 196.0 L -110.0 198.4 L -104.0 201.4 L -98.0 204.9 L -92.0 208.7 L -86.0 212.8 L -80.0 216.9 L -74.0 221.0 L -68.0 224.8 L -62.0 228.4 L -56.0 231.4 L -50.0 233.9 L -44.0 235.6 L -38.0 236.7 L -32.0 237.0 L -26.0 236.5 L -20.0 235.3 L -14.0 233.3 L -8.0 230.7 L -2.0 227.5 L 4.0 223.9 L 10.0 220.0 L 16.0 215.9 L 22.0 211.7 L 28.0 207.7 L 34.0 203.9 L 40.0 200.6 L 46.0 197.7 L 52.0 195.5 L 58.0 193.9 L 64.0 193.1 L 70.0 193.1 L 76.0 193.8 L 82.0 195.3 L 88.0 197.5 L 94.0 200.3 L 100.0 203.7 L 106.0 207.4 L 112.0 211.4 L 118.0 215.5 L 124.0 219.6 L 130.0 223.6 L 136.0 227.2 L 142.0 230.4 L 148.0 233.1 L 154.0 235.1 L 160.0 236.4 L 166.0 237.0 L 172.0 236.8 L 178.0 235.8 L 184.0 234.0 L 190.0 231.6 L 196.0 228.6 L 202.0 225.1 L 208.0 221.3 L 214.0 217.2 L 220.0 213.1 L 226.0 209.0 L 232.0 205.2 L 238.0 201.6 L 244.0 198.6 L 250.0 196.1 L 256.0 194.4 L 262.0 193.3 L 268.0 193.0 L 274.0 193.5 L 280.0 194.7 L 286.0 196.7 L 292.0 199.3 L 298.0 202.5 L 304.0 206.1 L 310.0 210.0 L 316.0 214.1 L 322.0 218.3 L 328.0 222.3 L 334.0 226.1 L 340.0 229.4 L 346.0 232.3 L 352.0 234.5 L 358.0 236.1 L 364.0 236.9 L 370.0 236.9 L 376.0 236.2 L 382.0 234.7 L 388.0 232.5 L 394.0 229.7 L 400.0 226.3 L 406.0 222.6 L 412.0 218.6 L 418.0 214.5 L 424.0 210.4 L 430.0 206.4 L 436.0 202.8 L 442.0 199.6 L 448.0 196.9 L 454.0 194.9 L 460.0 193.6 L 466.0 193.0 L 472.0 193.2 L 478.0 194.2 L 484.0 196.0 L 490.0 198.4 L 496.0 201.4 L 502.0 204.9 L 508.0 208.7 L 514.0 212.8 L 520.0 216.9 L 526.0 221.0 L 532.0 224.8 L 538.0 228.4 L 544.0 231.4 L 550.0 233.9 L 556.0 235.6 L 562.0 236.7 L 568.0 237.0 L 574.0 236.5 L 580.0 235.3 L 586.0 233.3 L 592.0 230.7 L 598.0 227.5 L 604.0 223.9 L 610.0 220.0 L 616.0 215.9 L 622.0 211.7 L 628.0 207.7 L 634.0 203.9 L 640.0 200.6 L 646.0 197.7 L 652.0 195.5 L 658.0 193.9 L 664.0 193.1 L 670.0 193.1 L 676.0 193.8 L 682.0 195.3 L 688.0 197.5 L 694.0 200.3 L 700.0 203.7 L 706.0 207.4 L 712.0 211.4 L 718.0 215.5 L 724.0 219.6 L 730.0 223.6 L 736.0 227.2 L 742.0 230.4 L 748.0 233.1 L 754.0 235.1 L 760.0 236.4 L 766.0 237.0 L 772.0 236.8 L 778.0 235.8 L 784.0 234.0 L 790.0 231.6 L 796.0 228.6" fill="none" stroke="#E08A5E" stroke-width="1.8" stroke-linecap="round"/><circle cx="-132.8" cy="193.0" r="5" fill="#E08A5E"/><circle cx="-132.8" cy="193.0" r="11" fill="#E08A5E" opacity="0.18"/><circle cx="67.2" cy="193.0" r="5" fill="#E08A5E"/><circle cx="67.2" cy="193.0" r="11" fill="#E08A5E" opacity="0.18"/><circle cx="267.2" cy="193.0" r="5" fill="#E08A5E"/><circle cx="267.2" cy="193.0" r="11" fill="#E08A5E" opacity="0.18"/><circle cx="467.2" cy="193.0" r="5" fill="#E08A5E"/><circle cx="467.2" cy="193.0" r="11" fill="#E08A5E" opacity="0.18"/><circle cx="667.2" cy="193.0" r="5" fill="#E08A5E"/><circle cx="667.2" cy="193.0" r="11" fill="#E08A5E" opacity="0.18"/></g></g>
+          <text x="8" y="262" font-family="'Work Sans', sans-serif" font-size="11" font-weight="500" letter-spacing="1.5" fill="#E8C16E" opacity="0.95">OESTROGEN</text><text x="8" y="278" font-family="'Work Sans', sans-serif" font-size="11" font-weight="500" letter-spacing="1.5" fill="#F2A57E" opacity="0.95">PROGESTERONE</text><text x="8" y="294" font-family="'Work Sans', sans-serif" font-size="11" font-weight="500" letter-spacing="1.5" fill="#E08A5E" opacity="0.95">CORTISOL</text>
+        </svg>
+        <img class="hero-phone" src="/app/home.webp" width="780" height="1690" alt="Design preview of the Ormi home screen: a greeting over a sun on the sea, today's word, and three small things to do today." />
         <p class="hero-eyebrow">Hormone intelligence for perimenopause and beyond</p>
         <h1 class="hero-headline">
           Everything you've<br />been feeling<br /><em>finally makes sense.</em>
@@ -1758,7 +1972,7 @@ const bodyHTML = `
           </form>
           <div id="hero-ok" class="success-msg" style="display:none!important;">You're on the list. We'll be in touch soon.</div>
           <p class="form-note">No spam. Ever. Just Ormi when it's ready. See our <a href="/privacy" style="color:inherit;">privacy notice</a>.</p>
-          <p class="hero-badge">IGNITE 2026 finalist</p>
+          <a href="#ignite" class="hero-badge">IGNITE 2026 finalist</a>
         </div>
       </div>
     </div>
@@ -1796,6 +2010,27 @@ const bodyHTML = `
     </div>
   </div>
 
+  <!-- ── IGNITE 2026 ── -->
+  <section class="ignite" id="ignite">
+    <div class="container">
+      <div class="ignite-inner">
+        <svg class="ignite-medal" viewBox="0 0 200 200" aria-hidden="true">
+          <g class="ignite-rays" stroke="#0A1D36" stroke-width="3" stroke-linecap="round"><line x1="100" y1="14" x2="100" y2="30" transform="rotate(0 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(15 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(30 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(45 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(60 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(75 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(90 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(105 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(120 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(135 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(150 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(165 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(180 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(195 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(210 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(225 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(240 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(255 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(270 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(285 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(300 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(315 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(330 100 100)"/><line x1="100" y1="14" x2="100" y2="30" transform="rotate(345 100 100)"/></g>
+          <circle cx="100" cy="100" r="62" fill="#0A1D36"/>
+          <circle cx="100" cy="100" r="54" fill="none" stroke="#E6CC94" stroke-width="1.2"/>
+          <text x="100" y="92" text-anchor="middle" font-family="'Instrument Serif', serif" font-size="30" fill="#F5E6C8">2026</text>
+          <text x="100" y="116" text-anchor="middle" font-family="'Work Sans', sans-serif" font-size="11" font-weight="600" letter-spacing="3" fill="#E6CC94">FINALIST</text>
+        </svg>
+        <div>
+          <p class="ignite-eyebrow">Recognition</p>
+          <h2 class="ignite-headline">IGNITE 2026 <em>finalist.</em></h2>
+          <p class="ignite-copy">Ormi was a finalist in IGNITE 2026, run by the Ford Family Foundation and delivered with Cambio.</p>
+          <a class="ignite-link" href="https://www.linkedin.com/company/ford-family-foundation-uk/posts/" target="_blank" rel="noopener noreferrer">Ford Family Foundation on LinkedIn<span class="sr-only"> (opens in a new tab)</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ── Employers ── -->
   <!--
     Source: Employment Rights Act 2025, equality action plans (gender pay gap
@@ -1803,103 +2038,197 @@ const bodyHTML = `
     April 2026, expected to be mandatory from spring 2027 subject to secondary
     legislation. GOV.UK: gov.uk/government/publications/creating-an-action-plan-guidance-for-employers
   -->
-  <section class="employers" id="employers">
+  <section class="employers-band" id="employers">
     <div class="container">
-      <div class="employers-card reveal">
-        <div class="team" aria-hidden="true"><div class="team-sky"><span style="--x:2%; --s:52px; --hue:#E6CC94; --sink:0.35; --t:5.2s;"></span><span style="--x:17%; --s:78px; --hue:#F2A57E; --sink:0.30; --t:6.4s;"></span><span style="--x:38%; --s:104px; --hue:#C8674A; --sink:0.38; --t:7.5s;"></span><span style="--x:66%; --s:70px; --hue:#D9AE5C; --sink:0.32; --t:5.8s;"></span><span style="--x:85%; --s:46px; --hue:#E08A5E; --sink:0.40; --t:4.6s;"></span></div><span class="team-line"></span><div class="team-bars"><i></i><i></i><i></i></div></div>
-        <p class="eyebrow" style="text-align:left;">For employers</p>
-        <h2 class="employers-title">Menopause action plans are coming.<br /><em>Is your team ready?</em></h2>
-        <p class="employers-body">From spring 2027, UK employers with 250 or more staff are expected to publish an action plan showing how they support employees through menopause. Ormi gives the women in your team a place to understand how they feel and what helps. We offer flexible packages to suit your organisation.</p>
-        <div class="employers-actions">
-          <a href="mailto:hello@ormi.health?subject=Ormi%20for%20employers" class="btn-gold">Email hello@ormi.health</a>
-          <a href="#final-waitlist" class="btn-ghost">Join the waitlist</a>
+      <div class="eband reveal">
+        <div>
+          <p class="eyebrow" style="text-align:left;">For employers</p>
+          <p class="eband-title">Menopause action plans are coming. <em>Is your team ready?</em></p>
         </div>
-        <p class="employers-source">Employment Rights Act 2025. Expected from spring 2027, subject to final regulations.</p>
+        <a href="/employers" class="btn-ghost">Ormi for employers</a>
       </div>
     </div>
   </section>
 
   <!-- ── Feelings section ── -->
-  <!-- Symptoms named here are listed by the NHS: nhs.uk/conditions/menopause/symptoms (reviewed 19 May 2026) -->
+  <!--
+    Symptoms named here are listed by the NHS: nhs.uk/conditions/menopause/symptoms (reviewed 19 May 2026).
+    Hormone links (checked 14 Nov 2026), all worded as "may" or "linked with":
+    Oxford Health NHS Foundation Trust leaflet: lowering oestrogen can lead to mental and physical
+    changes, including low mood, low energy, increased anxiety and brain fog.
+    Patient.info, quoting Dr Heather Currie: changes in oestrogen and progesterone have a direct
+    effect on the sleep cycle beyond hot flushes and night sweats.
+    NICE QS143: hormone levels fluctuate during the perimenopause.
+  -->
   <section class="light">
     <div class="container">
       <p class="eyebrow">Sound familiar?</p>
       <h2 class="section-title">If you don't feel like yourself lately,<br /><em>you're not alone.</em></h2>
-      <p class="section-sub">Mood swings, low mood, brain fog and broken sleep are all recognised symptoms of perimenopause and menopause. Ormi helps you notice your own patterns.</p>
+      <p class="section-sub">Mood swings, low mood, brain fog and broken sleep are all recognised symptoms of perimenopause and menopause, when levels of oestrogen and progesterone are changing. Ormi helps you notice your own patterns.</p>
 
+      <figure class="rhythm reveal">
+        <svg viewBox="0 0 1000 120" preserveAspectRatio="none" role="img" aria-label="Illustration: a line that rises and falls evenly on the left, for a regular cycle, and unevenly on the right, for perimenopause.">
+          <line x1="470" y1="6" x2="470" y2="114" stroke="rgba(10,29,54,0.28)" stroke-width="1" stroke-dasharray="3 5"/>
+          <path class="rhythm-line" vector-effect="non-scaling-stroke" pathLength="1" d="M 0.0 60.0 L 4.0 55.7 L 8.0 51.4 L 12.0 47.5 L 16.0 43.9 L 20.0 40.7 L 24.0 38.0 L 28.0 36.0 L 32.0 34.7 L 36.0 34.1 L 40.0 34.1 L 44.0 35.0 L 48.0 36.5 L 52.0 38.7 L 56.0 41.4 L 60.0 44.7 L 64.0 48.4 L 68.0 52.5 L 72.0 56.7 L 76.0 61.1 L 80.0 65.4 L 84.0 69.6 L 88.0 73.5 L 92.0 77.0 L 96.0 80.0 L 100.0 82.5 L 104.0 84.4 L 108.0 85.5 L 112.0 86.0 L 116.0 85.7 L 120.0 84.7 L 124.0 83.0 L 128.0 80.7 L 132.0 77.8 L 136.0 74.4 L 140.0 70.6 L 144.0 66.5 L 148.0 62.2 L 152.0 57.8 L 156.0 53.5 L 160.0 49.4 L 164.0 45.6 L 168.0 42.2 L 172.0 39.3 L 176.0 37.0 L 180.0 35.3 L 184.0 34.3 L 188.0 34.0 L 192.0 34.5 L 196.0 35.6 L 200.0 37.5 L 204.0 40.0 L 208.0 43.0 L 212.0 46.5 L 216.0 50.4 L 220.0 54.6 L 224.0 58.9 L 228.0 63.3 L 232.0 67.5 L 236.0 71.6 L 240.0 75.3 L 244.0 78.6 L 248.0 81.3 L 252.0 83.5 L 256.0 85.0 L 260.0 85.9 L 264.0 85.9 L 268.0 85.3 L 272.0 84.0 L 276.0 82.0 L 280.0 79.3 L 284.0 76.1 L 288.0 72.5 L 292.0 68.6 L 296.0 64.3 L 300.0 60.0 L 304.0 55.7 L 308.0 51.4 L 312.0 47.5 L 316.0 43.9 L 320.0 40.7 L 324.0 38.0 L 328.0 36.0 L 332.0 34.7 L 336.0 34.1 L 340.0 34.1 L 344.0 35.0 L 348.0 36.5 L 352.0 38.7 L 356.0 41.4 L 360.0 44.7 L 364.0 48.4 L 368.0 52.5 L 372.0 56.7 L 376.0 61.1 L 380.0 65.4 L 384.0 69.6 L 388.0 73.5 L 392.0 77.0 L 396.0 80.0 L 400.0 82.5 L 404.0 84.4 L 408.0 85.5 L 412.0 86.0 L 416.0 85.7 L 420.0 84.7 L 424.0 83.0 L 428.0 80.7 L 432.0 77.8 L 436.0 74.4 L 440.0 70.6 L 444.0 66.6 L 448.0 62.4 L 452.0 58.3 L 456.0 54.4 L 460.0 50.8 L 464.0 47.6 L 468.0 45.0 L 472.0 43.0 L 476.0 41.7 L 480.0 41.0 L 484.0 41.0 L 488.0 41.7 L 492.0 42.9 L 496.0 44.6 L 500.0 46.7 L 504.0 49.1 L 508.0 51.6 L 512.0 54.1 L 516.0 56.5 L 520.0 58.7 L 524.0 60.6 L 528.0 62.2 L 532.0 63.6 L 536.0 64.9 L 540.0 66.1 L 544.0 67.1 L 548.0 67.9 L 552.0 68.4 L 556.0 68.6 L 560.0 68.5 L 564.0 67.8 L 568.0 66.8 L 572.0 65.3 L 576.0 63.4 L 580.0 61.1 L 584.0 58.5 L 588.0 55.7 L 592.0 52.7 L 596.0 49.7 L 600.0 46.7 L 604.0 43.7 L 608.0 41.0 L 612.0 38.4 L 616.0 36.1 L 620.0 34.1 L 624.0 32.5 L 628.0 31.3 L 632.0 30.6 L 636.0 30.3 L 640.0 30.6 L 644.0 31.5 L 648.0 33.1 L 652.0 35.4 L 656.0 38.4 L 660.0 42.2 L 664.0 46.8 L 668.0 52.2 L 672.0 58.3 L 676.0 65.0 L 680.0 72.1 L 684.0 79.2 L 688.0 86.0 L 692.0 92.1 L 696.0 96.9 L 700.0 99.9 L 704.0 100.8 L 708.0 99.1 L 712.0 94.8 L 716.0 87.8 L 720.0 78.6 L 724.0 68.0 L 728.0 56.7 L 732.0 45.8 L 736.0 36.6 L 740.0 29.9 L 744.0 26.5 L 748.0 26.6 L 752.0 30.0 L 756.0 36.4 L 760.0 44.6 L 764.0 53.7 L 768.0 62.7 L 772.0 70.5 L 776.0 76.4 L 780.0 80.2 L 784.0 81.7 L 788.0 81.3 L 792.0 79.2 L 796.0 76.0 L 800.0 72.3 L 804.0 68.3 L 808.0 64.5 L 812.0 61.2 L 816.0 58.4 L 820.0 56.3 L 824.0 54.7 L 828.0 53.6 L 832.0 52.9 L 836.0 52.6 L 840.0 52.5 L 844.0 52.5 L 848.0 52.6 L 852.0 52.7 L 856.0 52.9 L 860.0 53.0 L 864.0 53.0 L 868.0 53.0 L 872.0 53.0 L 876.0 52.8 L 880.0 52.6 L 884.0 52.4 L 888.0 52.2 L 892.0 51.9 L 896.0 51.7 L 900.0 51.5 L 904.0 51.3 L 908.0 51.3 L 912.0 51.5 L 916.0 51.9 L 920.0 52.6 L 924.0 53.7 L 928.0 55.1 L 932.0 57.0 L 936.0 59.4 L 940.0 62.2 L 944.0 65.6 L 948.0 69.3 L 952.0 73.4 L 956.0 77.6 L 960.0 81.8 L 964.0 85.7 L 968.0 89.0 L 972.0 91.6 L 976.0 93.1 L 980.0 93.4 L 984.0 92.3 L 988.0 89.7 L 992.0 85.9 L 996.0 80.8 L 1000.0 74.7"/>
+        </svg>
+        <div class="rhythm-labels"><span>A regular cycle</span><span>Perimenopause</span></div>
+        <figcaption class="rhythm-note">An illustration, not real data. Oestrogen rises and falls through the cycle, and becomes less predictable in perimenopause.</figcaption>
+      </figure>
       <div class="feelings-grid">
-        <div class="feeling-card reveal">
-          <div class="fsun" aria-hidden="true" style="--hue:#E08A5E; --sink:0.42; --dim:1;"><div class="fsun-sky"><span class="fsun-disc"></span><span class="fsun-cloud" style="--speed:2.4s;"></span></div><span class="fsun-line"></span><span class="fsun-bar"></span></div>
-          <p class="feeling-text">"I feel anxious all the time and I don't know why."</p>
-          <p class="feeling-reframe">Anxiety can be part of perimenopause. A daily check-in helps you see when it shows up.</p>
-        </div>
-        <div class="feeling-card reveal">
-          <div class="fsun" aria-hidden="true" style="--hue:#D9AE5C; --sink:0.2; --dim:1;"><div class="fsun-sky"><span class="fsun-disc"></span><span class="fsun-bite"></span><span class="fsun-star" style="left:18%;top:10px;"></span><span class="fsun-star" style="left:80%;top:6px;"></span></div><span class="fsun-line"></span><span class="fsun-bar"></span></div>
-          <p class="feeling-text">"I wake up at 3am with my heart racing. I'm exhausted but I can't sleep."</p>
-          <p class="feeling-reframe">Sleep problems are a common symptom. Ormi brings your sleep, your check-ins and your wearable together.</p>
-        </div>
-        <div class="feeling-card reveal">
-          <div class="fsun" aria-hidden="true" style="--hue:#F2A57E; --sink:0.42; --dim:0.75;"><div class="fsun-sky"><span class="fsun-disc"></span></div><span class="fsun-line"></span><span class="fsun-bar"></span></div>
-          <p class="feeling-text">"My GP said my bloods are normal, but something is clearly not right."</p>
-          <p class="feeling-reframe">Ormi helps you build a record of how you feel over time, to take to your GP.</p>
-        </div>
-        <div class="feeling-card reveal">
-          <div class="fsun" aria-hidden="true" style="--hue:#C8674A; --sink:0.42; --dim:1;"><div class="fsun-sky"><span class="fsun-disc"></span><span class="fsun-cloud" style="--speed:2.4s;"></span></div><span class="fsun-line"></span><span class="fsun-bar"></span></div>
-          <p class="feeling-text">"I snap at my kids and then cry about it. I don't recognise myself."</p>
-          <p class="feeling-reframe">Mood swings are a recognised symptom. Seeing the pattern makes it easier to talk about.</p>
-        </div>
-        <div class="feeling-card reveal">
-          <div class="fsun" aria-hidden="true" style="--hue:#B4553A; --sink:0.72; --dim:0.7;"><div class="fsun-sky"><span class="fsun-disc"></span></div><span class="fsun-line"></span><span class="fsun-bar"></span></div>
-          <p class="feeling-text">"I'm so tired all the time. Coffee doesn't even touch it."</p>
-          <p class="feeling-reframe">Ormi helps you see how your sleep and your energy move together.</p>
-        </div>
-        <div class="feeling-card reveal">
-          <div class="fsun" aria-hidden="true" style="--hue:#D9AE5C; --sink:0.42; --dim:0.6;"><div class="fsun-sky"><span class="fsun-disc"></span><span class="fsun-cloud" style="--speed:5s;"></span></div><span class="fsun-line"></span><span class="fsun-bar"></span></div>
-          <p class="feeling-text">"My brain just isn't working. I forget words. I lose my train of thought."</p>
-          <p class="feeling-reframe">The NHS calls this brain fog, and lists it as a common symptom. You're not making it up.</p>
-        </div>
+        <article class="fcard reveal" style="--tone:#E08A5E;">
+          <p class="fcard-tag">Anxiety</p>
+          <p class="fcard-quote">"I feel anxious all the time and I don't know why."</p>
+          <div class="fcard-block">
+            <p class="fcard-label">What may be behind it</p>
+            <div class="fcard-chips"><span>Oestrogen</span><span>Progesterone</span></div>
+            <p class="fcard-text">Changing oestrogen and progesterone levels may play a part. Anxiety can be part of perimenopause.</p>
+          </div>
+          <div class="fcard-block fcard-ormi">
+            <p class="fcard-label">How Ormi helps</p>
+            <p class="fcard-text">A daily check-in helps you see when it shows up.</p>
+          </div>
+        </article>
+        <article class="fcard reveal" style="--tone:#D9AE5C;">
+          <p class="fcard-tag">Broken sleep</p>
+          <p class="fcard-quote">"I wake up at 3am with my heart racing. I'm exhausted but I can't sleep."</p>
+          <div class="fcard-block">
+            <p class="fcard-label">What may be behind it</p>
+            <div class="fcard-chips"><span>Oestrogen</span><span>Progesterone</span></div>
+            <p class="fcard-text">Changes in oestrogen and progesterone can affect the sleep cycle, and night sweats can wake you.</p>
+          </div>
+          <div class="fcard-block fcard-ormi">
+            <p class="fcard-label">How Ormi helps</p>
+            <p class="fcard-text">Ormi brings your sleep, your check-ins and your wearable together.</p>
+          </div>
+        </article>
+        <article class="fcard reveal" style="--tone:#F2A57E;">
+          <p class="fcard-tag">"Normal" results</p>
+          <p class="fcard-quote">"My GP said my bloods are normal, but something is clearly not right."</p>
+          <div class="fcard-block">
+            <p class="fcard-label">What may be behind it</p>
+            <div class="fcard-chips"><span>Fluctuating levels</span></div>
+            <p class="fcard-text">Hormone levels rise and fall in perimenopause, so a single blood test can look normal.</p>
+          </div>
+          <div class="fcard-block fcard-ormi">
+            <p class="fcard-label">How Ormi helps</p>
+            <p class="fcard-text">Ormi helps you build a record of how you feel over time, to take to your GP.</p>
+          </div>
+        </article>
+        <article class="fcard reveal" style="--tone:#C8674A;">
+          <p class="fcard-tag">Mood swings</p>
+          <p class="fcard-quote">"I snap at my kids and then cry about it. I don't recognise myself."</p>
+          <div class="fcard-block">
+            <p class="fcard-label">What may be behind it</p>
+            <div class="fcard-chips"><span>Oestrogen</span></div>
+            <p class="fcard-text">Mood swings are a recognised symptom, and falling oestrogen may be involved.</p>
+          </div>
+          <div class="fcard-block fcard-ormi">
+            <p class="fcard-label">How Ormi helps</p>
+            <p class="fcard-text">Seeing the pattern makes it easier to talk about.</p>
+          </div>
+        </article>
+        <article class="fcard reveal" style="--tone:#B4553A;">
+          <p class="fcard-tag">Low energy</p>
+          <p class="fcard-quote">"I'm so tired all the time. Coffee doesn't even touch it."</p>
+          <div class="fcard-block">
+            <p class="fcard-label">What may be behind it</p>
+            <div class="fcard-chips"><span>Oestrogen</span></div>
+            <p class="fcard-text">Lower oestrogen is linked with low energy, and broken sleep adds to it.</p>
+          </div>
+          <div class="fcard-block fcard-ormi">
+            <p class="fcard-label">How Ormi helps</p>
+            <p class="fcard-text">Ormi helps you see how your sleep and your energy move together.</p>
+          </div>
+        </article>
+        <article class="fcard reveal" style="--tone:#D9AE5C;">
+          <p class="fcard-tag">Brain fog</p>
+          <p class="fcard-quote">"My brain just isn't working. I forget words. I lose my train of thought."</p>
+          <div class="fcard-block">
+            <p class="fcard-label">What may be behind it</p>
+            <div class="fcard-chips"><span>Oestrogen</span></div>
+            <p class="fcard-text">The NHS lists brain fog as a common symptom, and lower oestrogen is thought to play a part. You're not making it up.</p>
+          </div>
+          <div class="fcard-block fcard-ormi">
+            <p class="fcard-label">How Ormi helps</p>
+            <p class="fcard-text">Ormi helps you notice what makes the fog lighter or heavier for you.</p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
   <!-- ── Mental health section ── -->
-  <section style="background:var(--obsidian2);">
+  <section class="mh" style="background:var(--obsidian2);">
     <div class="container">
-      <p class="eyebrow">Mental health first</p>
-      <blockquote class="mental-quote">
-        Ormi starts with how you feel. Then it helps you look at what might be behind it.
-      </blockquote>
-      <div class="mental-grid">
-        <div class="mental-card reveal">
-          <div class="mental-icon" style="background:var(--rose-dim); border:1px solid var(--rose-border);">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2C8 2 3 5.5 3 9C3 11.5 5.2 13.5 8 13.5C10.8 13.5 13 11.5 13 9C13 5.5 8 2 8 2Z" stroke="#F2A57E" stroke-width="1.2"/><circle cx="8" cy="9" r="2" stroke="#F2A57E" stroke-width="1.2"/></svg>
-          </div>
-          <h3 class="mental-title">Anxiety &amp; low mood</h3>
-          <p class="mental-body">Both can be part of perimenopause and menopause. Ormi's daily check-in uses words, not scores, so you can say how you feel in seconds.</p>
+      <div class="mh-grid">
+        <div>
+          <p class="eyebrow">Mental health first</p>
+          <h2 class="section-title">Ormi starts with <em>how you feel.</em></h2>
+          <p class="section-sub">Then it helps you look at what might be behind it. Try it. How are you feeling today?</p>
+          <div class="mh-chips" role="tablist" aria-label="How are you feeling today?"><button type="button" class="mh-chip is-on" role="tab" aria-selected="true" aria-controls="mh-anx" id="mh-tab-anx" data-k="anx" style="--hue:#E08A5E;">Anxious or low</button><button type="button" class="mh-chip" role="tab" aria-selected="false" aria-controls="mh-mood" id="mh-tab-mood" data-k="mood" style="--hue:#C8674A;">Up and down</button><button type="button" class="mh-chip" role="tab" aria-selected="false" aria-controls="mh-fog" id="mh-tab-fog" data-k="fog" style="--hue:#D9AE5C;">Foggy</button><button type="button" class="mh-chip" role="tab" aria-selected="false" aria-controls="mh-sleep" id="mh-tab-sleep" data-k="sleep" style="--hue:#E6CC94;">Can't sleep</button></div>
         </div>
-        <div class="mental-card reveal">
-          <div class="mental-icon" style="background:var(--gold-dim); border:1px solid var(--gold-border);">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5" stroke="#D9AE5C" stroke-width="1.2"/><path d="M8 5v3l2 2" stroke="#D9AE5C" stroke-width="1.2" stroke-linecap="round"/></svg>
+        <div class="mh-stage" id="mh-stage" style="--hue:#E08A5E;">
+          <svg class="mh-wave" viewBox="0 0 600 170" preserveAspectRatio="none" aria-hidden="true"><g class="flow-wave" style="--lam:-300px; --dur:20s;"><path d="M -300.0 70.0 L -294.0 74.8 L -288.0 79.5 L -282.0 84.0 L -276.0 88.3 L -270.0 92.3 L -264.0 96.0 L -258.0 99.3 L -252.0 102.1 L -246.0 104.4 L -240.0 106.1 L -234.0 107.3 L -228.0 107.9 L -222.0 107.9 L -216.0 107.3 L -210.0 106.1 L -204.0 104.4 L -198.0 102.1 L -192.0 99.3 L -186.0 96.0 L -180.0 92.3 L -174.0 88.3 L -168.0 84.0 L -162.0 79.5 L -156.0 74.8 L -150.0 70.0 L -144.0 65.2 L -138.0 60.5 L -132.0 56.0 L -126.0 51.7 L -120.0 47.7 L -114.0 44.0 L -108.0 40.7 L -102.0 37.9 L -96.0 35.6 L -90.0 33.9 L -84.0 32.7 L -78.0 32.1 L -72.0 32.1 L -66.0 32.7 L -60.0 33.9 L -54.0 35.6 L -48.0 37.9 L -42.0 40.7 L -36.0 44.0 L -30.0 47.7 L -24.0 51.7 L -18.0 56.0 L -12.0 60.5 L -6.0 65.2 L 0.0 70.0 L 6.0 74.8 L 12.0 79.5 L 18.0 84.0 L 24.0 88.3 L 30.0 92.3 L 36.0 96.0 L 42.0 99.3 L 48.0 102.1 L 54.0 104.4 L 60.0 106.1 L 66.0 107.3 L 72.0 107.9 L 78.0 107.9 L 84.0 107.3 L 90.0 106.1 L 96.0 104.4 L 102.0 102.1 L 108.0 99.3 L 114.0 96.0 L 120.0 92.3 L 126.0 88.3 L 132.0 84.0 L 138.0 79.5 L 144.0 74.8 L 150.0 70.0 L 156.0 65.2 L 162.0 60.5 L 168.0 56.0 L 174.0 51.7 L 180.0 47.7 L 186.0 44.0 L 192.0 40.7 L 198.0 37.9 L 204.0 35.6 L 210.0 33.9 L 216.0 32.7 L 222.0 32.1 L 228.0 32.1 L 234.0 32.7 L 240.0 33.9 L 246.0 35.6 L 252.0 37.9 L 258.0 40.7 L 264.0 44.0 L 270.0 47.7 L 276.0 51.7 L 282.0 56.0 L 288.0 60.5 L 294.0 65.2 L 300.0 70.0 L 306.0 74.8 L 312.0 79.5 L 318.0 84.0 L 324.0 88.3 L 330.0 92.3 L 336.0 96.0 L 342.0 99.3 L 348.0 102.1 L 354.0 104.4 L 360.0 106.1 L 366.0 107.3 L 372.0 107.9 L 378.0 107.9 L 384.0 107.3 L 390.0 106.1 L 396.0 104.4 L 402.0 102.1 L 408.0 99.3 L 414.0 96.0 L 420.0 92.3 L 426.0 88.3 L 432.0 84.0 L 438.0 79.5 L 444.0 74.8 L 450.0 70.0 L 456.0 65.2 L 462.0 60.5 L 468.0 56.0 L 474.0 51.7 L 480.0 47.7 L 486.0 44.0 L 492.0 40.7 L 498.0 37.9 L 504.0 35.6 L 510.0 33.9 L 516.0 32.7 L 522.0 32.1 L 528.0 32.1 L 534.0 32.7 L 540.0 33.9 L 546.0 35.6 L 552.0 37.9 L 558.0 40.7 L 564.0 44.0 L 570.0 47.7 L 576.0 51.7 L 582.0 56.0 L 588.0 60.5 L 594.0 65.2 L 600.0 70.0 L 606.0 74.8 L 612.0 79.5 L 618.0 84.0 L 624.0 88.3 L 630.0 92.3 L 636.0 96.0 L 642.0 99.3 L 648.0 102.1 L 654.0 104.4 L 660.0 106.1 L 666.0 107.3 L 672.0 107.9 L 678.0 107.9 L 684.0 107.3 L 690.0 106.1 L 696.0 104.4 L 702.0 102.1 L 708.0 99.3 L 714.0 96.0 L 720.0 92.3 L 726.0 88.3 L 732.0 84.0 L 738.0 79.5 L 744.0 74.8 L 750.0 70.0 L 756.0 65.2 L 762.0 60.5 L 768.0 56.0 L 774.0 51.7 L 780.0 47.7 L 786.0 44.0 L 792.0 40.7 L 798.0 37.9 L 804.0 35.6 L 810.0 33.9 L 816.0 32.7 L 822.0 32.1 L 828.0 32.1 L 834.0 32.7 L 840.0 33.9 L 846.0 35.6 L 852.0 37.9 L 858.0 40.7 L 864.0 44.0 L 870.0 47.7 L 876.0 51.7 L 882.0 56.0 L 888.0 60.5 L 894.0 65.2 L 900.0 70.0" fill="none" stroke-width="2.6" stroke-linecap="round" opacity="1"/></g><g class="flow-wave" style="--lam:-240px; --dur:15s;"><path d="M -240.0 131.0 L -234.0 130.6 L -228.0 129.5 L -222.0 127.8 L -216.0 125.6 L -210.0 122.8 L -204.0 119.7 L -198.0 116.1 L -192.0 112.3 L -186.0 108.3 L -180.0 104.2 L -174.0 100.2 L -168.0 96.2 L -162.0 92.5 L -156.0 89.1 L -150.0 86.1 L -144.0 83.5 L -138.0 81.5 L -132.0 80.0 L -126.0 79.2 L -120.0 79.0 L -114.0 79.4 L -108.0 80.5 L -102.0 82.2 L -96.0 84.4 L -90.0 87.2 L -84.0 90.3 L -78.0 93.9 L -72.0 97.7 L -66.0 101.7 L -60.0 105.8 L -54.0 109.8 L -48.0 113.8 L -42.0 117.5 L -36.0 120.9 L -30.0 123.9 L -24.0 126.5 L -18.0 128.5 L -12.0 130.0 L -6.0 130.8 L 0.0 131.0 L 6.0 130.6 L 12.0 129.5 L 18.0 127.8 L 24.0 125.6 L 30.0 122.8 L 36.0 119.7 L 42.0 116.1 L 48.0 112.3 L 54.0 108.3 L 60.0 104.2 L 66.0 100.2 L 72.0 96.2 L 78.0 92.5 L 84.0 89.1 L 90.0 86.1 L 96.0 83.5 L 102.0 81.5 L 108.0 80.0 L 114.0 79.2 L 120.0 79.0 L 126.0 79.4 L 132.0 80.5 L 138.0 82.2 L 144.0 84.4 L 150.0 87.2 L 156.0 90.3 L 162.0 93.9 L 168.0 97.7 L 174.0 101.7 L 180.0 105.8 L 186.0 109.8 L 192.0 113.8 L 198.0 117.5 L 204.0 120.9 L 210.0 123.9 L 216.0 126.5 L 222.0 128.5 L 228.0 130.0 L 234.0 130.8 L 240.0 131.0 L 246.0 130.6 L 252.0 129.5 L 258.0 127.8 L 264.0 125.6 L 270.0 122.8 L 276.0 119.7 L 282.0 116.1 L 288.0 112.3 L 294.0 108.3 L 300.0 104.2 L 306.0 100.2 L 312.0 96.2 L 318.0 92.5 L 324.0 89.1 L 330.0 86.1 L 336.0 83.5 L 342.0 81.5 L 348.0 80.0 L 354.0 79.2 L 360.0 79.0 L 366.0 79.4 L 372.0 80.5 L 378.0 82.2 L 384.0 84.4 L 390.0 87.2 L 396.0 90.3 L 402.0 93.9 L 408.0 97.7 L 414.0 101.7 L 420.0 105.8 L 426.0 109.8 L 432.0 113.8 L 438.0 117.5 L 444.0 120.9 L 450.0 123.9 L 456.0 126.5 L 462.0 128.5 L 468.0 130.0 L 474.0 130.8 L 480.0 131.0 L 486.0 130.6 L 492.0 129.5 L 498.0 127.8 L 504.0 125.6 L 510.0 122.8 L 516.0 119.7 L 522.0 116.1 L 528.0 112.3 L 534.0 108.3 L 540.0 104.2 L 546.0 100.2 L 552.0 96.2 L 558.0 92.5 L 564.0 89.1 L 570.0 86.1 L 576.0 83.5 L 582.0 81.5 L 588.0 80.0 L 594.0 79.2 L 600.0 79.0 L 606.0 79.4 L 612.0 80.5 L 618.0 82.2 L 624.0 84.4 L 630.0 87.2 L 636.0 90.3 L 642.0 93.9 L 648.0 97.7 L 654.0 101.7 L 660.0 105.8 L 666.0 109.8 L 672.0 113.8 L 678.0 117.5 L 684.0 120.9 L 690.0 123.9 L 696.0 126.5 L 702.0 128.5 L 708.0 130.0 L 714.0 130.8 L 720.0 131.0 L 726.0 130.6 L 732.0 129.5 L 738.0 127.8 L 744.0 125.6 L 750.0 122.8 L 756.0 119.7 L 762.0 116.1 L 768.0 112.3 L 774.0 108.3 L 780.0 104.2 L 786.0 100.2 L 792.0 96.2 L 798.0 92.5 L 804.0 89.1 L 810.0 86.1 L 816.0 83.5 L 822.0 81.5 L 828.0 80.0 L 834.0 79.2 L 840.0 79.0" fill="none" stroke-width="2" stroke-linecap="round" opacity="0.6"/></g><g class="flow-wave" style="--lam:-200px; --dur:11s;"><path d="M -200.0 138.8 L -194.0 135.8 L -188.0 132.8 L -182.0 129.9 L -176.0 127.2 L -170.0 124.7 L -164.0 122.6 L -158.0 120.9 L -152.0 119.7 L -146.0 119.1 L -140.0 119.0 L -134.0 119.5 L -128.0 120.6 L -122.0 122.1 L -116.0 124.2 L -110.0 126.6 L -104.0 129.3 L -98.0 132.2 L -92.0 135.2 L -86.0 138.2 L -80.0 141.0 L -74.0 143.7 L -68.0 146.1 L -62.0 148.0 L -56.0 149.5 L -50.0 150.5 L -44.0 151.0 L -38.0 150.9 L -32.0 150.2 L -26.0 148.9 L -20.0 147.2 L -14.0 145.1 L -8.0 142.6 L -2.0 139.8 L 4.0 136.9 L 10.0 133.8 L 16.0 130.9 L 22.0 128.0 L 28.0 125.5 L 34.0 123.2 L 40.0 121.4 L 46.0 120.1 L 52.0 119.3 L 58.0 119.0 L 64.0 119.3 L 70.0 120.2 L 76.0 121.6 L 82.0 123.4 L 88.0 125.7 L 94.0 128.3 L 100.0 131.2 L 106.0 134.2 L 112.0 137.2 L 118.0 140.1 L 124.0 142.8 L 130.0 145.3 L 136.0 147.4 L 142.0 149.1 L 148.0 150.3 L 154.0 150.9 L 160.0 151.0 L 166.0 150.5 L 172.0 149.4 L 178.0 147.9 L 184.0 145.8 L 190.0 143.4 L 196.0 140.7 L 202.0 137.8 L 208.0 134.8 L 214.0 131.8 L 220.0 129.0 L 226.0 126.3 L 232.0 123.9 L 238.0 122.0 L 244.0 120.5 L 250.0 119.5 L 256.0 119.0 L 262.0 119.1 L 268.0 119.8 L 274.0 121.1 L 280.0 122.8 L 286.0 124.9 L 292.0 127.4 L 298.0 130.2 L 304.0 133.1 L 310.0 136.2 L 316.0 139.1 L 322.0 142.0 L 328.0 144.5 L 334.0 146.8 L 340.0 148.6 L 346.0 149.9 L 352.0 150.7 L 358.0 151.0 L 364.0 150.7 L 370.0 149.8 L 376.0 148.4 L 382.0 146.6 L 388.0 144.3 L 394.0 141.7 L 400.0 138.8 L 406.0 135.8 L 412.0 132.8 L 418.0 129.9 L 424.0 127.2 L 430.0 124.7 L 436.0 122.6 L 442.0 120.9 L 448.0 119.7 L 454.0 119.1 L 460.0 119.0 L 466.0 119.5 L 472.0 120.6 L 478.0 122.1 L 484.0 124.2 L 490.0 126.6 L 496.0 129.3 L 502.0 132.2 L 508.0 135.2 L 514.0 138.2 L 520.0 141.0 L 526.0 143.7 L 532.0 146.1 L 538.0 148.0 L 544.0 149.5 L 550.0 150.5 L 556.0 151.0 L 562.0 150.9 L 568.0 150.2 L 574.0 148.9 L 580.0 147.2 L 586.0 145.1 L 592.0 142.6 L 598.0 139.8 L 604.0 136.9 L 610.0 133.8 L 616.0 130.9 L 622.0 128.0 L 628.0 125.5 L 634.0 123.2 L 640.0 121.4 L 646.0 120.1 L 652.0 119.3 L 658.0 119.0 L 664.0 119.3 L 670.0 120.2 L 676.0 121.6 L 682.0 123.4 L 688.0 125.7 L 694.0 128.3 L 700.0 131.2 L 706.0 134.2 L 712.0 137.2 L 718.0 140.1 L 724.0 142.8 L 730.0 145.3 L 736.0 147.4 L 742.0 149.1 L 748.0 150.3 L 754.0 150.9 L 760.0 151.0 L 766.0 150.5 L 772.0 149.4 L 778.0 147.9 L 784.0 145.8 L 790.0 143.4 L 796.0 140.7" fill="none" stroke-width="1.6" stroke-linecap="round" opacity="0.35"/></g></svg>
+          <div class="mh-copy" aria-live="polite">
+            <div class="mh-panel" role="tabpanel" id="mh-anx" aria-labelledby="mh-tab-anx">
+              <h3 class="mh-title">Anxiety &amp; low mood</h3>
+              <p class="mh-text">Both can be part of perimenopause and menopause, when oestrogen and progesterone levels are changing. Ormi's daily check-in uses words, not scores, so you can say how you feel in seconds.</p>
+            </div>
+            <div class="mh-panel" role="tabpanel" id="mh-mood" aria-labelledby="mh-tab-mood" hidden>
+              <h3 class="mh-title">Mood swings</h3>
+              <p class="mh-text">The snap, then the regret. Mood swings are a recognised symptom. Ormi gives you CBT-based tools for the moment, and a record of when it happens.</p>
+            </div>
+            <div class="mh-panel" role="tabpanel" id="mh-fog" aria-labelledby="mh-tab-fog" hidden>
+              <h3 class="mh-title">Brain fog</h3>
+              <p class="mh-text">Memory and concentration can change, and lower oestrogen is thought to play a part. Ormi helps you notice what makes the fog lighter or heavier for you.</p>
+            </div>
+            <div class="mh-panel" role="tabpanel" id="mh-sleep" aria-labelledby="mh-tab-sleep" hidden>
+              <h3 class="mh-title">Sleep</h3>
+              <p class="mh-text">Changes in oestrogen and progesterone can affect sleep, and broken sleep can make everything else feel harder. Ormi has wind-down tools for the evening, and reads your sleep from your wearable.</p>
+            </div>
           </div>
-          <h3 class="mental-title">Mood swings</h3>
-          <p class="mental-body">The snap, then the regret. Mood swings are a recognised symptom. Ormi gives you CBT-based tools for the moment, and a record of when it happens.</p>
-        </div>
-        <div class="mental-card reveal">
-          <div class="mental-icon" style="background:var(--sky-dim); border:1px solid var(--sky-border);">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h3l2-4 2 8 2-4 2 2h1" stroke="#E08A5E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <h3 class="mental-title">Brain fog</h3>
-          <p class="mental-body">Memory and concentration can change. Ormi helps you notice what makes the fog lighter or heavier for you.</p>
-        </div>
-        <div class="mental-card reveal">
-          <div class="mental-icon" style="background:var(--rose-dim); border:1px solid var(--rose-border);">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8C4 5.8 5.8 4 8 4C10.2 4 12 5.8 12 8" stroke="#F2A57E" stroke-width="1.2" stroke-linecap="round"/><path d="M8 12V8" stroke="#F2A57E" stroke-width="1.2" stroke-linecap="round"/><circle cx="8" cy="13" r="1" fill="#F2A57E"/></svg>
-          </div>
-          <h3 class="mental-title">Sleep</h3>
-          <p class="mental-body">Broken sleep can make everything else feel harder. Ormi has wind-down tools for the evening, and reads your sleep from your wearable.</p>
         </div>
       </div>
+      <div class="mh-breath" id="breath">
+      <div class="breath-grid">
+        <div>
+          <h2 class="messenger-title">One slow breath.</h2>
+          <p class="messenger-body">This is one of the nervous system tools inside Ormi. In for four, out for six. Three rounds takes thirty seconds.</p>
+          <button type="button" class="btn-ghost" id="breath-btn" onclick="startBreath()">Start</button>
+        </div>
+        <div class="orb-wrap" id="orb-wrap">
+          <div class="orb" id="orb"></div>
+          <div class="orb-centre" aria-live="polite">
+            <span class="orb-count" id="orb-count"></span>
+            <span class="orb-label" id="orb-label">Ready when you are</span>
+          </div>
+        </div>
+      </div>
+      </div>
       <p class="pricing-footnote">Ormi does not replace your GP. If you're worried about your mental health, please speak to them.</p>
+    </div>
+  </section>
+
+  <!-- ── Inside the app ── -->
+  <section class="inside" id="inside">
+    <div class="container">
+      <p class="eyebrow">Inside Ormi</p>
+      <h2 class="section-title">A few minutes a day. <em>Starting with one word.</em></h2>
+      <div class="inside-row">
+        <figure class="inside-item reveal">
+          <img src="/app/checkin.webp" width="780" height="1690" loading="lazy" alt="Design preview of the Ormi daily check-in: six feeling words around a sun on the sea, with Balanced chosen." />
+          <figcaption><strong>Check in with a word</strong>Pick the word that fits how you feel today. No scores, no numbers.</figcaption>
+        </figure>
+        <figure class="inside-item reveal">
+          <img src="/app/explore.webp" width="780" height="1690" loading="lazy" alt="Design preview of the Ormi Explore screen, with Nervous system and The mind sections." />
+          <figcaption><strong>Tools for body and mind</strong>Short practices for your nervous system and your mind. Most take a minute or two.</figcaption>
+        </figure>
+        <figure class="inside-item reveal">
+          <img src="/app/sleep.webp" width="780" height="1690" loading="lazy" alt="Design preview of the Ormi Sleep screen, listing wind-down and night-time tools." />
+          <figcaption><strong>A place for sleep</strong>Wind-down routines and tools for the nights you wake at 3am.</figcaption>
+        </figure>
+      </div>
+      <p class="pricing-footnote">These are design previews. Ormi is still being built, so the finished app may look a little different.</p>
     </div>
   </section>
 
@@ -1908,7 +2237,6 @@ const bodyHTML = `
     <div class="container">
       <div class="messenger-grid">
         <div>
-          <p class="eyebrow" style="text-align:left;">A different way to think about it</p>
           <h2 class="messenger-title">Your hormones aren't the problem.<br />They're <em>messengers.</em></h2>
           <p class="messenger-body">
             Hormones carry signals all day long. In perimenopause, levels of oestrogen and progesterone change, and that can change how you feel.
@@ -1948,15 +2276,11 @@ const bodyHTML = `
           </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ── How it works ── -->
-  <section style="background:var(--obsidian2);">
-    <div class="container">
-      <p class="eyebrow">How it works</p>
-      <h2 class="section-title">Translate. Act.<br /><em>Connect.</em></h2>
-      <p class="section-sub">Ormi isn't a tracker. It's a daily companion that helps you understand how you feel and decide what to do next.</p>
+      <div class="merged-how">
+        <p class="eyebrow" style="text-align:left;">How Ormi helps</p>
+        <p class="merged-sub">Ormi isn't a tracker. It's a daily companion that helps you understand how you feel and decide what to do next.</p>
+      </div>
 
       <div class="steps-grid">
         <div class="step reveal">
@@ -2007,31 +2331,9 @@ const bodyHTML = `
     </div>
   </section>
 
-  <!-- ── One slow breath ── -->
-  <section id="breath">
-    <div class="container">
-      <div class="breath-grid">
-        <div>
-          <p class="eyebrow" style="text-align:left;">Try it</p>
-          <h2 class="messenger-title">One slow breath.</h2>
-          <p class="messenger-body">This is one of the nervous system tools inside Ormi. In for four, out for six. Three rounds takes thirty seconds.</p>
-          <button type="button" class="btn-ghost" id="breath-btn" onclick="startBreath()">Start</button>
-        </div>
-        <div class="orb-wrap" id="orb-wrap">
-          <div class="orb" id="orb"></div>
-          <div class="orb-centre" aria-live="polite">
-            <span class="orb-count" id="orb-count"></span>
-            <span class="orb-label" id="orb-label">Ready when you are</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ── Life stages ── -->
   <section>
     <div class="container">
-      <p class="eyebrow">Life stages</p>
       <h2 class="section-title">Wherever you are <em>right now.</em></h2>
       <p class="section-sub">Ormi is built for every moment of hormonal change. We're focused on perimenopause first, but Ormi is relevant to you, whatever stage you're in.</p>
       <div class="stages-grid">
@@ -2059,110 +2361,118 @@ const bodyHTML = `
     </div>
   </section>
 
-  <!-- ── DUTCH ── -->
   <!--
     Sources (checked 13 Nov 2026): Precision Analytical, DUTCH Complete
     (dutchtest.com). Clinic prices: Freya Clinic £395 with a 30-minute
     session (freyaclinic.co.uk/products/dutch-test); Pippa Campbell Health
     £1,030 package (pippacampbellhealth.com/dutch-test-uk).
   -->
-  <section style="background:var(--obsidian2);">
-    <div class="container">
-      <div class="dutch-wrap">
-        <div>
-          <p class="eyebrow" style="text-align:left; margin-bottom:14px;">Clinical insight</p>
-          <h2 class="dutch-title">Your hormone portrait is the start.<br /><em>The DUTCH test goes deeper.</em></h2>
-          <p class="dutch-body">The DUTCH Complete is an at-home dried urine test that measures 35 hormones and metabolites. Ormi sends it to your door and adds AI interpretation. A GP reviews your results, and you get an NHS-ready summary to take to your own doctor.</p>
-
-          <div class="dutch-clinic-compare">
-            <div class="dutch-clinic-label">vs a private hormone clinic</div>
-            <div class="dutch-clinic-text">
-              Private clinics charge from <strong>£395 to over £1,000</strong> for a DUTCH test with interpretation. Ormi brings the test, AI interpretation and a GP results review together, from your own home.
-            </div>
-          </div>
-
-          <a href="#final-waitlist" class="btn-gold" style="display:inline-block; text-decoration:none;">Join the waitlist</a>
-        </div>
-        <div class="dutch-markers">
-          <svg class="dutch-dots" viewBox="0 0 92 70" role="img" aria-label="35 dots, one for each hormone and metabolite the DUTCH Complete test measures"><circle cx="8.0" cy="7" r="3.2" fill="#0A1D36" style="--i:0;"/><circle cx="20.7" cy="7" r="3.2" fill="#C8674A" style="--i:1;"/><circle cx="33.4" cy="7" r="3.2" fill="#B4553A" style="--i:2;"/><circle cx="46.1" cy="7" r="3.2" fill="#0A1D36" style="--i:3;"/><circle cx="58.8" cy="7" r="3.2" fill="#FFF6E6" style="--i:4;"/><circle cx="71.5" cy="7" r="3.2" fill="#0A1D36" style="--i:5;"/><circle cx="84.2" cy="7" r="3.2" fill="#C8674A" style="--i:6;"/><circle cx="8.0" cy="21" r="3.2" fill="#B4553A" style="--i:1;"/><circle cx="20.7" cy="21" r="3.2" fill="#0A1D36" style="--i:2;"/><circle cx="33.4" cy="21" r="3.2" fill="#FFF6E6" style="--i:3;"/><circle cx="46.1" cy="21" r="3.2" fill="#0A1D36" style="--i:4;"/><circle cx="58.8" cy="21" r="3.2" fill="#C8674A" style="--i:5;"/><circle cx="71.5" cy="21" r="3.2" fill="#B4553A" style="--i:6;"/><circle cx="84.2" cy="21" r="3.2" fill="#0A1D36" style="--i:7;"/><circle cx="8.0" cy="35" r="3.2" fill="#FFF6E6" style="--i:2;"/><circle cx="20.7" cy="35" r="3.2" fill="#0A1D36" style="--i:3;"/><circle cx="33.4" cy="35" r="3.2" fill="#C8674A" style="--i:4;"/><circle cx="46.1" cy="35" r="3.2" fill="#B4553A" style="--i:5;"/><circle cx="58.8" cy="35" r="3.2" fill="#0A1D36" style="--i:6;"/><circle cx="71.5" cy="35" r="3.2" fill="#FFF6E6" style="--i:7;"/><circle cx="84.2" cy="35" r="3.2" fill="#0A1D36" style="--i:8;"/><circle cx="8.0" cy="49" r="3.2" fill="#C8674A" style="--i:3;"/><circle cx="20.7" cy="49" r="3.2" fill="#B4553A" style="--i:4;"/><circle cx="33.4" cy="49" r="3.2" fill="#0A1D36" style="--i:5;"/><circle cx="46.1" cy="49" r="3.2" fill="#FFF6E6" style="--i:6;"/><circle cx="58.8" cy="49" r="3.2" fill="#0A1D36" style="--i:7;"/><circle cx="71.5" cy="49" r="3.2" fill="#C8674A" style="--i:8;"/><circle cx="84.2" cy="49" r="3.2" fill="#B4553A" style="--i:9;"/><circle cx="8.0" cy="63" r="3.2" fill="#0A1D36" style="--i:4;"/><circle cx="20.7" cy="63" r="3.2" fill="#FFF6E6" style="--i:5;"/><circle cx="33.4" cy="63" r="3.2" fill="#0A1D36" style="--i:6;"/><circle cx="46.1" cy="63" r="3.2" fill="#C8674A" style="--i:7;"/><circle cx="58.8" cy="63" r="3.2" fill="#B4553A" style="--i:8;"/><circle cx="71.5" cy="63" r="3.2" fill="#0A1D36" style="--i:9;"/><circle cx="84.2" cy="63" r="3.2" fill="#FFF6E6" style="--i:10;"/></svg>
-          <p style="font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold-text); margin-bottom:12px; font-weight:500;">What DUTCH measures</p>
-          <div class="dutch-marker"><div class="dutch-marker-dot"></div><div class="dutch-marker-text"><strong>Sex hormones</strong>: oestrogen, progesterone and testosterone, and how they are broken down.</div></div>
-          <div class="dutch-marker"><div class="dutch-marker-dot"></div><div class="dutch-marker-text"><strong>Daily cortisol pattern</strong>: free cortisol measured across the day, not at a single point.</div></div>
-          <div class="dutch-marker"><div class="dutch-marker-dot"></div><div class="dutch-marker-text"><strong>DHEA</strong>: and other adrenal hormones.</div></div>
-          <div class="dutch-marker"><div class="dutch-marker-dot"></div><div class="dutch-marker-text"><strong>Melatonin &amp; organic acids</strong>: overnight melatonin and a small panel of organic acid markers.</div></div>
-          <div class="dutch-marker"><div class="dutch-marker-dot"></div><div class="dutch-marker-text"><strong>35 hormones and metabolites.</strong> Collected at home. Interpreted with AI. Reviewed by a GP. Summarised for your doctor.</div></div>
-          <p class="employers-source">The DUTCH test is not an NHS test and it is not a diagnosis. Ormi highlights patterns to discuss with a clinician.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ── Tests compared ── -->
   <!--
     Sources (checked 14 Nov 2026):
-    NICE NG23 rec 1.2.1 and quality standard QS143 statement 1: diagnose perimenopause in
-    otherwise healthy women over 45 on symptoms, without laboratory tests, because hormone
-    levels fluctuate; FSH test considered at 40 to 45 and under 40; other tests such as
-    thyroid function may be needed if non-menopausal causes are suspected.
-    RCOG position on over-the-counter FSH tests, as reported by Which? and the BBC.
-    Precision Analytical, DUTCH Complete (dutchtest.com): 35 hormones, four or five dried
-    urine samples over 24 hours.
+    RCOG: over-the-counter menopause tests "are not a good method of detecting menopause or
+    perimenopause"; a raised FSH may point to it, a normal one does not rule it out (as reported
+    by Which?, the BBC and The Pharmacist).
+    Urine strips and dilution: strip makers' own instructions and Hoag Health ("avoid excess
+    fluids right before testing").
+    Hormone levels fluctuate during the perimenopause: NICE QS143, statement 1 rationale.
+    DUTCH Complete: 35 hormones and metabolites, four or five dried urine samples over 24 hours,
+    daily free cortisol pattern, melatonin, six organic acids, values reported relative to
+    creatinine to correct for hydration (Precision Analytical, dutchtest.com and provider sheet).
+    App-read strips measuring FSH plus urinary markers of oestrogen (E1G) and progesterone (PdG):
+    manufacturer's own product pages.
   -->
   <section id="tests">
     <div class="container">
       <p class="eyebrow">Tests, explained</p>
-      <h2 class="section-title"><span class="t-strip">Strip test</span>, <span class="t-blood">blood test</span> or <span class="t-dutch">the DUTCH test</span>?<br /><em>What each one shows.</em></h2>
-      <p class="section-sub">No test can diagnose perimenopause on its own. Your symptoms come first. Here is what each test measures, and what it can't tell you.</p>
+      <h2 class="section-title">Three ways to test your hormones.<br /><em>Only one follows them through the whole day.</em></h2>
+      <p class="section-sub">Hormones don't hold still. They shift through the day and through the month. So what a test can tell you depends on how much of that it sees.</p>
       <div class="tests-grid">
-        <div class="test-card reveal">
-          <div class="test-dots" aria-hidden="true"><i style="--c:#F2A57E; --i:0;"></i></div>
-          <p class="test-count">1 hormone</p>
-          <h3 class="test-name">Strip test</h3>
+        <div class="tests-side">
+          <details class="test-card reveal">
+            <summary>
+              <span class="test-sum">
+                <div class="test-dots" aria-hidden="true"><i style="--c:#F2A57E; --i:0;"></i><i style="--c:#F2A57E; --i:1;"></i><i style="--c:#F2A57E; --i:2;"></i></div>
+                <p class="test-count">1 to 3 hormones</p>
+                <h3 class="test-name">Strip tests</h3>
+                <span class="test-teaser">One reading at one moment, and a glass of water can change it.</span>
+              </span>
+              <span class="test-toggle" aria-hidden="true"></span>
+            </summary>
           <div class="test-row">
             <p class="test-label">What it measures</p>
-            <p class="test-text">One hormone, FSH, in a urine sample, at one moment. Sold in supermarkets and pharmacies for a few pounds.</p>
+            <p class="test-text">FSH on its own, or FSH with a marker for oestrogen and one for progesterone. You dip a strip in urine on set days of your cycle.</p>
           </div>
           <div class="test-row">
-            <p class="test-label">What it can't tell you</p>
-            <p class="test-text">A raised result may point to perimenopause or menopause, but a normal one doesn't rule it out. The Royal College of Obstetricians and Gynaecologists does not recommend these tests.</p>
+            <p class="test-label">Where it falls short</p>
+            <ul class="test-list muted"><li><strong>One moment in time.</strong> One dip, one reading.</li><li><strong>A glass of water can change it.</strong> Dilute urine reads lower, which is why the instructions tell you to limit fluids first.</li><li><strong>Not a good guide in perimenopause.</strong> FSH swings up and down, so a normal result doesn't rule it out. The Royal College of Obstetricians and Gynaecologists does not recommend over-the-counter menopause tests.</li><li><strong>Big gaps.</strong> No cortisol, testosterone, DHEA or melatonin, and nothing on how hormones are broken down.</li></ul>
           </div>
-        </div>
-        <div class="test-card is-blood reveal">
-          <div class="test-dots" aria-hidden="true"><i style="--c:#E08A5E; --i:0;"></i><i style="--c:#E08A5E; --i:1;"></i></div>
-          <p class="test-count">Usually 1 or 2 hormones</p>
-          <h3 class="test-name">Blood test</h3>
+          </details>
+          <details class="test-card is-blood reveal">
+            <summary>
+              <span class="test-sum">
+                <div class="test-dots" aria-hidden="true"><i style="--c:#E08A5E; --i:0;"></i><i style="--c:#E08A5E; --i:1;"></i></div>
+                <p class="test-count">Usually 1 or 2 hormones</p>
+                <h3 class="test-name">Blood test</h3>
+                <span class="test-teaser">A snapshot. The same test at a different time can give a different answer.</span>
+              </span>
+              <span class="test-toggle" aria-hidden="true"></span>
+            </summary>
           <div class="test-row">
             <p class="test-label">What it measures</p>
-            <p class="test-text">Usually FSH, sometimes with oestradiol, from a single sample. Through your GP or a private lab.</p>
+            <p class="test-text">Usually FSH, sometimes with oestradiol, from one blood sample. Through your GP or a private lab.</p>
           </div>
           <div class="test-row">
-            <p class="test-label">What it can't tell you</p>
-            <p class="test-text">Hormone levels move up and down in perimenopause, so one sample is a snapshot. NICE says women over 45 should be diagnosed on symptoms, without lab tests. Blood tests can still help under 45, or to rule out other causes such as thyroid problems.</p>
+            <p class="test-label">Where it falls short</p>
+            <ul class="test-list muted"><li><strong>A snapshot.</strong> Hormone levels move through the day and through the month, so the same test at a different time can give a different answer.</li><li><strong>It can look normal when you feel anything but.</strong> In perimenopause, levels rise and fall from one day to the next.</li><li><strong>One sample, one view.</strong> It can't show a daily cortisol rhythm, or how your hormones are being broken down.</li><li><strong>Still valuable</strong> for ruling out other causes, such as thyroid problems. It's one piece, not the picture.</li></ul>
           </div>
+          </details>
         </div>
         <div class="test-card is-dutch reveal">
+          <p class="test-badge">The whole day</p>
           <div class="test-dots" aria-hidden="true"><i style="--c:#EFD39B; --i:0;"></i><i style="--c:#C9973A; --i:1;"></i><i style="--c:#D9AE5C; --i:2;"></i><i style="--c:#F5E6C8; --i:3;"></i><i style="--c:#E8C16E; --i:4;"></i><i style="--c:#EFD39B; --i:5;"></i><i style="--c:#C9973A; --i:6;"></i><i style="--c:#D9AE5C; --i:1;"></i><i style="--c:#F5E6C8; --i:2;"></i><i style="--c:#E8C16E; --i:3;"></i><i style="--c:#EFD39B; --i:4;"></i><i style="--c:#C9973A; --i:5;"></i><i style="--c:#D9AE5C; --i:6;"></i><i style="--c:#F5E6C8; --i:7;"></i><i style="--c:#E8C16E; --i:2;"></i><i style="--c:#EFD39B; --i:3;"></i><i style="--c:#C9973A; --i:4;"></i><i style="--c:#D9AE5C; --i:5;"></i><i style="--c:#F5E6C8; --i:6;"></i><i style="--c:#E8C16E; --i:7;"></i><i style="--c:#EFD39B; --i:8;"></i><i style="--c:#C9973A; --i:3;"></i><i style="--c:#D9AE5C; --i:4;"></i><i style="--c:#F5E6C8; --i:5;"></i><i style="--c:#E8C16E; --i:6;"></i><i style="--c:#EFD39B; --i:7;"></i><i style="--c:#C9973A; --i:8;"></i><i style="--c:#D9AE5C; --i:9;"></i><i style="--c:#F5E6C8; --i:4;"></i><i style="--c:#E8C16E; --i:5;"></i><i style="--c:#EFD39B; --i:6;"></i><i style="--c:#C9973A; --i:7;"></i><i style="--c:#D9AE5C; --i:8;"></i><i style="--c:#F5E6C8; --i:9;"></i><i style="--c:#E8C16E; --i:10;"></i></div>
           <p class="test-count">35 hormones and metabolites</p>
           <h3 class="test-name">The DUTCH test</h3>
+          <p class="test-lead">The fullest picture of the three. Your hormones across a whole day, not a single moment.</p>
           <div class="test-row">
-            <p class="test-label">What it measures</p>
-            <p class="test-text">35 hormones and metabolites from four or five dried urine samples collected at home over 24 hours, including a daily cortisol pattern.</p>
+            <p class="test-label">What you see</p>
+            <ul class="test-list"><li><strong>35 hormones and metabolites</strong> in one test</li><li><strong>Oestrogen, progesterone and testosterone,</strong> and how each one is broken down</li><li><strong>Your cortisol rhythm,</strong> mapped from morning to night</li><li><strong>DHEA, overnight melatonin</strong> and six organic acid markers</li></ul>
           </div>
           <div class="test-row">
-            <p class="test-label">What it can't tell you</p>
-            <p class="test-text">It does not diagnose perimenopause, and it is not an NHS test. NICE does not call for any hormone test to diagnose perimenopause in women over 45. It gives you a wider picture to discuss with a clinician.</p>
+            <p class="test-label">Why it's different</p>
+            <ul class="test-list"><li><strong>A day, not a minute.</strong> Four or five samples across 24 hours.</li><li><strong>Water doesn't throw it off.</strong> Each sample is adjusted for how dilute it is.</li><li><strong>Done at home.</strong> No needles, no clinic, no time off.</li></ul>
+          </div>
+          <div class="test-row">
+            <p class="test-label">With Ormi</p>
+            <p class="test-text">AI interpretation in plain words. A GP review of your results. An NHS-ready summary for your own doctor. And a year of Ormi Circle, so your results sit alongside your daily check-ins and your wearable.</p>
+          </div>
+          <div class="test-row">
+            <p class="test-label">Good to know</p>
+            <p class="test-text">The DUTCH test is not an NHS test and it does not diagnose. It gives you and your clinician more to work with.</p>
+          </div>
+          <div class="test-cta">
+            <a href="#final-waitlist" class="btn-gold" style="display:inline-block; text-decoration:none;">Join the waitlist</a>
+            <span class="test-price">£349 or £399, one-off</span>
           </div>
         </div>
       </div>
-      <p class="tests-close">That's why Ormi starts with a free hormone portrait and daily check-ins, and keeps the DUTCH test optional.</p>
-      <p class="tests-source">Sources: NICE guideline NG23 and quality standard QS143. Royal College of Obstetricians and Gynaecologists. Precision Analytical.</p>
+      <p class="tests-close">One reading is a moment. <em>A full day is a pattern.</em></p>
+      <p class="tests-after">No test diagnoses perimenopause on its own, and how you feel always comes first. That's why every DUTCH result at Ormi is read alongside your check-ins and reviewed by a GP.</p>
+      <div class="tests-clinic">
+        <div class="dutch-clinic-compare">
+        <div class="dutch-clinic-label">vs a private hormone clinic</div>
+        <div class="dutch-clinic-text">
+          Private clinics charge from <strong>£395 to over £1,000</strong> for a DUTCH test with interpretation. Ormi brings the test, AI interpretation and a GP results review together, from your own home.
+        </div>
+          </div>
+      </div>
+      <p class="tests-source">Sources: Royal College of Obstetricians and Gynaecologists. NICE quality standard QS143. Precision Analytical.</p>
     </div>
   </section>
 
   <!-- ── Pricing ── -->
   <section class="light">
     <div class="container">
-      <p class="eyebrow">Pricing</p>
       <h2 class="section-title">Start free.<br /><em>Go deeper when you're ready.</em></h2>
       <p class="section-sub">No subscription needed to get started. Go deeper when Ormi has earned it.</p>
 
@@ -2221,25 +2531,20 @@ const bodyHTML = `
   <!-- ── About ── -->
   <section id="about" style="background:var(--obsidian2);">
     <div class="container">
-      <p class="eyebrow">About</p>
       <h2 class="section-title">Meet the <em>founders.</em></h2>
       <div class="founders-grid">
         <div class="founder-card reveal">
           <img class="founder-photo" src="/founders/anna-koutras.jpg" alt="Anna Koutras" width="150" height="190" loading="lazy" />
           <h3 class="founder-name">Anna Koutras</h3>
           <p class="founder-role">Co-founder</p>
-          <p class="founder-bio">Anna spent over 13 years making complicated things clear for companies including Revolut, The Body Shop and Unilever. Ormi began when her friends started talking about perimenopause and nobody could find straight answers.</p>
+          <p class="founder-bio">Anna spent over 13 years making complicated things clear for companies including Revolut, The Body Shop and Unilever. Ormi began when she and her friends started talking about perimenopause, and nobody could find straight answers.</p>
         </div>
         <div class="founder-card reveal">
           <img class="founder-photo" src="/founders/emma-whitehouse.jpg" alt="Dr Emma Whitehouse" width="150" height="190" loading="lazy" />
           <h3 class="founder-name">Dr Emma Whitehouse</h3>
           <p class="founder-role">Co-founder</p>
-          <p class="founder-bio">Emma is an NHS GP. She sees women every week who know something has changed and can't yet put a name to it. She leads Ormi's clinical thinking.</p>
+          <p class="founder-bio">Emma trained at Somerville College, Oxford and Guy's, King's and St Thomas' Medical School. She has been a GP for 14 years across the NHS and private practice, with postgraduate training in menopause care and functional medicine. She sees women in clinic who know something has changed and can't yet put a name to it, and she leads Ormi's clinical thinking.</p>
         </div>
-      </div>
-      <div class="ignite-strip reveal">
-        <div class="ignite-title">IGNITE 2026 finalist</div>
-        <p class="ignite-body">Ormi was a finalist in IGNITE 2026, run by the Ford Family Foundation and delivered with Cambio.</p>
       </div>
     </div>
   </section>
@@ -2249,7 +2554,6 @@ const bodyHTML = `
     <div class="container">
       <div class="faq-grid">
         <div>
-          <p class="eyebrow">FAQs</p>
           <h2 class="section-title">Is Ormi <em>right for you?</em></h2>
           <p class="section-sub">Straight answers to the questions we hear most. If yours isn't here, email <a href="mailto:hello@ormi.health" style="color:var(--gold-text);">hello@ormi.health</a>.</p>
         </div>
@@ -2299,16 +2603,14 @@ const bodyHTML = `
   <section class="final-cta" id="final-waitlist">
     <div class="final-bg"></div>
     <div class="container final-content">
-      <div class="sunrise evening" aria-hidden="true">
-          <div class="sunrise-glow"></div>
-          <div class="sun-clip"><div class="sun-float"><div class="sun-disc"></div></div></div>
-          <div class="sun-horizon"></div>
-          <div class="sun-bars">
-            <div class="sun-bar" style="--d:4.5s; --delay:0s; --o:0.5;"></div>
-            <div class="sun-bar" style="--d:5.2s; --delay:0.5s; --o:0.32;"></div>
-            <div class="sun-bar" style="--d:5.9s; --delay:1s; --o:0.2;"></div>
-          </div>
-        </div>
+      <svg class="flow flow-final" viewBox="0 0 600 300" aria-hidden="true">
+          <defs>
+            <linearGradient id="fade-flow-final" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.14" stop-color="#fff" stop-opacity="1"/><stop offset="0.86" stop-color="#fff" stop-opacity="1"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+            <mask id="mask-flow-final"><rect x="0" y="0" width="600" height="250" fill="url(#fade-flow-final)"/></mask>
+          </defs>
+          <g mask="url(#mask-flow-final)"><g class="flow-wave" style="--lam:-300px; --dur:22s;"><path d="M -300.0 120.0 L -294.0 125.8 L -288.0 131.4 L -282.0 136.9 L -276.0 142.2 L -270.0 147.0 L -264.0 151.5 L -258.0 155.4 L -252.0 158.8 L -246.0 161.6 L -240.0 163.7 L -234.0 165.2 L -228.0 165.9 L -222.0 165.9 L -216.0 165.2 L -210.0 163.7 L -204.0 161.6 L -198.0 158.8 L -192.0 155.4 L -186.0 151.5 L -180.0 147.0 L -174.0 142.2 L -168.0 136.9 L -162.0 131.4 L -156.0 125.8 L -150.0 120.0 L -144.0 114.2 L -138.0 108.6 L -132.0 103.1 L -126.0 97.8 L -120.0 93.0 L -114.0 88.5 L -108.0 84.6 L -102.0 81.2 L -96.0 78.4 L -90.0 76.3 L -84.0 74.8 L -78.0 74.1 L -72.0 74.1 L -66.0 74.8 L -60.0 76.3 L -54.0 78.4 L -48.0 81.2 L -42.0 84.6 L -36.0 88.5 L -30.0 93.0 L -24.0 97.8 L -18.0 103.1 L -12.0 108.6 L -6.0 114.2 L 0.0 120.0 L 6.0 125.8 L 12.0 131.4 L 18.0 136.9 L 24.0 142.2 L 30.0 147.0 L 36.0 151.5 L 42.0 155.4 L 48.0 158.8 L 54.0 161.6 L 60.0 163.7 L 66.0 165.2 L 72.0 165.9 L 78.0 165.9 L 84.0 165.2 L 90.0 163.7 L 96.0 161.6 L 102.0 158.8 L 108.0 155.4 L 114.0 151.5 L 120.0 147.0 L 126.0 142.2 L 132.0 136.9 L 138.0 131.4 L 144.0 125.8 L 150.0 120.0 L 156.0 114.2 L 162.0 108.6 L 168.0 103.1 L 174.0 97.8 L 180.0 93.0 L 186.0 88.5 L 192.0 84.6 L 198.0 81.2 L 204.0 78.4 L 210.0 76.3 L 216.0 74.8 L 222.0 74.1 L 228.0 74.1 L 234.0 74.8 L 240.0 76.3 L 246.0 78.4 L 252.0 81.2 L 258.0 84.6 L 264.0 88.5 L 270.0 93.0 L 276.0 97.8 L 282.0 103.1 L 288.0 108.6 L 294.0 114.2 L 300.0 120.0 L 306.0 125.8 L 312.0 131.4 L 318.0 136.9 L 324.0 142.2 L 330.0 147.0 L 336.0 151.5 L 342.0 155.4 L 348.0 158.8 L 354.0 161.6 L 360.0 163.7 L 366.0 165.2 L 372.0 165.9 L 378.0 165.9 L 384.0 165.2 L 390.0 163.7 L 396.0 161.6 L 402.0 158.8 L 408.0 155.4 L 414.0 151.5 L 420.0 147.0 L 426.0 142.2 L 432.0 136.9 L 438.0 131.4 L 444.0 125.8 L 450.0 120.0 L 456.0 114.2 L 462.0 108.6 L 468.0 103.1 L 474.0 97.8 L 480.0 93.0 L 486.0 88.5 L 492.0 84.6 L 498.0 81.2 L 504.0 78.4 L 510.0 76.3 L 516.0 74.8 L 522.0 74.1 L 528.0 74.1 L 534.0 74.8 L 540.0 76.3 L 546.0 78.4 L 552.0 81.2 L 558.0 84.6 L 564.0 88.5 L 570.0 93.0 L 576.0 97.8 L 582.0 103.1 L 588.0 108.6 L 594.0 114.2 L 600.0 120.0 L 606.0 125.8 L 612.0 131.4 L 618.0 136.9 L 624.0 142.2 L 630.0 147.0 L 636.0 151.5 L 642.0 155.4 L 648.0 158.8 L 654.0 161.6 L 660.0 163.7 L 666.0 165.2 L 672.0 165.9 L 678.0 165.9 L 684.0 165.2 L 690.0 163.7 L 696.0 161.6 L 702.0 158.8 L 708.0 155.4 L 714.0 151.5 L 720.0 147.0 L 726.0 142.2 L 732.0 136.9 L 738.0 131.4 L 744.0 125.8 L 750.0 120.0 L 756.0 114.2 L 762.0 108.6 L 768.0 103.1 L 774.0 97.8 L 780.0 93.0 L 786.0 88.5 L 792.0 84.6 L 798.0 81.2 L 804.0 78.4 L 810.0 76.3 L 816.0 74.8 L 822.0 74.1 L 828.0 74.1 L 834.0 74.8 L 840.0 76.3 L 846.0 78.4 L 852.0 81.2 L 858.0 84.6 L 864.0 88.5 L 870.0 93.0 L 876.0 97.8 L 882.0 103.1 L 888.0 108.6 L 894.0 114.2 L 900.0 120.0" fill="none" stroke="#E8C16E" stroke-width="7.800000000000001" stroke-linecap="round" opacity="0.22" transform="translate(0 0)" style="filter:blur(5px)"/><path d="M -300.0 120.0 L -294.0 125.8 L -288.0 131.4 L -282.0 136.9 L -276.0 142.2 L -270.0 147.0 L -264.0 151.5 L -258.0 155.4 L -252.0 158.8 L -246.0 161.6 L -240.0 163.7 L -234.0 165.2 L -228.0 165.9 L -222.0 165.9 L -216.0 165.2 L -210.0 163.7 L -204.0 161.6 L -198.0 158.8 L -192.0 155.4 L -186.0 151.5 L -180.0 147.0 L -174.0 142.2 L -168.0 136.9 L -162.0 131.4 L -156.0 125.8 L -150.0 120.0 L -144.0 114.2 L -138.0 108.6 L -132.0 103.1 L -126.0 97.8 L -120.0 93.0 L -114.0 88.5 L -108.0 84.6 L -102.0 81.2 L -96.0 78.4 L -90.0 76.3 L -84.0 74.8 L -78.0 74.1 L -72.0 74.1 L -66.0 74.8 L -60.0 76.3 L -54.0 78.4 L -48.0 81.2 L -42.0 84.6 L -36.0 88.5 L -30.0 93.0 L -24.0 97.8 L -18.0 103.1 L -12.0 108.6 L -6.0 114.2 L 0.0 120.0 L 6.0 125.8 L 12.0 131.4 L 18.0 136.9 L 24.0 142.2 L 30.0 147.0 L 36.0 151.5 L 42.0 155.4 L 48.0 158.8 L 54.0 161.6 L 60.0 163.7 L 66.0 165.2 L 72.0 165.9 L 78.0 165.9 L 84.0 165.2 L 90.0 163.7 L 96.0 161.6 L 102.0 158.8 L 108.0 155.4 L 114.0 151.5 L 120.0 147.0 L 126.0 142.2 L 132.0 136.9 L 138.0 131.4 L 144.0 125.8 L 150.0 120.0 L 156.0 114.2 L 162.0 108.6 L 168.0 103.1 L 174.0 97.8 L 180.0 93.0 L 186.0 88.5 L 192.0 84.6 L 198.0 81.2 L 204.0 78.4 L 210.0 76.3 L 216.0 74.8 L 222.0 74.1 L 228.0 74.1 L 234.0 74.8 L 240.0 76.3 L 246.0 78.4 L 252.0 81.2 L 258.0 84.6 L 264.0 88.5 L 270.0 93.0 L 276.0 97.8 L 282.0 103.1 L 288.0 108.6 L 294.0 114.2 L 300.0 120.0 L 306.0 125.8 L 312.0 131.4 L 318.0 136.9 L 324.0 142.2 L 330.0 147.0 L 336.0 151.5 L 342.0 155.4 L 348.0 158.8 L 354.0 161.6 L 360.0 163.7 L 366.0 165.2 L 372.0 165.9 L 378.0 165.9 L 384.0 165.2 L 390.0 163.7 L 396.0 161.6 L 402.0 158.8 L 408.0 155.4 L 414.0 151.5 L 420.0 147.0 L 426.0 142.2 L 432.0 136.9 L 438.0 131.4 L 444.0 125.8 L 450.0 120.0 L 456.0 114.2 L 462.0 108.6 L 468.0 103.1 L 474.0 97.8 L 480.0 93.0 L 486.0 88.5 L 492.0 84.6 L 498.0 81.2 L 504.0 78.4 L 510.0 76.3 L 516.0 74.8 L 522.0 74.1 L 528.0 74.1 L 534.0 74.8 L 540.0 76.3 L 546.0 78.4 L 552.0 81.2 L 558.0 84.6 L 564.0 88.5 L 570.0 93.0 L 576.0 97.8 L 582.0 103.1 L 588.0 108.6 L 594.0 114.2 L 600.0 120.0 L 606.0 125.8 L 612.0 131.4 L 618.0 136.9 L 624.0 142.2 L 630.0 147.0 L 636.0 151.5 L 642.0 155.4 L 648.0 158.8 L 654.0 161.6 L 660.0 163.7 L 666.0 165.2 L 672.0 165.9 L 678.0 165.9 L 684.0 165.2 L 690.0 163.7 L 696.0 161.6 L 702.0 158.8 L 708.0 155.4 L 714.0 151.5 L 720.0 147.0 L 726.0 142.2 L 732.0 136.9 L 738.0 131.4 L 744.0 125.8 L 750.0 120.0 L 756.0 114.2 L 762.0 108.6 L 768.0 103.1 L 774.0 97.8 L 780.0 93.0 L 786.0 88.5 L 792.0 84.6 L 798.0 81.2 L 804.0 78.4 L 810.0 76.3 L 816.0 74.8 L 822.0 74.1 L 828.0 74.1 L 834.0 74.8 L 840.0 76.3 L 846.0 78.4 L 852.0 81.2 L 858.0 84.6 L 864.0 88.5 L 870.0 93.0 L 876.0 97.8 L 882.0 103.1 L 888.0 108.6 L 894.0 114.2 L 900.0 120.0" fill="none" stroke="#E8C16E" stroke-width="2.6" stroke-linecap="round"/><circle cx="-75.0" cy="74.0" r="5" fill="#E8C16E"/><circle cx="-75.0" cy="74.0" r="11" fill="#E8C16E" opacity="0.18"/><circle cx="225.0" cy="74.0" r="5" fill="#E8C16E"/><circle cx="225.0" cy="74.0" r="11" fill="#E8C16E" opacity="0.18"/><circle cx="525.0" cy="74.0" r="5" fill="#E8C16E"/><circle cx="525.0" cy="74.0" r="11" fill="#E8C16E" opacity="0.18"/><circle cx="825.0" cy="74.0" r="5" fill="#E8C16E"/><circle cx="825.0" cy="74.0" r="11" fill="#E8C16E" opacity="0.18"/></g><g class="flow-wave" style="--lam:-240px; --dur:17s;"><path d="M -240.0 198.5 L -234.0 199.0 L -228.0 198.7 L -222.0 197.5 L -216.0 195.5 L -210.0 192.8 L -204.0 189.4 L -198.0 185.4 L -192.0 180.8 L -186.0 175.9 L -180.0 170.8 L -174.0 165.5 L -168.0 160.1 L -162.0 154.9 L -156.0 150.0 L -150.0 145.4 L -144.0 141.3 L -138.0 137.8 L -132.0 134.9 L -126.0 132.8 L -120.0 131.5 L -114.0 131.0 L -108.0 131.3 L -102.0 132.5 L -96.0 134.5 L -90.0 137.2 L -84.0 140.6 L -78.0 144.6 L -72.0 149.2 L -66.0 154.1 L -60.0 159.2 L -54.0 164.5 L -48.0 169.9 L -42.0 175.1 L -36.0 180.0 L -30.0 184.6 L -24.0 188.7 L -18.0 192.2 L -12.0 195.1 L -6.0 197.2 L 0.0 198.5 L 6.0 199.0 L 12.0 198.7 L 18.0 197.5 L 24.0 195.5 L 30.0 192.8 L 36.0 189.4 L 42.0 185.4 L 48.0 180.8 L 54.0 175.9 L 60.0 170.8 L 66.0 165.5 L 72.0 160.1 L 78.0 154.9 L 84.0 150.0 L 90.0 145.4 L 96.0 141.3 L 102.0 137.8 L 108.0 134.9 L 114.0 132.8 L 120.0 131.5 L 126.0 131.0 L 132.0 131.3 L 138.0 132.5 L 144.0 134.5 L 150.0 137.2 L 156.0 140.6 L 162.0 144.6 L 168.0 149.2 L 174.0 154.1 L 180.0 159.2 L 186.0 164.5 L 192.0 169.9 L 198.0 175.1 L 204.0 180.0 L 210.0 184.6 L 216.0 188.7 L 222.0 192.2 L 228.0 195.1 L 234.0 197.2 L 240.0 198.5 L 246.0 199.0 L 252.0 198.7 L 258.0 197.5 L 264.0 195.5 L 270.0 192.8 L 276.0 189.4 L 282.0 185.4 L 288.0 180.8 L 294.0 175.9 L 300.0 170.8 L 306.0 165.5 L 312.0 160.1 L 318.0 154.9 L 324.0 150.0 L 330.0 145.4 L 336.0 141.3 L 342.0 137.8 L 348.0 134.9 L 354.0 132.8 L 360.0 131.5 L 366.0 131.0 L 372.0 131.3 L 378.0 132.5 L 384.0 134.5 L 390.0 137.2 L 396.0 140.6 L 402.0 144.6 L 408.0 149.2 L 414.0 154.1 L 420.0 159.2 L 426.0 164.5 L 432.0 169.9 L 438.0 175.1 L 444.0 180.0 L 450.0 184.6 L 456.0 188.7 L 462.0 192.2 L 468.0 195.1 L 474.0 197.2 L 480.0 198.5 L 486.0 199.0 L 492.0 198.7 L 498.0 197.5 L 504.0 195.5 L 510.0 192.8 L 516.0 189.4 L 522.0 185.4 L 528.0 180.8 L 534.0 175.9 L 540.0 170.8 L 546.0 165.5 L 552.0 160.1 L 558.0 154.9 L 564.0 150.0 L 570.0 145.4 L 576.0 141.3 L 582.0 137.8 L 588.0 134.9 L 594.0 132.8 L 600.0 131.5 L 606.0 131.0 L 612.0 131.3 L 618.0 132.5 L 624.0 134.5 L 630.0 137.2 L 636.0 140.6 L 642.0 144.6 L 648.0 149.2 L 654.0 154.1 L 660.0 159.2 L 666.0 164.5 L 672.0 169.9 L 678.0 175.1 L 684.0 180.0 L 690.0 184.6 L 696.0 188.7 L 702.0 192.2 L 708.0 195.1 L 714.0 197.2 L 720.0 198.5 L 726.0 199.0 L 732.0 198.7 L 738.0 197.5 L 744.0 195.5 L 750.0 192.8 L 756.0 189.4 L 762.0 185.4 L 768.0 180.8 L 774.0 175.9 L 780.0 170.8 L 786.0 165.5 L 792.0 160.1 L 798.0 154.9 L 804.0 150.0 L 810.0 145.4 L 816.0 141.3 L 822.0 137.8 L 828.0 134.9 L 834.0 132.8 L 840.0 131.5" fill="none" stroke="#F2A57E" stroke-width="6.6000000000000005" stroke-linecap="round" opacity="0.22" transform="translate(0 0)" style="filter:blur(5px)"/><path d="M -240.0 198.5 L -234.0 199.0 L -228.0 198.7 L -222.0 197.5 L -216.0 195.5 L -210.0 192.8 L -204.0 189.4 L -198.0 185.4 L -192.0 180.8 L -186.0 175.9 L -180.0 170.8 L -174.0 165.5 L -168.0 160.1 L -162.0 154.9 L -156.0 150.0 L -150.0 145.4 L -144.0 141.3 L -138.0 137.8 L -132.0 134.9 L -126.0 132.8 L -120.0 131.5 L -114.0 131.0 L -108.0 131.3 L -102.0 132.5 L -96.0 134.5 L -90.0 137.2 L -84.0 140.6 L -78.0 144.6 L -72.0 149.2 L -66.0 154.1 L -60.0 159.2 L -54.0 164.5 L -48.0 169.9 L -42.0 175.1 L -36.0 180.0 L -30.0 184.6 L -24.0 188.7 L -18.0 192.2 L -12.0 195.1 L -6.0 197.2 L 0.0 198.5 L 6.0 199.0 L 12.0 198.7 L 18.0 197.5 L 24.0 195.5 L 30.0 192.8 L 36.0 189.4 L 42.0 185.4 L 48.0 180.8 L 54.0 175.9 L 60.0 170.8 L 66.0 165.5 L 72.0 160.1 L 78.0 154.9 L 84.0 150.0 L 90.0 145.4 L 96.0 141.3 L 102.0 137.8 L 108.0 134.9 L 114.0 132.8 L 120.0 131.5 L 126.0 131.0 L 132.0 131.3 L 138.0 132.5 L 144.0 134.5 L 150.0 137.2 L 156.0 140.6 L 162.0 144.6 L 168.0 149.2 L 174.0 154.1 L 180.0 159.2 L 186.0 164.5 L 192.0 169.9 L 198.0 175.1 L 204.0 180.0 L 210.0 184.6 L 216.0 188.7 L 222.0 192.2 L 228.0 195.1 L 234.0 197.2 L 240.0 198.5 L 246.0 199.0 L 252.0 198.7 L 258.0 197.5 L 264.0 195.5 L 270.0 192.8 L 276.0 189.4 L 282.0 185.4 L 288.0 180.8 L 294.0 175.9 L 300.0 170.8 L 306.0 165.5 L 312.0 160.1 L 318.0 154.9 L 324.0 150.0 L 330.0 145.4 L 336.0 141.3 L 342.0 137.8 L 348.0 134.9 L 354.0 132.8 L 360.0 131.5 L 366.0 131.0 L 372.0 131.3 L 378.0 132.5 L 384.0 134.5 L 390.0 137.2 L 396.0 140.6 L 402.0 144.6 L 408.0 149.2 L 414.0 154.1 L 420.0 159.2 L 426.0 164.5 L 432.0 169.9 L 438.0 175.1 L 444.0 180.0 L 450.0 184.6 L 456.0 188.7 L 462.0 192.2 L 468.0 195.1 L 474.0 197.2 L 480.0 198.5 L 486.0 199.0 L 492.0 198.7 L 498.0 197.5 L 504.0 195.5 L 510.0 192.8 L 516.0 189.4 L 522.0 185.4 L 528.0 180.8 L 534.0 175.9 L 540.0 170.8 L 546.0 165.5 L 552.0 160.1 L 558.0 154.9 L 564.0 150.0 L 570.0 145.4 L 576.0 141.3 L 582.0 137.8 L 588.0 134.9 L 594.0 132.8 L 600.0 131.5 L 606.0 131.0 L 612.0 131.3 L 618.0 132.5 L 624.0 134.5 L 630.0 137.2 L 636.0 140.6 L 642.0 144.6 L 648.0 149.2 L 654.0 154.1 L 660.0 159.2 L 666.0 164.5 L 672.0 169.9 L 678.0 175.1 L 684.0 180.0 L 690.0 184.6 L 696.0 188.7 L 702.0 192.2 L 708.0 195.1 L 714.0 197.2 L 720.0 198.5 L 726.0 199.0 L 732.0 198.7 L 738.0 197.5 L 744.0 195.5 L 750.0 192.8 L 756.0 189.4 L 762.0 185.4 L 768.0 180.8 L 774.0 175.9 L 780.0 170.8 L 786.0 165.5 L 792.0 160.1 L 798.0 154.9 L 804.0 150.0 L 810.0 145.4 L 816.0 141.3 L 822.0 137.8 L 828.0 134.9 L 834.0 132.8 L 840.0 131.5" fill="none" stroke="#F2A57E" stroke-width="2.2" stroke-linecap="round"/><circle cx="-113.5" cy="131.0" r="5" fill="#F2A57E"/><circle cx="-113.5" cy="131.0" r="11" fill="#F2A57E" opacity="0.18"/><circle cx="126.5" cy="131.0" r="5" fill="#F2A57E"/><circle cx="126.5" cy="131.0" r="11" fill="#F2A57E" opacity="0.18"/><circle cx="366.5" cy="131.0" r="5" fill="#F2A57E"/><circle cx="366.5" cy="131.0" r="11" fill="#F2A57E" opacity="0.18"/><circle cx="606.5" cy="131.0" r="5" fill="#F2A57E"/><circle cx="606.5" cy="131.0" r="11" fill="#F2A57E" opacity="0.18"/></g><g class="flow-wave" style="--lam:-200px; --dur:13s;"><path d="M -200.0 226.3 L -194.0 222.6 L -188.0 218.6 L -182.0 214.5 L -176.0 210.4 L -170.0 206.4 L -164.0 202.8 L -158.0 199.6 L -152.0 196.9 L -146.0 194.9 L -140.0 193.6 L -134.0 193.0 L -128.0 193.2 L -122.0 194.2 L -116.0 196.0 L -110.0 198.4 L -104.0 201.4 L -98.0 204.9 L -92.0 208.7 L -86.0 212.8 L -80.0 216.9 L -74.0 221.0 L -68.0 224.8 L -62.0 228.4 L -56.0 231.4 L -50.0 233.9 L -44.0 235.6 L -38.0 236.7 L -32.0 237.0 L -26.0 236.5 L -20.0 235.3 L -14.0 233.3 L -8.0 230.7 L -2.0 227.5 L 4.0 223.9 L 10.0 220.0 L 16.0 215.9 L 22.0 211.7 L 28.0 207.7 L 34.0 203.9 L 40.0 200.6 L 46.0 197.7 L 52.0 195.5 L 58.0 193.9 L 64.0 193.1 L 70.0 193.1 L 76.0 193.8 L 82.0 195.3 L 88.0 197.5 L 94.0 200.3 L 100.0 203.7 L 106.0 207.4 L 112.0 211.4 L 118.0 215.5 L 124.0 219.6 L 130.0 223.6 L 136.0 227.2 L 142.0 230.4 L 148.0 233.1 L 154.0 235.1 L 160.0 236.4 L 166.0 237.0 L 172.0 236.8 L 178.0 235.8 L 184.0 234.0 L 190.0 231.6 L 196.0 228.6 L 202.0 225.1 L 208.0 221.3 L 214.0 217.2 L 220.0 213.1 L 226.0 209.0 L 232.0 205.2 L 238.0 201.6 L 244.0 198.6 L 250.0 196.1 L 256.0 194.4 L 262.0 193.3 L 268.0 193.0 L 274.0 193.5 L 280.0 194.7 L 286.0 196.7 L 292.0 199.3 L 298.0 202.5 L 304.0 206.1 L 310.0 210.0 L 316.0 214.1 L 322.0 218.3 L 328.0 222.3 L 334.0 226.1 L 340.0 229.4 L 346.0 232.3 L 352.0 234.5 L 358.0 236.1 L 364.0 236.9 L 370.0 236.9 L 376.0 236.2 L 382.0 234.7 L 388.0 232.5 L 394.0 229.7 L 400.0 226.3 L 406.0 222.6 L 412.0 218.6 L 418.0 214.5 L 424.0 210.4 L 430.0 206.4 L 436.0 202.8 L 442.0 199.6 L 448.0 196.9 L 454.0 194.9 L 460.0 193.6 L 466.0 193.0 L 472.0 193.2 L 478.0 194.2 L 484.0 196.0 L 490.0 198.4 L 496.0 201.4 L 502.0 204.9 L 508.0 208.7 L 514.0 212.8 L 520.0 216.9 L 526.0 221.0 L 532.0 224.8 L 538.0 228.4 L 544.0 231.4 L 550.0 233.9 L 556.0 235.6 L 562.0 236.7 L 568.0 237.0 L 574.0 236.5 L 580.0 235.3 L 586.0 233.3 L 592.0 230.7 L 598.0 227.5 L 604.0 223.9 L 610.0 220.0 L 616.0 215.9 L 622.0 211.7 L 628.0 207.7 L 634.0 203.9 L 640.0 200.6 L 646.0 197.7 L 652.0 195.5 L 658.0 193.9 L 664.0 193.1 L 670.0 193.1 L 676.0 193.8 L 682.0 195.3 L 688.0 197.5 L 694.0 200.3 L 700.0 203.7 L 706.0 207.4 L 712.0 211.4 L 718.0 215.5 L 724.0 219.6 L 730.0 223.6 L 736.0 227.2 L 742.0 230.4 L 748.0 233.1 L 754.0 235.1 L 760.0 236.4 L 766.0 237.0 L 772.0 236.8 L 778.0 235.8 L 784.0 234.0 L 790.0 231.6 L 796.0 228.6" fill="none" stroke="#E08A5E" stroke-width="5.4" stroke-linecap="round" opacity="0.22" transform="translate(0 0)" style="filter:blur(5px)"/><path d="M -200.0 226.3 L -194.0 222.6 L -188.0 218.6 L -182.0 214.5 L -176.0 210.4 L -170.0 206.4 L -164.0 202.8 L -158.0 199.6 L -152.0 196.9 L -146.0 194.9 L -140.0 193.6 L -134.0 193.0 L -128.0 193.2 L -122.0 194.2 L -116.0 196.0 L -110.0 198.4 L -104.0 201.4 L -98.0 204.9 L -92.0 208.7 L -86.0 212.8 L -80.0 216.9 L -74.0 221.0 L -68.0 224.8 L -62.0 228.4 L -56.0 231.4 L -50.0 233.9 L -44.0 235.6 L -38.0 236.7 L -32.0 237.0 L -26.0 236.5 L -20.0 235.3 L -14.0 233.3 L -8.0 230.7 L -2.0 227.5 L 4.0 223.9 L 10.0 220.0 L 16.0 215.9 L 22.0 211.7 L 28.0 207.7 L 34.0 203.9 L 40.0 200.6 L 46.0 197.7 L 52.0 195.5 L 58.0 193.9 L 64.0 193.1 L 70.0 193.1 L 76.0 193.8 L 82.0 195.3 L 88.0 197.5 L 94.0 200.3 L 100.0 203.7 L 106.0 207.4 L 112.0 211.4 L 118.0 215.5 L 124.0 219.6 L 130.0 223.6 L 136.0 227.2 L 142.0 230.4 L 148.0 233.1 L 154.0 235.1 L 160.0 236.4 L 166.0 237.0 L 172.0 236.8 L 178.0 235.8 L 184.0 234.0 L 190.0 231.6 L 196.0 228.6 L 202.0 225.1 L 208.0 221.3 L 214.0 217.2 L 220.0 213.1 L 226.0 209.0 L 232.0 205.2 L 238.0 201.6 L 244.0 198.6 L 250.0 196.1 L 256.0 194.4 L 262.0 193.3 L 268.0 193.0 L 274.0 193.5 L 280.0 194.7 L 286.0 196.7 L 292.0 199.3 L 298.0 202.5 L 304.0 206.1 L 310.0 210.0 L 316.0 214.1 L 322.0 218.3 L 328.0 222.3 L 334.0 226.1 L 340.0 229.4 L 346.0 232.3 L 352.0 234.5 L 358.0 236.1 L 364.0 236.9 L 370.0 236.9 L 376.0 236.2 L 382.0 234.7 L 388.0 232.5 L 394.0 229.7 L 400.0 226.3 L 406.0 222.6 L 412.0 218.6 L 418.0 214.5 L 424.0 210.4 L 430.0 206.4 L 436.0 202.8 L 442.0 199.6 L 448.0 196.9 L 454.0 194.9 L 460.0 193.6 L 466.0 193.0 L 472.0 193.2 L 478.0 194.2 L 484.0 196.0 L 490.0 198.4 L 496.0 201.4 L 502.0 204.9 L 508.0 208.7 L 514.0 212.8 L 520.0 216.9 L 526.0 221.0 L 532.0 224.8 L 538.0 228.4 L 544.0 231.4 L 550.0 233.9 L 556.0 235.6 L 562.0 236.7 L 568.0 237.0 L 574.0 236.5 L 580.0 235.3 L 586.0 233.3 L 592.0 230.7 L 598.0 227.5 L 604.0 223.9 L 610.0 220.0 L 616.0 215.9 L 622.0 211.7 L 628.0 207.7 L 634.0 203.9 L 640.0 200.6 L 646.0 197.7 L 652.0 195.5 L 658.0 193.9 L 664.0 193.1 L 670.0 193.1 L 676.0 193.8 L 682.0 195.3 L 688.0 197.5 L 694.0 200.3 L 700.0 203.7 L 706.0 207.4 L 712.0 211.4 L 718.0 215.5 L 724.0 219.6 L 730.0 223.6 L 736.0 227.2 L 742.0 230.4 L 748.0 233.1 L 754.0 235.1 L 760.0 236.4 L 766.0 237.0 L 772.0 236.8 L 778.0 235.8 L 784.0 234.0 L 790.0 231.6 L 796.0 228.6" fill="none" stroke="#E08A5E" stroke-width="1.8" stroke-linecap="round"/><circle cx="-132.8" cy="193.0" r="5" fill="#E08A5E"/><circle cx="-132.8" cy="193.0" r="11" fill="#E08A5E" opacity="0.18"/><circle cx="67.2" cy="193.0" r="5" fill="#E08A5E"/><circle cx="67.2" cy="193.0" r="11" fill="#E08A5E" opacity="0.18"/><circle cx="267.2" cy="193.0" r="5" fill="#E08A5E"/><circle cx="267.2" cy="193.0" r="11" fill="#E08A5E" opacity="0.18"/><circle cx="467.2" cy="193.0" r="5" fill="#E08A5E"/><circle cx="467.2" cy="193.0" r="11" fill="#E08A5E" opacity="0.18"/><circle cx="667.2" cy="193.0" r="5" fill="#E08A5E"/><circle cx="667.2" cy="193.0" r="11" fill="#E08A5E" opacity="0.18"/></g></g>
+          
+        </svg>
       <h2 class="final-headline">
         You know yourself best.<br /><em>Ormi helps you see the pattern.</em>
       </h2>
@@ -2323,6 +2625,8 @@ const bodyHTML = `
       <p style="margin-top:14px; font-size:13px; color:var(--white30); font-style:italic;">No spam. Ever.</p>
     </div>
   </section>
+
+  <a href="#final-waitlist" class="sticky-cta" id="sticky-cta">Join the waitlist</a>
 
   <!-- ── Footer ── -->
   <footer>
@@ -2412,6 +2716,33 @@ export default function Home() {
         if (button) button.disabled = false;
       }
     };
+
+    // ── Phone waitlist button: show it only when no sign-up form is on screen ──
+    const stickyCta = document.getElementById('sticky-cta');
+    const formZones = [document.querySelector('.hero'), document.getElementById('final-waitlist')].filter(Boolean);
+    if (stickyCta && formZones.length && 'IntersectionObserver' in window) {
+      const onScreen = new Set();
+      const stickyObserver = new IntersectionObserver((entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) onScreen.add(e.target); else onScreen.delete(e.target); });
+        stickyCta.classList.toggle('is-on', onScreen.size === 0);
+      }, { threshold: 0.05 });
+      formZones.forEach((z) => stickyObserver.observe(z));
+    }
+
+    // ── Mental health check-in: choose a word, see what Ormi does with it ──
+    const mhStage = document.getElementById('mh-stage');
+    const mhChips = Array.from(document.querySelectorAll('.mh-chip'));
+    const selectMood = (chip) => {
+      mhChips.forEach((c) => {
+        const on = c === chip;
+        c.classList.toggle('is-on', on);
+        c.setAttribute('aria-selected', on ? 'true' : 'false');
+        const panel = document.getElementById('mh-' + c.dataset.k);
+        if (panel) panel.hidden = !on;
+      });
+      if (mhStage) mhStage.style.setProperty('--hue', getComputedStyle(chip).getPropertyValue('--hue').trim());
+    };
+    mhChips.forEach((chip) => chip.addEventListener('click', () => selectMood(chip)));
 
     // ── Always up to date: the week fills in and the plan changes with each check-in ──
     const livingStates = [
