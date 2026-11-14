@@ -1374,6 +1374,10 @@ const css = `
     .ignite-headline { font-family: 'Instrument Serif', serif; font-weight: 400; font-size: clamp(44px, 6.4vw, 88px); line-height: 1; color: #0A1D36; margin-bottom: 14px; }
     .ignite-headline em { font-style: italic; }
     .ignite-copy { font-size: 19px; line-height: 1.6; color: rgba(10,29,54,0.88); max-width: 560px; }
+    .ignite-link { display: inline-block; margin-top: 16px; font-size: 16px; font-weight: 600; color: #0A1D36; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1.5px; }
+    .ignite-link:hover { text-decoration-thickness: 2.5px; }
+    .ignite-link:focus-visible { outline: 2px solid #0A1D36; outline-offset: 4px; border-radius: 4px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
     @media (max-width: 760px) {
       .ignite-inner { flex-direction: column; align-items: flex-start; gap: 22px; }
       .ignite-medal { width: 132px; height: 132px; }
@@ -1841,6 +1845,7 @@ const bodyHTML = `
           <p class="ignite-eyebrow">Recognition</p>
           <h2 class="ignite-headline">IGNITE 2026 <em>finalist.</em></h2>
           <p class="ignite-copy">Ormi was a finalist in IGNITE 2026, run by the Ford Family Foundation and delivered with Cambio.</p>
+          <a class="ignite-link" href="https://www.linkedin.com/company/ford-family-foundation-uk/posts/" target="_blank" rel="noopener noreferrer">Ford Family Foundation on LinkedIn<span class="sr-only"> (opens in a new tab)</span></a>
         </div>
       </div>
     </div>
@@ -1868,8 +1873,8 @@ const bodyHTML = `
           <p class="dyk-label">Did you know?</p>
           <div class="dyk-row">
             <div class="dyk-item">
-              <p class="dyk-figure">£64,645</p>
-              <p class="dyk-text">awarded by an employment tribunal in 2023 to an employee whose menopause symptoms were not accommodated at work.</p>
+              <p class="dyk-figure">£60,000+</p>
+              <p class="dyk-text">awarded by employment tribunals in each of two recent cases involving menopause symptoms at work.</p>
             </div>
             <div class="dyk-item">
               <p class="dyk-figure">From £45</p>
@@ -1877,7 +1882,7 @@ const bodyHTML = `
             </div>
           </div>
         </div>
-        <p class="employers-source">Employment Rights Act 2025. Expected from spring 2027, subject to final regulations. Tribunal award: Lynskey v Direct Line Insurance Services, 2023.</p>
+        <p class="employers-source">Employment Rights Act 2025. Expected from spring 2027, subject to final regulations. Tribunal awards: Lynskey v Direct Line Insurance Services (£64,645) and Shearer v South Lanarkshire Council (£61,074).</p>
       </div>
     </div>
   </section>
