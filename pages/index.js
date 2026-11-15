@@ -2653,7 +2653,6 @@ const bodyHTML = `
 
 // Organization structured data (JSON-LD) so search engines can connect ormi.health
 // to the company's official profiles. Add new profile links to sameAs:
-//   - LinkedIn company page: add once the exact URL is confirmed
 //   - App Store listing: add when the app is live
 const orgSchema = {
   '@context': 'https://schema.org',
@@ -2682,6 +2681,7 @@ const orgSchema = {
     { '@type': 'Person', name: 'Dr Emma Whitehouse' },
   ],
   sameAs: [
+    'https://www.linkedin.com/company/ormi-health/',
     'https://find-and-update.company-information.service.gov.uk/company/17209350',
   ],
 };
