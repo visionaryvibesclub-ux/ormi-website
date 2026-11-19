@@ -2651,6 +2651,42 @@ const bodyHTML = `
   </footer>
 `;
 
+// Organization structured data (JSON-LD) so search engines can connect ormi.health
+// to the company's official profiles. Add new profile links to sameAs:
+//   - App Store listing: add when the app is live
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': 'https://ormi.health/#organization',
+  name: 'Ormi',
+  legalName: 'Ormi Wellness Ltd',
+  url: 'https://ormi.health/',
+  logo: 'https://ormi.health/favicon.svg',
+  description: 'Ormi is a hormone intelligence app for women in perimenopause and beyond.',
+  email: 'hello@ormi.health',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '71-75 Shelton Street, Covent Garden',
+    addressLocality: 'London',
+    postalCode: 'WC2H 9JQ',
+    addressCountry: 'GB',
+  },
+  identifier: {
+    '@type': 'PropertyValue',
+    propertyID: 'Companies House company number',
+    value: '17209350',
+  },
+  founder: [
+    { '@type': 'Person', name: 'Anna Koutras' },
+    { '@type': 'Person', name: 'Dr Emma Whitehouse' },
+  ],
+  sameAs: [
+    'https://www.linkedin.com/company/ormi-health/',
+    'https://find-and-update.company-information.service.gov.uk/company/17209350',
+  ],
+};
+const orgSchemaJson = JSON.stringify(orgSchema).replace(/</g, '\\u003c');
+
 export default function Home() {
   useEffect(() => {
     // ── Banner helpers ────────────────────────────────────────────────────────
@@ -2865,6 +2901,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="stylesheet" href="/fonts.css" />
         <style dangerouslySetInnerHTML={{ __html: css }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: orgSchemaJson }} />
       </Head>
       <div dangerouslySetInnerHTML={{ __html: bodyHTML }} />
     </>
