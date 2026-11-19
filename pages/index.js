@@ -2409,7 +2409,7 @@ const bodyHTML = `
             <svg class="inapp-glyph" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 36 C 6 28, 6 12, 20 4 C 34 12, 34 28, 20 36 Z"/><path d="M20 36 V14"/></svg>
             <div>
               <p class="inapp-name">Nutrition</p>
-              <p class="inapp-text">Food tips and recipes matched to the stage you're in.</p>
+              <p class="inapp-text">Food tips matched to the stage you're in. Recipes with Ormi Circle.</p>
             </div>
           </div>
           <div class="inapp-item" style="--tone:#F2A57E;">
@@ -2427,7 +2427,7 @@ const bodyHTML = `
             </div>
           </div>
         </div>
-        <p class="inapp-note">Core tools are free. Live coaching, community and the full tool library are part of Ormi Circle.</p>
+        <p class="inapp-note">Core tools and food tips are free. Recipes, live coaching, community and the full tool library are part of Ormi Circle.</p>
       </div>
     </div>
   </section>
@@ -2654,7 +2654,7 @@ const bodyHTML = `
         <div class="dutch-clinic-compare">
         <div class="dutch-clinic-label">vs a private hormone clinic</div>
         <div class="dutch-clinic-text">
-          Private clinics charge from <strong>£395 to over £1,000</strong> for a DUTCH test with interpretation. Ormi brings the test, AI interpretation and a GP results review together, from your own home.
+          Private clinics charge from <strong>£395 to over £1,000</strong> for a DUTCH test with interpretation. Ormi brings the test, AI interpretation, a GP results review and a full year of Ormi Circle together, from your own home.
         </div>
           </div>
       </div>
