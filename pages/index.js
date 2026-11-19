@@ -1544,6 +1544,19 @@ const css = `
     .day.is-tappable { cursor: pointer; }
     .day.is-tappable:focus-visible { outline: 2px solid var(--glow); outline-offset: 3px; border-radius: 10px; }
 
+    /* What's inside the app: the tools beyond noticing patterns */
+    .inapp { margin-top: 56px; }
+    .inapp-title { font-family: 'Instrument Serif', serif; font-weight: 400; font-size: clamp(28px, 3vw, 38px); line-height: 1.15; color: var(--champagne); margin-bottom: 26px; }
+    .inapp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .inapp-item { display: flex; gap: 18px; align-items: flex-start; padding: 22px 22px 24px; border-radius: 18px; border: 1px solid rgba(245,230,200,0.10); background: linear-gradient(135deg, color-mix(in srgb, var(--tone) 10%, transparent), rgba(15,42,74,0.35) 60%); }
+    .inapp-glyph { flex: none; width: 40px; height: 40px; fill: none; stroke: var(--tone); color: var(--tone); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .inapp-name { font-size: 18px; font-weight: 600; color: var(--champagne); margin-bottom: 6px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+    .inapp-tag { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #0A1D36; background: var(--tone); padding: 3px 9px; border-radius: 20px; }
+    .inapp-text { font-size: 16px; line-height: 1.55; color: var(--white70); }
+    .inapp-note { margin-top: 20px; font-size: 14px; color: var(--white70); }
+    @media (max-width: 1000px) { .inapp-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 640px) { .inapp-grid { grid-template-columns: 1fr; gap: 10px; } .inapp-item { padding: 18px; gap: 14px; } .inapp-glyph { width: 34px; height: 34px; } }
+
     /* ── App previews ── */
     .hero-phone { display: none; }
     @media (min-width: 1240px) {
@@ -2366,6 +2379,55 @@ const bodyHTML = `
           <h3 class="step-title">Connect</h3>
           <p class="step-body">Live coaching and community, synced wearables, at-home DUTCH testing and a GP review of your results.</p>
         </div>
+      </div>
+
+      <div class="inapp reveal">
+        <h3 class="inapp-title">And when you want to do something about it</h3>
+        <div class="inapp-grid">
+          <div class="inapp-item" style="--tone:#E8C16E;">
+            <svg class="inapp-glyph" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="4"/><circle cx="20" cy="20" r="10" opacity="0.7"/><circle cx="20" cy="20" r="16" opacity="0.4"/></svg>
+            <div>
+              <p class="inapp-name">Nervous system tools</p>
+              <p class="inapp-text">Short practices to calm your body. Most take a minute or two.</p>
+            </div>
+          </div>
+          <div class="inapp-item" style="--tone:#C9B6E8;">
+            <svg class="inapp-glyph" viewBox="0 0 40 40" aria-hidden="true"><circle cx="22" cy="16" r="11"/><circle cx="10" cy="31" r="3"/><circle cx="5" cy="37" r="1.6"/></svg>
+            <div>
+              <p class="inapp-name">Mind tools</p>
+              <p class="inapp-text">CBT-based exercises for anxious thoughts, low mood and the worries that keep circling.</p>
+            </div>
+          </div>
+          <div class="inapp-item" style="--tone:#9FD3E8;">
+            <svg class="inapp-glyph" viewBox="0 0 40 40" aria-hidden="true"><path d="M3 30 H37"/><path d="M8 30 A12 12 0 0 1 32 30"/><path d="M14 36 H26" opacity="0.6"/></svg>
+            <div>
+              <p class="inapp-name">Sleep</p>
+              <p class="inapp-text">Wind-down routines, and tools for the nights you wake at 3am.</p>
+            </div>
+          </div>
+          <div class="inapp-item" style="--tone:#F5E6C8;">
+            <svg class="inapp-glyph" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 36 C 6 28, 6 12, 20 4 C 34 12, 34 28, 20 36 Z"/><path d="M20 36 V14"/></svg>
+            <div>
+              <p class="inapp-name">Nutrition</p>
+              <p class="inapp-text">Food tips and recipes matched to the stage you're in.</p>
+            </div>
+          </div>
+          <div class="inapp-item" style="--tone:#F2A57E;">
+            <svg class="inapp-glyph" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="5" fill="currentColor"/><path d="M9 9 A15.5 15.5 0 0 0 9 31" /><path d="M31 9 A15.5 15.5 0 0 1 31 31"/></svg>
+            <div>
+              <p class="inapp-name">Live coaching <span class="inapp-tag">Ormi Circle</span></p>
+              <p class="inapp-text">Live sessions led by specialists.</p>
+            </div>
+          </div>
+          <div class="inapp-item" style="--tone:#E08A5E;">
+            <svg class="inapp-glyph" viewBox="0 0 40 40" aria-hidden="true"><circle cx="13" cy="16" r="9"/><circle cx="27" cy="16" r="9"/><circle cx="20" cy="27" r="9"/></svg>
+            <div>
+              <p class="inapp-name">Community <span class="inapp-tag">Ormi Circle</span></p>
+              <p class="inapp-text">A members' space to talk with women going through the same thing.</p>
+            </div>
+          </div>
+        </div>
+        <p class="inapp-note">Core tools are free. Live coaching, community and the full tool library are part of Ormi Circle.</p>
       </div>
     </div>
   </section>
