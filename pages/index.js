@@ -1498,6 +1498,22 @@ const css = `
     .why35-key span::before { content: ''; flex: none; width: 10px; height: 10px; border-radius: 50%; }
     .key-known::before { background: #FFF6E6; }
     .key-rest::before { background: linear-gradient(135deg, #E8C16E, #E08A5E); }
+    /* counter that runs from 2 to 35 as the dots fill in */
+    .why35-num { display: flex; align-items: baseline; justify-content: flex-end; gap: 14px; max-width: 320px; margin: 0 0 18px auto; font-family: 'Instrument Serif', serif; line-height: 0.9; color: var(--champagne); }
+    .num-from { font-size: 34px; color: var(--white70); }
+    .num-arrow { align-self: center; width: 44px; height: 1px; background: linear-gradient(90deg, rgba(245,230,200,0.2), #E8C16E); position: relative; }
+    .num-arrow::after { content: ''; position: absolute; right: 0; top: -3px; width: 7px; height: 7px; border-top: 1px solid #E8C16E; border-right: 1px solid #E8C16E; transform: rotate(45deg); }
+    .num-to { font-size: clamp(72px, 7vw, 104px); color: #E8C16E; font-variant-numeric: tabular-nums; min-width: 1.9ch; text-align: right; }
+    /* once filled, the dots keep a slow ripple and the two known ones glow */
+    .why35.visible .why35-field i:not(.is-known) { animation: dotRipple 4.2s ease-in-out infinite; animation-delay: calc(2.6s + var(--i) * 110ms); }
+    .why35-field i.is-known { animation: knownGlow 3s ease-in-out infinite; }
+    @keyframes dotRipple { 0%, 100% { opacity: 0.95; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
+    @keyframes knownGlow { 0%, 100% { box-shadow: 0 0 0 4px rgba(255,246,230,0.16); } 50% { box-shadow: 0 0 0 9px rgba(255,246,230,0.05); } }
+    /* time passing across the day, with each sample lighting up as it is reached */
+    .day-sweep { position: absolute; top: 0; bottom: 0; left: 4%; width: 2px; background: linear-gradient(180deg, transparent, rgba(255,246,230,0.55)); animation: daySweep 10s linear infinite; }
+    @keyframes daySweep { 0% { left: 4%; opacity: 0; } 6% { opacity: 1; } 94% { opacity: 1; } 100% { left: 96%; opacity: 0; } }
+    .day-sample { animation: samplePulse 10s linear infinite; animation-delay: calc(var(--t, 0) * 10s); }
+    @keyframes samplePulse { 0% { box-shadow: 0 0 0 0 rgba(232,193,110,0.7); background: #E8C16E; } 14% { box-shadow: 0 0 0 12px rgba(232,193,110,0); background: #0C2340; } 100% { box-shadow: 0 0 0 0 rgba(232,193,110,0); background: #0C2340; } }
     /* a schematic day: cortisol falls, melatonin rises at night */
     .why35-day { margin: 44px 0 40px; padding: 26px 28px 22px; border-radius: 22px; background: rgba(10,29,54,0.55); border: 1px solid rgba(245,230,200,0.10); }
     .why35-daytitle { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 26px; color: var(--champagne); margin-bottom: 10px; }
@@ -1512,17 +1528,18 @@ const css = `
     .tag-mel { right: 3%; top: 4%; color: #9FD3E8; }
     .day-sample { position: absolute; bottom: -7px; width: 13px; height: 13px; margin-left: -6.5px; border-radius: 50%; background: #0C2340; border: 2px solid #E8C16E; }
     .day-sample::before { content: ''; position: absolute; left: 50%; bottom: 100%; width: 1px; height: 190px; background: linear-gradient(180deg, transparent, rgba(232,193,110,0.35)); }
-    .day-axis { display: flex; justify-content: space-between; gap: 8px; margin-top: 16px; font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--white50); }
+    .day-axis { display: flex; justify-content: space-between; gap: 8px; margin-top: 16px; font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--white70); }
     .day-note { display: flex; align-items: center; gap: 10px; margin-top: 16px; font-size: 14px; line-height: 1.5; color: var(--white70); }
     .day-samplekey { flex: none; width: 13px; height: 13px; border-radius: 50%; border: 2px solid #E8C16E; }
-    .why35-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
-    .why35-item { border-top: 3px solid var(--tone); padding-top: 16px; }
+    .why35-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .why35-item { padding: 20px 20px 22px; border-radius: 18px; border: 1px solid rgba(245,230,200,0.10); border-top: 3px solid var(--tone); background: linear-gradient(180deg, color-mix(in srgb, var(--tone) 9%, transparent), transparent 70%); }
+    .why35-glyph { display: block; width: 56px; height: 24px; margin-bottom: 14px; fill: none; stroke: var(--tone); stroke-width: 2; stroke-linecap: round; }
     .why35-name { font-size: 16px; font-weight: 600; color: var(--champagne); margin-bottom: 8px; }
     .why35-text { font-size: 16px; line-height: 1.55; color: var(--white70); }
-    .why35-note { margin-top: 28px; font-size: 14px; color: var(--white50); }
-    @media (max-width: 1000px) { .why35-top { grid-template-columns: 1fr; gap: 30px; } .why35-field, .why35-key { margin-left: 0; } .why35-grid { grid-template-columns: 1fr 1fr; gap: 24px 18px; } }
+    .why35-note { margin-top: 28px; font-size: 14px; color: var(--white70); }
+    @media (max-width: 1000px) { .why35-top { grid-template-columns: 1fr; gap: 30px; } .why35-field, .why35-key { margin-left: 0; } .why35-num { margin-left: 0; justify-content: flex-start; } .why35-grid { grid-template-columns: 1fr 1fr; gap: 24px 18px; } }
     @media (max-width: 560px) { .why35 { padding: 32px 22px 30px; } .why35-grid { grid-template-columns: 1fr; } .why35-day { padding: 22px 18px 18px; } .day-chart { height: 150px; } .day-sample::before { height: 140px; } .why35-field { gap: 9px; max-width: 260px; } .day-axis { font-size: 12px; letter-spacing: 0.08em; } }
-    @media (prefers-reduced-motion: reduce) { .why35-field i { opacity: 0.95; transform: none; transition: none; } .day-line { stroke-dashoffset: 0; transition: none; } }
+    @media (prefers-reduced-motion: reduce) { .why35-field i, .why35.visible .why35-field i:not(.is-known) { opacity: 0.95; transform: none; transition: none; animation: none; } .why35-field i.is-known, .day-sample { animation: none; } .day-sweep { display: none; } .day-line { stroke-dashoffset: 0; transition: none; } }
 
     /* ── App previews ── */
     .hero-phone { display: none; }
@@ -2520,6 +2537,7 @@ const bodyHTML = `
             <p class="why35-lead">Oestrogen and progesterone get most of the attention, and they matter. But more than two hormones shape how you sleep, how you handle stress and how you feel day to day. The DUTCH test looks at them together, so your GP review starts from a fuller picture.</p>
           </div>
           <div class="why35-count">
+            <p class="why35-num" aria-hidden="true"><span class="num-from">2</span><span class="num-arrow"></span><span class="num-to" id="why35-num">35</span></p>
             <div class="why35-field" aria-hidden="true"><i class="is-known" style="--i:0;"></i><i class="is-known" style="--i:1;"></i><i class="" style="--i:2;"></i><i class="" style="--i:3;"></i><i class="" style="--i:4;"></i><i class="" style="--i:5;"></i><i class="" style="--i:6;"></i><i class="" style="--i:7;"></i><i class="" style="--i:8;"></i><i class="" style="--i:9;"></i><i class="" style="--i:10;"></i><i class="" style="--i:11;"></i><i class="" style="--i:12;"></i><i class="" style="--i:13;"></i><i class="" style="--i:14;"></i><i class="" style="--i:15;"></i><i class="" style="--i:16;"></i><i class="" style="--i:17;"></i><i class="" style="--i:18;"></i><i class="" style="--i:19;"></i><i class="" style="--i:20;"></i><i class="" style="--i:21;"></i><i class="" style="--i:22;"></i><i class="" style="--i:23;"></i><i class="" style="--i:24;"></i><i class="" style="--i:25;"></i><i class="" style="--i:26;"></i><i class="" style="--i:27;"></i><i class="" style="--i:28;"></i><i class="" style="--i:29;"></i><i class="" style="--i:30;"></i><i class="" style="--i:31;"></i><i class="" style="--i:32;"></i><i class="" style="--i:33;"></i><i class="" style="--i:34;"></i></div>
             <p class="why35-key"><span class="key-known">The two most people hear about</span><span class="key-rest">The rest of the 35 hormones and metabolites</span></p>
           </div>
@@ -2534,7 +2552,8 @@ const bodyHTML = `
             </svg>
             <span class="day-tag tag-cort">Cortisol</span>
             <span class="day-tag tag-mel">Melatonin</span>
-            <span class="day-sample" style="left:9%;"></span><span class="day-sample" style="left:33%;"></span><span class="day-sample" style="left:64%;"></span><span class="day-sample" style="left:90%;"></span>
+            <span class="day-sweep" aria-hidden="true"></span>
+            <span class="day-sample" style="left:9%; --t:0.054;"></span><span class="day-sample" style="left:33%; --t:0.315;"></span><span class="day-sample" style="left:64%; --t:0.652;"></span><span class="day-sample" style="left:90%; --t:0.935;"></span>
           </div>
           <div class="day-axis" aria-hidden="true"><span>Morning</span><span>Midday</span><span>Evening</span><span>Night</span></div>
           <figcaption class="day-note"><span class="day-samplekey"></span>Samples across the day can show a rhythm that one reading cannot. This is an illustration, not real data.</figcaption>
@@ -2542,18 +2561,22 @@ const bodyHTML = `
 
         <div class="why35-grid">
           <div class="why35-item" style="--tone:#E8C16E;">
+            <svg class="why35-glyph" viewBox="0 0 56 24" aria-hidden="true"><path d="M2 12 C 9 0, 16 0, 23 12 S 37 24, 44 12 S 51 4, 54 8"/></svg>
             <p class="why35-name">Oestrogens and progesterone</p>
             <p class="why35-text">How much you make, and how your body breaks each one down.</p>
           </div>
           <div class="why35-item" style="--tone:#F2A57E;">
+            <svg class="why35-glyph" viewBox="0 0 56 24" aria-hidden="true"><circle cx="21" cy="12" r="9"/><circle cx="34" cy="12" r="9"/></svg>
             <p class="why35-name">Testosterone and DHEA</p>
             <p class="why35-text">Women make these too. Lower oestrogen and testosterone can both affect how you feel about sex.</p>
           </div>
           <div class="why35-item" style="--tone:#E08A5E;">
+            <svg class="why35-glyph" viewBox="0 0 56 24" aria-hidden="true"><path d="M2 8 C 5 1, 9 1, 13 7 C 23 20, 40 21, 54 21"/></svg>
             <p class="why35-name">Cortisol, across the day</p>
             <p class="why35-text">The hormone that helps you respond to stress. It is normally highest in the morning and falls through the day, so one reading can't show its rhythm.</p>
           </div>
           <div class="why35-item" style="--tone:#9FD3E8;">
+            <svg class="why35-glyph" viewBox="0 0 56 24" aria-hidden="true"><path d="M2 21 C 28 21, 36 20, 42 12 C 46 6, 50 4, 54 3"/></svg>
             <p class="why35-name">Melatonin and more</p>
             <p class="why35-text">Also in the test: overnight melatonin, which rises at night and helps control when you sleep, plus markers for vitamins B6 and B12.</p>
           </div>
@@ -2856,6 +2879,21 @@ export default function Home() {
         if (button) button.disabled = false;
       }
     };
+
+    // ── Why 35 markers: count from 2 to 35 while the dots fill in ──
+    const numEl = document.getElementById('why35-num');
+    if (numEl && 'IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      numEl.textContent = '2';
+      const numObserver = new IntersectionObserver((entries) => {
+        if (!entries.some((e) => e.isIntersecting)) return;
+        numObserver.disconnect();
+        let n = 2;
+        setTimeout(() => {
+          const tick = setInterval(() => { n += 1; numEl.textContent = String(n); if (n >= 35) clearInterval(tick); }, 45);
+        }, 500);
+      }, { threshold: 0.4 });
+      numObserver.observe(numEl);
+    }
 
     // ── Phone waitlist button: show it only when no sign-up form is on screen ──
     const stickyCta = document.getElementById('sticky-cta');
