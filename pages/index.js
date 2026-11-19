@@ -2772,7 +2772,7 @@ const bodyHTML = `
           </details>
           <details class="faq-item">
             <summary>Can I download Ormi now?<span class="faq-plus" aria-hidden="true"></span></summary>
-            <p class="faq-answer">Not yet. Ormi isn't on the App Store yet. Join the waitlist and we'll let you know as soon as it's ready.</p>
+            <p class="faq-answer">We're not on the App Store just yet, but if you join the waitlist we'll let you know as soon as it's ready! Got an idea that you would love to see in the app? Let's hear it! Send an email to <a href="mailto:hello@ormi.health?subject=An%20idea%20for%20Ormi">hello@ormi.health</a>. We love hearing your thoughts.</p>
           </details>
           <details class="faq-item">
             <summary>Who is behind Ormi?<span class="faq-plus" aria-hidden="true"></span></summary>
