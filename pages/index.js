@@ -1479,6 +1479,18 @@ const css = `
     .rhythm-note { margin-top: 10px; font-size: 14px; line-height: 1.5; color: rgba(10,29,54,0.7); max-width: 640px; }
     @media (prefers-reduced-motion: reduce) { .rhythm-line { stroke-dashoffset: 0; transition: none; } }
 
+    /* Why the DUTCH test looks at so many markers */
+    .why35 { margin: 56px 0 40px; padding: 40px 36px; border-radius: 26px; border: 1px solid var(--card-border); background: rgba(15,42,74,0.6); }
+    .why35-title { font-family: 'Instrument Serif', serif; font-weight: 400; font-size: clamp(30px, 3.2vw, 42px); line-height: 1.12; color: var(--champagne); margin-bottom: 14px; max-width: 760px; }
+    .why35-lead { font-size: 18px; line-height: 1.65; color: var(--white70); max-width: 760px; margin-bottom: 30px; }
+    .why35-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .why35-item { border-top: 3px solid var(--tone); padding-top: 16px; }
+    .why35-name { font-size: 16px; font-weight: 600; color: var(--champagne); margin-bottom: 8px; }
+    .why35-text { font-size: 16px; line-height: 1.55; color: var(--white70); }
+    .why35-note { margin-top: 26px; font-size: 14px; color: var(--white50); }
+    @media (max-width: 1000px) { .why35-grid { grid-template-columns: 1fr 1fr; gap: 24px 18px; } }
+    @media (max-width: 560px) { .why35 { padding: 30px 22px; } .why35-grid { grid-template-columns: 1fr; } }
+
     /* ── App previews ── */
     .hero-phone { display: none; }
     @media (min-width: 1240px) {
@@ -1527,7 +1539,7 @@ const css = `
     .mh-chip.is-on { background: var(--hue); border-color: var(--hue); color: #0A1D36; font-weight: 600; }
     .mh-stage {
       position: relative; overflow: hidden;
-      border-radius: 28px; padding: 40px 36px;
+      border-radius: 28px; padding: 164px 36px 40px;
       min-height: 380px; display: flex; flex-direction: column; justify-content: flex-end;
       background: #0C2340; border: 1px solid rgba(245,230,200,0.12);
     }
@@ -1537,7 +1549,7 @@ const css = `
     .mh-panel { animation: riseIn 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
     .mh-title { font-family: 'Instrument Serif', serif; font-weight: 400; font-size: clamp(34px, 3.6vw, 48px); line-height: 1.1; color: var(--champagne); margin-bottom: 14px; }
     .mh-text { font-size: 18px; line-height: 1.65; color: var(--white70); max-width: 460px; }
-    @media (max-width: 640px) { .mh-stage { padding: 30px 24px; min-height: 340px; } }
+    @media (max-width: 640px) { .mh-stage { padding: 124px 24px 30px; min-height: 340px; } .mh-wave { height: 96px; top: 12px; } }
 
     /* ── Hormone flow: three hormones as moving waves, signals riding the crests ── */
     .flow { display: block; width: 100%; max-width: 420px; height: auto; margin-bottom: 26px; overflow: visible; animation: flowIn 1.8s cubic-bezier(0.22, 0.8, 0.3, 1) both; pointer-events: none; }
@@ -2080,8 +2092,8 @@ const bodyHTML = `
           <p class="fcard-quote">"I feel anxious all the time and I don't know why."</p>
           <div class="fcard-block">
             <p class="fcard-label">What may be behind it</p>
-            <div class="fcard-chips"><span>Oestrogen</span><span>Progesterone</span></div>
-            <p class="fcard-text">Changing oestrogen and progesterone levels may play a part. Anxiety can be part of perimenopause.</p>
+            <div class="fcard-chips"><span>Oestrogen</span><span>Progesterone</span><span>Cortisol</span></div>
+            <p class="fcard-text">Changing oestrogen and progesterone levels may play a part, and anxiety can be part of perimenopause. Cortisol, the hormone that helps your body respond to stress, is part of the picture too.</p>
           </div>
           <div class="fcard-block fcard-ormi">
             <p class="fcard-label">How Ormi helps</p>
@@ -2093,8 +2105,8 @@ const bodyHTML = `
           <p class="fcard-quote">"I wake up at 3am with my heart racing. I'm exhausted but I can't sleep."</p>
           <div class="fcard-block">
             <p class="fcard-label">What may be behind it</p>
-            <div class="fcard-chips"><span>Oestrogen</span><span>Progesterone</span></div>
-            <p class="fcard-text">Changes in oestrogen and progesterone can affect the sleep cycle, and night sweats can wake you.</p>
+            <div class="fcard-chips"><span>Oestrogen</span><span>Progesterone</span><span>Melatonin</span><span>Cortisol</span></div>
+            <p class="fcard-text">Changes in oestrogen and progesterone can affect the sleep cycle, and night sweats can wake you. Sleep also depends on melatonin, which rises at night, and on cortisol, which normally falls through the day.</p>
           </div>
           <div class="fcard-block fcard-ormi">
             <p class="fcard-label">How Ormi helps</p>
@@ -2119,8 +2131,8 @@ const bodyHTML = `
           <p class="fcard-quote">"I snap at my kids and then cry about it. I don't recognise myself."</p>
           <div class="fcard-block">
             <p class="fcard-label">What may be behind it</p>
-            <div class="fcard-chips"><span>Oestrogen</span></div>
-            <p class="fcard-text">Mood swings are a recognised symptom, and falling oestrogen may be involved.</p>
+            <div class="fcard-chips"><span>Oestrogen</span><span>Progesterone</span></div>
+            <p class="fcard-text">Mood swings are a recognised symptom of perimenopause, when oestrogen and progesterone levels are both changing.</p>
           </div>
           <div class="fcard-block fcard-ormi">
             <p class="fcard-label">How Ormi helps</p>
@@ -2132,8 +2144,8 @@ const bodyHTML = `
           <p class="fcard-quote">"I'm so tired all the time. Coffee doesn't even touch it."</p>
           <div class="fcard-block">
             <p class="fcard-label">What may be behind it</p>
-            <div class="fcard-chips"><span>Oestrogen</span></div>
-            <p class="fcard-text">Lower oestrogen is linked with low energy, and broken sleep adds to it.</p>
+            <div class="fcard-chips"><span>Oestrogen</span><span>Cortisol</span><span>Thyroid</span></div>
+            <p class="fcard-text">Lower oestrogen is linked with low energy, and broken sleep adds to it. Cortisol is normally highest in the morning. Tiredness has other causes too, such as anaemia or a thyroid problem, which a GP can check with a blood test.</p>
           </div>
           <div class="fcard-block fcard-ormi">
             <p class="fcard-label">How Ormi helps</p>
@@ -2457,6 +2469,41 @@ const bodyHTML = `
         </div>
       </div>
       <p class="tests-close">One reading is a moment. <em>A full day is a pattern.</em></p>
+      <!--
+        Sources for this block (checked 19 Nov 2026):
+        Precision Analytical, DUTCH Complete: 35 hormones (oestrogen, progesterone, testosterone, DHEA-S, cortisol
+          and their metabolites), daily free cortisol pattern, melatonin (6-OHMS), organic acids incl. B12 and B6 markers.
+        Society for Endocrinology, yourhormones.info: cortisol helps the body respond to stress; higher in the morning, falls through the day.
+        NHS, About melatonin: levels rise at night and help control how and when you sleep.
+        FPA, Menopause, sex and relationships: lower oestrogen and testosterone can affect how you feel about sex.
+        British Menopause Society (May 2026): trials have not shown testosterone therapy helps mood, energy or cognition,
+          so this page does not link testosterone to those symptoms.
+        Clinical copy: Emma to review.
+      -->
+      <div class="why35 reveal">
+        <h3 class="why35-title">Why 35 markers, when most of the talk is about two?</h3>
+        <p class="why35-lead">Oestrogen and progesterone get most of the attention, and they matter. But more than two hormones shape how you sleep, how you handle stress and how you feel day to day. The DUTCH test looks at them together, so your GP review starts from a fuller picture.</p>
+        <div class="why35-grid">
+          <div class="why35-item" style="--tone:#E8C16E;">
+            <p class="why35-name">Oestrogens and progesterone</p>
+            <p class="why35-text">How much you make, and how your body breaks each one down.</p>
+          </div>
+          <div class="why35-item" style="--tone:#F2A57E;">
+            <p class="why35-name">Testosterone and DHEA</p>
+            <p class="why35-text">Women make these too. Lower oestrogen and testosterone can both affect how you feel about sex.</p>
+          </div>
+          <div class="why35-item" style="--tone:#E08A5E;">
+            <p class="why35-name">Cortisol, across the day</p>
+            <p class="why35-text">The hormone that helps you respond to stress. It is normally highest in the morning and falls through the day, so one reading can't show its rhythm.</p>
+          </div>
+          <div class="why35-item" style="--tone:#9FD3E8;">
+            <p class="why35-name">Melatonin and more</p>
+            <p class="why35-text">Also in the test: overnight melatonin, which rises at night and helps control when you sleep, plus markers for vitamins B6 and B12.</p>
+          </div>
+        </div>
+        <p class="why35-note">A wider view is not a diagnosis. It gives you and a GP more to work with.</p>
+      </div>
+
       <p class="tests-after">No test diagnoses perimenopause on its own, and how you feel always comes first. That's why every DUTCH result at Ormi is read alongside your check-ins and reviewed by a GP.</p>
       <div class="tests-clinic">
         <div class="dutch-clinic-compare">
