@@ -1519,10 +1519,10 @@ const css = `
     .why35-daytitle { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 26px; color: var(--champagne); margin-bottom: 10px; }
     .day-chart { position: relative; height: 200px; border-bottom: 1px solid rgba(245,230,200,0.22); background: linear-gradient(90deg, transparent 70%, rgba(159,211,232,0.10) 100%); }
     .day-chart svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
-    .day-line { fill: none; stroke-width: 3; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 2.4s cubic-bezier(0.3, 0.6, 0.2, 1) 0.4s; }
+    .dayc-line { fill: none; stroke-width: 3; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 2.4s cubic-bezier(0.3, 0.6, 0.2, 1) 0.4s; }
     .day-cort { stroke: #F2A57E; }
     .day-mel { stroke: #9FD3E8; transition-delay: 0.9s; }
-    .why35.visible .day-line { stroke-dashoffset: 0; }
+    .why35.visible .dayc-line { stroke-dashoffset: 0; }
     .day-tag { position: absolute; font-size: 14px; font-weight: 600; letter-spacing: 0.04em; }
     .tag-cort { left: 14%; top: 8%; color: #F2A57E; }
     .tag-mel { right: 3%; top: 4%; color: #9FD3E8; }
@@ -1539,7 +1539,10 @@ const css = `
     .why35-note { margin-top: 28px; font-size: 14px; color: var(--white70); }
     @media (max-width: 1000px) { .why35-top { grid-template-columns: 1fr; gap: 30px; } .why35-field, .why35-key { margin-left: 0; } .why35-num { margin-left: 0; justify-content: flex-start; } .why35-grid { grid-template-columns: 1fr 1fr; gap: 24px 18px; } }
     @media (max-width: 560px) { .why35 { padding: 32px 22px 30px; } .why35-grid { grid-template-columns: 1fr; } .why35-day { padding: 22px 18px 18px; } .day-chart { height: 150px; } .day-sample::before { height: 140px; } .why35-field { gap: 9px; max-width: 260px; } .day-axis { font-size: 12px; letter-spacing: 0.08em; } }
-    @media (prefers-reduced-motion: reduce) { .why35-field i, .why35.visible .why35-field i:not(.is-known) { opacity: 0.95; transform: none; transition: none; animation: none; } .why35-field i.is-known, .day-sample { animation: none; } .day-sweep { display: none; } .day-line { stroke-dashoffset: 0; transition: none; } }
+    @media (prefers-reduced-motion: reduce) { .why35-field i, .why35.visible .why35-field i:not(.is-known) { opacity: 0.95; transform: none; transition: none; animation: none; } .why35-field i.is-known, .day-sample { animation: none; } .day-sweep { display: none; } .dayc-line { stroke-dashoffset: 0; transition: none; } }
+
+    .day.is-tappable { cursor: pointer; }
+    .day.is-tappable:focus-visible { outline: 2px solid var(--glow); outline-offset: 3px; border-radius: 10px; }
 
     /* ── App previews ── */
     .hero-phone { display: none; }
@@ -2387,7 +2390,7 @@ const bodyHTML = `
             <li>One slow breath</li>
             <li>Wind-down for sleep</li>
           </ul>
-          <p class="living-note">An example. Your plan is built from your own check-ins.</p>
+          <p class="living-note">An example. Tap a day to see how the plan changes. Your plan is built from your own check-ins.</p>
         </div>
       </div>
     </div>
@@ -2547,8 +2550,8 @@ const bodyHTML = `
           <p class="why35-daytitle">One day, two rhythms</p>
           <div class="day-chart">
             <svg viewBox="0 0 1000 240" preserveAspectRatio="none" role="img" aria-label="Illustration: cortisol starts high in the morning and falls through the day, while melatonin stays low and rises at night. Four sample points are spread across the day.">
-              <path class="day-line day-cort" vector-effect="non-scaling-stroke" pathLength="1" d="M 40.0 120.0 L 48.0 100.1 L 56.0 81.5 L 64.0 65.2 L 72.0 52.5 L 80.0 43.9 L 88.0 40.2 L 96.0 43.2 L 104.0 47.3 L 112.0 51.3 L 120.0 55.2 L 128.0 59.0 L 136.0 62.7 L 144.0 66.4 L 152.0 69.9 L 160.0 73.3 L 168.0 76.6 L 176.0 79.9 L 184.0 83.0 L 192.0 86.1 L 200.0 89.1 L 208.0 92.0 L 216.0 94.9 L 224.0 97.6 L 232.0 100.3 L 240.0 103.0 L 248.0 105.5 L 256.0 108.0 L 264.0 110.4 L 272.0 112.8 L 280.0 115.1 L 288.0 117.3 L 296.0 119.5 L 304.0 121.6 L 312.0 123.7 L 320.0 125.7 L 328.0 127.6 L 336.0 129.5 L 344.0 131.4 L 352.0 133.2 L 360.0 134.9 L 368.0 136.7 L 376.0 138.3 L 384.0 140.0 L 392.0 141.5 L 400.0 143.1 L 408.0 144.6 L 416.0 146.0 L 424.0 147.4 L 432.0 148.8 L 440.0 150.2 L 448.0 151.5 L 456.0 152.8 L 464.0 154.0 L 472.0 155.2 L 480.0 156.4 L 488.0 157.5 L 496.0 158.7 L 504.0 159.7 L 512.0 160.8 L 520.0 161.8 L 528.0 162.8 L 536.0 163.8 L 544.0 164.8 L 552.0 165.7 L 560.0 166.6 L 568.0 167.5 L 576.0 168.3 L 584.0 169.2 L 592.0 170.0 L 600.0 170.8 L 608.0 171.5 L 616.0 172.3 L 624.0 173.0 L 632.0 173.7 L 640.0 174.4 L 648.0 175.1 L 656.0 175.7 L 664.0 176.4 L 672.0 177.0 L 680.0 177.6 L 688.0 178.2 L 696.0 178.8 L 704.0 179.3 L 712.0 179.9 L 720.0 180.4 L 728.0 180.9 L 736.0 181.4 L 744.0 181.9 L 752.0 182.4 L 760.0 182.9 L 768.0 183.3 L 776.0 183.7 L 784.0 184.2 L 792.0 184.6 L 800.0 185.0 L 808.0 185.4 L 816.0 185.8 L 824.0 186.1 L 832.0 186.5 L 840.0 186.9 L 848.0 187.2 L 856.0 187.5 L 864.0 187.9 L 872.0 188.2 L 880.0 188.5 L 888.0 188.8 L 896.0 189.1 L 904.0 189.4 L 912.0 189.7 L 920.0 189.9 L 928.0 190.2 L 936.0 190.5 L 944.0 190.7 L 952.0 191.0 L 960.0 191.2"/>
-              <path class="day-line day-mel" vector-effect="non-scaling-stroke" pathLength="1" d="M 40.0 205.0 L 48.0 205.0 L 56.0 205.0 L 64.0 205.0 L 72.0 205.0 L 80.0 205.0 L 88.0 205.0 L 96.0 205.0 L 104.0 205.0 L 112.0 205.0 L 120.0 205.0 L 128.0 205.0 L 136.0 205.0 L 144.0 205.0 L 152.0 205.0 L 160.0 205.0 L 168.0 205.0 L 176.0 205.0 L 184.0 205.0 L 192.0 205.0 L 200.0 205.0 L 208.0 205.0 L 216.0 205.0 L 224.0 205.0 L 232.0 205.0 L 240.0 205.0 L 248.0 205.0 L 256.0 205.0 L 264.0 205.0 L 272.0 205.0 L 280.0 205.0 L 288.0 205.0 L 296.0 205.0 L 304.0 205.0 L 312.0 205.0 L 320.0 205.0 L 328.0 205.0 L 336.0 205.0 L 344.0 205.0 L 352.0 205.0 L 360.0 204.9 L 368.0 204.9 L 376.0 204.9 L 384.0 204.9 L 392.0 204.9 L 400.0 204.9 L 408.0 204.9 L 416.0 204.9 L 424.0 204.8 L 432.0 204.8 L 440.0 204.8 L 448.0 204.8 L 456.0 204.7 L 464.0 204.7 L 472.0 204.6 L 480.0 204.6 L 488.0 204.5 L 496.0 204.4 L 504.0 204.3 L 512.0 204.2 L 520.0 204.1 L 528.0 203.9 L 536.0 203.8 L 544.0 203.6 L 552.0 203.4 L 560.0 203.1 L 568.0 202.8 L 576.0 202.5 L 584.0 202.1 L 592.0 201.7 L 600.0 201.1 L 608.0 200.6 L 616.0 199.9 L 624.0 199.1 L 632.0 198.2 L 640.0 197.2 L 648.0 196.1 L 656.0 194.8 L 664.0 193.3 L 672.0 191.7 L 680.0 189.8 L 688.0 187.7 L 696.0 185.3 L 704.0 182.7 L 712.0 179.8 L 720.0 176.6 L 728.0 173.1 L 736.0 169.3 L 744.0 165.2 L 752.0 160.8 L 760.0 156.1 L 768.0 151.2 L 776.0 146.1 L 784.0 140.8 L 792.0 135.4 L 800.0 130.0 L 808.0 124.6 L 816.0 119.2 L 824.0 113.9 L 832.0 108.8 L 840.0 103.9 L 848.0 99.2 L 856.0 94.8 L 864.0 90.7 L 872.0 86.9 L 880.0 83.4 L 888.0 80.2 L 896.0 77.3 L 904.0 74.7 L 912.0 72.3 L 920.0 70.2 L 928.0 68.3 L 936.0 66.7 L 944.0 65.2 L 952.0 63.9 L 960.0 62.8"/>
+              <path class="dayc-line day-cort" vector-effect="non-scaling-stroke" pathLength="1" d="M 40.0 120.0 L 48.0 100.1 L 56.0 81.5 L 64.0 65.2 L 72.0 52.5 L 80.0 43.9 L 88.0 40.2 L 96.0 43.2 L 104.0 47.3 L 112.0 51.3 L 120.0 55.2 L 128.0 59.0 L 136.0 62.7 L 144.0 66.4 L 152.0 69.9 L 160.0 73.3 L 168.0 76.6 L 176.0 79.9 L 184.0 83.0 L 192.0 86.1 L 200.0 89.1 L 208.0 92.0 L 216.0 94.9 L 224.0 97.6 L 232.0 100.3 L 240.0 103.0 L 248.0 105.5 L 256.0 108.0 L 264.0 110.4 L 272.0 112.8 L 280.0 115.1 L 288.0 117.3 L 296.0 119.5 L 304.0 121.6 L 312.0 123.7 L 320.0 125.7 L 328.0 127.6 L 336.0 129.5 L 344.0 131.4 L 352.0 133.2 L 360.0 134.9 L 368.0 136.7 L 376.0 138.3 L 384.0 140.0 L 392.0 141.5 L 400.0 143.1 L 408.0 144.6 L 416.0 146.0 L 424.0 147.4 L 432.0 148.8 L 440.0 150.2 L 448.0 151.5 L 456.0 152.8 L 464.0 154.0 L 472.0 155.2 L 480.0 156.4 L 488.0 157.5 L 496.0 158.7 L 504.0 159.7 L 512.0 160.8 L 520.0 161.8 L 528.0 162.8 L 536.0 163.8 L 544.0 164.8 L 552.0 165.7 L 560.0 166.6 L 568.0 167.5 L 576.0 168.3 L 584.0 169.2 L 592.0 170.0 L 600.0 170.8 L 608.0 171.5 L 616.0 172.3 L 624.0 173.0 L 632.0 173.7 L 640.0 174.4 L 648.0 175.1 L 656.0 175.7 L 664.0 176.4 L 672.0 177.0 L 680.0 177.6 L 688.0 178.2 L 696.0 178.8 L 704.0 179.3 L 712.0 179.9 L 720.0 180.4 L 728.0 180.9 L 736.0 181.4 L 744.0 181.9 L 752.0 182.4 L 760.0 182.9 L 768.0 183.3 L 776.0 183.7 L 784.0 184.2 L 792.0 184.6 L 800.0 185.0 L 808.0 185.4 L 816.0 185.8 L 824.0 186.1 L 832.0 186.5 L 840.0 186.9 L 848.0 187.2 L 856.0 187.5 L 864.0 187.9 L 872.0 188.2 L 880.0 188.5 L 888.0 188.8 L 896.0 189.1 L 904.0 189.4 L 912.0 189.7 L 920.0 189.9 L 928.0 190.2 L 936.0 190.5 L 944.0 190.7 L 952.0 191.0 L 960.0 191.2"/>
+              <path class="dayc-line day-mel" vector-effect="non-scaling-stroke" pathLength="1" d="M 40.0 205.0 L 48.0 205.0 L 56.0 205.0 L 64.0 205.0 L 72.0 205.0 L 80.0 205.0 L 88.0 205.0 L 96.0 205.0 L 104.0 205.0 L 112.0 205.0 L 120.0 205.0 L 128.0 205.0 L 136.0 205.0 L 144.0 205.0 L 152.0 205.0 L 160.0 205.0 L 168.0 205.0 L 176.0 205.0 L 184.0 205.0 L 192.0 205.0 L 200.0 205.0 L 208.0 205.0 L 216.0 205.0 L 224.0 205.0 L 232.0 205.0 L 240.0 205.0 L 248.0 205.0 L 256.0 205.0 L 264.0 205.0 L 272.0 205.0 L 280.0 205.0 L 288.0 205.0 L 296.0 205.0 L 304.0 205.0 L 312.0 205.0 L 320.0 205.0 L 328.0 205.0 L 336.0 205.0 L 344.0 205.0 L 352.0 205.0 L 360.0 204.9 L 368.0 204.9 L 376.0 204.9 L 384.0 204.9 L 392.0 204.9 L 400.0 204.9 L 408.0 204.9 L 416.0 204.9 L 424.0 204.8 L 432.0 204.8 L 440.0 204.8 L 448.0 204.8 L 456.0 204.7 L 464.0 204.7 L 472.0 204.6 L 480.0 204.6 L 488.0 204.5 L 496.0 204.4 L 504.0 204.3 L 512.0 204.2 L 520.0 204.1 L 528.0 203.9 L 536.0 203.8 L 544.0 203.6 L 552.0 203.4 L 560.0 203.1 L 568.0 202.8 L 576.0 202.5 L 584.0 202.1 L 592.0 201.7 L 600.0 201.1 L 608.0 200.6 L 616.0 199.9 L 624.0 199.1 L 632.0 198.2 L 640.0 197.2 L 648.0 196.1 L 656.0 194.8 L 664.0 193.3 L 672.0 191.7 L 680.0 189.8 L 688.0 187.7 L 696.0 185.3 L 704.0 182.7 L 712.0 179.8 L 720.0 176.6 L 728.0 173.1 L 736.0 169.3 L 744.0 165.2 L 752.0 160.8 L 760.0 156.1 L 768.0 151.2 L 776.0 146.1 L 784.0 140.8 L 792.0 135.4 L 800.0 130.0 L 808.0 124.6 L 816.0 119.2 L 824.0 113.9 L 832.0 108.8 L 840.0 103.9 L 848.0 99.2 L 856.0 94.8 L 864.0 90.7 L 872.0 86.9 L 880.0 83.4 L 888.0 80.2 L 896.0 77.3 L 904.0 74.7 L 912.0 72.3 L 920.0 70.2 L 928.0 68.3 L 936.0 66.7 L 944.0 65.2 L 952.0 63.9 L 960.0 62.8"/>
             </svg>
             <span class="day-tag tag-cort">Cortisol</span>
             <span class="day-tag tag-mel">Melatonin</span>
@@ -2955,12 +2958,31 @@ export default function Home() {
         livingCard.classList.add('is-swapping');
       }
     };
-    paintLiving(0, false);
-    if (livingCard && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const calmMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // With reduced motion on, nothing cycles by itself: show the week filled in and let her tap a day.
+    livingStep = calmMotion ? livingStates.length - 1 : 0;
+    paintLiving(livingStep, false);
+    if (livingCard && !calmMotion) {
       livingTimer = setInterval(() => {
         livingStep = (livingStep + 1) % livingStates.length;
         paintLiving(livingStep, true);
       }, 3600);
+    }
+    if (livingCard) {
+      livingCard.querySelectorAll('.day').forEach((el, i) => {
+        if (i >= livingStates.length) return;
+        el.classList.add('is-tappable');
+        el.setAttribute('role', 'button');
+        el.setAttribute('tabindex', '0');
+        el.setAttribute('aria-label', 'Show the example for day ' + (i + 1));
+        const choose = () => {
+          if (livingTimer) { clearInterval(livingTimer); livingTimer = null; }
+          livingStep = i;
+          paintLiving(i, !calmMotion);
+        };
+        el.addEventListener('click', choose);
+        el.addEventListener('keydown', (ev) => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); choose(); } });
+      });
     }
 
     // ── One slow breath: in for four, out for six, three rounds ───────────────
