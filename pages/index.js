@@ -1480,16 +1480,49 @@ const css = `
     @media (prefers-reduced-motion: reduce) { .rhythm-line { stroke-dashoffset: 0; transition: none; } }
 
     /* Why the DUTCH test looks at so many markers */
-    .why35 { margin: 56px 0 40px; padding: 40px 36px; border-radius: 26px; border: 1px solid var(--card-border); background: rgba(15,42,74,0.6); }
-    .why35-title { font-family: 'Instrument Serif', serif; font-weight: 400; font-size: clamp(30px, 3.2vw, 42px); line-height: 1.12; color: var(--champagne); margin-bottom: 14px; max-width: 760px; }
-    .why35-lead { font-size: 18px; line-height: 1.65; color: var(--white70); max-width: 760px; margin-bottom: 30px; }
-    .why35-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .why35 { position: relative; overflow: hidden; margin: 56px 0 40px; padding: 48px 44px 40px; border-radius: 28px; border: 1px solid rgba(232,193,110,0.28); background: radial-gradient(120% 90% at 100% 0%, rgba(232,193,110,0.14), transparent 55%), linear-gradient(180deg, #102B4E 0%, #0C2340 100%); }
+    .why35-top { display: grid; grid-template-columns: 1.25fr 1fr; gap: 48px; align-items: center; }
+    .why35-title { font-family: 'Instrument Serif', serif; font-weight: 400; font-size: clamp(32px, 3.6vw, 48px); line-height: 1.08; color: var(--champagne); margin-bottom: 16px; }
+    .why35-title em { color: var(--gold); }
+    .why35-lead { font-size: 18px; line-height: 1.65; color: var(--white70); max-width: 620px; }
+    /* 35 dots: two lit from the start, the rest fill in when the block scrolls into view */
+    .why35-field { display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px; max-width: 320px; margin-left: auto; }
+    .why35-field i { display: block; aspect-ratio: 1; border-radius: 50%; background: #E8C16E; opacity: 0.14; transform: scale(0.7); transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1); transition-delay: calc(0.5s + var(--i) * 45ms); }
+    .why35-field i:nth-child(3n) { background: #F2A57E; }
+    .why35-field i:nth-child(5n) { background: #E08A5E; }
+    .why35-field i:nth-child(4n+2) { background: #9FD3E8; }
+    .why35-field i.is-known { background: #FFF6E6; opacity: 1; transform: none; box-shadow: 0 0 0 4px rgba(255,246,230,0.16); transition-delay: 0s; }
+    .why35.visible .why35-field i { opacity: 0.95; transform: none; }
+    .why35-key { display: flex; flex-direction: column; gap: 6px; max-width: 320px; margin: 18px 0 0 auto; font-size: 14px; color: var(--white70); }
+    .why35-key span { display: flex; align-items: center; gap: 10px; }
+    .why35-key span::before { content: ''; flex: none; width: 10px; height: 10px; border-radius: 50%; }
+    .key-known::before { background: #FFF6E6; }
+    .key-rest::before { background: linear-gradient(135deg, #E8C16E, #E08A5E); }
+    /* a schematic day: cortisol falls, melatonin rises at night */
+    .why35-day { margin: 44px 0 40px; padding: 26px 28px 22px; border-radius: 22px; background: rgba(10,29,54,0.55); border: 1px solid rgba(245,230,200,0.10); }
+    .why35-daytitle { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 26px; color: var(--champagne); margin-bottom: 10px; }
+    .day-chart { position: relative; height: 200px; border-bottom: 1px solid rgba(245,230,200,0.22); background: linear-gradient(90deg, transparent 70%, rgba(159,211,232,0.10) 100%); }
+    .day-chart svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+    .day-line { fill: none; stroke-width: 3; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 2.4s cubic-bezier(0.3, 0.6, 0.2, 1) 0.4s; }
+    .day-cort { stroke: #F2A57E; }
+    .day-mel { stroke: #9FD3E8; transition-delay: 0.9s; }
+    .why35.visible .day-line { stroke-dashoffset: 0; }
+    .day-tag { position: absolute; font-size: 14px; font-weight: 600; letter-spacing: 0.04em; }
+    .tag-cort { left: 14%; top: 8%; color: #F2A57E; }
+    .tag-mel { right: 3%; top: 4%; color: #9FD3E8; }
+    .day-sample { position: absolute; bottom: -7px; width: 13px; height: 13px; margin-left: -6.5px; border-radius: 50%; background: #0C2340; border: 2px solid #E8C16E; }
+    .day-sample::before { content: ''; position: absolute; left: 50%; bottom: 100%; width: 1px; height: 190px; background: linear-gradient(180deg, transparent, rgba(232,193,110,0.35)); }
+    .day-axis { display: flex; justify-content: space-between; gap: 8px; margin-top: 16px; font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--white50); }
+    .day-note { display: flex; align-items: center; gap: 10px; margin-top: 16px; font-size: 14px; line-height: 1.5; color: var(--white70); }
+    .day-samplekey { flex: none; width: 13px; height: 13px; border-radius: 50%; border: 2px solid #E8C16E; }
+    .why35-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
     .why35-item { border-top: 3px solid var(--tone); padding-top: 16px; }
     .why35-name { font-size: 16px; font-weight: 600; color: var(--champagne); margin-bottom: 8px; }
     .why35-text { font-size: 16px; line-height: 1.55; color: var(--white70); }
-    .why35-note { margin-top: 26px; font-size: 14px; color: var(--white50); }
-    @media (max-width: 1000px) { .why35-grid { grid-template-columns: 1fr 1fr; gap: 24px 18px; } }
-    @media (max-width: 560px) { .why35 { padding: 30px 22px; } .why35-grid { grid-template-columns: 1fr; } }
+    .why35-note { margin-top: 28px; font-size: 14px; color: var(--white50); }
+    @media (max-width: 1000px) { .why35-top { grid-template-columns: 1fr; gap: 30px; } .why35-field, .why35-key { margin-left: 0; } .why35-grid { grid-template-columns: 1fr 1fr; gap: 24px 18px; } }
+    @media (max-width: 560px) { .why35 { padding: 32px 22px 30px; } .why35-grid { grid-template-columns: 1fr; } .why35-day { padding: 22px 18px 18px; } .day-chart { height: 150px; } .day-sample::before { height: 140px; } .why35-field { gap: 9px; max-width: 260px; } .day-axis { font-size: 12px; letter-spacing: 0.08em; } }
+    @media (prefers-reduced-motion: reduce) { .why35-field i { opacity: 0.95; transform: none; transition: none; } .day-line { stroke-dashoffset: 0; transition: none; } }
 
     /* ── App previews ── */
     .hero-phone { display: none; }
@@ -2481,8 +2514,32 @@ const bodyHTML = `
         Clinical copy: Emma to review.
       -->
       <div class="why35 reveal">
-        <h3 class="why35-title">Why 35 markers, when most of the talk is about two?</h3>
-        <p class="why35-lead">Oestrogen and progesterone get most of the attention, and they matter. But more than two hormones shape how you sleep, how you handle stress and how you feel day to day. The DUTCH test looks at them together, so your GP review starts from a fuller picture.</p>
+        <div class="why35-top">
+          <div>
+            <h3 class="why35-title">Why 35 markers, when most of the talk is about <em>two?</em></h3>
+            <p class="why35-lead">Oestrogen and progesterone get most of the attention, and they matter. But more than two hormones shape how you sleep, how you handle stress and how you feel day to day. The DUTCH test looks at them together, so your GP review starts from a fuller picture.</p>
+          </div>
+          <div class="why35-count">
+            <div class="why35-field" aria-hidden="true"><i class="is-known" style="--i:0;"></i><i class="is-known" style="--i:1;"></i><i class="" style="--i:2;"></i><i class="" style="--i:3;"></i><i class="" style="--i:4;"></i><i class="" style="--i:5;"></i><i class="" style="--i:6;"></i><i class="" style="--i:7;"></i><i class="" style="--i:8;"></i><i class="" style="--i:9;"></i><i class="" style="--i:10;"></i><i class="" style="--i:11;"></i><i class="" style="--i:12;"></i><i class="" style="--i:13;"></i><i class="" style="--i:14;"></i><i class="" style="--i:15;"></i><i class="" style="--i:16;"></i><i class="" style="--i:17;"></i><i class="" style="--i:18;"></i><i class="" style="--i:19;"></i><i class="" style="--i:20;"></i><i class="" style="--i:21;"></i><i class="" style="--i:22;"></i><i class="" style="--i:23;"></i><i class="" style="--i:24;"></i><i class="" style="--i:25;"></i><i class="" style="--i:26;"></i><i class="" style="--i:27;"></i><i class="" style="--i:28;"></i><i class="" style="--i:29;"></i><i class="" style="--i:30;"></i><i class="" style="--i:31;"></i><i class="" style="--i:32;"></i><i class="" style="--i:33;"></i><i class="" style="--i:34;"></i></div>
+            <p class="why35-key"><span class="key-known">The two most people hear about</span><span class="key-rest">The rest of the 35 hormones and metabolites</span></p>
+          </div>
+        </div>
+
+        <figure class="why35-day">
+          <p class="why35-daytitle">One day, two rhythms</p>
+          <div class="day-chart">
+            <svg viewBox="0 0 1000 240" preserveAspectRatio="none" role="img" aria-label="Illustration: cortisol starts high in the morning and falls through the day, while melatonin stays low and rises at night. Four sample points are spread across the day.">
+              <path class="day-line day-cort" vector-effect="non-scaling-stroke" pathLength="1" d="M 40.0 120.0 L 48.0 100.1 L 56.0 81.5 L 64.0 65.2 L 72.0 52.5 L 80.0 43.9 L 88.0 40.2 L 96.0 43.2 L 104.0 47.3 L 112.0 51.3 L 120.0 55.2 L 128.0 59.0 L 136.0 62.7 L 144.0 66.4 L 152.0 69.9 L 160.0 73.3 L 168.0 76.6 L 176.0 79.9 L 184.0 83.0 L 192.0 86.1 L 200.0 89.1 L 208.0 92.0 L 216.0 94.9 L 224.0 97.6 L 232.0 100.3 L 240.0 103.0 L 248.0 105.5 L 256.0 108.0 L 264.0 110.4 L 272.0 112.8 L 280.0 115.1 L 288.0 117.3 L 296.0 119.5 L 304.0 121.6 L 312.0 123.7 L 320.0 125.7 L 328.0 127.6 L 336.0 129.5 L 344.0 131.4 L 352.0 133.2 L 360.0 134.9 L 368.0 136.7 L 376.0 138.3 L 384.0 140.0 L 392.0 141.5 L 400.0 143.1 L 408.0 144.6 L 416.0 146.0 L 424.0 147.4 L 432.0 148.8 L 440.0 150.2 L 448.0 151.5 L 456.0 152.8 L 464.0 154.0 L 472.0 155.2 L 480.0 156.4 L 488.0 157.5 L 496.0 158.7 L 504.0 159.7 L 512.0 160.8 L 520.0 161.8 L 528.0 162.8 L 536.0 163.8 L 544.0 164.8 L 552.0 165.7 L 560.0 166.6 L 568.0 167.5 L 576.0 168.3 L 584.0 169.2 L 592.0 170.0 L 600.0 170.8 L 608.0 171.5 L 616.0 172.3 L 624.0 173.0 L 632.0 173.7 L 640.0 174.4 L 648.0 175.1 L 656.0 175.7 L 664.0 176.4 L 672.0 177.0 L 680.0 177.6 L 688.0 178.2 L 696.0 178.8 L 704.0 179.3 L 712.0 179.9 L 720.0 180.4 L 728.0 180.9 L 736.0 181.4 L 744.0 181.9 L 752.0 182.4 L 760.0 182.9 L 768.0 183.3 L 776.0 183.7 L 784.0 184.2 L 792.0 184.6 L 800.0 185.0 L 808.0 185.4 L 816.0 185.8 L 824.0 186.1 L 832.0 186.5 L 840.0 186.9 L 848.0 187.2 L 856.0 187.5 L 864.0 187.9 L 872.0 188.2 L 880.0 188.5 L 888.0 188.8 L 896.0 189.1 L 904.0 189.4 L 912.0 189.7 L 920.0 189.9 L 928.0 190.2 L 936.0 190.5 L 944.0 190.7 L 952.0 191.0 L 960.0 191.2"/>
+              <path class="day-line day-mel" vector-effect="non-scaling-stroke" pathLength="1" d="M 40.0 205.0 L 48.0 205.0 L 56.0 205.0 L 64.0 205.0 L 72.0 205.0 L 80.0 205.0 L 88.0 205.0 L 96.0 205.0 L 104.0 205.0 L 112.0 205.0 L 120.0 205.0 L 128.0 205.0 L 136.0 205.0 L 144.0 205.0 L 152.0 205.0 L 160.0 205.0 L 168.0 205.0 L 176.0 205.0 L 184.0 205.0 L 192.0 205.0 L 200.0 205.0 L 208.0 205.0 L 216.0 205.0 L 224.0 205.0 L 232.0 205.0 L 240.0 205.0 L 248.0 205.0 L 256.0 205.0 L 264.0 205.0 L 272.0 205.0 L 280.0 205.0 L 288.0 205.0 L 296.0 205.0 L 304.0 205.0 L 312.0 205.0 L 320.0 205.0 L 328.0 205.0 L 336.0 205.0 L 344.0 205.0 L 352.0 205.0 L 360.0 204.9 L 368.0 204.9 L 376.0 204.9 L 384.0 204.9 L 392.0 204.9 L 400.0 204.9 L 408.0 204.9 L 416.0 204.9 L 424.0 204.8 L 432.0 204.8 L 440.0 204.8 L 448.0 204.8 L 456.0 204.7 L 464.0 204.7 L 472.0 204.6 L 480.0 204.6 L 488.0 204.5 L 496.0 204.4 L 504.0 204.3 L 512.0 204.2 L 520.0 204.1 L 528.0 203.9 L 536.0 203.8 L 544.0 203.6 L 552.0 203.4 L 560.0 203.1 L 568.0 202.8 L 576.0 202.5 L 584.0 202.1 L 592.0 201.7 L 600.0 201.1 L 608.0 200.6 L 616.0 199.9 L 624.0 199.1 L 632.0 198.2 L 640.0 197.2 L 648.0 196.1 L 656.0 194.8 L 664.0 193.3 L 672.0 191.7 L 680.0 189.8 L 688.0 187.7 L 696.0 185.3 L 704.0 182.7 L 712.0 179.8 L 720.0 176.6 L 728.0 173.1 L 736.0 169.3 L 744.0 165.2 L 752.0 160.8 L 760.0 156.1 L 768.0 151.2 L 776.0 146.1 L 784.0 140.8 L 792.0 135.4 L 800.0 130.0 L 808.0 124.6 L 816.0 119.2 L 824.0 113.9 L 832.0 108.8 L 840.0 103.9 L 848.0 99.2 L 856.0 94.8 L 864.0 90.7 L 872.0 86.9 L 880.0 83.4 L 888.0 80.2 L 896.0 77.3 L 904.0 74.7 L 912.0 72.3 L 920.0 70.2 L 928.0 68.3 L 936.0 66.7 L 944.0 65.2 L 952.0 63.9 L 960.0 62.8"/>
+            </svg>
+            <span class="day-tag tag-cort">Cortisol</span>
+            <span class="day-tag tag-mel">Melatonin</span>
+            <span class="day-sample" style="left:9%;"></span><span class="day-sample" style="left:33%;"></span><span class="day-sample" style="left:64%;"></span><span class="day-sample" style="left:90%;"></span>
+          </div>
+          <div class="day-axis" aria-hidden="true"><span>Morning</span><span>Midday</span><span>Evening</span><span>Night</span></div>
+          <figcaption class="day-note"><span class="day-samplekey"></span>Samples across the day can show a rhythm that one reading cannot. This is an illustration, not real data.</figcaption>
+        </figure>
+
         <div class="why35-grid">
           <div class="why35-item" style="--tone:#E8C16E;">
             <p class="why35-name">Oestrogens and progesterone</p>
